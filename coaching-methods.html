@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Coaching Methods · NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: block;
+    padding: 14px 18px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    opacity: 0.6;
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  .table-scroll { overflow-x: auto; margin-bottom: 20px; }
+  .table-scroll .ref-table { margin-bottom: 0; }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 150px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3, .pillars-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">NLH Hub &middot; Next Level Human</span>
+      <span class="title">Coaching Methods</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <span class="nav-section">On this page</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s1">01 &middot; How This Manual Works</a></li>
+      <li><a href="#s2">02 &middot; Protocols at a Glance</a></li>
+      <li><a href="#s3">03 &middot; Two Foundational Stances</a></li>
+      <li><a href="#s4">04 &middot; Foundation Refresh</a></li>
+      <li><a href="#s5">05 &middot; The Science of Change</a></li>
+      <li><a href="#s6">06 &middot; Attention, Function &amp; Sequencing</a></li>
+      <li><a href="#s7">07 &middot; The Five Analytical Questions</a></li>
+      <li><a href="#s8">08 &middot; Breath as Subconscious Lever</a></li>
+      <li><a href="#s9">09 &middot; DEEP &amp; BEEP</a></li>
+      <li><a href="#s10">10 &middot; QEC &amp; Choosing DEEP vs QEC</a></li>
+      <li><a href="#s11">11 &middot; DELTA &amp; QAT</a></li>
+      <li><a href="#s12">12 &middot; The Retrain Tools</a></li>
+      <li><a href="#quiz">Comprehension check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Materials &amp; Methods Manual &middot; Module 5</div>
+      <h1>Coaching <em>Methods</em></h1>
+      <p class="hero-desc">The neuroscience engine behind every BRN protocol. The other NLH manuals tell you the why and the what. This one is the how. It explains, in plain biology, why willpower and insight fail and what actually updates a pattern: retrieve the neural assembly, generate a mismatch, encode new content inside the reconsolidation window, and prepare the brain state that lets the change hold. This page distils the manual for fast re-reading, exact numbers, protocol durations, sequencing rules, and the breath system intact.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">12</span><span class="label">Sections</span></div>
+        <div class="hero-stat"><span class="num">14</span><span class="label">Quiz questions</span></div>
+        <div class="hero-stat"><span class="num">9</span><span class="label">Protocols covered</span></div>
+      </div>
+    </header>
+
+    <!-- SECTION 01 -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">How This Manual Works</h2>
+          <p class="section-subtitle">The operational core. Principles over protocols.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>This is the operational core of the NLH coaching practice. The other manuals (Philosophy &amp; Psychology, Metabolism &amp; Quantum Biology, Relational Coaching, Money) give the why, the what-is-happening-biologically, and the where-it-shows-up. This manual is the how. It is the manual a coach lives inside.</p>
+        <p>Built on a single premise: a coach who works from principles can do what a coach who only works from protocols cannot. Protocols break when clients do not fit the script. Principles let you build a new tool, in real time, for the client in front of you.</p>
+      </div>
+
+      <div class="card">
+        <h4>How the full manual is organised (15 parts)</h4>
+        <ul>
+          <li><strong>Foundation Refresh:</strong> reconnects to the SIGNAL cascade and the vapor-water-ice frame</li>
+          <li><strong>Part I:</strong> the science. Hebbian plasticity, memory reconsolidation, prediction error, metaplasticity, focused-attention and open-monitoring</li>
+          <li><strong>Parts II to V:</strong> the toolkit, organised along Rewrite, Rewire, Retrain</li>
+          <li><strong>Parts VI to VIII:</strong> precision instruments. Watcher Stance, six modalities of Neuro-Emotional Repatterning, integration practices</li>
+          <li><strong>Parts IX to X:</strong> session architecture. COACH model, group coaching system</li>
+          <li><strong>Part XI:</strong> resourcing</li>
+          <li><strong>Parts XII to XIV:</strong> clinical wisdom. Prescription, scope and safety, acute crisis protocols</li>
+          <li><strong>Part XV:</strong> mastery layer. Working from principles, coach as instrument</li>
+        </ul>
+      </div>
+
+      <div class="callout callout-forest">
+        <p><strong>What this page covers:</strong> The Foundation Refresh plus Parts I to IV, the sections transcribed in the vault source. That is the full science of change and the four primary protocol classes (DEEP, QEC, DELTA, QAT) plus BEEP, VIR, WIR, and Brain Breath. Parts V to XV (six modalities, session architecture, resourcing, clinical prescription, crisis protocols, mastery) are named in the manual index but not yet in the transcribed source, so they are flagged for a later pass, not covered here.</p>
+      </div>
+
+      <div class="card">
+        <h4>Companion workbook</h4>
+        <p>There is a companion document, the Materials &amp; Methods Companion Workbook, with full read-aloud session scripts for DEEP, QEC, DELTA, QAT, BEEP, Brain Breath, VIR, and WIR, with embedded timing notation.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 02 -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">Protocols at a Glance</h2>
+          <p class="section-subtitle">Nine tools, their durations, and what each one is for.</p>
+        </div>
+      </div>
+
+      <div class="table-scroll">
+      <table class="ref-table">
+        <thead><tr><th>Protocol</th><th>Time</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr><td><strong>DEEP</strong><br>Depth Enhanced Emotional Processing</td><td>~55 min</td><td>Breath, music, and structured journaling surface charged material, work with it directly, and integrate it. The full session-long tool for the heaviest pattern work.</td></tr>
+          <tr><td><strong>BEEP</strong><br>Breath Enhanced Emotional Processing</td><td>~11 min</td><td>Shorter daily-practice version of DEEP. Same architecture, less depth, no journaling.</td></tr>
+          <tr><td><strong>QEC</strong><br>Quantum Energy Clearing</td><td>30-40 min</td><td>Inquiry-based subconscious clearing. Walks through the body's energy centres, asking specific questions at each. The more cognitive cousin of DEEP.</td></tr>
+          <tr><td><strong>DELTA</strong><br>Downregulation and Restoration</td><td>~22 min</td><td>Restorative body-scan into spaciousness. Deeply rests the nervous system and prepares or seals other work. The most prescribable of the four.</td></tr>
+          <tr><td><strong>QAT</strong><br>Quantum Awareness Training</td><td>~30 min</td><td>Breath into spaciousness with intention seeding. Used for manifestation or possibility-state work. Generative counterpart to DELTA's restoration.</td></tr>
+          <tr><td><strong>VIR</strong><br>Virtual Identity Rehearsal</td><td>~11 min</td><td>Short guided audio meditation walking through embodying the next-level self. Daily practice. Forward-encoding of new identity through structured rehearsal.</td></tr>
+          <tr><td><strong>WIR</strong><br>Written Identity Rehearsal</td><td>25-30 min</td><td>Journaling companion to VIR. Forward-encoding through writing rather than guided audio. Weekly, or alternated with VIR.</td></tr>
+          <tr><td><strong>WET</strong><br>Written Exposure Therapy</td><td>5 sessions</td><td>Sloan and Marx's published expressive-writing protocol for PTSD. Recommended by VA/DoD clinical practice guidelines. Treated on its own terms in Part VIII.</td></tr>
+          <tr><td><strong>Brain Breath</strong></td><td>3 min</td><td>Autonomic-reset breath tool. Used daily for nervous-system maintenance and in-the-moment regulation.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout">
+        <p><strong>On the quantum names:</strong> QEC and QAT use "quantum" metaphorically, not technically. The protocols make no claims about quantum mechanics. The word is borrowed from how contemplative traditions describe deep field-state awareness. Alternative names exist: FEC (Field Energy Clearing) and FAT (Field Awareness Training). Use whichever language serves the room.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 03 -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">Two Foundational Stances</h2>
+          <p class="section-subtitle">The attentional posture held across all the work. Not optional.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>The watcher is how the client meets what arises. Dimensionalising is what they do once they meet it.</p>
+      </div>
+
+      <div class="card">
+        <h3>The Watcher Stance</h3>
+        <p>The dis-identified observer position. "I notice anger here", not "I am angry." "I am watching this memory with curiosity", not "this memory is overwhelming." The shift is from being-the-experience to being-the-one-watching-the-experience. It is what makes the deeper subconscious work safe. Without it, retrieval risks re-traumatisation. With it, retrieval becomes the doorway to updating.</p>
+        <p><strong>BMR application:</strong> this is what Chapter 10 practice builds in real time. What am I about to do? What do I usually do next? What would my Next Level Self do instead? The watcher in the moment before the old path activates.</p>
+      </div>
+
+      <div class="card">
+        <h3>Dimensionalising Consciousness</h3>
+        <p>Treating internal experience as if it were a separate entity with its own location, characteristics, voice, and life. The coach asks the client to locate a feeling in the body. Give it a colour. A texture. A temperature. A weight. A shape. A personality. A voice. Once dimensionalised, the client is no longer fused with it. They are in relationship with it.</p>
+        <p>This is what makes the MUD Rewrite process feel different from journalling. The client is meeting the pattern as an entity, not analysing it. That distinction produces the identity-level prediction error the assembly needs to destabilise.</p>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">The Eight Doorways &middot; entry points into the subconscious</div>
+        <div class="pillars-grid cols-4">
+          <div class="pillar-item"><div class="pillar-name">1. Historical parts</div><div class="pillar-desc">Child self, teen self, the wounded version of who one was</div></div>
+          <div class="pillar-item"><div class="pillar-name">2. Emotional parts</div><div class="pillar-desc">Anger, grief, fear, shame, jealousy, longing</div></div>
+          <div class="pillar-item"><div class="pillar-name">3. Body parts</div><div class="pillar-desc">Heart, gut, throat, lower back, shoulders</div></div>
+          <div class="pillar-item"><div class="pillar-name">4. Physical sensations</div><div class="pillar-desc">Tightness, heaviness, tingling, warmth</div></div>
+          <div class="pillar-item"><div class="pillar-name">5. Patterns</div><div class="pillar-desc">A recurring loop, relational dynamic, behavioural signature</div></div>
+          <div class="pillar-item"><div class="pillar-name">6. Memories</div><div class="pillar-desc">Specific events, scenes, episodic material</div></div>
+          <div class="pillar-item"><div class="pillar-name">7. Signs &amp; symptoms</div><div class="pillar-desc">Migraine, panic attack, insomnia, gut flare</div></div>
+          <div class="pillar-item"><div class="pillar-name">8. Illnesses &amp; diagnoses</div><div class="pillar-desc">Fibromyalgia, autoimmune conditions, named clinical entities</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">One doorway usually presents first in a session, the body knot, the emotion that surfaces on induction, the memory that arises with the music. The coach follows what arises. The eight categories are a map so the coach knows what they are looking at. Both stances are required: without the watcher the client fuses with what surfaces; without dimensionalising the material has nowhere to go.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 04 -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">Foundation Refresh</h2>
+          <p class="section-subtitle">SIGNAL cascade, the three phases of self, and MUD.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>The SIGNAL Cascade</h3>
+        <p>Every human runs the same cascade, top to bottom:</p>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>Layer</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td><strong>S &middot; Source</strong></td><td>Consciousness. The field. What we share with everything.</td></tr>
+            <tr><td><strong>I &middot; Identity</strong></td><td>Who you have come to believe you are. Essential nature plus earned experience plus free will.</td></tr>
+            <tr><td><strong>G &middot; Gate / Gestalt</strong></td><td>The psychology, the personality, the emotional climate. The filter through which the upper layers express into the lower.</td></tr>
+            <tr><td><strong>N &middot; Neuro</strong></td><td>The nervous system. The sensor, responder, chooser, actor.</td></tr>
+            <tr><td><strong>A &middot; Adrenal</strong></td><td>The endocrine system. Hormones.</td></tr>
+            <tr><td><strong>L &middot; Lymphatic</strong></td><td>The immune system.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Upper three (S, I, G) are "the dial", where coaching enters. Lower three (N, A, L) are "the room", the downstream physiology where the dial's setting expresses in the body.</p>
+        <p><strong>The one-sentence NLH:</strong> move the SIGNAL at its source. You do not fight the room. You turn the dial.</p>
+      </div>
+
+      <div class="card">
+        <h3>Vapor, Water, Ice: the three phases of self</h3>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>Phase</th><th>What it is</th><th>What we do with it</th></tr></thead>
+          <tbody>
+            <tr><td><strong>VAPOR &middot; Rewrite</strong></td><td>Story, belief, identity, meaning</td><td>Author a different story. Create a fork in the road. Primary work of DEEP and QEC.</td></tr>
+            <tr><td><strong>WATER &middot; Rewire</strong></td><td>The emotional field, felt-sense charge</td><td>Shift the emotional climate. Move from chronic fear-resistance-control toward gratitude-trust-presence. Primary work of DELTA and QAT.</td></tr>
+            <tr><td><strong>ICE &middot; Retrain</strong></td><td>Nervous system as physical actor. Biology and behaviour.</td><td>Immersive rehearsal (VIR, WIR), nervous-system regulation (Brain Breath), lived practice.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>These are not separate domains. They are layers of the same person. A change at the vapor layer that does not express at the ice layer is incomplete. A change at the ice layer with no vapor-layer authoring behind it tends not to last.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>MUD: Misguided Unconscious Decisions</h3>
+        <p>The substance of the patterns being worked with. Composition: <strong>story</strong> (the meaning the system has made of an experience) plus <strong>emotion</strong> (the charge that fused to the story under the stress that originally formed it).</p>
+        <ul>
+          <li><strong>Story</strong> = the mud itself</li>
+          <li><strong>Emotion</strong> = the rebar</li>
+          <li><strong>Stress at the moment of formation</strong> = the trowel that pushed them together</li>
+        </ul>
+        <p>Once formed, MUD operates as a filter. The system perceives and responds to the present through the lens of the MUD laid down in the past. The client experiences this as automaticity: patterns they cannot interrupt, reactions they cannot choose otherwise, beliefs that feel like facts.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 05 -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">The Science of Change</h2>
+          <p class="section-subtitle">Part I. Why willpower fails and what actually updates a pattern.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>We are not suppressing patterns. We are not overriding them. We are working within the reconsolidation window to update the underlying assembly itself.</p>
+      </div>
+
+      <div class="card">
+        <h3>Hebb's Law</h3>
+        <p>"Neurons that fire together, wire together." (Hebb, 1949; Caporale &amp; Dan, 2008). When two neurons are repeatedly activated in close temporal proximity, the synaptic connection between them strengthens. Repeated co-activation produces a stable neural assembly, a network that fires as a unit whenever any part of it is triggered. This is the substrate of habit, belief, identity, and pattern.</p>
+        <p>Change is not about willpower or insight alone. It is about changing the assembly itself. That requires more than a decision. It requires the conditions under which assemblies become flexible.</p>
+      </div>
+
+      <div class="card">
+        <h3>Memory Reconsolidation: the window of change</h3>
+        <p>(Nader, Schafe &amp; LeDoux, 2000). When a consolidated memory is retrieved, it returns to a transient unstable (labile) state. During this labile period the memory can be modified before being re-stabilised.</p>
+        <p><strong>Mechanically:</strong> retrieval triggers exchange of AMPA receptor subunits at the synapse. Calcium-impermeable receptors swap for calcium-permeable ones, destabilising the synapse. Protein synthesis is then required to re-stabilise the memory. If new learning occurs during the labile window, the memory reconsolidates with the new information incorporated. The original neural assembly is not erased. It is updated.</p>
+        <p>The window is narrow, typically <strong>4 to 6 hours</strong>. Not every retrieval opens it. The memory must be sufficiently activated, but the activation must produce some mismatch with expectation.</p>
+        <p>Bruce Ecker's 2024 review of over 30 reconsolidation studies concluded: when retrieval, prediction error, and new learning are all properly engaged, behavioural updating of emotional memory is robust and replicable. When any of those three conditions fails, the intervention fails.</p>
+      </div>
+
+      <div class="card card-dark">
+        <h3>Prediction Error: the trigger that opens the window</h3>
+        <p>Prediction error is a mismatch between what the brain expected (based on the retrieved memory) and what is actually occurring in the present moment. If the present confirms the memory's predictions, the pattern is reinforced. If it contradicts them, prediction error signals the brain that the existing model is inadequate, and the brain initiates updating.</p>
+        <h4>The four channels</h4>
+        <ul>
+          <li><strong>Somatic:</strong> body expected one state, produces another. The watcher stance and parasympathetic dominance interrupt the autonomic sequence the assembly predicts.</li>
+          <li><strong>Cognitive:</strong> mind expected one meaning, encounters another. "This is dangerous" is met with "what is its lesson? What are you here to teach?"</li>
+          <li><strong>Perceptual:</strong> senses expected the same configuration, register another. Different breath, music, posture, eye mask. Sensory context contradicts where the pattern was reinforced.</li>
+          <li><strong>Identity:</strong> the deepest channel. The assembly assumed identification: "this is me." The watcher stance reveals "I have this pattern, I am not this pattern." Dimensionalising: "this is an entity in the room with me, but it is not me."</li>
+        </ul>
+        <p>DEEP and QEC are constructed to generate prediction error simultaneously across multiple channels. DELTA and QAT generate it more diffusely, establishing brain-wide states that contradict the assumptions of nearly every existing assembly at once.</p>
+      </div>
+
+      <div class="card">
+        <h3>Unwind and New Wind</h3>
+        <p>When a memory is retrieved and labilised, it is going to reconsolidate. The question is what it reconsolidates as. If the old story, old emotion, old reactivity is re-experienced in its old form, the assembly stabilises back into the same configuration. You unwound it, and then it rewound itself.</p>
+        <p><strong>Frankensteining the pattern:</strong> opening the window and then sewing the same thing back together, sometimes with extra reinforcement.</p>
+        <p><strong>The principle:</strong> unwind through retrieval and prediction error, then, within the labile window, deliberately introduce different content. New emotional, cognitive, somatic, and identity content. The assembly reconsolidates around what you put in during the labile window. When a coach skips the new wind, they are doing reactivation work, not reconsolidation work. The outcomes are not the same.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Metaplasticity: the state that makes change possible</h3>
+        <p>Metaplasticity is plasticity about plasticity: the brain's capacity to modulate its own ability to undergo plastic change (Abraham &amp; Bear, 1996). Not all brain states are equally receptive.</p>
+        <div class="vs-table">
+          <div class="vs-header old">Reduces metaplastic capacity</div>
+          <div class="vs-header new">Increases metaplastic capacity</div>
+          <div class="vs-row-old">Stress, rigid focus, sympathetic dominance, threat detection</div>
+          <div class="vs-row-new">Safety, parasympathetic tone, diffuse awareness, integration across networks</div>
+        </div>
+        <p>This is the missing concept in most coaching and therapy. Practitioners who do reframing or somatic activation without preparing the metaplastic ground are doing precise interventions in soil that cannot hold them. DEEP and QEC do specific reconsolidation. DELTA and QAT establish and maintain the metaplastic ground.</p>
+        <p><strong>Specific reconsolidation without metaplastic conditioning = fragile change. Metaplastic conditioning without specific reconsolidation = a flexible brain that has not updated its operative maladaptive patterns. Both are required.</strong></p>
+      </div>
+    </section>
+
+    <!-- SECTION 06 -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">Attention, Function &amp; Sequencing</h2>
+          <p class="section-subtitle">Part I continued. FA vs OM, the two functions, prime-work-seal, brainwaves.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Focused Attention vs Open Monitoring</h3>
+        <p><strong>Focused Attention (FA):</strong> direct, narrow, sustained attention onto a specific object. Activates dorsolateral prefrontal cortex, anterior cingulate, task-positive networks.</p>
+        <p><strong>Open Monitoring (OM):</strong> broad, non-selective awareness in which whatever arises is observed without targeting. Activates the Default Mode Network and posterior integrative regions. (Lutz, Slagter, Dunne &amp; Davidson, 2008)</p>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>Mode</th><th>NLH name</th><th>Protocols</th><th>Function</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Focused Attention</strong></td><td>Channel-based (tune to one station)</td><td>DEEP, QEC, BEEP</td><td>Specific reconsolidation, precision work on a targeted assembly</td></tr>
+            <tr><td><strong>Open Monitoring</strong></td><td>Field-based (open to the whole spectrum)</td><td>DELTA, QAT</td><td>Global metaplasticity, brain-wide preparation and integration</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>The Two Functions</h3>
+        <p>Every BRN protocol does one of two things.</p>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>Function</th><th>What it is</th><th>Which protocols</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Specific reconsolidation</strong></td><td>Retrieve a particular assembly, generate prediction error, introduce new content during the reconsolidation window. Precision neuroplasticity at a targeted site.</td><td>DEEP, QEC, BEEP</td></tr>
+            <tr><td><strong>Global metaplasticity</strong></td><td>Establish brain-wide states that increase overall capacity for plastic change. Activate DMN, parasympathetic dominance, protein-synthesis-dependent consolidation.</td><td>DELTA, QAT</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">Prime &middot; Work &middot; Seal: the BRN sequencing principle</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">Prime</div>
+            <div class="phase-sub">Establish the metaplastic state with DELTA or QAT before specific work begins.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">Work</div>
+            <div class="phase-sub">Specific reconsolidation with DEEP or QEC. Retrieve the assembly, generate prediction error, encode new content in the labile window.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">Seal</div>
+            <div class="phase-sub">Return to DELTA or QAT for deep rest and integration that supports protein-synthesis-dependent consolidation. Not optional.</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>Skipping the seal:</strong> the reconsolidation window is open and the new encoding is partially in, but the consolidation that locks it into a durable assembly requires hours of parasympathetic recovery. Go straight back into stress and it does not hold.</p>
+      </div>
+
+      <div class="card">
+        <h3>Brainwaves and what they correlate with</h3>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>State</th><th>Frequency</th><th>When it shows up clinically</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Delta</strong></td><td>0.5-4 Hz</td><td>Deep sleep, profound rest, systems-level consolidation. The state DELTA is named for. The seal phase.</td></tr>
+            <tr><td><strong>Theta</strong></td><td>4-8 Hz</td><td>Hypnagogic, dreamlike, deeply intuitive, symbol and metaphor. The deepest reconsolidation work happens here. Target state for the back half of DEEP and the depths of QEC.</td></tr>
+            <tr><td><strong>Alpha</strong></td><td>8-12 Hz</td><td>Relaxed alertness, light meditation, bridge between conscious and subconscious. DELTA's body-scan, QEC's sustained focus, DEEP's compassion-integration phase.</td></tr>
+            <tr><td><strong>Beta</strong></td><td>13-30 Hz</td><td>Focused waking attention, logical thought. The state the client arrives in.</td></tr>
+            <tr><td><strong>High Beta</strong></td><td>Above 30 Hz</td><td>Hypervigilance, stress, sympathetic dominance. The state in which most MUD originally formed. DEEP intentionally re-creates this to access assemblies as they were laid down.</td></tr>
+            <tr><td><strong>Gamma</strong></td><td>30+ Hz</td><td>High-frequency integration, insight, peak experience. Sometimes emerges spontaneously in DEEP or QAT. Not pursued directly.</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p><strong>The hypnagogic state is the target. Theta is its brainwave correlate.</strong> The specific mechanism is theta oscillations with gamma bursts nested within them (theta-gamma phase-amplitude coupling). The hippocampus rides the theta rhythm, the gamma carries the specific content, and the coupling between them is what allows the retrieved assembly to enter the labile state where it can be updated. (Bellfy, Smies &amp; Kwapis, 2020; Headley &amp; Pare, 2017)</p>
+        <p>The subjective experience is primary. Brainwave language is a useful map. The phenomenological markers (dreamlike imagery, dialogues with parts, symbolic surfacing, the sense of being neither fully here nor fully gone) are the actual signal a coach is reading.</p>
+      </div>
+
+      <div class="card">
+        <h3>Sympathetic and parasympathetic in reconsolidation</h3>
+        <p>MUD forms under sympathetic activation. The original encoding happens in fight, flight, or freeze. To bring it back to the labile state, the same activation level needs to be present. The activating breath in DEEP recreates sympathetic activation without requiring actual danger. What follows matters as much as the activation itself: the shift into parasympathetic dominance, through the breaking breath, humming exhale, and vagal activation, is what allows the labile assembly to reconsolidate around the new content rather than the old.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 07 -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">The Five Analytical Questions</h2>
+          <p class="section-subtitle">Ask these of any intervention. If it cannot answer them, it may not be doing what it claims.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>These five questions can be asked of any meditative, somatic, journaling, breathwork, or contemplative intervention. A coach who can answer them about any tool understands it well enough to use it intelligently. Run any module, worksheet, video, or practice prescription for Alex through them before delivery.</p>
+      </div>
+
+      <div class="table-scroll">
+      <table class="ref-table">
+        <thead><tr><th>#</th><th>Question</th><th>What it evaluates</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>Retrieval</strong></td><td>What does this intervention retrieve? Is a specific memory, pattern, or assembly being activated, or is it working at a global state level?</td></tr>
+          <tr><td>2</td><td><strong>Prediction error</strong></td><td>Does it generate prediction error, and in which channel: somatic, cognitive, perceptual, or identity?</td></tr>
+          <tr><td>3</td><td><strong>New encoding</strong></td><td>What new content does it encode during the reconsolidation window: somatic-emotional, cognitive-relational, or perceptual?</td></tr>
+          <tr><td>4</td><td><strong>Metaplastic conditioning</strong></td><td>Does it support it? Is it activating the DMN, inducing parasympathetic dominance, supporting open-monitoring states?</td></tr>
+          <tr><td>5</td><td><strong>Sequencing</strong></td><td>Where does it sit in a sequencing structure: priming, working, or sealing?</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout callout-forest">
+        <p><strong>BRN is not a collection of techniques. It is an applied neuroscience of belief, identity, and pattern.</strong> Every protocol is an expression of the same underlying mechanisms: neurons that fire together wire together, memories destabilise on retrieval, prediction error opens the window, new encoding during that window updates the assembly, and metaplastic conditions determine whether the change takes and holds.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 08 -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">Breath as Subconscious Lever</h2>
+          <p class="section-subtitle">Part II. The fastest, cheapest, most reliable state tool, and the one the client keeps.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>Breath is the fastest, cheapest, and most reliable tool for shifting a client's state, and the only one the client can take with them. It sits at a unique anatomical location: one of the only autonomic functions the conscious mind has direct voluntary access to. Breath is the doorway through which the conscious mind reaches into the autonomic system.</p>
+      </div>
+
+      <div class="card">
+        <h3>The Two Breaths</h3>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>Breath</th><th>Pattern</th><th>Effect and use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Activating</strong></td><td>Double inhale through nose or mouth (belly, then chest), followed by a passive exhale that is allowed to fall, not pushed</td><td>Sustained inspiratory drive signals effort and demand. Heart rate, sympathetic tone, and cortical arousal rise. Used to retrieve charged material in its original somatic-emotional signature.</td></tr>
+            <tr><td><strong>Breaking</strong></td><td>Deep inhale, then a long, slow, controlled exhale, often paired with a hum (the ari or bee breath)</td><td>Slow exhalation activates the vagus nerve and triggers parasympathetic dominance. Heart rate and cortical arousal drop, the amygdala downregulates. The hum increases nasal nitric oxide and adds vagal stimulation via the laryngeal branch. This is home base, the resourcing breath taught before any subconscious work begins.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Contraindications for the activating breath:</strong> cardiovascular disease (coronary artery disease, prior MI, congestive heart failure, uncontrolled hypertension), active or recent stroke or TIA, pregnancy (especially second and third trimesters), active psychosis, severe dissociative disorder or unstabilised PTSD, glaucoma or conditions where increased intraocular pressure is contraindicated, recent thoracic or abdominal surgery, epilepsy or seizure disorder. When in doubt, default to the coherence breath. The work can still be done.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Rest-based breathing: non-negotiable safety architecture</h3>
+        <p>In every protocol that uses the activating breath, the structure is rest-based. Push until you cannot, rest until you can go again. The pacing is governed by the client's body, not the coach's prompts. This prevents hypocapnia, the drop in blood CO2 that causes vasoconstriction, lightheadedness, tingling, and syncope in extreme cases.</p>
+      </div>
+
+      <div class="card">
+        <h3>The Coherence Breath</h3>
+        <p>Six-second inhale paired with a six-second exhale, no holds, sustained as a continuous rhythm. Produces respiratory sinus arrhythmia at its maximal coherence point. Measurably improves heart-rate variability, reduces stress markers, produces a balanced autonomic state. (McCraty &amp; Childre, 2010; Lehrer &amp; Gevirtz, 2014)</p>
+        <p>Two clinical uses: (1) the alternative for clients who cannot do the activating breath, since all BRN protocols can be run with coherence breath substitution; (2) the breath of integration and reflection, the operating breath of the integration phases and the standalone homework breath.</p>
+      </div>
+
+      <div class="card">
+        <h3>Music pairing: clinical, not atmospheric</h3>
+        <p>Music is a second instrument played alongside the coach's voice. It does autonomic work the voice cannot do alone.</p>
+        <p><strong>Activation music:</strong> intense, driving, percussive, fast-paced, rhythmic. Drum-heavy, synth-driven cinematic builds. No lyrics, no recognisable melody. Drives sympathetic engagement.</p>
+        <p><strong>Rest music:</strong> soft, spa-like, sustained instrumental. Solfeggio frequencies (432 Hz, 528 Hz, 963 Hz) or rotated across rest segments. Pads, bowls, soft strings, ambient drones. Nothing percussive. Holds the parasympathetic state in which reconsolidation completes.</p>
+        <h4>Music rules (non-negotiable)</h4>
+        <ul>
+          <li>No lyrics. Words compete with the coach's voice and fire memory associations.</li>
+          <li>No popular or familiar music. Any recognised track activates associations that hijack the protocol.</li>
+          <li>Two distinct phases: activation for sympathetic drive, rest for parasympathetic seal.</li>
+          <li>Volume calibration: activation loud enough to push but not to drown the voice; rest quiet enough that silences feel like silence.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Vocalization, sound, and the biofield</h3>
+        <p>Humming reliably increases nasal nitric oxide, activates the vagus nerve via the laryngeal branch, and produces parasympathetic dominance. Studies of OM chanting show decreased limbic activity and increased heart-rate variability. (Eby, 2006; Kalyani et al., 2011)</p>
+        <p>Clinical uses in BRN: the hum on the breaking breath; sustained chanting tones in some QEC variations (root through crown: uh, oh, ah, ay, ee, ohm, mmm); an OM-style sustained tone at the end of QAT.</p>
+      </div>
+
+      <div class="card">
+        <h3>Breath-to-state mapping</h3>
+        <div class="table-scroll">
+        <table class="ref-table">
+          <thead><tr><th>State the protocol needs</th><th>How breath produces it</th></tr></thead>
+          <tbody>
+            <tr><td>Sympathetic activation for retrieval (DEEP activation phase, BEEP, QAT induction rounds)</td><td>Activating breath, rest-based, paced with intense rhythmic music</td></tr>
+            <tr><td>Parasympathetic dominance for integration and seal</td><td>Breaking breath with humming exhale</td></tr>
+            <tr><td>Coherent reflective state for journaling and integration</td><td>Coherence breath (6 in, 6 out)</td></tr>
+            <tr><td>Field-state awareness for metaplastic openness (DELTA body-scan, QAT void)</td><td>Slow, attention-released breath. Box breathing (4-4-4-4) as transitional structure.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 09 -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">DEEP &amp; BEEP</h2>
+          <p class="section-subtitle">Part III. The most intensive specific-reconsolidation protocol, and its daily-practice version.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-forest">
+        <p><strong>DEEP is the developmental edit of the document. QEC is the line edit.</strong> Both are specific-reconsolidation protocols, channel-based work, primarily at the vapor layer (story-belief-identity), with secondary work at the water layer (emotional charge).</p>
+      </div>
+
+      <div class="card">
+        <h3>DEEP: Depth Enhanced Emotional Processing</h3>
+        <p>The most somatically and psychologically intensive specific-reconsolidation protocol in the BRN system. Uses breath, music, dimensionalised consciousness, and journaling stacked on each other. Approximately 55 minutes.</p>
+        <h4>Protocol structure</h4>
+        <p>Prep. Then a session of five phases: Induction, Activation (BEEP-style breath sequence), Transition Hold, Compassion Integration, Sonic Rest. Then journaling in three voices.</p>
+      </div>
+
+      <div class="card card-dark">
+        <h3>The Three Voices journaling</h3>
+        <ul>
+          <li><strong>Voice One: The Psychic Entity Speaks (5 min):</strong> the client writes as the entity that came up (the memory, sensation, emotion, pattern, or part). Where it lives, what it looks like, what it has been trying to say. Full retrieval into the labile window through the writing channel.</li>
+          <li><strong>Voice Two: The Current Self Responds (4 min):</strong> the client writes back to the entity. Not blaming, not whimpering, not denying. Just telling their truth about how it has been to live with this.</li>
+          <li><strong>Voice Three: The Next-Level Human Self Writes (5 min):</strong> the future, wiser self sits down with both. Explains the lesson. Explains why it had to be this way. Encodes the meaning-rich, purpose-rich frame that becomes the new content reconsolidated into the assembly.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>DEEP through the Five Analytical Questions</h4>
+        <ul>
+          <li><strong>Retrieval:</strong> specific charged assembly, full somatic-emotional signature via activating breath plus dimensionalising.</li>
+          <li><strong>Prediction error:</strong> all four channels at once. Somatic (body breathes through rather than reacts), cognitive (threat becomes teacher), perceptual (music, eye mask, headphones), identity (dimensionalising breaks identification).</li>
+          <li><strong>New encoding:</strong> the Compassion Integration phase encodes love, acceptance, and gratitude while the assembly is still labile. Three Voices journaling encodes the lesson and next-level frame.</li>
+          <li><strong>Metaplastic conditioning:</strong> Sonic Rest and Compassion Integration produce extended parasympathetic dominance and DMN engagement.</li>
+          <li><strong>Sequencing:</strong> the work phase. Optimally primed by DELTA, sealed by DELTA in the days following.</li>
+        </ul>
+        <p><strong>Indications:</strong> a specific, identifiable charged memory, traumatic residue, or persistent emotional-somatic pattern that cognitive work alone has not resolved. Once weekly is standard frequency.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>The Two Paths teaching</h3>
+        <p>DEEP closes with this. The client did not erase the old path. They cannot. What they did is create a fork in the road. The old path, familiar and frustrating, is still there. The new path, foreign and fearful, is now also there. The teaching is to choose the foreign one. The foreign and fearful path turns into the foreign and fun path. The more you choose it, the more it becomes the new familiar.</p>
+      </div>
+
+      <div class="card">
+        <h3>BEEP: Breath Enhanced Emotional Processing</h3>
+        <p>The practice-level extension of DEEP. Approximately 11 minutes. Same breath-driven retrieval mechanism without the full multi-phase architecture. No extended Compassion Integration, no long Sonic Rest, no Three Voices journaling. Structurally: DEEP's activation phase plus a brief integration. Prescribed as homework between DEEP sessions, used inside a one-on-one when a client needs quick subconscious access, and the coach's own daily nervous-system maintenance practice.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2 class="section-title">QEC &amp; Choosing DEEP vs QEC</h2>
+          <p class="section-subtitle">Part III continued. The inquiry-driven protocol and the selection rule.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>QEC: Quantum Energy Clearing</h3>
+        <p>A sustained-attention specific-reconsolidation protocol. Does not use breath-driven state induction. Uses focused inquiry sequentially across body regions, energy centres, memories, or patterns. Where DEEP is intensity-driven, QEC is inquiry-driven. Approximately 30 to 40 minutes.</p>
+        <p><strong>Structure:</strong> seven energy centres (root through crown), each with 10 focused breaths into the area, three layered clearing statements (for MUD and beliefs, for history and memories, for sensations and illness), and three humming releases. The canonical version uses the chakra structure. The alternative uses anatomical body regions: pelvis, abdomen, upper abdomen, chest, throat, head, top of head.</p>
+      </div>
+
+      <div class="table-scroll">
+      <table class="ref-table">
+        <thead><tr><th>Choose DEEP when</th><th>Choose QEC when</th></tr></thead>
+        <tbody>
+          <tr><td>Specific, identifiable charged memory or pattern</td><td>Pattern distributed across the body or multiple locations</td></tr>
+          <tr><td>Client can tolerate sympathetic activation</td><td>Client cannot tolerate intense breathwork or has cardiovascular contraindications</td></tr>
+          <tr><td>Work needs full somatic-emotional retrieval intensity</td><td>Systemic issues: chronic pain syndromes, energetic complaints</td></tr>
+          <tr><td>Single dominant theme</td><td>Client prefers a gentler, more inquiry-based experience</td></tr>
+          <tr><td>Full 55-minute session available</td><td>30 to 40 minutes and a complete protocol cycle available</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="card">
+        <h3>Pairing DEEP and QEC: illustrative weekly schedule</h3>
+        <ul>
+          <li><strong>Monday:</strong> DELTA (prime)</li>
+          <li><strong>Tuesday:</strong> DEEP (heavy specific reconsolidation)</li>
+          <li><strong>Wednesday:</strong> DELTA or BEEP (seal plus light maintenance)</li>
+          <li><strong>Thursday:</strong> QEC (distributed-pattern inquiry-based reconsolidation)</li>
+          <li><strong>Friday:</strong> QAT or DELTA (seal plus generative work if appropriate)</li>
+          <li><strong>Weekend:</strong> rest. Optional Brain Breath or daily VIR for maintenance.</li>
+        </ul>
+        <p>This structure is illustrative, not prescriptive. A client in acute distress should run DELTA daily until the nervous system stabilises, then add specific work in. The prescription is built for the client.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 11 -->
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <div>
+          <h2 class="section-title">DELTA &amp; QAT</h2>
+          <p class="section-subtitle">Part IV. The soil. Everything that makes specific reconsolidation take and hold.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-forest">
+        <p>DEEP and QEC do the specific reconsolidation. DELTA and QAT do everything that makes it actually take and hold. They are not the supporting cast. They are the soil.</p>
+      </div>
+
+      <div class="card">
+        <h3>DELTA: Downregulation and Nervous System Restoration</h3>
+        <p>The global metaplasticity and parasympathetic restoration protocol. Named for the delta-wave brain state it induces. The most accessible and repeatable of the four BRN classes. Approximately 22 minutes.</p>
+        <h4>Three phases</h4>
+        <ol>
+          <li>Extended body-scan, begins as focused-attention work and progressively diffuses into open-monitoring</li>
+          <li>Box-breathing rhythm with explicit identity-dissolution language</li>
+          <li>Reconstruction phase, seeds the new identity into the now-metaplastic state</li>
+        </ol>
+        <h4>DELTA through the Five Analytical Questions</h4>
+        <ul>
+          <li><strong>Retrieval:</strong> minimal. DELTA is not a precision tool.</li>
+          <li><strong>Prediction error:</strong> diffuse, identity-level. "You are not your body, you are not your emotions, you are not your thoughts" generates identity-level prediction error against the entire ego-assembly.</li>
+          <li><strong>New encoding:</strong> non-specific identity-level seeding through reconstruction: "From this place of pure potential, begin to reassemble yourself. No old stories, no inherited scripts."</li>
+          <li><strong>Metaplastic conditioning:</strong> maximal. This is what DELTA does best.</li>
+          <li><strong>Sequencing:</strong> the prime and seal of the BRN system. Day before DEEP or QEC, day after, standalone daily.</li>
+        </ul>
+        <p><strong>FA-first then OM:</strong> recent research confirms focused-attention-first followed by open-monitoring is more effective than OM-first for novices, because FA establishes the attentional control that OM can then operate within (Ishikawa et al., 2025). Two versions exist, DELTA 1 and DELTA 2, same architecture and different language and tone, so the coach can vary delivery for clients running it regularly.</p>
+        <p><strong>When to use DELTA:</strong> nervous system restoration, before and after DEEP or QEC, high-stress periods when specific work is contraindicated, clients with burnout or chronic stress or autonomic instability, and whenever the system needs rest more than targeted work.</p>
+      </div>
+
+      <div class="card">
+        <h3>QAT: Quantum Awareness Training</h3>
+        <p>A global metaplasticity protocol that uses breath-driven absorption to access deep field-states. Where DELTA is restorative, QAT is generative. Where DELTA dissolves identity to allow rest and reconstruction, QAT dissolves identity to allow seeding of intention into the field-state. Approximately 30 minutes.</p>
+        <p><strong>Structure:</strong> three rounds of accelerated breathwork (BEEP-style activation but more sustained), then into the void, identity dissolution and field-saturation. From the void an intention is projected into the field. It is received back through the heart centre, paired with elevated affective states (joy, gratitude, completeness). The protocol closes with the explicit framing that the chosen reality has already shifted.</p>
+        <h4>QAT through the Five Analytical Questions</h4>
+        <ul>
+          <li><strong>Retrieval:</strong> minimal. QAT is generative, not corrective. The void state explicitly empties prior content.</li>
+          <li><strong>Prediction error:</strong> identity-level through deep dissolution into the void. "You are everywhere and nowhere, you are everyone and no one."</li>
+          <li><strong>New encoding:</strong> forward-encoding of intention paired with elevated affect. The heart-opening phase produces the felt-sense conviction that the intention is already true.</li>
+          <li><strong>Metaplastic conditioning:</strong> maximal, sometimes deeper than DELTA in some clients, paired with active intention.</li>
+          <li><strong>Sequencing:</strong> flexible. Can serve as prime, work, or seal depending on the client and goals.</li>
+        </ul>
+        <p><strong>On the void:</strong> not a metaphor. A specific phenomenological state characterised by identity dissolution, content emptying, sustained background awareness without object, and a sense of vast openness. From this state the practitioner projects an intention, not a wish or fantasy but a clear thought-form, into the field. (Chowdhury et al., 2025; Sacchet et al., 2024)</p>
+        <p><strong>When to use QAT:</strong> generative goals, manifestation work, possibility-state expansion, high-performance preparation, creative breakthrough, spiritual development. For clients already reasonably regulated and ready for deeper contemplative-grade practice. Less appropriate as first-line for clients in acute distress.</p>
+      </div>
+
+      <div class="table-scroll">
+      <table class="ref-table">
+        <thead><tr><th>Pairing</th><th>Why it works</th></tr></thead>
+        <tbody>
+          <tr><td><strong>DEEP + DELTA</strong></td><td>DEEP does deep, intense, sympathetic-driven specific reconsolidation. DELTA does deep, restorative, parasympathetic-driven metaplastic conditioning. Exact complements. DELTA before DEEP establishes the metaplastic ground; DELTA after DEEP seals the new encoding. Together, the full architecture for serious heavy work.</td></tr>
+          <tr><td><strong>QEC + QAT</strong></td><td>QEC does sustained-attention specific reconsolidation. QAT does field-state generative metaplastic work. They share a meditative, contemplative register. QAT before QEC opens the field; QAT after QEC seals with intentional generative content. Well-suited for clients oriented toward inquiry, manifestation, and intentional life-direction work.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <!-- SECTION 12 -->
+    <section class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <div>
+          <h2 class="section-title">The Retrain Tools</h2>
+          <p class="section-subtitle">VIR, WIR, and Brain Breath. The ice layer, and where Brain Breath correctly sits.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>Retrain tools work at the ice layer: nervous system as physical actor, biology and behaviour. Where Rewire tools do field-state work at the water layer, Retrain tools build new lived patterns through repetition until the new path fires faster than the old one. These are not subconscious protocols. They are conscious rehearsal and nervous-system maintenance.</p>
+      </div>
+
+      <div class="table-scroll">
+      <table class="ref-table">
+        <thead><tr><th>Tool</th><th>Duration</th><th>Mechanism</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>VIR</strong><br>Virtual Identity Rehearsal</td><td>~11 min</td><td>Guided audio meditation embodying the next-level self. Forward-encoding of new identity through structured rehearsal. Builds the new path through repetition.</td><td>Daily</td></tr>
+          <tr><td><strong>WIR</strong><br>Written Identity Rehearsal</td><td>25-30 min</td><td>Journaling companion to VIR. Same forward-encoding through writing rather than guided audio. Activates different encoding pathways than audio rehearsal.</td><td>Weekly, or alternated with VIR</td></tr>
+          <tr><td><strong>Brain Breath</strong></td><td>3 min</td><td>Autonomic reset: a sympathetic-activation-then-parasympathetic-shift cycle that resets the nervous system. Biology and behaviour, not field-state work.</td><td>Daily maintenance and in-the-moment regulation</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="callout">
+        <p><strong>Why Brain Breath is Retrain, not Rewire:</strong> its mechanism is autonomic regulation, a sympathetic-activation-then-parasympathetic-shift cycle that resets the nervous system in three minutes. That is biology and behaviour at the ice layer, not field-state work at the water layer. The distinction matters for prescription. Brain Breath manages state; DEEP and QEC update assemblies.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>The prescription frame for BMR</h3>
+        <p>Build the metaplastic ground first (DELTA daily). Add specific reconsolidation once the nervous system is stable (DEEP or QEC weekly). Never skip the seal (DELTA or QAT after). BEEP and VIR are the between-session maintenance layer. The Vapor/Water/Ice frame maps the nine BMR outcomes: Trust Rebuilder, Honest Conversation, and Betrayal Trauma at the Rewrite layer; Brain Rewiring, Urge Response, and the pattern-navigation work at the Rewire layer; Success Blueprint, Recovery Game Plan, and Thriving Community at the Retrain layer.</p>
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section class="section" id="quiz">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check. Fourteen questions across the whole manual.</p>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">Why is insight alone insufficient for lasting change?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) People are not motivated enough to follow through on what they understand</button>
+          <button class="opt" data-opt="B">B) Insight works at the cognitive layer but patterns live in neural assemblies. Lasting change requires retrieval, prediction error, and new encoding</button>
+          <button class="opt" data-opt="C">C) Insight produces change but it fades after a few weeks without reinforcement</button>
+          <button class="opt" data-opt="D">D) The brain actively resists externally introduced change</button>
+        </div>
+        <div class="q-result" data-explain="A pattern is a neural assembly built through repetition (Hebb's Law). Deciding differently does not rewire it. The assembly only changes when it is retrieved, contradicted, and re-encoded during the labile window."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">The reconsolidation window typically lasts how long after a memory is retrieved?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) 30 to 60 minutes</button>
+          <button class="opt" data-opt="B">B) 24 to 48 hours</button>
+          <button class="opt" data-opt="C">C) 4 to 6 hours</button>
+          <button class="opt" data-opt="D">D) 1 to 2 weeks</button>
+        </div>
+        <div class="q-result" data-explain="Once a retrieved memory is labilised, it stays modifiable for roughly 4 to 6 hours before protein synthesis re-stabilises it. New content must be encoded inside that window."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">DEEP generates prediction error through all four channels simultaneously. Which answer correctly names all four?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Somatic, limbic, cognitive, and behavioural</button>
+          <button class="opt" data-opt="B">B) Somatic, cognitive, perceptual, and identity</button>
+          <button class="opt" data-opt="C">C) Memory, emotion, sensation, and belief</button>
+          <button class="opt" data-opt="D">D) Breath, music, body, and story</button>
+        </div>
+        <div class="q-result" data-explain="The four channels of prediction error are somatic, cognitive, perceptual, and identity. Identity is the deepest, breaking the assembly's assumption of 'this is me.'"></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">Which conditions increase the brain's metaplastic capacity (its readiness to change)?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Stress, rigid focus, and sympathetic dominance</button>
+          <button class="opt" data-opt="B">B) Safety, parasympathetic tone, diffuse awareness, and integration across networks</button>
+          <button class="opt" data-opt="C">C) Threat detection and heightened vigilance</button>
+          <button class="opt" data-opt="D">D) High-intensity focused effort sustained over long periods</button>
+        </div>
+        <div class="q-result" data-explain="Safety and parasympathetic tone open the brain to plastic change; stress and sympathetic dominance close it. This is why DELTA prepares the ground before specific reconsolidation."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">What is the correct Prime / Work / Seal sequence?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) DEEP, then DELTA, then BEEP</button>
+          <button class="opt" data-opt="B">B) DELTA or QAT, then DEEP or QEC, then DELTA or QAT</button>
+          <button class="opt" data-opt="C">C) BEEP, then DEEP, then QAT</button>
+          <button class="opt" data-opt="D">D) VIR, then DELTA, then DEEP</button>
+        </div>
+        <div class="q-result" data-explain="Prime the metaplastic ground with a global protocol (DELTA or QAT), do the specific reconsolidation (DEEP or QEC), then seal with a global protocol again. Skipping the seal leaves the new encoding un-consolidated."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">DELTA is best described as:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) A deep relaxation and stress-relief session</button>
+          <button class="opt" data-opt="B">B) Global metaplasticity, preparing the brain's overall capacity for plastic change, not relaxation</button>
+          <button class="opt" data-opt="C">C) A specific reconsolidation protocol for charged memories</button>
+          <button class="opt" data-opt="D">D) A breathing technique for in-session nervous-system regulation</button>
+        </div>
+        <div class="q-result" data-explain="DELTA is not a relaxation exercise. It is the preparation of the soil, the global metaplastic state in which specific reconsolidation can settle and hold."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">Which protocols are classified as channel-based (focused attention) in the BRN system?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) DELTA and QAT</button>
+          <button class="opt" data-opt="B">B) DEEP, QEC, and BEEP</button>
+          <button class="opt" data-opt="C">C) VIR and WIR</button>
+          <button class="opt" data-opt="D">D) DELTA, QAT, and BEEP</button>
+        </div>
+        <div class="q-result" data-explain="Channel-based (focused attention) protocols do specific reconsolidation: DEEP, QEC, BEEP. Field-based (open monitoring) protocols do global metaplasticity: DELTA and QAT."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">The target brainwave state for the deepest reconsolidation work in DEEP and QEC is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Alpha, relaxed alertness and bridge to the subconscious</button>
+          <button class="opt" data-opt="B">B) Gamma, high-frequency integration and peak experience</button>
+          <button class="opt" data-opt="C">C) Theta, the hypnagogic, dreamlike state where the memory gate is open</button>
+          <button class="opt" data-opt="D">D) Delta, deep sleep and systems-level consolidation</button>
+        </div>
+        <div class="q-result" data-explain="The hypnagogic state is the target and theta (4 to 8 Hz) is its correlate. Theta-gamma coupling lets the retrieved assembly enter the labile state where it can be updated."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">The Watcher Stance is the shift from:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Passive observation to active engagement with the experience</button>
+          <button class="opt" data-opt="B">B) Being the experience to being the one watching the experience. "I am angry" becomes "I notice anger here"</button>
+          <button class="opt" data-opt="C">C) Conscious processing to unconscious processing</button>
+          <button class="opt" data-opt="D">D) Thinking mode to feeling mode</button>
+        </div>
+        <div class="q-result" data-explain="The watcher is the dis-identified observer position. It is what makes deeper subconscious work safe: without it, retrieval risks re-traumatisation."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">Dimensionalising works because:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Visualisation reduces the intensity of charged material by distracting the analytical mind</button>
+          <button class="opt" data-opt="B">B) Once the experience has dimensions, the client is in relationship with it rather than fused with it, and the work happens from that relational position</button>
+          <button class="opt" data-opt="C">C) It strengthens the neural assembly by reinforcing specific memory traces</button>
+          <button class="opt" data-opt="D">D) It moves material from unconscious to conscious processing only</button>
+        </div>
+        <div class="q-result" data-explain="Giving a feeling a location, colour, texture, and voice separates the client from it. From relationship rather than fusion, the identity-level prediction error can destabilise the assembly."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 11</span>
+        <p class="q-text">Why is the activating breath (double inhale) used to retrieve MUD?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It increases oxygen and improves mental clarity for the work ahead</button>
+          <button class="opt" data-opt="B">B) MUD was encoded under sympathetic activation. Recreating that state brings the assembly back to labile so it can be updated</button>
+          <button class="opt" data-opt="C">C) It increases CO2 levels which deepen the parasympathetic state</button>
+          <button class="opt" data-opt="D">D) It produces a meditative state that makes the subconscious more accessible</button>
+        </div>
+        <div class="q-result" data-explain="MUD forms in fight, flight, or freeze. To retrieve the assembly with its full signature, the activating breath recreates that sympathetic arousal without requiring actual danger."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 12</span>
+        <p class="q-text">Why must the client, not the coach, govern the pacing of the activating breath?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It builds self-regulation as a transferable skill</button>
+          <button class="opt" data-opt="B">B) To prevent hypocapnia. Sustained activating breath drops CO2 and can cause lightheadedness and syncope if pushed past the body's threshold</button>
+          <button class="opt" data-opt="C">C) Coach-driven pacing produces the wrong type of sympathetic activation</button>
+          <button class="opt" data-opt="D">D) The client is more motivated when given autonomy over the process</button>
+        </div>
+        <div class="q-result" data-explain="Rest-based pacing (push until you cannot, rest until you can go again) is non-negotiable safety architecture that prevents hypocapnia. The body governs the pace, not the coach's prompts."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 13</span>
+        <p class="q-text">A client has fibromyalgia and chronic fatigue distributed across multiple body locations and cannot tolerate high-intensity breathwork. The correct protocol is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) DEEP with the activating breath at reduced intensity</button>
+          <button class="opt" data-opt="B">B) DELTA as a standalone until the chronic symptoms improve</button>
+          <button class="opt" data-opt="C">C) QEC. The pattern is distributed, the issue is systemic, and breathwork is contraindicated</button>
+          <button class="opt" data-opt="D">D) VIR only until the client can tolerate DEEP</button>
+        </div>
+        <div class="q-result" data-explain="QEC is the inquiry-driven specific-reconsolidation protocol. It suits distributed patterns and systemic issues and needs no high-intensity breathwork, so it fits a breathwork contraindication."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 14</span>
+        <p class="q-text">In the Three Voices journaling structure, Voice Three is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The client as they are now, processing what surfaced during the session</button>
+          <button class="opt" data-opt="B">B) The original wound speaking. Its location, what it looks like, what it has been trying to say</button>
+          <button class="opt" data-opt="C">C) The Next-Level Human Self. Explains the lesson and encodes the meaning-rich frame as new content during the labile window</button>
+          <button class="opt" data-opt="D">D) A compassionate witness who observes both the wound and the current self without judgment</button>
+        </div>
+        <div class="q-result" data-explain="Voice One is the entity, Voice Two is the current self responding, and Voice Three is the future, wiser self encoding the lesson and next-level frame while the assembly is still labile."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      q.classList.add('answered');
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      q.querySelectorAll('.opt').forEach(function(b) {
+        b.disabled = true;
+        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+      });
+      if (chosen === answer) {
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

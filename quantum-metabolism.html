@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Quantum Metabolism · NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: block;
+    padding: 14px 18px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    opacity: 0.6;
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 130px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">NLH Hub · Next Level Human</span>
+      <span class="title">Quantum Metabolism</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <span class="nav-section">On this page</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s1">Metabolism is Downstream of Consciousness</a></li>
+      <li><a href="#s2">The 4Ps Framework</a></li>
+      <li><a href="#s3">The Four Striving Archetypes</a></li>
+      <li><a href="#s4">The SIGNAL Cascade as Metabolism</a></li>
+      <li><a href="#s5">The Three Hormonal Axes</a></li>
+      <li><a href="#s6">SHMEC and HEC Markers</a></li>
+      <li><a href="#s7">The Stress Continuum</a></li>
+      <li><a href="#s8">The Awakening Phase as Intervention</a></li>
+      <li><a href="#s9">Personality as Emergent Town</a></li>
+      <li><a href="#s10">Clinical Application for BMR</a></li>
+      <li><a href="#quiz">Comprehension check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Quantum Metabolism Manual · Module 2</div>
+      <h1>Quantum <em>Metabolism</em></h1>
+      <p class="hero-desc">Metabolism is downstream of consciousness. The body's ability to regulate energy, build muscle, manage fat, sleep, and repair is driven by the identity structures running the SIGNAL cascade. This module maps the biology: the SIGNAL cascade as metabolism, the Four Striving Archetypes, the Three Hormonal Axes, SHMEC, and the 4Ps Framework.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">10</span><span class="label">Sections</span></div>
+        <div class="hero-stat"><span class="num">10</span><span class="label">Quiz questions</span></div>
+      </div>
+    </header>
+
+    <!-- SECTION 1 -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">Metabolism is Downstream of Consciousness</h2>
+          <p class="section-subtitle">The core thesis of Module 2</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>You cannot out-diet a conditioned identity. You cannot out-exercise a chronic stress state.</p>
+      </div>
+
+      <div class="card">
+        <p>The body's ability to regulate energy, build muscle, manage fat, sleep deeply, and repair itself is not determined solely by diet and exercise. It is determined by the <strong>signal quality of the psychological and emotional life</strong>, which is set by the identity structures running the SIGNAL cascade.</p>
+        <p>Biological interventions work. But they work far better when the psychological and consciousness-level work has been done first. The cascade runs top-down. Identity is the top.</p>
+        <p>This is what explains the client who understands his patterns intellectually yet still struggles with his body. The conditioned identity is running a metabolic programme he cannot override through willpower alone.</p>
+      </div>
+
+      <div class="callout callout-forest">
+        <p><strong>The bridge:</strong> This module connects the philosophical and psychological work of Module 1 with practical coaching. Module 1 built the SIGNAL cascade. Module 2 shows that cascade running through the body as biology.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">The 4Ps Framework</h2>
+          <p class="section-subtitle">The four domains every metabolic conversation works at once</p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;max-width:640px;">Every metabolic coaching conversation operates across four domains simultaneously. The coach who only addresses Physiology is practicing lifestyle medicine, not metabolic coaching. The NLH metabolic coach works all four at once.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <div class="pillar-name">Physiology</div>
+          <div class="pillar-desc">The biological mechanisms: hormones, nervous system, metabolic rate, inflammation, cellular function.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Psychology</div>
+          <div class="pillar-desc">The identity structures, stress patterns, and emotional climate that drive physiology.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Preferences</div>
+          <div class="pillar-desc">Individual variation in chronotype, food response, exercise tolerance, temperament. What works FOR this person.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Practicals</div>
+          <div class="pillar-desc">The real-world constraints: schedule, budget, relationships, lifestyle. What is actually executable.</div>
+        </div>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Domain</th><th>Without it</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Physiology</strong></td><td>Missing the body layer entirely</td></tr>
+          <tr><td><strong>Psychology</strong></td><td>Lifestyle interventions produce limited, temporary results</td></tr>
+          <tr><td><strong>Preferences</strong></td><td>Generic prescriptions that do not stick</td></tr>
+          <tr><td><strong>Practicals</strong></td><td>Perfect plans that do not run in reality</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>A plan that addresses only Physiology produces limited and temporary results. A plan that addresses Psychology without Physiology may produce insight without the biological substrate to support it. <strong>Both layers are required.</strong></p>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">The Four Striving Archetypes</h2>
+          <p class="section-subtitle">Metabolic profiles of conditioned identity</p>
+        </div>
+      </div>
+
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;max-width:640px;">These are not personality types. They are motivational patterns driven by conditioned identity structures, each with a characteristic metabolic signature.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-item"><div class="pillar-name">Striver</div><div class="pillar-desc">Achievement, performance, never-enough.</div></div>
+        <div class="pillar-item"><div class="pillar-name">Seeker</div><div class="pillar-desc">Spiritual bypassing, perpetual searching, never arriving.</div></div>
+        <div class="pillar-item"><div class="pillar-name">Soldier</div><div class="pillar-desc">Discipline, duty, pushing through.</div></div>
+        <div class="pillar-item"><div class="pillar-name">Shamer</div><div class="pillar-desc">Avoiding judgment, hiding inadequacy, managing appearance.</div></div>
+      </div>
+
+      <div class="card">
+        <h3>Striver</h3>
+        <p><strong>Core MUD:</strong> "I am only as good as my last result. Stopping = failure."</p>
+        <h4>Metabolic signature</h4>
+        <ul>
+          <li>Chronically elevated cortisol (adrenal dominance pattern)</li>
+          <li>Disrupted sleep, mind will not shut off as the DMN runs achievement loops</li>
+          <li>HEC dysregulation: energy crashes, cravings as cortisol compensation</li>
+          <li>Inflammation as the cost of sustained high-output operation</li>
+          <li>Burnout pattern: extended high cortisol followed by adrenal exhaustion</li>
+        </ul>
+        <p><strong>Recovery application:</strong> The high-performing man who outworks his problem. Willpower gets him sober, clean, consistent, until his system crashes. His recovery strategy is itself a striving behaviour. The work is identity-level: releasing the equation between performance and worth.</p>
+      </div>
+
+      <div class="card">
+        <h3>Seeker</h3>
+        <p><strong>Core MUD:</strong> "I haven't found the answer yet. When I find it, everything will change."</p>
+        <h4>Metabolic signature</h4>
+        <ul>
+          <li>Hormonal dysregulation from inconsistency, every new protocol disrupts the last</li>
+          <li>Blood sugar instability from trend-chasing diet behaviour</li>
+          <li>Cortisol from the chronic background anxiety of not-yet-finding</li>
+          <li>Poor sleep quality from elevated mental activity and frequent protocol changes</li>
+        </ul>
+        <p><strong>Recovery application:</strong> Consumes recovery content without landing it. Sophisticated collection of insights, thin embodiment of any single one. The work is Retrain, accumulating reps rather than accumulating knowledge.</p>
+      </div>
+
+      <div class="card">
+        <h3>Soldier</h3>
+        <p><strong>Core MUD:</strong> "Hard is good. Rest is weakness. I can handle anything."</p>
+        <h4>Metabolic signature</h4>
+        <ul>
+          <li>Overtrain and under-recover pattern</li>
+          <li>Chronic inflammation from insufficient recovery</li>
+          <li>Testosterone suppression (overtraining syndrome)</li>
+          <li>Injury cycle as the body forcing rest the identity will not permit</li>
+        </ul>
+        <p><strong>Recovery application:</strong> Less common in BMR, but appears when recovery itself becomes discipline performance.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Shamer</h3>
+        <p><strong>Core MUD:</strong> "I am fundamentally flawed. People must not see the real me."</p>
+        <h4>Metabolic signature</h4>
+        <ul>
+          <li>Restrict-binge cycle: shame drives restriction, restriction drives binge, binge drives shame</li>
+          <li>Cortisol elevation from sustained shame-state (AFRAID emotional baseline)</li>
+          <li>Insulin dysregulation from the binge component</li>
+          <li>Body image as primary stressor, the body itself becomes a threat cue</li>
+        </ul>
+        <p><strong>Recovery application:</strong> The BMR primary archetype. The shame wound that drives compulsive sexual behaviour maps directly to this core MUD. Shame is inflammatory. Reducing shame is a direct metabolic intervention.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">The SIGNAL Cascade as Metabolism</h2>
+          <p class="section-subtitle">Why you cannot out-diet a conditioned identity</p>
+        </div>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">The cascade runs top-down through the body</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">Conditioned Identity</div>
+            <div class="phase-sub">MUD generates chronic AFRAID emotional states</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">HPA Activation</div>
+            <div class="phase-sub">AFRAID states activate the stress response</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">Chronic Cortisol</div>
+            <div class="phase-sub">Elevated from ongoing programming, not acute threat</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">4</div>
+            <div class="phase-name">Metabolic Signature</div>
+            <div class="phase-sub">Break down muscle, store visceral fat, suppress GH and testosterone</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-dark">
+        <h4>The key reframe</h4>
+        <p><strong>The body is not failing. It is responding perfectly to the signal it is receiving.</strong></p>
+        <p>Cortisol stays chronically elevated, not from acute threat, but from ongoing identity programming. The resulting metabolic signature is the classic signature of chronic stress: muscle breakdown, visceral fat storage, suppressed growth hormone and testosterone, and dysregulated insulin sensitivity.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">The Three Hormonal Axes</h2>
+          <p class="section-subtitle">Why identity work is biological, not just psychological</p>
+        </div>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Axis</th><th>Hormones</th><th>Disrupted by</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><strong>HPA (stress)</strong></td><td>Cortisol, adrenaline</td><td>Chronic AFRAID state, MUD-driven stress</td><td>Visceral fat storage, muscle breakdown, insulin resistance, sleep disruption</td></tr>
+          <tr><td><strong>HPT (thyroid)</strong></td><td>Thyroid hormones</td><td>Sustained cortisol from chronic conditioning</td><td>Metabolic rate decreases, energy drops, weight gain, cognitive fog</td></tr>
+          <tr><td><strong>HPG (reproductive)</strong></td><td>Testosterone, estrogen, progesterone</td><td>Cortisol dominance flags reproduction "non-essential" under threat</td><td>Testosterone and estrogen suppress, drive decreases, repair and growth slow</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-forest">
+        <p><strong>The BMR link:</strong> A client carrying chronic shame (compulsive sexual behaviour plus secrecy plus AFRAID baseline) is running HPG suppression. Low testosterone, low drive, poor recovery. His biology is reinforcing his sense of failure. Clearing the MUD through identity work reverses this, not through supplements, but by changing the signal the cascade is receiving.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">SHMEC and HEC Markers</h2>
+          <p class="section-subtitle">The body's observable feedback system</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>SHMEC</h3>
+        <p><strong>Sleep / Hunger / Mood / Energy / Cravings.</strong></p>
+        <ul>
+          <li>When SHMEC is "in the box" (stable across all five), the body is metabolically balanced and the coaching is working at the biological level.</li>
+          <li>When SHMEC is dysregulated, identity-level work is needed, not another protocol change.</li>
+        </ul>
+        <p>A client whose sleep, mood, and cravings stay dysregulated despite "doing everything right" has a conditioned identity running a SIGNAL cascade that is overriding the lifestyle interventions.</p>
+      </div>
+
+      <div class="card">
+        <h3>HEC</h3>
+        <p><strong>Hunger / Energy / Cravings.</strong> The simplified three-marker check for real-time metabolic state.</p>
+      </div>
+
+      <div class="callout callout-forest">
+        <p><strong>Clinical use for BMR:</strong> Track SHMEC as a secondary indicator. When a client reports sleep improving and cravings reducing, the identity-level work is landing in the body.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">The Stress Continuum Applied to Metabolism</h2>
+          <p class="section-subtitle">Five levels from anabolic growth to disease</p>
+        </div>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Level</th><th>State</th><th>Metabolic expression</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ease</strong></td><td>Low activation</td><td>Anabolic: growth, repair, fat burning</td></tr>
+          <tr><td><strong>Eustress</strong></td><td>Productive challenge</td><td>Adaptive response, builds capacity</td></tr>
+          <tr><td><strong>Distress</strong></td><td>Chronic low-grade threat</td><td>Cortisol dominance: fat storage, inflammation</td></tr>
+          <tr><td><strong>Dysfunction</strong></td><td>Sustained sympathetic</td><td>HPA dysregulation: thyroid and testosterone suppress</td></tr>
+          <tr><td><strong>Disease</strong></td><td>Collapse or autoimmune</td><td>Immune dysregulation, cellular damage</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p>The Soother running compulsive sexual behaviour sits in <strong>Distress to Dysfunction</strong>: chronic cortisol load from shame, secrecy, and the AFRAID baseline. The metabolism is stuck in defend-and-store, not grow-and-repair.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 8 -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">The Awakening Phase as Metabolic Intervention</h2>
+          <p class="section-subtitle">Identity change is measurable endocrinology</p>
+        </div>
+      </div>
+
+      <div class="vs-table">
+        <div class="vs-header old">Defend-and-Store Metabolism</div>
+        <div class="vs-header new">Grow-and-Repair Metabolism</div>
+        <div class="vs-row-old">AFRAID emotional baseline, chronic cortisol</div>
+        <div class="vs-row-new">Baseline shifting toward ELEVATED, cortisol normalises</div>
+        <div class="vs-row-old">Disrupted, shallow sleep</div>
+        <div class="vs-row-new">Sleep deepens</div>
+        <div class="vs-row-old">Suppressed testosterone and growth hormone</div>
+        <div class="vs-row-new">Testosterone and growth hormone recover</div>
+        <div class="vs-row-old">Elevated inflammation</div>
+        <div class="vs-row-new">Inflammation reduces</div>
+      </div>
+
+      <div class="card card-accent">
+        <p>When Rewrite changes the story, the AFRAID emotional baseline begins shifting toward ELEVATED. The body moves from a defend-and-store metabolism to a grow-and-repair metabolism.</p>
+        <p><strong>Identity change is a metabolic intervention. This is not metaphor. It is direct biology.</strong></p>
+      </div>
+    </section>
+
+    <!-- SECTION 9 -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">Personality as Emergent Town</h2>
+          <p class="section-subtitle">The metabolic profile is not random</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>The metabolic profile emerges from the intersection of three things:</p>
+        <ul>
+          <li>The <strong>striving archetype</strong> (the psychological driver)</li>
+          <li>The <strong>body type</strong> (the physiological tendency)</li>
+          <li>The <strong>current life conditions</strong> (the Practicals)</li>
+        </ul>
+        <p>Understanding all three is what allows the metabolic coach to build a strategy that is biologically grounded (works with the body's actual mechanisms), psychologically calibrated (addresses the identity driving the pattern), and individually appropriate (matches the person's actual life and preferences).</p>
+      </div>
+    </section>
+
+    <!-- SECTION 10 -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2 class="section-title">Clinical Application for BMR</h2>
+          <p class="section-subtitle">Compulsive sexual behaviour as a metabolic-level stress response</p>
+        </div>
+      </div>
+
+      <div class="card card-dark">
+        <h4>The Soother cycle in the body</h4>
+        <p>Compulsive sexual behaviour is a Soother-archetype metabolic pattern: the Pleasure drive running without Purpose as the organising principle. The body is seeking cortisol relief. The behaviour temporarily delivers it. The shame that follows reinstates the cortisol. The cycle perpetuates.</p>
+      </div>
+
+      <div class="card">
+        <h4>Breaking the cycle</h4>
+        <ol>
+          <li><strong>Rewrite:</strong> identity-level work to address the underlying AFRAID baseline</li>
+          <li><strong>Rewire:</strong> BEEP and breath sessions to release the emotional charge from the body (working directly on the HPA axis, not just the mind)</li>
+          <li><strong>Retrain:</strong> new behavioural patterns that provide cortisol regulation through legitimate channels, exercise, community, honest relationship</li>
+        </ol>
+      </div>
+
+      <div class="callout">
+        <p><strong>The replacement pattern warning:</strong> Suppressing one numbing behaviour without addressing the AFRAID baseline simply shifts the Soother archetype to the next available outlet. This is why willpower-based recovery fails and identity-based recovery works.</p>
+      </div>
+
+      <div class="callout callout-forest">
+        <p><strong>The reframe that matters:</strong> Recovery that improves sleep, exercise, and stress reduction is not a lifestyle bonus. It is a direct metabolic intervention that reduces the physiological pull toward numbing behaviour. When SHMEC improves, urge frequency decreases, not through willpower, but through biology changing the conditions that generate the urge.</p>
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section class="section" id="quiz">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+
+      <p class="quiz-intro">Ten questions across the whole manual: the core thesis, the archetypes, the hormonal axes, SHMEC, the 4Ps, and the BMR application.</p>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">What is the central thesis of the Quantum Metabolism Manual?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Diet and exercise are the primary drivers of metabolic health</button>
+          <button class="opt" data-opt="B">B) Metabolism is downstream of consciousness, driven by the identity structures running the SIGNAL cascade</button>
+          <button class="opt" data-opt="C">C) Hormone testing should precede any coaching intervention</button>
+          <button class="opt" data-opt="D">D) Willpower, applied consistently, can override any metabolic pattern</button>
+        </div>
+        <div class="q-result" data-explain="The body's regulation of energy, muscle, fat, sleep and repair is set by the signal quality of the psychological and emotional life, which is set by identity. You cannot out-diet a conditioned identity."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">A client follows his protocol perfectly (sleep, nutrition, exercise) but SHMEC remains dysregulated. The NLH diagnosis is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) He needs a stricter or more personalised protocol</button>
+          <button class="opt" data-opt="B">B) A conditioned identity is running a SIGNAL cascade that overrides the lifestyle interventions, so identity-level work is needed, not another protocol change</button>
+          <button class="opt" data-opt="C">C) He needs more time, since protocols take 6 to 12 months to produce measurable change</button>
+          <button class="opt" data-opt="D">D) Medical investigation is warranted before coaching continues</button>
+        </div>
+        <div class="q-result" data-explain="Dysregulated SHMEC despite doing everything right signals the identity cascade is overriding the biology. The fix is identity work, not another protocol change."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">Which archetype is the primary BMR profile, and why?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Striver, because high-performing men are overrepresented in recovery programs</button>
+          <button class="opt" data-opt="B">B) Seeker, because clients keep looking for the right framework or approach</button>
+          <button class="opt" data-opt="C">C) Soldier, because the discipline required for sustained recovery attracts this type</button>
+          <button class="opt" data-opt="D">D) Shamer, because the shame wound that drives compulsive sexual behaviour maps directly to this archetype's core MUD, and chronic shame has a measurable metabolic signature</button>
+        </div>
+        <div class="q-result" data-explain="The Shamer's core MUD (I am fundamentally flawed, people must not see the real me) is the shame wound of compulsive sexual behaviour. Shame is inflammatory, so reducing it is a metabolic intervention."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">A client with chronic shame and an active secrecy pattern is most likely experiencing suppression of which hormonal axis, and why?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) HPA, because chronic shame directly elevates cortisol which is the primary disruption</button>
+          <button class="opt" data-opt="B">B) HPT, because thyroid function is most sensitive to psychological stress states</button>
+          <button class="opt" data-opt="C">C) HPG, because cortisol dominance signals threat mode and reproductive function is deemed non-essential under threat. Low testosterone then reinforces the sense of failure.</button>
+          <button class="opt" data-opt="D">D) All three axes are equally suppressed</button>
+        </div>
+        <div class="q-result" data-explain="Under sustained cortisol dominance the brain treats reproduction as non-essential, suppressing the HPG axis. Low testosterone and drive then reinforce the client's sense of failure."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">A plan addressing only Physiology (diet, exercise, sleep hygiene) without Psychology will produce:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Lasting results if the client commits fully to the protocol</button>
+          <button class="opt" data-opt="B">B) Limited and temporary results, because the identity cascade overrides lifestyle interventions and the body cannot sustain change the identity is working against</button>
+          <button class="opt" data-opt="C">C) The same results as a full 4Ps plan given enough time</button>
+          <button class="opt" data-opt="D">D) Good results for 6 to 12 months before plateau</button>
+        </div>
+        <div class="q-result" data-explain="Physiology alone is lifestyle medicine, not metabolic coaching. Without addressing the Psychology driving the pattern, results are limited and temporary."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">What do the letters in SHMEC stand for?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Stress / Hormones / Mood / Exercise / Cortisol</button>
+          <button class="opt" data-opt="B">B) Sleep / Health / Metabolism / Energy / Calories</button>
+          <button class="opt" data-opt="C">C) Sleep / Hunger / Mood / Energy / Cravings</button>
+          <button class="opt" data-opt="D">D) Stress / Hunger / Motivation / Endurance / Cravings</button>
+        </div>
+        <div class="q-result" data-explain="SHMEC is Sleep, Hunger, Mood, Energy, Cravings. When all five are stable (in the box) the body is metabolically balanced. HEC is the simplified three-marker version: Hunger, Energy, Cravings."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">According to the manual, when the body stores visceral fat and breaks down muscle under chronic cortisol, the correct interpretation is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The body is not failing. It is responding perfectly to the signal it is receiving</button>
+          <button class="opt" data-opt="B">B) The body has a metabolic defect that requires medical correction</button>
+          <button class="opt" data-opt="C">C) The client is not trying hard enough with diet and exercise</button>
+          <button class="opt" data-opt="D">D) The metabolism has permanently reset to a lower rate</button>
+        </div>
+        <div class="q-result" data-explain="The metabolic signature of chronic stress is a correct response to a chronic AFRAID signal from the identity cascade. Change the signal and the biology changes."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">Which best describes the Striver's metabolic signature and recovery risk?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Restrict-binge cycle driven by shame; risk is body image as a threat cue</button>
+          <button class="opt" data-opt="B">B) Blood sugar instability from trend-chasing; risk is never landing an insight</button>
+          <button class="opt" data-opt="C">C) Overtraining and injury cycle; risk is treating rest as weakness</button>
+          <button class="opt" data-opt="D">D) Chronic cortisol, disrupted sleep and burnout; risk is that his recovery effort is itself a striving behaviour that crashes his system</button>
+        </div>
+        <div class="q-result" data-explain="The Striver outworks his problem until his system crashes. His recovery strategy is another striving behaviour, so the work is releasing the equation of performance and worth."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">On the stress continuum, where does the Soother running compulsive sexual behaviour typically sit metabolically?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Ease, an anabolic state of growth and repair</button>
+          <button class="opt" data-opt="B">B) Distress to Dysfunction: cortisol dominance and HPA dysregulation, a defend-and-store metabolism</button>
+          <button class="opt" data-opt="C">C) Eustress, a productive adaptive challenge that builds capacity</button>
+          <button class="opt" data-opt="D">D) Disease, meaning autoimmune collapse is already present</button>
+        </div>
+        <div class="q-result" data-explain="Chronic cortisol from shame, secrecy and the AFRAID baseline places him in Distress to Dysfunction: fat storage, inflammation, and suppression of thyroid and testosterone."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">Why does suppressing compulsive sexual behaviour through willpower alone tend to fail?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Willpower is a fixed trait that some men simply lack</button>
+          <button class="opt" data-opt="B">B) The behaviour is purely habitual and needs a stricter accountability system</button>
+          <button class="opt" data-opt="C">C) Without addressing the AFRAID baseline, the Soother archetype shifts to the next available numbing outlet, and willpower itself depletes under cortisol dominance</button>
+          <button class="opt" data-opt="D">D) The client has not yet found the right recovery framework</button>
+        </div>
+        <div class="q-result" data-explain="This is the replacement pattern. Suppressing one outlet without clearing the underlying AFRAID baseline simply moves the Soother to the next outlet, and cortisol dominance depletes the willpower being relied on."></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      q.classList.add('answered');
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      q.querySelectorAll('.opt').forEach(function(b) {
+        b.disabled = true;
+        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+      });
+      if (chosen === answer) {
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

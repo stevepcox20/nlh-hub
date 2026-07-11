@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Personal Relationships · NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: block;
+    padding: 14px 18px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    opacity: 0.6;
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 110px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">NLH Hub · Next Level Human</span>
+      <span class="title">Personal Relationships</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <span class="nav-section">On this page</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s1">Knots &amp; Developmental Windows</a></li>
+      <li><a href="#s2">The A.F.R.A.I.D. Stack</a></li>
+      <li><a href="#s3">GROW Framework &amp; Fear PRs</a></li>
+      <li><a href="#s4">The UME Model &amp; 100/100</a></li>
+      <li><a href="#s5">Attachment Theory</a></li>
+      <li><a href="#s6">Reciprocity: Giver vs Pleaser</a></li>
+      <li><a href="#s7">Confident Detachment</a></li>
+      <li><a href="#s8">Social Architecture</a></li>
+      <li><a href="#s9">The White Pawn Ten Moves</a></li>
+      <li><a href="#s10">Tools for Relational Work</a></li>
+      <li><a href="#s11">Relationship Phase Models</a></li>
+      <li><a href="#s12">Clinical Application for BMR</a></li>
+      <li><a href="#quiz">Comprehension check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Relationships &amp; Romance Manual · Module 3</div>
+      <h1>Personal <em>Relationships</em></h1>
+      <p class="hero-desc">Every relational pattern is downstream of identity. The way you argue, the distance you keep, the trust you cannot build, the behaviours you hide: these are the predictable expressions of subconscious knots tied before you had the wisdom to choose for yourself. This page covers the A.F.R.A.I.D. stack, the UME model and 100/100 principle, attachment styles, Confident Detachment, the White Pawn ten moves, and the WET and BEEP tools.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">12</span><span class="label">Sections</span></div>
+        <div class="hero-stat"><span class="num">14</span><span class="label">Quiz questions</span></div>
+      </div>
+    </header>
+
+    <!-- 01 KNOTS AND WINDOWS -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">Subconscious Knots and the Three Developmental Windows</h2>
+          <p class="section-subtitle">Why relationships reveal identity</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>Every relational pattern is a downstream expression of identity structures installed during the three developmental windows.</p>
+      </div>
+      <div class="card">
+        <p>The <strong>ball of yarn</strong> metaphor: every relationship pattern is a tangle of threads that leads back to a single <strong>seed story</strong>, the original SEES Event and the judgment it generated. You can pull at the surface thread (the current argument, the distance, the compulsive behaviour) for years without reaching the knot. Or you can locate the knot and unravel it from the source.</p>
+        <p>The person you argue with, the way you love, the distance you keep, the trust you struggle to build: these are not personality flaws. They are the predictable expressions of the subconscious knots that were tied before you had the wisdom to choose for yourself.</p>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Window</th><th>Age Range</th><th>Core Wound Theme</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Childhood</strong></td><td>Birth to 10</td><td>Safety and security. "Can the world be trusted? Am I safe to be vulnerable?"</td></tr>
+          <tr><td><strong>Adolescent</strong></td><td>11 to 20</td><td>Belonging and acceptance. "Do I fit? Am I enough for the group? Do I deserve connection?"</td></tr>
+          <tr><td><strong>Adult</strong></td><td>20+</td><td>Betrayal and abandonment. "Can I trust specific people with my full self? What happens when intimacy breaks?"</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p><strong>For BMR:</strong> Most clients carry wounds from all three windows. The pornography or compulsive behaviour is often the adult expression of wounds from the childhood and adolescent windows, a Soother-archetype strategy running a program installed long before the behaviour began.</p>
+      </div>
+    </section>
+
+    <!-- 02 AFRAID -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">The A.F.R.A.I.D. Stack</h2>
+          <p class="section-subtitle">Mapping emotional depth, from most surface to most foundational</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>The A.F.R.A.I.D. model organises emotional presentations from most surface to most foundational. The surface emotion is easiest to see. The foundational emotion drives the pattern. Each level points toward the one beneath it.</p>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Level</th><th>Emotion</th><th>Clinical Signature</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td>Anger</td><td>Most surface. Holding a story of injustice. "They did X to me." Blame, grievance, moral outrage. The story is still other-focused.</td></tr>
+          <tr><td><strong>F</strong></td><td>Frustration</td><td>Incompletion. Wants to move but can't. Something is blocked. Energy without direction.</td></tr>
+          <tr><td><strong>R</strong></td><td>Resistance</td><td>MUD in direct conflict with desired action. "I know what I should do but can't make myself do it."</td></tr>
+          <tr><td><strong>A</strong></td><td>Anxiety</td><td>Inability to choose between two perceived threats. Neither option feels safe. The nervous system is in an unresolvable loop.</td></tr>
+          <tr><td><strong>I</strong></td><td>Insecurity</td><td>Worth wound activated. "I am not enough for this person, this situation, this life."</td></tr>
+          <tr><td><strong>D</strong></td><td>Depression</td><td>Deepest: disconnection from purpose and aliveness. Not sadness, flatness. The signal from Source has become almost entirely blocked.</td></tr>
+        </tbody>
+      </table>
+      <div class="card-accent card">
+        <h4>Clinical application</h4>
+        <p>When a client presents with anger, look for insecurity beneath it. When he presents with depression, trace back through the A.F.R.A.I.D. stack to find where the story crystallised. Addressing the surface level without finding the root produces temporary relief and re-entrenchment. The work happens at the deepest accessible level, not the one the client led with.</p>
+      </div>
+    </section>
+
+    <!-- 03 GROW + FEAR PRS -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">The GROW Framework and Fear PRs</h2>
+          <p class="section-subtitle">The relational growth orientation for coaching</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Letter</th><th>Principle</th><th>Application</th></tr></thead>
+        <tbody>
+          <tr><td><strong>G</strong></td><td>Growth Mindset</td><td>Every relational experience, especially the painful ones, is curriculum. What is this teaching me?</td></tr>
+          <tr><td><strong>R</strong></td><td>Radical Responsibility</td><td>Full authorship. No victim, no villain orientation. What is my role in this? What can I do differently?</td></tr>
+          <tr><td><strong>O</strong></td><td>Openness (Fear PRs)</td><td>Willingness to take graduated action in the face of relational fear. Fear is not the signal to stop.</td></tr>
+          <tr><td><strong>W</strong></td><td>Wisdom</td><td>The fruit of metabolised experience. Not information, earned understanding from having lived through and grown from.</td></tr>
+        </tbody>
+      </table>
+      <div class="card">
+        <h3>Fear PRs in Relationships</h3>
+        <p><strong>Fear PRs (Personal Records)</strong> are graduated behavioural challenges in the direction of the fear. In training, a PR is your best performance on a specific lift. In relational coaching, it is your best performance in a specific fear domain: doing the scary thing at a manageable level, notching a rep, then raising the bar.</p>
+        <ul>
+          <li>Making eye contact with a stranger (for social anxiety)</li>
+          <li>Expressing a preference when asked (for the Pleaser)</li>
+          <li>Saying no to a small request (for the approval-seeker)</li>
+          <li>Initiating a vulnerable conversation about one specific topic (for the avoidant)</li>
+        </ul>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>The graduated exposure principle:</strong> the nervous system learns safety through repeated survivable experience, not through argument or intention.</p>
+      </div>
+    </section>
+
+    <!-- 04 UME -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">The UME Model and the 100/100 Principle</h2>
+          <p class="section-subtitle">Three entities in every relationship</p>
+        </div>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">You (U)</div>
+          <div class="pillar-desc">Your identity structures, attachment patterns, wounds, needs, capacities. The internal world you bring to every interaction.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Me (M)</div>
+          <div class="pillar-desc">Their identity structures, attachment patterns, wounds, needs, capacities. What the other person brings.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">You-Me (E, Ensemble)</div>
+          <div class="pillar-desc">The third entity: the relationship itself, with its own patterns, rituals, energy, and dynamics.</div>
+        </div>
+      </div>
+      <div class="card-accent card">
+        <h4>The 100/100 principle</h4>
+        <p>Healthy relationships are not 50/50. Each person brings 100% of their authentic self, takes 100% responsibility for their contribution to the dynamic, and operates from 100% genuine engagement. 50/50 means each person is withholding half of themselves.</p>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Fusion</div>
+        <div class="vs-header new">Differentiation</div>
+        <div class="vs-row-old">Partners lose individual identity in service of relational harmony.</div>
+        <div class="vs-row-new">Partners maintain full individual identity while being genuinely connected.</div>
+        <div class="vs-row-old">The "we" swallows the "you" and the "me."</div>
+        <div class="vs-row-new">The relationship is stronger because neither person has disappeared into it.</div>
+        <div class="vs-row-old">Feels close, but is built on self-disappearance, not connection.</div>
+        <div class="vs-row-new">Two fully present people creating a third thing together.</div>
+      </div>
+      <div class="callout">
+        <p><strong>For BMR:</strong> The client's secrecy has created a fused dynamic on the surface (performing the good husband) while internally maintaining radical separation. Recovery requires building genuine differentiation: the capacity to be fully present AND fully himself.</p>
+      </div>
+    </section>
+
+    <!-- 05 ATTACHMENT -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">Attachment Theory</h2>
+          <p class="section-subtitle">The relational operating system</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>Attachment patterns were laid down in early childhood through repeated interactions with primary caregivers. They represent the nervous system's best model of how closeness works, what to do with vulnerability, and whether other people can be trusted as safe harbors. In adult life these predictions run automatically, shaping every significant relationship.</p>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Style</th><th>Origin</th><th>Adult Signature</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Secure</strong></td><td>Consistently responsive caregiver</td><td>Comfortable with both intimacy and autonomy. Regulates well in conflict. Repairs readily.</td></tr>
+          <tr><td><strong>Anxious</strong> (Preoccupied)</td><td>Inconsistently responsive caregiver</td><td>Hypervigilant to abandonment signals. Pursues closeness. Conflict triggers fear of loss and produces protest behaviour.</td></tr>
+          <tr><td><strong>Avoidant</strong> (Dismissing)</td><td>Consistently emotionally unavailable caregiver</td><td>Defensively independent. Discomfort with vulnerability and intimacy. Internal experience is more activated than external presentation suggests.</td></tr>
+          <tr><td><strong>Disorganized</strong> (Fearful-Avoidant)</td><td>Caregiver was source of both threat and comfort</td><td>Simultaneously desires and fears closeness. No consistent strategy. Produces the most chaotic relational patterns.</td></tr>
+        </tbody>
+      </table>
+      <div class="card-accent card">
+        <h4>Clinical note</h4>
+        <p>The NLH coaching relationship itself activates the client's attachment system. A coach is aware of this and uses it therapeutically, providing the consistent, attuned presence that gradually demonstrates that closeness is safe. This is <strong>co-regulation as clinical instrument</strong>. The coach's own nervous system is the primary therapeutic tool.</p>
+      </div>
+      <div class="callout">
+        <p><strong>For BMR:</strong> Anxious and Avoidant patterns are disproportionately present in clients with compulsive sexual behaviour. The anxiously-attached client pursues partner reassurance while secretly continuing the behaviour. The avoidantly-attached client maintains the distance that makes the behaviour invisible.</p>
+      </div>
+    </section>
+
+    <!-- 06 RECIPROCITY -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">Reciprocity Styles: Authentic Giver vs Pleaser</h2>
+          <p class="section-subtitle">How people give and receive (Adam Grant's research)</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Style</th><th>Core Pattern</th><th>Coaching Implication</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Giver</strong></td><td>Gives time, energy, care without explicit expectation of return</td><td>Can be most impactful OR most depleted. Critical distinction: Authentic Giver vs Pleaser.</td></tr>
+          <tr><td><strong>Taker</strong></td><td>Default is to receive. Giving is usually strategic.</td><td>Creates gradual depletion. Skilled at periodically resetting the scoreboard.</td></tr>
+          <tr><td><strong>Matcher</strong></td><td>Gives in proportion to what is received. Tracks fairness precisely.</td><td>Creates functional but often transactional relationships. Prevents the spontaneous generosity that deepens connection.</td></tr>
+        </tbody>
+      </table>
+      <div class="card">
+        <h3>The most important distinction: Authentic Giver vs Pleaser</h3>
+        <p>Both appear generous. Both give willingly, often sacrificially. The difference is the source.</p>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header new">Authentic Giver</div>
+        <div class="vs-header old">Pleaser</div>
+        <div class="vs-row-new">Gives from fullness</div>
+        <div class="vs-row-old">Gives from emptiness. Giving manages anxiety.</div>
+        <div class="vs-row-new">Can say no without distress</div>
+        <div class="vs-row-old">Cannot say no without significant anxiety or guilt</div>
+        <div class="vs-row-new">Giving is self-replenishing</div>
+        <div class="vs-row-old">Depletes. Resentment accumulates invisibly.</div>
+        <div class="vs-row-new">Gives because aligned with values</div>
+        <div class="vs-row-old">Gives to avoid conflict, rejection, or abandonment</div>
+        <div class="vs-row-new">Can receive easily</div>
+        <div class="vs-row-old">Difficulty receiving. Giving is how control of the dynamic is maintained.</div>
+        <div class="vs-row-new">Clean exits if the relationship ends</div>
+        <div class="vs-row-old">Exits often explosive. The Pleaser implodes after long silence.</div>
+      </div>
+      <div class="callout">
+        <p><strong>For coaches:</strong> A client who appears generous but is actually a Pleaser needs the fear architecture addressed before any behavioural change is possible. Teaching him to "just say no" without addressing the fear produces shame, failure, and re-entrenchment.</p>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>For BMR:</strong> The Pleaser pattern is frequent. The man who gives and serves while secretly withholding his actual needs, fears, and inner life. The pornography or compulsive behaviour is, for many, the one place where his actual desires are expressed without relational risk.</p>
+      </div>
+    </section>
+
+    <!-- 07 CONFIDENT DETACHMENT -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">Confident Detachment: The Six Elements</h2>
+          <p class="section-subtitle">The relational stance of the Next Level Human</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>Confident Detachment is not indifference. It is the combination of genuine care and genuine self-possession.</p>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Element</th><th>What It Means</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Standards</strong></td><td>Clear non-negotiables about how you will be treated and how you will treat others</td></tr>
+          <tr><td><strong>Boundaries</strong></td><td>The behavioural expression of standards: what you will and will not participate in</td></tr>
+          <tr><td><strong>Managing Expectations</strong></td><td>Honest communication about what is possible and what is not</td></tr>
+          <tr><td><strong>Communication</strong></td><td>Direct, non-blaming expression of needs, observations, and limits</td></tr>
+          <tr><td><strong>Mutual Reciprocity</strong></td><td>The relationship requires genuine exchange. Not keeping score, but ensuring both parties are investing.</td></tr>
+          <tr><td><strong>Detachment from Outcomes</strong></td><td>Operating from values regardless of the other person's response. The goal is authentic self-expression, not controlling their reaction.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 08 SOCIAL ARCHITECTURE -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">Social Architecture</h2>
+          <p class="section-subtitle">Tribal 20, MVP positions, and the 3R model of social agility</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>The Social Battery: Tribal 20 Exercise</h3>
+        <p>Map the 20 people most present in your current life. Each person either charges or drains your social battery. The composition of your tribe predicts your emotional baseline over time. The exercise is not about cutting people. It is about becoming conscious of the social architecture you are living inside.</p>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Tribal MVP Role</th><th>Function</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Supporters</strong></td><td>Presence and loyalty. Show up, witness, affirm existence.</td></tr>
+          <tr><td><strong>Believers</strong></td><td>Hold your potential. See what you are becoming before you do.</td></tr>
+          <tr><td><strong>Counselors</strong></td><td>Honest perspective. Will tell you when you are off course.</td></tr>
+          <tr><td><strong>Coaches</strong></td><td>Structured growth challenge. Push capacity.</td></tr>
+          <tr><td><strong>Mentors</strong></td><td>Lived experience from the path you are walking.</td></tr>
+        </tbody>
+      </table>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">Responsive</div>
+          <div class="pillar-desc">Attuned to the social environment. Reads the room without being controlled by it.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Recognition</div>
+          <div class="pillar-desc">Sees others genuinely, not as props in your own narrative.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Real</div>
+          <div class="pillar-desc">Authentic presence over performed connection.</div>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p>The three pillars above are the <strong>3R Model of Social Agility</strong>.</p>
+      </div>
+    </section>
+
+    <!-- 09 WHITE PAWN -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">The White Pawn Principle: Ten Moves of Human Chess</h2>
+          <p class="section-subtitle">Rewrite-Rewire-Retrain applied to relationships (Section 25)</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>In chess, a pawn moving forward is constrained to one square at a time. But with each square forward, the pawn gains new options, new power.</p>
+      </div>
+      <div class="card">
+        <p>The White Pawn Principle: relational change happens through deliberate, incremental moves, not dramatic overhauls. Each move forward opens options not visible from the starting position. Move 1 makes Move 2 possible. The sequence builds on itself.</p>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Move</th><th>Principle</th><th>What It Means</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td><strong>Radical Responsibility</strong></td><td>Own your contribution to every dynamic. Remove victim and villain orientation.</td></tr>
+          <tr><td><strong>2</strong></td><td><strong>Confident Detachment</strong></td><td>Engage fully while releasing outcome attachment.</td></tr>
+          <tr><td><strong>3</strong></td><td><strong>The Morpheus Effect</strong></td><td>Offer perspective without forcing it. Plant the seed, let the other choose to see.</td></tr>
+          <tr><td><strong>4</strong></td><td><strong>Vetting</strong></td><td>Deliberately assess who earns deeper access to your inner world before granting it.</td></tr>
+          <tr><td><strong>5</strong></td><td><strong>Establishing Boundaries</strong></td><td>Behaviourally express your standards. Not as ultimatums, as self-expression.</td></tr>
+          <tr><td><strong>6</strong></td><td><strong>The Standard / Checkmate</strong></td><td>Know your non-negotiable and be prepared to hold it.</td></tr>
+          <tr><td><strong>7</strong></td><td><strong>Clearing Energy / Ho'oponopono</strong></td><td>Release the charge from past injury. Not for the other person, for the restoration of your own signal.</td></tr>
+          <tr><td><strong>8</strong></td><td><strong>The Honor Code</strong></td><td>Commitment to how you will behave regardless of provocation. Pre-decide the man you are.</td></tr>
+          <tr><td><strong>9</strong></td><td><strong>Love Box Audit</strong></td><td>Assess the actual quality of love in each key relationship. Is this love feeding or diminishing?</td></tr>
+          <tr><td><strong>10</strong></td><td><strong>Pattern Interrupt</strong></td><td>Deliberately break the automatic sequence before it completes. New response in the middle of the old pattern.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 10 TOOLS -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2 class="section-title">Key Tools for Relational Work</h2>
+          <p class="section-subtitle">WET, BEEP, Box Breathing, and the visualisation tools</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>WET (Written Exposure Therapy)</h3>
+        <p>Primary <strong>Rewrite</strong> tool for relationship wounds. Three writes:</p>
+        <ol>
+          <li><strong>Write 1:</strong> The wound as it happened. Unfiltered, embodied, full weight.</li>
+          <li><strong>Write 2:</strong> The rewrite from the adult self. What the adult now knows.</li>
+          <li><strong>Write 3:</strong> The future self living the new relational story.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>BEEP (Breath-Enhanced Emotional Processing)</h3>
+        <p>Primary <strong>Rewire</strong> tool. Oscillates between sympathetic activation (the charged emotion, fully entered) and parasympathetic recovery. Accesses the social brain where the rebar lives.</p>
+        <p>Each session deposits a new experience: <em>"I entered the activation and came back differently."</em></p>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">Box Breathing</div>
+          <div class="pillar-desc">Physiological reset: 4-count inhale, 4 hold, 4 exhale, 4 hold. Activates parasympathetic. Used before high-stakes relational conversations.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Safe Haven Visualization</div>
+          <div class="pillar-desc">Grounds the nervous system in a felt-sense of safety before approaching charged relational material.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Superhero Self Visualization</div>
+          <div class="pillar-desc">Access the Next Level identity as a resource before a Fear PR.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 PHASE MODELS -->
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <div>
+          <h2 class="section-title">Models for Specific Relationship Phases</h2>
+          <p class="section-subtitle">FEEEL for endings, EXPLORE for deepening, GO-KNOW for finding, 5Fs for progression</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>FEEEL Model (relationship endings)</h3>
+        <ul>
+          <li><strong>Feel:</strong> Allow the grief, anger, relief fully. Do not suppress.</li>
+          <li><strong>Exercise:</strong> Move the charge through the body.</li>
+          <li><strong>Edit:</strong> Rewrite the story of what this relationship was and what it means.</li>
+          <li><strong>Eliminate/Erase:</strong> Release the energetic attachment.</li>
+          <li><strong>Live:</strong> Reengage life from the new identity.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>EXPLORE Model (deepening existing relationships)</h3>
+        <ul>
+          <li><strong>E</strong>ngaging</li>
+          <li><strong>X</strong>-Factor experiences</li>
+          <li><strong>P</strong>erspective-changing conversations</li>
+          <li><strong>L</strong>ow-tech (face-to-face)</li>
+          <li><strong>O</strong>utside environment</li>
+          <li><strong>R</strong>elational renewal practices</li>
+          <li><strong>E</strong>nriching shared experiences</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>GO-KNOW Model (finding romantic connection)</h3>
+        <ul>
+          <li><strong>GO:</strong> Expand the surface area of your life: new environments, activities, communities.</li>
+          <li><strong>KNOW:</strong> Develop genuine self-knowledge so you can vet accurately rather than attracting from old patterns.</li>
+        </ul>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">5Fs of Romantic Progression</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">Friends</div>
+            <div class="phase-sub">Foundation of genuine connection</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">Flirting</div>
+            <div class="phase-sub">Romantic interest signalled</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">Foreplay</div>
+            <div class="phase-sub">Physical intimacy begins</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">4</div>
+            <div class="phase-name">Fucking</div>
+            <div class="phase-sub">Full sexual connection</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">5</div>
+            <div class="phase-name">Future</div>
+            <div class="phase-sub">Shared life direction</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p>The 5Fs are the <strong>natural developmental arc of romantic depth</strong>. Each stage builds on the one before it.</p>
+      </div>
+    </section>
+
+    <!-- 12 BMR APPLICATION -->
+    <section class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <div>
+          <h2 class="section-title">Clinical Application for BMR</h2>
+          <p class="section-subtitle">Why this manual is central to Better Man Recovery</p>
+        </div>
+      </div>
+      <div class="card-dark card">
+        <h3>Five reasons this manual is central to BMR</h3>
+        <ol>
+          <li>The presenting wound in most BMR clients is <strong>betrayal within intimacy</strong>. They have hidden a part of themselves from the person they love, and the hiding is now the relationship's primary dynamic.</li>
+          <li>The wife/partner is not a bystander. She is carrying the <strong>Betrayal Trauma Model</strong> content and her nervous system is also in threat mode. The coaching must account for both attachment systems.</li>
+          <li><strong>Anxious and Avoidant attachment patterns</strong> are disproportionately present in clients with compulsive sexual behaviour: anxiously pursuing partner reassurance while secretly continuing the behaviour, or avoidantly maintaining distance that makes the behaviour invisible.</li>
+          <li>The <strong>Pleaser pattern</strong> is frequent. The man who gives and serves while secretly withholding his actual needs, fears, and inner life. The pornography or compulsive behaviour is, for many, the one place where his actual desires are expressed without relational risk.</li>
+          <li>Recovery requires <strong>relational repair</strong>. The Trust Rebuilder Framework, Honest Conversation Playbook, and Betrayal Trauma Model (the first arc of BMR's triangle model) are directly mapped to this manual's clinical framework.</li>
+        </ol>
+      </div>
+      <div class="quote-block">
+        <p>The recovery arc is also a relational arc. Secure attachment behaviour emerges not from relational skill training but from identity-level change that makes closeness feel safe.</p>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" id="quiz">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+      <p class="quiz-intro">14 questions covering the full manual. Answer before you click.</p>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">A client opens a session with strong anger at his partner. What is the clinically correct move?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Validate the anger and help him express it more cleanly to his partner</button>
+          <button class="opt" data-opt="B">B) Challenge the accuracy of his grievance story</button>
+          <button class="opt" data-opt="C">C) Receive the anger and trace down the AFRAID stack, looking for the insecurity or worth wound beneath it</button>
+          <button class="opt" data-opt="D">D) Ask what outcome he wants from the conversation with his partner</button>
+        </div>
+        <div class="q-result" data-explain="Anger is the most surface level of the AFRAID stack. Each level points toward the one beneath it, and insecurity is almost always underneath anger at a partner."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">A client presents with flatness, low energy, and a general sense of going through the motions. Clinically, this maps to which level of the AFRAID stack?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Anxiety, the nervous system has shut down activation to protect itself</button>
+          <button class="opt" data-opt="B">B) Depression, disconnection from purpose and aliveness. Not sadness. Flatness. The signal from Source is almost entirely blocked.</button>
+          <button class="opt" data-opt="C">C) Resistance, he knows what to do but cannot bring himself to do it</button>
+          <button class="opt" data-opt="D">D) Insecurity, the worth wound is active and suppressing forward energy</button>
+        </div>
+        <div class="q-result" data-explain="Depression is the deepest level of the stack. Its clinical signature is flatness rather than sadness, a near-total disconnection from purpose and aliveness."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">A couple presents as deeply enmeshed. One partner cannot make decisions without the other; both have abandoned most individual friendships. This is clinically:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) A sign of deep relational security, healthy couples prioritise each other above all</button>
+          <button class="opt" data-opt="B">B) Fusion: individual identities have been swallowed by the "we." The relationship is built on self-disappearance, not genuine connection, and will generate resentment over time.</button>
+          <button class="opt" data-opt="C">C) Anxious attachment presenting as mutual dependency</button>
+          <button class="opt" data-opt="D">D) A temporary developmental stage that usually self-corrects</button>
+        </div>
+        <div class="q-result" data-explain="In fusion the 'we' swallows the 'you' and the 'me.' Differentiation, where both partners keep full individual identity while staying genuinely connected, is the healthy alternative."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">An Avoidant client appears calm and contained in sessions, but their partner reports explosive emotional reactivity at home. This is consistent with Avoidant attachment because:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Avoidants only activate with intimate partners, professional contexts don't trigger the pattern</button>
+          <button class="opt" data-opt="B">B) The client is managing their presentation in sessions to appear more functional</button>
+          <button class="opt" data-opt="C">C) Avoidants suppress external expression while internal activation is high. The gap between inner experience and outer presentation is a defining feature of this style.</button>
+          <button class="opt" data-opt="D">D) Avoidant activation only occurs in high-stakes conflict, not in everyday interaction</button>
+        </div>
+        <div class="q-result" data-explain="The Avoidant signature is defensive independence with an internal experience that is significantly more activated than the external presentation suggests."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">What is the fundamental difference between an Authentic Giver and a Pleaser?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The source: Authentic Givers give from fullness and alignment with values. Pleasers give from emptiness, as an anxiety management strategy. Both appear generous. The difference is invisible from the outside.</button>
+          <button class="opt" data-opt="B">B) How much they give: Authentic Givers give sustainably, Pleasers give excessively</button>
+          <button class="opt" data-opt="C">C) Their attachment style: Authentic Givers are Secure, Pleasers are Anxious</button>
+          <button class="opt" data-opt="D">D) Their awareness: Authentic Givers know why they give, Pleasers do not</button>
+        </div>
+        <div class="q-result" data-explain="Both give willingly and often sacrificially. The distinction is the source: fullness versus emptiness. That is why the Pleaser's fear architecture must be addressed before behavioural change."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">Why must Radical Responsibility come first in the Ten Moves sequence?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It is the most psychologically difficult move, so tackling it first builds the most momentum</button>
+          <button class="opt" data-opt="B">B) All subsequent moves require full authorship of your own contribution. Without Radical Responsibility, every later move operates from a victim or villain frame and produces the wrong result.</button>
+          <button class="opt" data-opt="C">C) It is the quickest win, clients can do it immediately without any skill development</button>
+          <button class="opt" data-opt="D">D) It establishes trust with the other person before anything else is attempted</button>
+        </div>
+        <div class="q-result" data-explain="The White Pawn Principle is sequential: each move opens the next. Boundaries, standards, and pattern interrupts set from a victim or villain orientation become ultimatums and blame."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">In the WET protocol, why are there three separate writes rather than one?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The first two writes prime the nervous system, only the third produces lasting change</button>
+          <button class="opt" data-opt="B">B) Three writes forces the client to process the same event from multiple cognitive angles</button>
+          <button class="opt" data-opt="C">C) Each write targets a different layer: Write 1 retrieves the wound at full somatic weight, Write 2 introduces the adult reframe, Write 3 encodes the new identity through forward narrative. Together they complete the Rewrite.</button>
+          <button class="opt" data-opt="D">D) Three writes corresponds to the three developmental windows where relational MUD is formed</button>
+        </div>
+        <div class="q-result" data-explain="Write 1 is the wound unfiltered, Write 2 is the rewrite from the adult self, Write 3 is the future self living the new relational story. Each has a distinct job."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">A 45-year-old client's presenting wound is "I can't trust anyone with my full self after what she did." Which developmental window's core theme is this, and what is its age range?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Childhood (birth to 10): safety and security</button>
+          <button class="opt" data-opt="B">B) Adolescent (11 to 20): belonging and acceptance</button>
+          <button class="opt" data-opt="C">C) Adolescent (11 to 20): betrayal and abandonment</button>
+          <button class="opt" data-opt="D">D) Adult (20+): betrayal and abandonment</button>
+        </div>
+        <div class="q-result" data-explain="The adult window (20+) carries the theme of betrayal and abandonment: 'Can I trust specific people with my full self? What happens when intimacy breaks?'"></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">According to the 100/100 principle, what is wrong with a 50/50 relationship?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Nothing, 50/50 is the realistic standard; 100/100 is aspirational</button>
+          <button class="opt" data-opt="B">B) 50/50 means each person is withholding half of themselves. Healthy relationships require each person to bring 100% of their authentic self and take 100% responsibility for their contribution.</button>
+          <button class="opt" data-opt="C">C) 50/50 creates scorekeeping, which is the Matcher pattern</button>
+          <button class="opt" data-opt="D">D) 50/50 works only for Secure attachment styles</button>
+        </div>
+        <div class="q-result" data-explain="The 100/100 principle: full authentic self, full responsibility, full genuine engagement from both people. Meeting halfway means both people are holding half back."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">In Confident Detachment, "Detachment from Outcomes" means:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Not caring how the relationship turns out</button>
+          <button class="opt" data-opt="B">B) Lowering expectations so you are never disappointed</button>
+          <button class="opt" data-opt="C">C) Operating from your values regardless of the other person's response. The goal is authentic self-expression, not controlling their reaction.</button>
+          <button class="opt" data-opt="D">D) Withdrawing emotional investment until the other person proves reciprocity</button>
+        </div>
+        <div class="q-result" data-explain="Confident Detachment is not indifference. It is genuine care plus genuine self-possession: you act from values whether or not the other person responds the way you hoped."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 11</span>
+        <p class="q-text">What is the mechanism by which Fear PRs work?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The nervous system learns safety through repeated survivable experience, not through argument or intention. Graduated exposures build the biological evidence of safety.</button>
+          <button class="opt" data-opt="B">B) They build willpower through progressively harder challenges</button>
+          <button class="opt" data-opt="C">C) They desensitise the client by flooding them with the feared stimulus</button>
+          <button class="opt" data-opt="D">D) They prove to the rational mind that the fear was irrational all along</button>
+        </div>
+        <div class="q-result" data-explain="A Fear PR is a graduated behavioural challenge in the direction of the fear, done at a manageable level and repeated. The nervous system updates on lived, survivable experience, not logic."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 12</span>
+        <p class="q-text">How does BEEP work as the primary Rewire tool for relational wounds?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It keeps the client in parasympathetic calm so charged material can be discussed safely</button>
+          <button class="opt" data-opt="B">B) It oscillates between sympathetic activation (fully entering the charged emotion) and parasympathetic recovery, accessing the social brain where the rebar lives. Each session deposits: "I entered the activation and came back differently."</button>
+          <button class="opt" data-opt="C">C) It uses box breathing (4-4-4-4) to reset physiology before hard conversations</button>
+          <button class="opt" data-opt="D">D) It replaces the charged memory with a Safe Haven visualisation</button>
+        </div>
+        <div class="q-result" data-explain="BEEP's mechanism is the oscillation itself: entering the charge, then recovering. Option C describes Box Breathing, a different tool used before high-stakes conversations."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 13</span>
+        <p class="q-text">In the GO-KNOW model for finding romantic connection, what is the purpose of the KNOW half?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Learning as much as possible about a potential partner before committing</button>
+          <button class="opt" data-opt="B">B) Knowing the 5Fs sequence so progression happens in the right order</button>
+          <button class="opt" data-opt="C">C) Developing genuine self-knowledge so you can vet accurately rather than attracting from old patterns</button>
+          <button class="opt" data-opt="D">D) Knowing your attachment style so you can disclose it early</button>
+        </div>
+        <div class="q-result" data-explain="GO expands the surface area of your life. KNOW is self-knowledge: without it, you select partners from the old MUD patterns instead of vetting from awareness."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 14</span>
+        <p class="q-text">Why are Anxious and Avoidant attachment patterns disproportionately present in men with compulsive sexual behaviour?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Insecure attachment directly causes compulsive behaviour</button>
+          <button class="opt" data-opt="B">B) Secure men do not experience urges, so they never develop the pattern</button>
+          <button class="opt" data-opt="C">C) Both styles involve a caregiver who was a source of threat, which primes compulsion</button>
+          <button class="opt" data-opt="D">D) The anxiously-attached man pursues partner reassurance while secretly continuing the behaviour; the avoidantly-attached man maintains the distance that makes the behaviour invisible. Both styles supply the relational conditions the behaviour needs.</button>
+        </div>
+        <div class="q-result" data-explain="Each insecure style pairs with the secrecy differently: anxious pursuit plus hidden behaviour, or avoidant distance that keeps the behaviour unseen. Option C describes Disorganized attachment's origin."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      q.classList.add('answered');
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      q.querySelectorAll('.opt').forEach(function(b) {
+        b.disabled = true;
+        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+      });
+      if (chosen === answer) {
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

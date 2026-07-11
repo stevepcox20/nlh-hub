@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Psychology, Philosophy &amp; Belief Physiology &middot; NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: block;
+    padding: 14px 18px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    opacity: 0.6;
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 110px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">NLH Hub &middot; Next Level Human</span>
+      <span class="title">Psychology, Philosophy &amp; Belief Physiology</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <span class="nav-section">Part I &middot; Worldview</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s1">Foundational Truths, Essentia &amp; the Two Phases</a></li>
+      <li><a href="#s2">The Four Core Needs</a></li>
+      <li><a href="#s3">The 5Ps &amp; the Purpose Hierarchy</a></li>
+      <li><a href="#s4">FEEL-DEAL-HEAL</a></li>
+      <li><a href="#s5">Gratitude, AFRAID &amp; ELEVATED</a></li>
+      <li><a href="#s6">Consciousness &amp; the River</a></li>
+      <li><a href="#s7">The Four Intelligences</a></li>
+      <li><a href="#s8">Two Roads &amp; Three Lenses</a></li>
+    </ul>
+    <span class="nav-section">Part II &middot; Psychology</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s9">Ten Core Assumptions</a></li>
+      <li><a href="#s10">Being vs Faking</a></li>
+      <li><a href="#s11">SEE-THINK-FEEL-CHOOSE-ACT</a></li>
+      <li><a href="#s12">Rewrite, Rewire, Retrain</a></li>
+      <li><a href="#s13">The SIGNAL Cascade</a></li>
+      <li><a href="#s14">The SCARF Model</a></li>
+      <li><a href="#s15">The Four Drives</a></li>
+      <li><a href="#s16">The POWERS Framework</a></li>
+      <li><a href="#s17">Identity Parts &amp; the High Self</a></li>
+    </ul>
+    <span class="nav-section">Part III &middot; Biology of Becoming</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s18">Drama vs Trauma</a></li>
+      <li><a href="#s19">The Identity Formation Sequence</a></li>
+      <li><a href="#s20">The Three Brains</a></li>
+      <li><a href="#s21">Regulation &amp; the Oscillation</a></li>
+      <li><a href="#s22">Polyvagal Theory</a></li>
+      <li><a href="#s23">BMR Applications</a></li>
+      <li><a href="#quiz">Comprehension check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Philosophy &amp; Psychology Manual &middot; Module 1</div>
+      <h1>Psychology, Philosophy &amp; <em>Belief Physiology</em></h1>
+      <p class="hero-desc">The foundational layer of the entire NLH system: Essentia, MUD, the SIGNAL cascade, the eight-step identity formation sequence, Drama vs Trauma, the Three Brains, the oscillation, and the polyvagal working model. Everything in metabolism, relationships, money, and coaching methods is downstream of this manual.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">23</span><span class="label">Sections</span></div>
+        <div class="hero-stat"><span class="num">20</span><span class="label">Quiz questions</span></div>
+      </div>
+    </header>
+
+    <!-- 01 FOUNDATIONAL TRUTHS / ESSENTIA / TWO PHASES -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">Foundational Truths, Essentia &amp; the Two Phases</h2>
+          <p class="section-subtitle">The worldview everything else is built on</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>The Three Foundational Truths</h3>
+        <ol>
+          <li>Every human being is utterly unique. There has never been and will never be another you.</li>
+          <li>Every human being has unique work to do in the world.</li>
+          <li>Everything you have been through was required to prepare you for that work.</li>
+        </ol>
+        <p>These are not affirmations. They are the logical starting point of the entire NLH approach. If you do not believe the person across from you has something genuinely irreplaceable to contribute, you cannot coach them at depth.</p>
+      </div>
+
+      <div class="card-accent card">
+        <h3>Essentia, the North Star</h3>
+        <p><strong>Essentia = Essential Nature + Earned Wisdom + Free Will.</strong> The authentic self that emerges when the conditioning phase's MUD has been seen through and cleared. Not discovered, constructed. The person you are becoming, not the person you once were before life happened.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <div class="pillar-name">Awareness</div>
+          <div class="pillar-desc">See the conditioning. You cannot change what you cannot observe.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Authenticity</div>
+          <div class="pillar-desc">Express what is actually true for you, not the socially safe performance.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Alignment</div>
+          <div class="pillar-desc">Bring actions into line with values and Essentia rather than MUD.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Alchemy</div>
+          <div class="pillar-desc">Transform pain into wisdom and purpose. Conditioning-phase raw material becomes awakening fuel.</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin:-6px 0 20px;">The Four A's: the pathway to Essentia.</p>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">The Two Phases of Human Life</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">Conditioning Phase</div>
+            <div class="phase-sub">Birth to awakening. Identity structures installed below conscious choice. Produces MUD.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">Awakening Phase</div>
+            <div class="phase-sub">Begins when patterns are first seen as patterns, not facts. Essentia gradually emerges.</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>The awakening is a process, not an event.</strong> It does not end MUD's influence overnight. All coaching work occurs inside the Awakening Phase, where identity structures become visible, workable, and ultimately transformable.</p>
+      </div>
+    </section>
+
+    <!-- 02 FOUR CORE NEEDS -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">The Four Core Needs</h2>
+          <p class="section-subtitle">The developmental map: which floor is operating</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Need</th><th>Stage</th><th>When met</th><th>When unmet</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Safety &amp; Security</strong></td><td>Primary (childhood)</td><td>Groundedness, capacity for risk</td><td>Hyper-vigilance, control, threat-detection</td></tr>
+          <tr><td><strong>Acceptance &amp; Belonging</strong></td><td>Adolescent</td><td>Social ease, authentic self-expression in groups</td><td>Approval-seeking, performance, hiding</td></tr>
+          <tr><td><strong>Freedom &amp; Autonomy</strong></td><td>Early adult</td><td>Self-direction, creative expression</td><td>Rebellion or compliance, suppressed desire</td></tr>
+          <tr><td><strong>Authenticity, Growth, Creation</strong></td><td>Mature adult</td><td>Purpose, contribution, genuine aliveness</td><td>Emptiness, drift, chronic vague dissatisfaction</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p><strong>Work on the right floor.</strong> Clients typically present with an unmet need at an earlier stage that is blocking development at later stages. A coaching conversation that targets adult-level purpose with a client whose safety need is chronically unmet is working on the wrong floor.</p>
+      </div>
+    </section>
+
+    <!-- 03 5Ps + PURPOSE HIERARCHY -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">The 5Ps &amp; the Purpose Hierarchy</h2>
+          <p class="section-subtitle">The raw material Essentia is constructed from</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>P</th><th>What it is</th></tr></thead>
+        <tbody>
+          <tr><td><strong>People</strong></td><td>Who has shaped you: family, significant others, community</td></tr>
+          <tr><td><strong>Passions</strong></td><td>What lights you up: natural interests and energies</td></tr>
+          <tr><td><strong>Personality</strong></td><td>Your characteristic style of engaging with the world</td></tr>
+          <tr><td><strong>Powers</strong></td><td>Your unique strengths, gifts, and capacities</td></tr>
+          <tr><td><strong>Pain</strong></td><td><strong>The most important P.</strong> The wounds and struggles that feel like they should be hidden. Pain is the most direct pointer to unique work.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>The 5Ps are not a personality test. They are a map of the raw material from which Essentia is constructed. <strong>Pain is not a liability to be minimized. It is the primary raw material.</strong></p>
+      </div>
+      <div class="card">
+        <h3>Passion, Meaning, Purpose: the hierarchy</h3>
+        <ul>
+          <li><strong>Passion</strong>: what energizes and excites you right now. Context-dependent, changes with seasons of life.</li>
+          <li><strong>Meaning</strong>: what your experience tells you matters. Retrospective, assembled from lived experience.</li>
+          <li><strong>Purpose</strong>: the intersection of your unique pain, powers, and contribution to others. Self-sustaining, context-independent, goes everywhere with you.</li>
+        </ul>
+        <p><strong>Purpose is not found. It is generated</strong>, actively constructed from the raw material of the 5Ps, especially Pain. A person who has found their purpose is no longer looking for it. They are living it.</p>
+      </div>
+    </section>
+
+    <!-- 04 FEEL-DEAL-HEAL -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">The FEEL-DEAL-HEAL Framework</h2>
+          <p class="section-subtitle">Emotional processing in three stages</p>
+        </div>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Emotional processing sequence</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">F</div>
+            <div class="phase-name">FEEL</div>
+            <div class="phase-sub">Name it, dimensionalize it, allow it</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">D</div>
+            <div class="phase-name">DEAL</div>
+            <div class="phase-sub">Inspect the wound, identify the story, consider new action</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">H</div>
+            <div class="phase-name">HEAL</div>
+            <div class="phase-sub">Tend, integrate, share</div>
+          </div>
+        </div>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">FEEL</div>
+          <div class="pillar-desc">Name the emotion precisely: not "bad" but "ashamed," "grieving," "afraid." Dimensionalize: where in the body? What colour, texture, size? Allow: let it exist fully without suppression or amplification.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">DEAL</div>
+          <div class="pillar-desc">What happened? What judgment was formed? What story crystallized around that judgment? From the adult self: what is now possible that was not possible then?</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">HEAL</div>
+          <div class="pillar-desc">Tend: what does this part of you need now? Integrate: how does this become wisdom rather than wound? Share: the completion of healing is giving the earned wisdom to others.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 GRATITUDE / AFRAID / ELEVATED -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">Gratitude as Frequency, AFRAID &amp; ELEVATED</h2>
+          <p class="section-subtitle">The two emotional climates and the biology of gratitude</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Gratitude is a physiological state, not a mood</h3>
+        <p>Measurable downstream effects: <strong>cortisol reduction, oxytocin increase, inflammation reduction, DMN quieting</strong> (the self-critical, ruminative default quiets).</p>
+        <p>Gratitude generates the ELEVATED state. <strong>ELEVATED emotions are not a consequence of circumstances. They are a precondition for perceiving circumstances differently.</strong> The VIR practice is the applied version of this insight: access ELEVATED first, then imprint new identity.</p>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">AFRAID (suppress, shrink, close)</div>
+        <div class="vs-header new">ELEVATED (open, expand)</div>
+        <div class="vs-row-old">Shame, Fear, Guilt, Anger, Frustration, Resistance, Anxiety, Insecurity, Depression: the full A.F.R.A.I.D. stack</div>
+        <div class="vs-row-new">Enjoyment, Love, Excitement, Vitality, Appreciation, Trust, Engagement, Delight</div>
+        <div class="vs-row-old">Loops back to the same patterns. Contracts the system.</div>
+        <div class="vs-row-new">Contains the FLOW sub-cluster: Fun, Laughter, Openness, Wonder</div>
+      </div>
+      <div class="callout callout-forest">
+        <p>The ELEVATED state is not toxic positivity. It is the physiological condition under which the creative brain is most available, identity-level work is most accessible, and behaviour change is most durable.</p>
+      </div>
+    </section>
+
+    <!-- 06 CONSCIOUSNESS / RIVER -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">Consciousness Foundation: The River</h2>
+          <p class="section-subtitle">The core premise of the NLH worldview</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>The brain is a receiver, not the source of consciousness. Consciousness is the river. Each person is a point where the river is flowing.</p>
+      </div>
+      <div class="card">
+        <h3>The River Metaphor</h3>
+        <ul>
+          <li>Source is the upstream that flows through all things.</li>
+          <li>Each person is a location on the river: receiving, expressing, contributing back.</li>
+          <li><strong>MUD narrows the flow. Clearing MUD restores the full current.</strong></li>
+        </ul>
+        <h4>Three Principles of Source</h4>
+        <ol>
+          <li><strong>Inclusive</strong>: nothing is excluded from Source, including the parts the client is most ashamed of.</li>
+          <li><strong>Integrative</strong>: all experience, including the conditioning phase, is integrated into the larger pattern.</li>
+          <li><strong>Holistic</strong>: the system cannot be understood by analysing parts in isolation.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 07 FOUR INTELLIGENCES -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">The Four Intelligences</h2>
+          <p class="section-subtitle">Instinct, Intuition, Insight, Intellect</p>
+        </div>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <div class="pillar-name">Instinct</div>
+          <div class="pillar-desc">Gut / old brain. Pattern-matching against past data. Loud, urgent, fast. Uses old data. Designed for threat.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Intuition</div>
+          <div class="pillar-desc">Heart / social brain. Reads present-moment live data. Quiet, directional, warm. Not urgency.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Insight</div>
+          <div class="pillar-desc">Crown / integrated system. Holds the whole map simultaneously. Rare, non-verbal, whole-pattern. The "aha" that reorganizes everything.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Intellect</div>
+          <div class="pillar-desc">Prefrontal cortex. Language, logic, analysis, translation. The translator: powerful servant, poor master.</div>
+        </div>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Instinct</div>
+        <div class="vs-header new">Intuition</div>
+        <div class="vs-row-old">Shouts</div>
+        <div class="vs-row-new">Hums</div>
+        <div class="vs-row-old">Uses the past: cached threat data</div>
+        <div class="vs-row-new">Reads the present: live data from the current environment</div>
+        <div class="vs-row-old">Fear-based: what did I need to protect myself from before?</div>
+        <div class="vs-row-new">Love-based: what is true and needed here now?</div>
+      </div>
+      <div class="callout">
+        <p><strong>The critical clinical distinction:</strong> most people mistake the shout of instinct for intuition. The coaching goal is to train the client to hear the hum through the noise.</p>
+      </div>
+    </section>
+
+    <!-- 08 TWO ROADS + THREE LENSES -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">The Two Roads &amp; the Three Lenses</h2>
+          <p class="section-subtitle">Reading whether you are on the right road</p>
+        </div>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Familiar Road</div>
+        <div class="vs-header new">Foreign Road</div>
+        <div class="vs-row-old">The conditioned path. Loops back to the same patterns, people, and outcomes. Comfortable precisely because it is known.</div>
+        <div class="vs-row-new">The path toward Essentia. Unfamiliar, activating, uncertain. Not comfortable, but directional.</div>
+        <div class="vs-row-old">AFRAID emotional state. Loops. Contracts.</div>
+        <div class="vs-row-new">ELEVATED emotional state. Opens. Expands.</div>
+      </div>
+      <div class="callout">
+        <p><strong>The Familiar Road is not laziness.</strong> It is the output of a personality organized around identity structures that select for confirming experiences. Without identity-level work, the Familiar Road is the only road the nervous system can find.</p>
+      </div>
+      <div class="card">
+        <h3>Three Lenses</h3>
+        <ol>
+          <li><strong>Feedback Loop:</strong> what is your life actually producing? Evidence does not lie. Patterns that repeat across relationships, finances, health, and career are not bad luck. They are identity structures expressing themselves.</li>
+          <li><strong>Body Compass:</strong> three signals. Gut (instinct, old data, not always trustworthy), heart (intuition, live data, the quieter signal), head (insight, rare, reorganizing). Learn to distinguish the shout from the hum.</li>
+          <li><strong>Dominant Emotions:</strong> is your baseline AFRAID or ELEVATED? Not the mood of the moment. The emotional climate of your life over time.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 09 TEN CORE ASSUMPTIONS -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">Ten Core Assumptions of the NLH Coaching System</h2>
+          <p class="section-subtitle">The operating premises behind every session</p>
+        </div>
+      </div>
+      <div class="card">
+        <ol>
+          <li><strong>Human beings are meaning-making organisms first.</strong> The same event produces different outcomes based entirely on the meaning made from it.</li>
+          <li><strong>Consciousness is primary.</strong> Identity-level work is not separate from the biological. It IS biological, through the CPNEI system.</li>
+          <li><strong>The body keeps the score.</strong> Every identity structure is encoded in the body, not just the mind.</li>
+          <li><strong>Wounds are raw material.</strong> Not obstacles to purpose. The primary fuel of it.</li>
+          <li><strong>Lasting change happens at the story level.</strong> Behaviour change without story change is temporary. Story change without behaviour change is incomplete.</li>
+          <li><strong>All behaviour makes sense in function.</strong> What looks irrational from the outside makes perfect sense once the MUD driving it is understood.</li>
+          <li><strong>Growth is recursive and non-local.</strong> Change in one domain spreads to all domains.</li>
+          <li><strong>Three levels are always available.</strong> Survival, Social, Creative. The coaching relationship itself determines which level the client operates from.</li>
+          <li><strong>Purpose is generated, not found.</strong> Actively constructed from the 5Ps.</li>
+          <li><strong>The coaching relationship is a nervous system event.</strong> The coach's regulated presence is the primary instrument. Not their questions, frameworks, or insights. Their state.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 10 BEING VS FAKING -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2 class="section-title">Being vs Faking</h2>
+          <p class="section-subtitle">Method actor vs regular actor</p>
+        </div>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Regular Actor</div>
+        <div class="vs-header new">Method Actor</div>
+        <div class="vs-row-old">Performs emotions without accessing them</div>
+        <div class="vs-row-new">Accesses the emotional state and lets the performance emerge from it</div>
+        <div class="vs-row-old">The audience can feel the gap</div>
+        <div class="vs-row-new">The audience cannot feel the gap, because there is none</div>
+        <div class="vs-row-old">Cognitive rehearsal of external behaviour</div>
+        <div class="vs-row-new">Identity-level activation of the internal state</div>
+      </div>
+      <div class="quote-block">
+        <p>"Be it until you see it." Not fake it till you make it. Identity precedes behaviour.</p>
+      </div>
+      <div class="callout callout-forest">
+        <p>Behaviour that emerges from a genuinely activated identity state is different in quality and durability from behaviour adopted through performance. This is the clinical basis for <strong>VIR (Values Identity Reset)</strong>: access the ELEVATED state and imprint the identity from within it, not from outside it.</p>
+      </div>
+    </section>
+
+    <!-- 11 SEE-THINK-FEEL-CHOOSE-ACT -->
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <div>
+          <h2 class="section-title">The SEE-THINK-FEEL-CHOOSE-ACT Sequence</h2>
+          <p class="section-subtitle">The architecture of all human behaviour</p>
+        </div>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Behaviour architecture</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">SEE</div>
+            <div class="phase-sub">Perception. MUD filters here, before thinking begins.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">THINK</div>
+            <div class="phase-sub">Interpretation, meaning-making</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">FEEL</div>
+            <div class="phase-sub">Emotional response</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">4</div>
+            <div class="phase-name">CHOOSE</div>
+            <div class="phase-sub">Decision point</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">5</div>
+            <div class="phase-name">ACT</div>
+            <div class="phase-sub">Behaviour</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>MUD intervenes at SEE.</strong> The conditioned identity filters perception before thinking begins. Two people in the same situation SEE different situations. The coaching target is the perception filter (SEE and THINK), not the downstream behaviour (ACT).</p>
+      </div>
+    </section>
+
+    <!-- 12 REWRITE-REWIRE-RETRAIN -->
+    <section class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <div>
+          <h2 class="section-title">Rewrite, Rewire, Retrain</h2>
+          <p class="section-subtitle">The three-phase change architecture</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Phase</th><th>Target</th><th>Metaphor</th><th>Primary tools</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Rewrite</strong></td><td>SEE + THINK: the story and meaning layer</td><td>Breaking up the cement</td><td>WET (Written Exposure Therapy), narrative work, cognitive reframe</td></tr>
+          <tr><td><strong>Rewire</strong></td><td>FEEL: the emotional charge stored in the body</td><td>Removing the rebar</td><td>BEEP (Breath-Enhanced Emotional Processing), BRN sessions, somatic work</td></tr>
+          <tr><td><strong>Retrain</strong></td><td>CHOOSE + ACT: new behaviour through repetition</td><td>Rebuilding with new material</td><td>Fear PRs, habit design, Chapter 10, graduated exposure</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p><strong>Rewrite without Rewire = insight without embodiment.</strong> The client understands the pattern but cannot change it in the moment of activation. <strong>Rewire without Rewrite = emotional relief without story change.</strong> The charge discharges temporarily but the MUD regenerates it. Both must be addressed. The sequence matters: cement first, then rebar, then rebuild.</p>
+      </div>
+    </section>
+
+    <!-- 13 SIGNAL CASCADE -->
+    <section class="section" id="s13">
+      <div class="section-header">
+        <div class="section-num">13</div>
+        <div>
+          <h2 class="section-title">The SIGNAL Cascade</h2>
+          <p class="section-subtitle">How identity becomes biology</p>
+        </div>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Identity to immune function, top down</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">S</div>
+            <div class="phase-name">Source</div>
+            <div class="phase-sub">The upstream current</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">I</div>
+            <div class="phase-name">Identity</div>
+            <div class="phase-sub">MUD or Essentia. The primary leverage point.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">G</div>
+            <div class="phase-name">Gate / Gestalt</div>
+            <div class="phase-sub">How identity filters perception</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">N</div>
+            <div class="phase-name">Neuro</div>
+            <div class="phase-sub">Nervous system holding pattern</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">A</div>
+            <div class="phase-name">Adrenal / Hormonal</div>
+            <div class="phase-sub">Cortisol, testosterone, stress hormones</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">L</div>
+            <div class="phase-name">Lymphatic / Immune</div>
+            <div class="phase-sub">Inflammatory state, cellular function</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>The Bidirectional Principle:</strong> the cascade runs both directions. Identity drives biology; biology also influences identity. But the primary leverage point is the top. This is why identity work is a metabolic intervention, not a soft supplement to the hard biological work.</p>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Conditioned Cascade</div>
+        <div class="vs-header new">Source Cascade</div>
+        <div class="vs-row-old">MUD running: distorted signal through all levels</div>
+        <div class="vs-row-new">Essentia flowing: coherent signal from identity through all levels</div>
+        <div class="vs-row-old">AFRAID baseline. Defend-and-store physiology.</div>
+        <div class="vs-row-new">ELEVATED baseline. Grow-and-repair physiology.</div>
+      </div>
+    </section>
+
+    <!-- 14 SCARF -->
+    <section class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">14</div>
+        <div>
+          <h2 class="section-title">The SCARF Model</h2>
+          <p class="section-subtitle">Social threat detection: five domains the social brain treats as physical threat</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Domain</th><th>Threat signature</th><th>Coaching implication</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Status</strong></td><td>Being diminished, ranked below, disrespected</td><td>Never challenge without first elevating</td></tr>
+          <tr><td><strong>Certainty</strong></td><td>Unpredictability, ambiguity, the unknown</td><td>Provide clear structure and predictable pacing</td></tr>
+          <tr><td><strong>Autonomy</strong></td><td>Loss of control or choice</td><td>Frame all interventions as choices</td></tr>
+          <tr><td><strong>Relatedness</strong></td><td>Exclusion, disconnection, being "other"</td><td>The coaching relationship IS the relatedness work</td></tr>
+          <tr><td><strong>Fairness</strong></td><td>Being treated unjustly or inconsistently</td><td>Transparent expectations and consistent delivery</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p>A coaching session that threatens any SCARF domain triggers <strong>social brain dominance</strong>, reducing access to the creative brain where identity-level work is possible.</p>
+      </div>
+    </section>
+
+    <!-- 15 FOUR DRIVES -->
+    <section class="section" id="s15">
+      <div class="section-header">
+        <div class="section-num">15</div>
+        <div>
+          <h2 class="section-title">The Four Drives</h2>
+          <p class="section-subtitle">Power, Popularity, Pleasure, Purpose</p>
+        </div>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <div class="pillar-name">Power</div>
+          <div class="pillar-desc">Status, control, influence, achievement. Trap: Striver archetype. Achievement becomes identity.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Popularity</div>
+          <div class="pillar-desc">Belonging, approval, being liked and accepted. Trap: Pleaser archetype. Worth depends on others' response.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Pleasure</div>
+          <div class="pillar-desc">Comfort, stimulation, numbing discomfort. Trap: Soother archetype. Compulsive behaviour.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Purpose</div>
+          <div class="pillar-desc">Contribution, meaning, genuine aliveness. The integrating drive. When purpose is online, the other three find their proper place.</div>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>Purpose is the only drive that, when fully activated, resolves the others rather than competing with them.</strong> All compulsive behaviour is a Pleasure drive running without Purpose as the organising principle.</p>
+      </div>
+    </section>
+
+    <!-- 16 POWERS -->
+    <section class="section" id="s16">
+      <div class="section-header">
+        <div class="section-num">16</div>
+        <div>
+          <h2 class="section-title">The POWERS Framework</h2>
+          <p class="section-subtitle">Six capacities of transformation, five stages, and the WER Loop</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Capacity</th><th>What it is</th><th>Clinical expression</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Perception</strong></td><td>The gateway capacity. Seeing MUD as MUD rather than as reality.</td><td>Without this, no other capacity can engage.</td></tr>
+          <tr><td><strong>Ownership</strong></td><td>Radical responsibility: full authorship of your contribution to every pattern.</td><td>Removes victim and villain orientation. Not blame. Authorship.</td></tr>
+          <tr><td><strong>Wisdom</strong></td><td>Earned understanding from metabolised experience. Not information.</td><td>Cannot be transferred. Only generated through the WER Loop.</td></tr>
+          <tr><td><strong>Engagement</strong></td><td>Fear into action: taking the next Fear PR regardless of certainty.</td><td>The courage capacity. Not the absence of fear but action in its presence.</td></tr>
+          <tr><td><strong>Resolve</strong></td><td>Commitment functioning as identity rather than willpower.</td><td>"I am the kind of person who does X." Not "I will try to do X."</td></tr>
+          <tr><td><strong>Sharing</strong></td><td>Contributing the earned wisdom to others. The return.</td><td>Completion of the healing arc. Service as identity expression.</td></tr>
+        </tbody>
+      </table>
+      <div class="diagram-wrap">
+        <div class="diagram-title">The five stages of the POWERS journey</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">Revolution</div>
+            <div class="phase-sub">The Lightning Strike: first crack in the old story</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">Resistance</div>
+            <div class="phase-sub">Battle with Perception: the old identity fights back</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">Responsibility</div>
+            <div class="phase-sub">Battle with Ownership: victim to author</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">4</div>
+            <div class="phase-name">The Road</div>
+            <div class="phase-sub">The WER Loop: sustained Wisdom-Engagement-Resolve practice</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">5</div>
+            <div class="phase-name">The Return</div>
+            <div class="phase-sub">Sharing: contributing what was earned</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>WER Loop:</strong> Wisdom generates Engagement generates Resolve generates deeper Wisdom. The loop deepens with each iteration. There is no ceiling on the loop, only a widening spiral.</p>
+      </div>
+    </section>
+
+    <!-- 17 PARTS / HIGH SELF -->
+    <section class="section" id="s17">
+      <div class="section-header">
+        <div class="section-num">17</div>
+        <div>
+          <h2 class="section-title">Identity Parts &amp; the High Self</h2>
+          <p class="section-subtitle">Dimensionalizing consciousness</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>A cast of internal characters</h3>
+        <p>The person is not a single unified self. They are a cast of internal characters, each formed around a specific wound from the conditioning phase, each carrying its own MUD, rebar, and survival programming.</p>
+        <p><strong>Identity parts are not pathological. They are adaptive.</strong> Every part was the best available response to the conditions of the conditioning phase. The problem is not that the part exists. It is that the part is still running the same program decades later in conditions where the program is no longer necessary.</p>
+        <p><strong>The work is not to eliminate any part.</strong> It is to help the High Self take its rightful place as the author of the life rather than one of the characters.</p>
+      </div>
+      <div class="card-accent card">
+        <h3>The High Self</h3>
+        <p>The High Self is not a part. It is the organizing intelligence that holds all parts: the prefrontal cortex's capacity to observe its own patterns, hold multiple perspectives simultaneously, and make choices that serve long-term growth. The goal of identity work is to strengthen the High Self's capacity to hold all parts with compassion rather than being captured by any of them.</p>
+      </div>
+    </section>
+
+    <!-- 18 DRAMA VS TRAUMA -->
+    <section class="section" id="s18">
+      <div class="section-header">
+        <div class="section-num">18</div>
+        <div>
+          <h2 class="section-title">Drama vs Trauma</h2>
+          <p class="section-subtitle">The clinical distinction that reframes intake</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>"You don't have trauma the way you think you do. What you have is drama: scripts, stories, performances written into your role when you didn't yet have the wisdom to choose for yourself."</p>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Capital-T Trauma</div>
+        <div class="vs-header new">Drama (little-t conditioning)</div>
+        <div class="vs-row-old">Single catastrophic event overwhelming the nervous system's capacity to process</div>
+        <div class="vs-row-new">Accumulated conditioning of ordinary development: chronic, cumulative, invisible</div>
+        <div class="vs-row-old">Client can usually name the event, date it, describe it</div>
+        <div class="vs-row-new">Often invisible to the client: "Nothing terrible happened to me. My childhood was fine."</div>
+        <div class="vs-row-old">Requires trauma-informed clinical pacing, potential collaborative work with a therapist</div>
+        <div class="vs-row-new">The primary terrain of NLH coaching, where most clients live</div>
+      </div>
+      <div class="callout">
+        <p><strong>The coaching error:</strong> waiting for a "trauma story" to explain a client's patterns. The conditioning is in the water. The fish cannot see the water.</p>
+      </div>
+      <div class="card">
+        <h3>Clinical significance</h3>
+        <p>MUD from Drama is frequently <strong>more entrenched</strong> than MUD from Capital-T Trauma, precisely because its origin is normalized. The person who was assaulted knows something happened. The person who was chronically subtly invalidated may have no idea that anything happened at all. They just know that something feels wrong.</p>
+      </div>
+    </section>
+
+    <!-- 19 IDENTITY FORMATION SEQUENCE -->
+    <section class="section" id="s19">
+      <div class="section-header">
+        <div class="section-num">19</div>
+        <div>
+          <h2 class="section-title">The Identity Formation Sequence</h2>
+          <p class="section-subtitle">Eight steps from experience to cascade, plus the clinical map</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>#</th><th>Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><strong>SEES Event</strong></td><td>Severe/Sudden (capital SEES: assault, accident, sudden loss, acute humiliation, betrayal) OR Subtle/Continuous (lowercase sees: emotional neglect, persistent criticism, sustained comparison, dismissed emotional needs). No single event stands out; the accumulation does the work.</td></tr>
+          <tr><td>2</td><td><strong>Judgment</strong></td><td>Millisecond evaluation in the survival and social brains, before the creative brain can intervene, made without cognitive maturity, life experience, or emotional resources. For lowercase-sees: a thousand micro-judgments, each deepening the last, until the judgment is experienced as a fact about reality.</td></tr>
+          <tr><td>3</td><td><strong>Story (MUD)</strong></td><td>The judgment crystallizes into a narrative. Simple, absolute, structural: "I am not enough." "People cannot be trusted." "Showing emotion is dangerous." "I have to earn love through performance." The story does not feel like a story. It feels like a description of reality.</td></tr>
+          <tr><td>4</td><td><strong>Emotion fuses</strong></td><td>The rebar. The story on its own is just an idea. The emotion fused to it gives it structural power that insight cannot break.</td></tr>
+          <tr><td>5</td><td><strong>Belief threshold</strong></td><td>Story + Emotion = Belief = Identity Structure. Before this threshold: a wound, painful but processable. After: encoded as a structural feature of identity. No longer something the person experienced. Something the person is.</td></tr>
+          <tr><td>6</td><td><strong>Identity Part</strong></td><td>The belief becomes a semi-autonomous internal character with its own way of perceiving, reacting, and interpreting. Adaptive, not pathological. Parts interact, cluster, form alliances and conflicts.</td></tr>
+          <tr><td>7</td><td><strong>Personality</strong></td><td>Identity parts accumulate into personality: the characteristic way of seeing, being, and relating that feels like "who I am." The personality set point is self-reinforcing: it recruits confirming evidence, avoids disconfirming experience, and selects for validating relationships and environments.</td></tr>
+          <tr><td>8</td><td><strong>Cascade activates</strong></td><td>The personality set point drives the full SIGNAL cascade: psychology determines the nervous system holding pattern, which determines the hormonal environment, which determines immune function.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">The MUD hardening spectrum</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">MUD (fluid)</div>
+            <div class="phase-sub">Recently formed, single-event origin, responsive to narrative work</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">Clay (moderately set)</div>
+            <div class="phase-sub">Reinforced across years, requires more sustained intervention</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">Cement (deeply embedded)</div>
+            <div class="phase-sub">Often pre-verbal, from years of lowercase-sees conditioning. Requires reconsolidation-level intervention.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>MUD without emotional charge is a thought you can question. MUD with emotional charge is a felt reality you cannot argue with.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>Severity does not predict depth.</strong> Chronic subtle invalidation from a loving but emotionally limited parent can develop more entrenched MUD than a single dramatic event. The conditioning's invisibility is what makes it powerful. And a wound that has crossed the belief threshold requires intervention at the level of the encoding: memory reconsolidation work that updates the identity structure at the level where it was formed.</p>
+      </div>
+
+      <div class="card-dark card">
+        <h3>The cascade in one life</h3>
+        <p>A child who decided "I am not safe" at age four is now a forty-year-old whose nervous system runs chronic sympathetic activation, whose cortisol rhythm is flattened, whose inflammatory markers are elevated, and whose immune system is compromised. Not because of anything happening now, but because the identity-level programming installed thirty-six years ago is still running the cascade.</p>
+      </div>
+
+      <div class="card">
+        <h3>The sequence as clinical map</h3>
+        <p>When assessing any client pattern, work backward through the sequence:</p>
+        <ol>
+          <li>What is the presenting pattern? (Step 7: personality-level expression)</li>
+          <li>What identity parts are organizing the pattern? (Step 6: internal characters running the program)</li>
+          <li>What beliefs are those parts carrying? (Step 5: the threshold where wound became structure)</li>
+          <li>What emotion is fused to those beliefs? (Step 4: the rebar that makes them feel true)</li>
+          <li>What story did the emotion solidify around? (Step 3: the MUD)</li>
+          <li>What judgment generated that story? (Step 2: the fast, self-protective evaluation)</li>
+          <li>What was the original experience? (Step 1: the SEES Event)</li>
+        </ol>
+        <p><strong>The work can begin at any step.</strong> The sequence is a map of territory, not a protocol to follow in order.</p>
+      </div>
+    </section>
+
+    <!-- 20 THREE BRAINS -->
+    <section class="section" id="s20">
+      <div class="section-header">
+        <div class="section-num">20</div>
+        <div>
+          <h2 class="section-title">The Three Brains</h2>
+          <p class="section-subtitle">Why regulation precedes everything</p>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>The most important neurological fact for coaching:</strong> under stress, the more evolutionarily ancient systems dominate the more recently evolved ones. Everything else in this section is an elaboration of that single insight.</p>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">Survival Brain</div>
+          <div class="pillar-desc">Brainstem, basal ganglia, cerebellum. Life-sustaining functions, freeze/fight/flight/fawn. Operates below awareness, hundreds of milliseconds before thought. Does not reason, negotiate, or weigh evidence. It reacts.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Social Brain</div>
+          <div class="pillar-desc">Limbic system: amygdala, hippocampus, hypothalamus, cingulate cortex, insula. Emotional processing, memory consolidation, bonding, status, attachment. The amygdala flags social danger (rejection, humiliation, exclusion) as threat. This is where the rebar lives.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Creative Brain</div>
+          <div class="pillar-desc">Prefrontal cortex. Executive function, impulse inhibition, planning, abstract reasoning, perspective-taking, conscious choice. Develops last (not fully online until mid-twenties). Goes offline first under stress.</div>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Stress level</th><th>Dominant system</th><th>Coaching implication</th></tr></thead>
+        <tbody>
+          <tr><td>Low</td><td>Creative brain leads</td><td>Identity work, insight, meaning-making fully accessible</td></tr>
+          <tr><td>Moderate</td><td>Social brain asserts dominance</td><td>Emotional reactivity up. The creative brain's reasoning increasingly serves the emotional agenda.</td></tr>
+          <tr><td>High</td><td>Survival brain takes over</td><td>Creative brain substantially offline. Client not accessible for coaching work of any kind. Only response: regulation, resourcing, physiological safety.</td></tr>
+        </tbody>
+      </table>
+      <div class="card">
+        <h3>The Battle of the Brains: why insight fails under stress</h3>
+        <p>The survival and social brains respond in milliseconds. The creative brain is slower by design. The amygdala flags a threat cue (a partner's tone of voice, a boss's email, the felt sense of inadequacy) and the defensive response fires before the creative brain has even registered that something happened.</p>
+        <p>All genuine insight, all real behavioural commitment, all identity-level work happens in the creative brain's window of availability. It is the only brain capable of seeing MUD as MUD, choosing the Foreign Road, holding an identity part with compassion. <strong>The clinical priority, before any insight work, is getting this brain online. Which means regulation. Always regulation first.</strong></p>
+        <p>The client's social brain is also continuously monitoring the coach's nervous system state and calibrating accordingly. A regulated coach produces co-regulation. An anxious coach produces co-dysregulation.</p>
+      </div>
+      <div class="quote-block">
+        <p>"You cannot install software during a crash. The creative brain learns in conditions of safety. The survival brain learns through repetition. If you want new responses under stress, you must practice them when calm, hundreds of times, until the new pathway is fast enough to compete with the old one. That is Retrain. That is why it comes after Rewrite and Rewire, not instead of them."</p>
+      </div>
+    </section>
+
+    <!-- 21 REGULATION + OSCILLATION -->
+    <section class="section" id="s21">
+      <div class="section-header">
+        <div class="section-num">21</div>
+        <div>
+          <h2 class="section-title">Regulation vs Relaxation &amp; the Oscillation</h2>
+          <p class="section-subtitle">The distinction that changes everything</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>Process</th><th>What it actually is</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Regulation</strong></td><td>The capacity to function inside activation: to hold focus in the storm and then settle after. A trainable skill, not a personality trait.</td></tr>
+          <tr><td><strong>Recovery</strong></td><td>The ability to come down after activation and return to baseline once the stress has passed. Recovery follows regulation as exhale follows inhale.</td></tr>
+          <tr><td><strong>Relaxation</strong></td><td>Deliberate low-demand downshifting: meditation, gentle breathing, soft music. Essential for wellbeing. Not the same as regulation.</td></tr>
+          <tr><td><strong>Repair</strong></td><td>Biological rebuilding over time: sleep, nutrition, hormonal recovery, cellular restoration. The long game.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <p><strong>The wellness world prescribes relaxation as regulation.</strong> That will not change the baseline architecture. It soothes the moment without reaching the structure.</p>
+      </div>
+      <div class="card">
+        <h3>Why activation must be entered, not avoided</h3>
+        <p>MUD was not formed in calm states. The judgment at Step 2, the emotion fusing at Step 4, the belief hardening at Step 5: all happened under sympathetic activation. High arousal states sear the story into the system through limbic engagement and stress hormone signalling.</p>
+        <p><strong>If the story was cemented under activation, it cannot be fully reshaped in a state of sedation.</strong> You can soothe it from calm. You can comfort it. But you are not accessing the original encoding environment. You are not reaching the rebar where it was laid down.</p>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">The oscillation</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">ACTIVATE</div>
+            <div class="phase-sub">Deliberate sympathetic stimulation: intense breathing, bringing the charged material fully into awareness</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">REFRAME</div>
+            <div class="phase-sub">Meaning shift under load: witness the material, dialogue with it, while the nervous system is lit up</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">RECOVER</div>
+            <div class="phase-sub">Parasympathetic return: slow exhale, humming, self-touch, genuine gratitude or compassion</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>What each phase does</h3>
+        <p><strong>Activate:</strong> activation is not the malfunction. It is the system doing its job. The problem is activation without control, without witnessing, without the capacity to come back. Deliberate activation converts reactivity into agency. The coach is not accidentally triggering the client; they are deliberately re-entering the encoding state.</p>
+        <p><strong>Reframe:</strong> meaning introduced at the moment of activation reaches the original encoding environment. Meaning introduced in calm does not. The client meets the charged material as a dimensionalized entity, witnesses it, asks what it needs, recognizes they created the structure and can dialogue with it, learn from it, release it.</p>
+        <p><strong>Recover:</strong> safety physiology paired with elevated meaning. Each cycle deposits a new experience: "I can enter this state, meet what is there, and come back safely." Repeated across many cycles, this rewrites the baseline autonomic tone. This is earned regulation: capacity built through lived experience under load.</p>
+      </div>
+      <div class="quote-block">
+        <p>"Calm is a state. Capacity is a skill. Regulation is the bridge."</p>
+      </div>
+      <div class="card">
+        <h3>Reading the state and choosing the response</h3>
+        <ul>
+          <li><strong>Regulated (ventral vagal):</strong> proceed with identity-level work.</li>
+          <li><strong>Activated (sympathetic):</strong> read whether productive. If so, this is the oscillation opportunity. If too intense, direct regulation first.</li>
+          <li><strong>Shutdown (dorsal vagal, flat, dissociated):</strong> orient to senses first. Bring the system back to at least some mobilization before oscillation can begin.</li>
+        </ul>
+      </div>
+      <div class="callout">
+        <p><strong>The coaching error:</strong> treating all activation as a problem to solve before the "real work" can begin. In many cases the activation IS the real work: the encoding state coming forward, offering access to material that can only be reached from inside it. A coach who reflexively calms every activation keeps closing the reconsolidation window before it can be used.</p>
+      </div>
+    </section>
+
+    <!-- 22 POLYVAGAL -->
+    <section class="section" id="s22">
+      <div class="section-header">
+        <div class="section-num">22</div>
+        <div>
+          <h2 class="section-title">Polyvagal Theory: The Working Model</h2>
+          <p class="section-subtitle">Three autonomic states, neuroception, and safety vs safeness</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <thead><tr><th>State</th><th>Physiological profile</th><th>What the coach observes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ventral Vagal</strong> (safe and social)</td><td>Heart rate regulated and flexible, HRV high. Breath smooth and rhythmic. Social engagement circuits online: mobile facial muscles, warm and varied vocal prosody.</td><td>Present, curious, able to track complexity. Natural eye contact. Creative brain fully online; identity-level work accessible.</td></tr>
+          <tr><td><strong>Sympathetic</strong> (mobilized)</td><td>HPA axis activated. Cortisol and adrenaline elevated. Heart rate increased and rigid. Blood to large muscle groups. Breath shallow and rapid. Visual field narrows.</td><td>Presents as anxiety (flight energy), anger (fight energy), or controlled vigilance (Striving archetypes). Creative brain partially or substantially offline; social brain running threat-detection.</td></tr>
+          <tr><td><strong>Shutdown</strong> (immobilized)</td><td>Heart rate drops. Blood pressure may fall. Emotional processing offline. Dissociation, numbness, collapse. The system has determined neither fight nor flight will work.</td><td>Client has gone flat. Emotional range collapsed. Eye contact absent or hollow. "I don't know" and "I don't care" are characteristic. Creative brain substantially offline.</td></tr>
+        </tbody>
+      </table>
+      <div class="card">
+        <h3>Neuroception, and why it is downstream of identity</h3>
+        <p>The system does not transition between states through conscious choice. It transitions through <strong>neuroception</strong>: the nervous system's continuous, unconscious scanning of the environment for safety and threat cues.</p>
+        <p><strong>Critical link: neuroception is downstream of identity.</strong> The threat-detection settings are calibrated by identity-level programming (MUD). A person whose identity structures say closeness is dangerous will have neuroception calibrated to detect threat in intimacy, even when the person offering intimacy is genuinely safe.</p>
+        <p>This is why purely neurological interventions (breathing exercises, sensory grounding) produce temporary state changes without permanent trait changes. They shift the state in the moment. They do not change the identity-level programming that calibrates neuroception. To change the baseline autonomic tone, the work must reach the identity level.</p>
+      </div>
+      <div class="vs-table">
+        <div class="vs-header old">Safety</div>
+        <div class="vs-header new">Safeness</div>
+        <div class="vs-row-old">An objective condition: the actual absence of threat</div>
+        <div class="vs-row-new">A physiological state: the felt sense of safety registered through neuroception</div>
+        <div class="vs-row-old">Can be true while the client still feels unsafe</div>
+        <div class="vs-row-new">Cannot be argued into existence. Registered on the nervous system's own terms.</div>
+      </div>
+      <div class="callout">
+        <p>A client can be objectively safe and physiologically unsafe. The threat is not in the room. It is in the neuroception, calibrated by identity-level programming from the conditioning phase. Coaches are not trying to convince clients they are safe. Logical argument does not reach neuroception. They create the conditions (regulated presence, consistent warmth, predictable pacing) that allow the nervous system to register safeness through its own channels.</p>
+      </div>
+      <div class="quote-block">
+        <p>"You cannot convince a nervous system that it is safe. You can only be the kind of presence that the nervous system, on its own terms, through its own channels, at its own speed, begins to register as safe enough. That is co-regulation. That is the coaching relationship as a biological event."</p>
+      </div>
+      <div class="card">
+        <h3>NLH's position on polyvagal theory</h3>
+        <p>NLH does not use polyvagal theory as its primary model. It uses an assembled framework drawn from multiple research streams: memory reconsolidation, ACE and PTSD research, attachment theory, interoception research. NLH borrows polyvagal language where clinically useful while building its own working model. The clinician-integrator stance: use the framework's clinical power, hold the specific mechanistic claims lightly, update as evidence evolves.</p>
+        <p>The three-state clinical map (social engagement, mobilization, shutdown/collapse) is clinically useful regardless of whether the specific anatomical story holds. People recognize themselves in these maps, and that recognition is therapeutic.</p>
+      </div>
+    </section>
+
+    <!-- 23 BMR APPLICATIONS -->
+    <section class="section" id="s23">
+      <div class="section-header">
+        <div class="section-num">23</div>
+        <div>
+          <h2 class="section-title">BMR Applications</h2>
+          <p class="section-subtitle">How Module 1 maps onto Better Man Recovery</p>
+        </div>
+      </div>
+      <div class="card-dark card">
+        <h3>The manual applied to the BMR client</h3>
+        <ol>
+          <li><strong>The Soother running a lowercase-sees sequence.</strong> The BMR client presenting with compulsive sexual behaviour is a Soother archetype running a lowercase-sees identity formation sequence. The shame is not the cause of the behaviour; it is a downstream expression of the same identity structures that generate it. Treating shame without reaching those structures produces temporary relief and re-entrenchment. The shame wound is almost never a single dramatic event: it is accumulated micro-invalidations across the adolescent window (belonging, adequacy, "am I enough?"), invisible because normalized.</li>
+          <li><strong>Rewrite-Rewire-Retrain maps to the program.</strong> Rewrite = Brain Rewiring Method and Destructive Pattern Navigator. Rewire = BRN sessions (BEEP, DEEP, QAT, DELTA). Retrain = the Urge Response System, Chapter 10, Fear PRs, and the Recovery Game Plan.</li>
+          <li><strong>The SIGNAL cascade explains why willpower-based recovery fails.</strong> The compulsive behaviour is at the bottom of the cascade. Willpower, accountability, and suppression target the bottom. Identity-level work reaches the cascade at the top, where permanent change is possible.</li>
+          <li><strong>The replacement pattern warning is the Soother insight in action.</strong> Suppressing the compulsion without addressing the AFRAID baseline simply shifts the Soother to the next available outlet. BMR targets identity, not behaviour management.</li>
+          <li><strong>Drama vs Trauma is essential at intake.</strong> Most clients will say "my childhood was fine" or "I didn't have trauma." Trace backward from the pattern to the SEES Events without requiring a dramatic origin story.</li>
+          <li><strong>The oscillation is the mechanism inside every BRN session.</strong> BEEP enters activation deliberately, introduces meaning shift while activated, and guides recovery. BEEP is not a relaxation technique. It is reconsolidation work.</li>
+          <li><strong>Safety vs Safeness applies to the coaching relationship and disclosure.</strong> The client does not need to be convinced Steve is safe. Consistency, warmth, and regulated presence let the client's nervous system register safeness on its own terms. This is the clinical basis for the trust-building arc in The Relationship Rescue. A client "not ready" to disclose is not being stubborn; his neuroception is detecting threat, and the antidote is consistent, regulated, non-reactive presence over time.</li>
+          <li><strong>The coach's own regulation is clinical preparation.</strong> The client's social brain continuously monitors the coach's nervous system state. Steve's daily practice (BRN sessions, Chapter 10, VIR) is not personal maintenance; it is the primary instrument of the work.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" id="quiz">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+      <p class="quiz-intro">20 questions spanning the whole manual: worldview, psychology, and the biology of becoming.</p>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">In the SIGNAL cascade, what sits at the top, upstream of everything else?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The nervous system</button>
+          <button class="opt" data-opt="B">B) Behaviour</button>
+          <button class="opt" data-opt="C">C) Identity</button>
+          <button class="opt" data-opt="D">D) Hormones</button>
+        </div>
+        <div class="q-result" data-explain="The cascade runs Source, Identity, Gate/Gestalt, Neuro, Adrenal/Hormonal, Lymphatic/Immune. Identity is the primary leverage point, which is why identity work is a metabolic intervention."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">Why does the brain resist new behaviour even when the client genuinely wants to change?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The client is not motivated enough</button>
+          <button class="opt" data-opt="B">B) Identity is a biological set point defended homeostatically. New behaviour that threatens the set point triggers a biological correction back to baseline.</button>
+          <button class="opt" data-opt="C">C) Behaviour change takes time to become automatic habit</button>
+          <button class="opt" data-opt="D">D) The prefrontal cortex cannot override limbic patterns</button>
+        </div>
+        <div class="q-result" data-explain="The personality set point recruits confirming evidence, avoids disconfirming experience, and selects for validating environments. Resistance is biology, not lack of motivation."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">Why do most BMR clients say "my childhood was fine"?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) They are protecting themselves from painful memories they haven't processed yet</button>
+          <button class="opt" data-opt="B">B) Their childhood actually was fine, and the pattern developed as an adult</button>
+          <button class="opt" data-opt="C">C) Subtle continuous conditioning is so normalised they cannot see it as conditioning. This is the clinical signature, not resistance.</button>
+          <button class="opt" data-opt="D">D) They are in the early stages of trust with the coach</button>
+        </div>
+        <div class="q-result" data-explain="Lowercase-sees conditioning is chronic, cumulative, and invisible. The conditioning is in the water and the fish cannot see the water."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">Which type of SEES event tends to produce more entrenched MUD?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Subtle/Continuous, because it's invisible and normalised, making it harder to trace and address</button>
+          <button class="opt" data-opt="B">B) Severe/Sudden, because the intensity of the event sears the story deeper</button>
+          <button class="opt" data-opt="C">C) Both produce equally entrenched MUD regardless of severity</button>
+          <button class="opt" data-opt="D">D) Severity of the original event directly predicts the depth of MUD</button>
+        </div>
+        <div class="q-result" data-explain="Severity does not predict depth. Chronic subtle invalidation from a loving but limited parent often produces more entrenched MUD than a single dramatic event."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">A client fully understands his worth isn't tied to performance but still feels intense shame when he makes a mistake. Clinically, this means:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The Rewrite failed and needs to be repeated with different framing</button>
+          <button class="opt" data-opt="B">B) The cement has loosened (Rewrite worked) but the rebar, the emotional charge, is still operational. The Rewire hasn't been done.</button>
+          <button class="opt" data-opt="C">C) The client is intellectualising to avoid doing the real work</button>
+          <button class="opt" data-opt="D">D) Progress is on track. Insight always precedes embodiment by several months.</button>
+        </div>
+        <div class="q-result" data-explain="Emotion is the rebar of the identity structure. MUD without emotional charge is a thought you can question; MUD with emotional charge is a felt reality you cannot argue with."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">What does "Rewire without Rewrite" produce?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Temporary relief. The charge releases but MUD regenerates it from the unchanged story.</button>
+          <button class="opt" data-opt="B">B) Lasting change. Emotional release is the primary mechanism for durable transformation.</button>
+          <button class="opt" data-opt="C">C) Insight without embodiment</button>
+          <button class="opt" data-opt="D">D) Nothing. Both must happen in the same session to have any effect.</button>
+        </div>
+        <div class="q-result" data-explain="Rewire without Rewrite discharges the charge but leaves the story intact, so the MUD regenerates it. Rewrite without Rewire is the reverse failure: insight without embodiment."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">Why must MUD be retrieved under sympathetic activation (rather than in a calm, relaxed state)?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Activation makes the client more willing to engage with difficult material</button>
+          <button class="opt" data-opt="B">B) MUD was formed under activation. It cannot be fully reshaped in a state of sedation. The encoding state must be recreated to reach the rebar where it was laid down.</button>
+          <button class="opt" data-opt="C">C) Calm states reduce access to subconscious material</button>
+          <button class="opt" data-opt="D">D) Activation drives the prediction error more effectively than a neutral state</button>
+        </div>
+        <div class="q-result" data-explain="High arousal seared the story into the system through limbic engagement and stress hormone signalling. Meaning introduced at the moment of activation reaches the original encoding environment; meaning introduced in calm does not."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">The distinction between regulation and relaxation is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Relaxation soothes the moment; regulation builds the capacity to function inside activation. They are different outcomes, not synonyms.</button>
+          <button class="opt" data-opt="B">B) Regulation is deeper than relaxation but produces the same long-term result</button>
+          <button class="opt" data-opt="C">C) Relaxation is a prerequisite for regulation. You need one before the other.</button>
+          <button class="opt" data-opt="D">D) They are effectively the same in clinical practice</button>
+        </div>
+        <div class="q-result" data-explain="The wellness world prescribes relaxation as regulation. That soothes the moment without reaching the structure. Regulation is a trainable skill: holding focus in the storm and settling after."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">What is the distinction between Safety and Safeness?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Safety is emotional; safeness is physical and objective</button>
+          <button class="opt" data-opt="B">B) Safety is the objective condition (threat absent); safeness is the physiological state (nervous system registers absence of threat). A client can be objectively safe but physiologically unsafe.</button>
+          <button class="opt" data-opt="C">C) They refer to the same state. If a person is safe, they feel safe.</button>
+          <button class="opt" data-opt="D">D) Safety is long-term; safeness is moment-to-moment</button>
+        </div>
+        <div class="q-result" data-explain="The threat is not in the room; it is in the neuroception, calibrated by identity-level programming. You cannot argue a nervous system into safeness. You create the conditions for it to register safeness through its own channels."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">A client consistently knows better but acts on the old pattern under pressure. The NLH response is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) More insight work. The Rewrite hasn't landed yet at sufficient depth.</button>
+          <button class="opt" data-opt="B">B) More emotional processing. The Rewire isn't complete.</button>
+          <button class="opt" data-opt="C">C) Retrain. The new response needs hundreds of low-stakes repetitions to fire faster than the old pathway when the system is under load.</button>
+          <button class="opt" data-opt="D">D) Medication to stabilise the nervous system before coaching can continue</button>
+        </div>
+        <div class="q-result" data-explain="You cannot install software during a crash. The creative brain learns in safety; the survival brain learns through repetition. Practice the new response when calm until it is fast enough to compete."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 11</span>
+        <p class="q-text">Compulsive sexual behaviour is which drive operating without Purpose as the organising principle?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Power</button>
+          <button class="opt" data-opt="B">B) Popularity</button>
+          <button class="opt" data-opt="C">C) Pleasure</button>
+          <button class="opt" data-opt="D">D) All four drives equally contribute</button>
+        </div>
+        <div class="q-result" data-explain="The Pleasure drive numbing discomfort compulsively is the Soother archetype. Purpose is the integrating drive: when it is online, the other three find their proper place."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 12</span>
+        <p class="q-text">A client presents with emptiness and lack of direction despite significant external success. Which Core Need is unmet?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Authenticity, Growth &amp; Creation (the Purpose floor)</button>
+          <button class="opt" data-opt="B">B) Safety &amp; Security</button>
+          <button class="opt" data-opt="C">C) Acceptance &amp; Belonging</button>
+          <button class="opt" data-opt="D">D) Freedom &amp; Autonomy</button>
+        </div>
+        <div class="q-result" data-explain="Emptiness, drift, and chronic vague dissatisfaction are the unmet expression of the mature-adult need. The coaching direction is purpose construction from the 5Ps."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 13</span>
+        <p class="q-text">The goal of working with internal "parts" is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) To eliminate the harmful parts and strengthen the useful ones</button>
+          <button class="opt" data-opt="B">B) To help the High Self take its place as author of the life, holding all parts with compassion without being captured by any of them</button>
+          <button class="opt" data-opt="C">C) To integrate all parts into a single unified self</button>
+          <button class="opt" data-opt="D">D) To understand the origin of each part so the client can choose which to act from</button>
+        </div>
+        <div class="q-result" data-explain="Every part was adaptive: the best available response to the conditioning phase. The problem is not that the part exists but that it still runs the same program in conditions where it is no longer necessary."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 14</span>
+        <p class="q-text">Why is Pain described as the most important of the 5Ps?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Pain motivates clients to do the work they would otherwise avoid</button>
+          <button class="opt" data-opt="B">B) Pain is the primary pointer to unique work and the most direct raw material for Purpose construction. The recovery story is an asset, not a confession.</button>
+          <button class="opt" data-opt="C">C) Pain contains the most information about the client's identity formation sequence</button>
+          <button class="opt" data-opt="D">D) Pain is the only P that cannot be taught. It must be lived.</button>
+        </div>
+        <div class="q-result" data-explain="Pain is not a liability to minimize. It is the raw material of Alchemy: the coaching moves from 'what is wrong with me?' to 'what does this pain uniquely position me to do?'"></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 15</span>
+        <p class="q-text">How do you tell instinct from intuition?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Instinct is physical; intuition is mental</button>
+          <button class="opt" data-opt="B">B) Instinct is always wrong; intuition is always right</button>
+          <button class="opt" data-opt="C">C) Instinct shouts, is urgent, and uses cached past threat data. Intuition hums, is quiet and directional, and reads live present-moment data.</button>
+          <button class="opt" data-opt="D">D) They are the same signal at different intensities</button>
+        </div>
+        <div class="q-result" data-explain="Instinct is fear-based (what did I need to protect myself from before?) and intuition is love-based (what is true and needed here now?). Most people mistake the shout for the hum."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 16</span>
+        <p class="q-text">According to NLH, purpose is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Found, through sustained searching and self-discovery</button>
+          <button class="opt" data-opt="B">B) Generated: actively constructed from the raw material of the 5Ps, especially Pain</button>
+          <button class="opt" data-opt="C">C) Assigned by circumstances and confirmed by results</button>
+          <button class="opt" data-opt="D">D) Identical to passion, but sustained over time</button>
+        </div>
+        <div class="q-result" data-explain="Passion is context-dependent, meaning is retrospective, and purpose is the self-sustaining intersection of unique pain, powers, and contribution to others. It goes everywhere with you."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 17</span>
+        <p class="q-text">A coaching session unintentionally threatens the client's status. What happens neurologically?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Social brain dominance is triggered, reducing access to the creative brain where identity-level work is possible</button>
+          <button class="opt" data-opt="B">B) Nothing significant, because status is a social construct rather than a physical threat</button>
+          <button class="opt" data-opt="C">C) The survival brain goes offline and the client dissociates</button>
+          <button class="opt" data-opt="D">D) The creative brain compensates by rationalising the threat</button>
+        </div>
+        <div class="q-result" data-explain="The social brain treats threats to Status, Certainty, Autonomy, Relatedness, and Fairness (SCARF) as equivalent to physical threat. Never challenge without first elevating."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 18</span>
+        <p class="q-text">Why is "be it until you see it" preferred over "fake it till you make it"?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It sounds less dishonest, so clients accept it more readily</button>
+          <button class="opt" data-opt="B">B) Faking eventually becomes being through enough repetition</button>
+          <button class="opt" data-opt="C">C) It removes the pressure to perform, so it lowers stress</button>
+          <button class="opt" data-opt="D">D) Identity precedes behaviour. Behaviour emerging from a genuinely activated identity state (the method actor) differs in quality and durability from performed behaviour (the regular actor).</button>
+        </div>
+        <div class="q-result" data-explain="This is the clinical basis for VIR: access the ELEVATED state first, then imprint the identity from within it, not from outside it. The audience can feel the gap in performance; with genuine access there is no gap."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 19</span>
+        <p class="q-text">In the SEE-THINK-FEEL-CHOOSE-ACT sequence, where does MUD intervene?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) At SEE. The conditioned identity filters perception before thinking begins.</button>
+          <button class="opt" data-opt="B">B) At CHOOSE. MUD hijacks the decision point.</button>
+          <button class="opt" data-opt="C">C) At ACT. MUD produces the compulsive behaviour directly.</button>
+          <button class="opt" data-opt="D">D) At FEEL. MUD generates the emotional response.</button>
+        </div>
+        <div class="q-result" data-explain="Two people in the same situation SEE different situations. The coaching target is the perception filter (SEE and THINK), not the downstream behaviour (ACT)."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 20</span>
+        <p class="q-text">A client in session has gone flat: collapsed emotional range, hollow eye contact, answering "I don't know" and "I don't care." The correct first move is:</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Begin the oscillation immediately. Activation will bring the system back online.</button>
+          <button class="opt" data-opt="B">B) Proceed with identity-level work while defences are down</button>
+          <button class="opt" data-opt="C">C) Orient to senses first. This is dorsal vagal shutdown; bring the system back to at least some mobilization before oscillation can begin.</button>
+          <button class="opt" data-opt="D">D) End the session. No work is possible in this state.</button>
+        </div>
+        <div class="q-result" data-explain="Shutdown means the system has determined neither fight nor flight will work. Read the state and choose the response: regulated means proceed, activated means oscillation opportunity, shutdown means sensory orientation first."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      q.classList.add('answered');
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      q.querySelectorAll('.opt').forEach(function(b) {
+        b.disabled = true;
+        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+      });
+      if (chosen === answer) {
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

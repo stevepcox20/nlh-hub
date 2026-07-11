@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Money Mindset &amp; Manifestation &middot; NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: block;
+    padding: 14px 18px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    opacity: 0.6;
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 110px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">NLH Hub &middot; Next Level Human</span>
+      <span class="title">Money Mindset &amp; Manifestation</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <span class="nav-section">On this page</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s1">The core premise</a></li>
+      <li><a href="#s2">The Generosity River</a></li>
+      <li><a href="#s3">See accurately (Verum Videre)</a></li>
+      <li><a href="#s4">Three levels of money stories</a></li>
+      <li><a href="#s5">How a money identity forms</a></li>
+      <li><a href="#s6">Eight Money Mindsets</a></li>
+      <li><a href="#s7">Four Core Needs and money</a></li>
+      <li><a href="#s8">The Four Money Blocks</a></li>
+      <li><a href="#s9">Money as placebo</a></li>
+      <li><a href="#s10">Rewrite, Rewire, Retrain</a></li>
+      <li><a href="#s11">Career and the purpose-money interface</a></li>
+      <li><a href="#s12">Designing productive days</a></li>
+      <li><a href="#s13">Money, gender, and coaching</a></li>
+      <li><a href="#s14">The silo economy</a></li>
+      <li><a href="#s15">The three-phase session map</a></li>
+      <li><a href="#s16">Clinical quick reference</a></li>
+      <li><a href="#s17">BMR applications</a></li>
+      <li><a href="#quiz">Comprehension check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Money, Abundance &amp; Manifestation Manual &middot; Module 4</div>
+      <h1>Money Mindset &amp; <em>Manifestation</em></h1>
+      <p class="hero-desc">Every money problem is an identity problem. This module maps how money stories get installed in childhood and run adult finances from below awareness: the Generosity River, the Eight Money Mindsets, the Four Money Blocks and the worth wound underneath them, Money as Appreciation, and the three-phase session map that takes a client from perception to ownership to action.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">17</span><span class="label">Sections</span></div>
+        <div class="hero-stat"><span class="num">14</span><span class="label">Quiz questions</span></div>
+      </div>
+    </header>
+
+    <!-- 01 CORE PREMISE -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">The Core Premise</h2>
+          <p class="section-subtitle">Why coaching money behaviour without reaching the story is coaching on the wrong floor</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>Every money problem is an identity problem.</p>
+      </div>
+      <div class="card">
+        <p>The stories people carry about money were installed in childhood, reinforced through adolescence, and hardened into adult patterns. They run a person's financial life from below the level of awareness. Coaching that targets behaviour without reaching the story is coaching on the wrong floor.</p>
+        <p>You cannot out-earn a worth wound. You cannot build genuine financial freedom while the identity beneath the finances defines itself by scarcity, shame, or approval. The strategy only works when the story has changed first.</p>
+        <p>The manual applies the full NLH framework to the financial and career domain: the psychology of money, the coaching tools for transformation, career alignment, productive day design, gender dynamics, the future of coaching, and a complete session map. It ends with case studies and a clinical decision map. Everything on this page comes from that arc.</p>
+      </div>
+    </section>
+
+    <!-- 02 GENEROSITY RIVER -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">The Generosity River</h2>
+          <p class="section-subtitle">Source applied to money: how money actually flows</p>
+        </div>
+      </div>
+      <div class="card-accent card">
+        <p>Money is like a river. It flows in one direction, from Source, from the world, from the people and systems that compensate you, downstream through you to the world. Your job is not to dam the river. Your job is not to divert all of it to yourself. Your job is to participate in the flow: receive from upstream, pass forward downstream.</p>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">No circles</div>
+          <div class="pillar-desc">If you give and expect the same person to give back, you are trying to make the river flow in a circle. Rivers do not flow in circles. The return comes from upstream: a different source, a different form, a different time.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Dams</div>
+          <div class="pillar-desc">If someone in your life always takes but never passes forward, they are a dam. Useful information about the relationship, but it does not change the river itself.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Receiving keeps the river full</div>
+          <div class="pillar-desc">If you give compulsively but cannot receive, you are pushing water downstream without allowing anything from upstream. You are depleting the river at your location. Receiving is not greed.</div>
+        </div>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>Clinical force:</strong> the Pleaser who cannot receive is not being humble. They are blocking the flow. Receiving is participation in the river, not extraction from it.</p>
+      </div>
+    </section>
+
+    <!-- 03 SEE ACCURATELY -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">See Accurately (Verum Videre)</h2>
+          <p class="section-subtitle">The prerequisite for manifestation</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>The single most important pre-condition for financial change is seeing the current situation accurately. Not optimistically. Not catastrophically. Accurately. Verum Videre: see truly.</p>
+        <h4>The Sanitation Worker Problem</h4>
+        <p>The coach who cannot handle the sight of sewage cannot clean it. A coach who cannot hold the honest financial picture of a client's life, the debt, the shame, the avoidance, the chaos, cannot help them. The first act of money coaching is sitting with what is true without flinching.</p>
+        <h4>The Pop Star / Voice Coach Example</h4>
+        <p>A voice coach who only validates a student prevents them from developing real skill. Accurate assessment, delivered with care, is the beginning of genuine transformation. A coach who only affirms a client's potential while overlooking their patterns is not serving them.</p>
+      </div>
+    </section>
+
+    <!-- 04 THREE LEVELS -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">Three Levels of Money Stories</h2>
+          <p class="section-subtitle">Diagnose which level is operating, then work from there</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <tr><th>Level</th><th>What money means</th><th>Coaching entry point</th></tr>
+        <tr><td><strong>Base Level</strong></td><td>Safety and control. Money is security. "Without enough money, I am in danger."</td><td>Safety work. Graduated spending exposure. Build structure before pushing behaviour change.</td></tr>
+        <tr><td><strong>Culture Level</strong></td><td>Status and belonging. Money is social currency. "My worth = my net worth."</td><td>Worth work first. Separate identity from account balance.</td></tr>
+        <tr><td><strong>Next Level</strong></td><td>Purpose infrastructure. Money enables contribution. "Money is how I do the work that matters."</td><td>Purpose activation. Frame money as platform, not goal.</td></tr>
+      </table>
+      <div class="callout">
+        <p><strong>Note:</strong> most clients enter at the Base or Culture level. The goal is not to push them to Next Level immediately. It is to help them see which level is operating and work from there.</p>
+      </div>
+    </section>
+
+    <!-- 05 IDENTITY FORMATION -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">How a Money Identity Forms</h2>
+          <p class="section-subtitle">The SEES Event sequence, replication or rebellion, and three case patterns</p>
+        </div>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Money identity formation sequence</div>
+        <div class="timeline-phases">
+          <div class="phase-item"><div class="phase-dot">1</div><div class="phase-name">SEES Event</div><div class="phase-sub">Childhood experience with financial meaning</div></div>
+          <div class="phase-item"><div class="phase-dot">2</div><div class="phase-name">Judgment</div><div class="phase-sub">Made without wisdom to process it accurately</div></div>
+          <div class="phase-item"><div class="phase-dot">3</div><div class="phase-name">Story</div><div class="phase-sub">"I am not good with money"</div></div>
+          <div class="phase-item"><div class="phase-dot">4</div><div class="phase-name">Emotion fuses</div><div class="phase-sub">AFRAID state becomes the automatic money response</div></div>
+          <div class="phase-item"><div class="phase-dot">5</div><div class="phase-name">Belief hardens</div><div class="phase-sub">Story + emotion = identity structure</div></div>
+          <div class="phase-item"><div class="phase-dot">6</div><div class="phase-name">Identity forms</div><div class="phase-sub">Now part of who the person "is"</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>The Replication-or-Rebellion Pattern</h3>
+        <p>When the money story is installed in childhood, the adult typically does one of two things:</p>
+        <ul>
+          <li><strong>Replication:</strong> unconsciously recreates the financial pattern of the parents. "This is just how things are in our family."</li>
+          <li><strong>Rebellion:</strong> overcorrects aggressively against the parental pattern. "I will be nothing like them financially."</li>
+        </ul>
+        <p>Both are driven by the original story. Neither is free. True financial freedom comes when the story is worked at the identity level: neither replicated nor rebelled against, but genuinely revised.</p>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">The Sears Story</div>
+          <div class="pillar-desc">Belonging/worth. Excluded as a child because of what the family could afford. Story: "My worth is tied to what I have." Adult pattern: spending for belonging, keeping up appearances, undercharging because charging full price feels like claiming worth.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">The Save-Save-Save Story</div>
+          <div class="pillar-desc">Safety/scarcity. Chronic parental financial anxiety. Story: "There is never enough. Safety is in the hoarding." Adult pattern: cannot invest in self or business, anxiety at any spending even when financially stable.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">The Freedom Story</div>
+          <div class="pillar-desc">Autonomy/overspending. Money was used as a form of restriction by parents. Story: "Money is freedom. Holding on to it feels like being controlled." Adult pattern: compulsive spending as pseudo-freedom, inability to budget or save.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 EIGHT MINDSETS -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">The Eight Money Mindsets</h2>
+          <p class="section-subtitle">Categorising the client's financial identity structure</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <tr><th>Mindset</th><th>Core pattern</th><th>Typical outcome</th></tr>
+        <tr><td><strong>Scarcity</strong></td><td>Resources are limited. Hoard and protect.</td><td>Poor financial outcomes. Rarely appears in coaching (won't spend on coaching).</td></tr>
+        <tr><td><strong>Abundance</strong></td><td>Optimistic, risk-embracing, opportunity-seeking.</td><td>Good outcomes. Risk: overconfidence and outsized losses.</td></tr>
+        <tr><td><strong>Growth</strong></td><td>Adaptive, learning-oriented. Money comes and goes; lessons accumulate.</td><td>Good outcomes with high resilience. Natural NLH orientation.</td></tr>
+        <tr><td><strong>Delayed Gratification</strong></td><td>Long-term planning. Projects future financial state.</td><td>Good wealth accumulation. Risk: cannot enjoy money in the present.</td></tr>
+        <tr><td><strong>Money-as-Tool</strong></td><td>Practical, budget-conscious, emotionally neutral about money.</td><td>Stable. Rarely struggles, rarely excels. May need purpose activation.</td></tr>
+        <tr><td><strong>Balanced</strong></td><td>Neither hoards nor overspends. Low financial stress.</td><td>Good emotional health around money. May coast without financial growth.</td></tr>
+        <tr><td><strong>Investor</strong></td><td>Studies money as a skill domain. Uses money to make money.</td><td>Best financial outcomes of all eight. Requires learning commitment.</td></tr>
+        <tr><td><strong>Frugal</strong></td><td>Lives within means. Value-based purchases.</td><td>Stable but limited mobility. Risk: frugality as identity cage rather than conscious choice.</td></tr>
+      </table>
+    </section>
+
+    <!-- 07 FOUR CORE NEEDS -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">The Four Core Needs Applied to Money</h2>
+          <p class="section-subtitle">What money actually represents for this client</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <tr><th>Core need</th><th>How it distorts money</th><th>Coaching direction</th></tr>
+        <tr><td><strong>Safety / Security</strong></td><td>Hoarding, catastrophic thinking, spending anxiety, inability to enjoy financial success.</td><td>Build safety through structure: savings, insurance, emergency fund. Never push spending faster than the nervous system can tolerate.</td></tr>
+        <tr><td><strong>Acceptance / Belonging</strong></td><td>Spending for status, undercharging, tying net worth to self-worth.</td><td>Worth work first. Separate value from bank balance. Price increase PRs.</td></tr>
+        <tr><td><strong>Freedom / Autonomy</strong></td><td>Overspending on experiences, resisting financial structure, money chaos as pseudo-freedom.</td><td>Frame structure as freedom infrastructure. Balance present freedom with future freedom.</td></tr>
+        <tr><td><strong>Growth / Purpose</strong></td><td>Neglecting financial basics because "money is not the point," romanticising poverty.</td><td>Frame money as purpose infrastructure. "You cannot do your purpose from financial panic."</td></tr>
+      </table>
+    </section>
+
+    <!-- 08 FOUR BLOCKS -->
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">The Four Money Blocks</h2>
+          <p class="section-subtitle">Spotting the pattern body-first, then coaching the specific block</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Body-First: Spotting Money Patterns in Session</h3>
+        <p>The sequence: BEEP first, to create receptivity, then explore the money story. The body will give the coach the pattern before the narrative does.</p>
+        <h4>Dimensionalising Money Exercise</h4>
+        <p>Ask the client to imagine money as a character or person in the room. What does it look like? How does it move? What does its face say? How close is it? This anthropomorphisation converts the abstract into something the subconscious can work with, and it reveals the emotional relationship immediately.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <div class="pillar-name">1. The Receiving Block</div>
+          <div class="pillar-desc">Can give freely but cannot receive without deflecting, minimising, or returning the gift. Root: worth wound. Receiving would mean claiming "I am valuable enough to receive." Coaching: Receiving PRs.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">2. The Spending Block</div>
+          <div class="pillar-desc">Anxiety, guilt, or avoidance around spending on self. Can spend on others freely. Root: safety/scarcity story or "I don't deserve to invest in myself." Coaching: Spending PRs calibrated to the edge, starting at $20.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">3. The Earning Ceiling</div>
+          <div class="pillar-desc">Income plateaus at the same level regardless of skill or market. Raising rates triggers self-sabotage. Root: worth ceiling, "I am not worth more than X." Coaching: WET on the installing SEES Events. Price increase PRs.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">4. The Worth Question</div>
+          <div class="pillar-desc">Underlies most money blocks. "Am I worth being well-compensated? Am I worth financial success? Am I worth the investment?" Separate net worth from self-worth. Identity work before financial strategy.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 MONEY AS PLACEBO -->
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">The Money-as-Placebo Principle</h2>
+          <p class="section-subtitle">Why pricing is clinical, not just commercial</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>When clients pay for coaching, something beyond information exchange occurs. The act of payment activates belief in the value of the transformation. The coach who undercharges inadvertently signals that the work is not worth much, which undermines the client's conviction that change is possible.</p>
+      </div>
+      <div class="quote-block">
+        <p>Charging what the work is worth is not just commercial. It is clinical.</p>
+      </div>
+    </section>
+
+    <!-- 10 REWRITE REWIRE RETRAIN -->
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2 class="section-title">Rewrite, Rewire, Retrain for Abundance</h2>
+          <p class="section-subtitle">The full transformation arc applied to money</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Rewrite: WET Applied to Money (Three-Write Protocol)</h3>
+        <ol>
+          <li><strong>The Wound:</strong> write the SEES Event as it happened. The specific memory. The child's experience. Unfiltered, full weight.</li>
+          <li><strong>The Rewrite:</strong> write from the adult self. What does the adult now know? What is the compassionate revision?</li>
+          <li><strong>The Future Self:</strong> write the future self living the new money story. Present tense. Felt in the body.</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h3>Rewire: The Abundance Meditation Protocol</h3>
+        <div class="vs-table">
+          <div class="vs-header old">What most people do</div>
+          <div class="vs-header new">What actually works</div>
+          <div class="vs-row-old">Visualise imagery of material wealth: raining money, expensive possessions, symbols of abundance.</div>
+          <div class="vs-row-new">Sit in the feeling of a life where money is not an issue. The felt sense of the Four Core Needs met: safety without hoarding, connection without earning it, freedom within structure, purpose with resources.</div>
+        </div>
+        <div class="script-block">
+          <span class="script-label">The reframe for the session</span>
+          <p>"The right kind of abundance meditation is not imagery of cash. It is the feeling state of a life where money is not the problem. What does that feel like in the body? That feeling is what you are building toward. Money is one of the instruments that creates it, but it is not the thing itself."</p>
+        </div>
+      </div>
+
+      <div class="card-accent card">
+        <h3>Money as a Packet of Appreciation</h3>
+        <p>Money is not a measure of worth, not a scarce resource, not a dangerous power. It is a packet of appreciation. When you pay someone, you are saying: "I appreciate what you did for me. Here is a tangible expression of that appreciation." When someone pays you, they are saying the same thing.</p>
+        <p>When this lands as felt truth, not just intellectual understanding, four things shift simultaneously:</p>
+        <ol>
+          <li>Spending becomes an act of appreciation rather than an act of loss.</li>
+          <li>Receiving becomes allowing appreciation rather than incurring obligation.</li>
+          <li>Generosity becomes natural rather than performative.</li>
+          <li>The scarcity reflex softens. Appreciation is not a limited resource.</li>
+        </ol>
+        <p><strong>Clinical use:</strong> when a client cannot spend on themselves, this is the reframe to reach for before behavioural interventions. The block is in the meaning, not the behaviour.</p>
+      </div>
+
+      <div class="card">
+        <h3>Retrain: Financial PRs</h3>
+        <h4>Spending PRs (for spending blocks)</h4>
+        <ul>
+          <li>Start small: $20 on something purely for self. Track what comes up. Journal after.</li>
+          <li>Increase gradually. Calibrate to the client's edge, not a formula.</li>
+          <li>Journal protocol: "What did it feel like to spend on yourself? What story came up? What did your body do?"</li>
+        </ul>
+        <h4>Generosity PRs (for receiving blocks)</h4>
+        <ul>
+          <li>Accept a compliment: say "thank you" without deflecting. No "oh it was nothing."</li>
+          <li>Let someone pay for a meal without reaching for the check. Sit in the discomfort. Notice where you feel it.</li>
+          <li>When someone offers help, say yes. Do not explain why you don't need it.</li>
+        </ul>
+        <h4>Financial Structure PRs (for money chaos)</h4>
+        <ul>
+          <li>Open a savings account this week. Automate a transfer, even $25 per paycheck.</li>
+          <li>Look at your bank statement, all of it. The PR is the looking, not the fixing.</li>
+          <li>Have a money conversation with your partner or a trusted person. For many clients, money is the last taboo.</li>
+        </ul>
+      </div>
+
+      <div class="callout">
+        <p><strong>The Habenula Hijack Principle:</strong> if a client "fails" at a PR, it is not failure, it is data. The habenula, the brain's failure sensor, will suppress motivation if the client treats the attempt as evidence of inadequacy. Semper discendum: always be learning. Nothing is failure; everything is material for the next coaching cycle.</p>
+      </div>
+    </section>
+
+    <!-- 11 CAREER -->
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <div>
+          <h2 class="section-title">Career and the Purpose-Money Interface</h2>
+          <p class="section-subtitle">Career questions are almost never career questions</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>"Should I change jobs?" really means "Am I living the life my identity set point is preventing me from living?"</p>
+      </div>
+      <div class="card">
+        <h3>The Corporate Climber Case</h3>
+        <ul>
+          <li><strong>Surface question:</strong> how do I get promoted?</li>
+          <li><strong>Real question:</strong> why is my drive organised around power and recognition rather than contribution?</li>
+        </ul>
+        <p>Coaching sequence: start with curiosity (listen for power language vs purpose language), follow the feeling (what does being passed over activate?), name the story without judgment, then bridge to purpose: "If you got the CEO title tomorrow and it did not change how you feel inside, what are you actually after?"</p>
+        <h4>The Five Whys Applied to Career Goals</h4>
+        <p>Ask "why" five times. Each layer peels back the surface to reveal the deeper motivation. "I want to be a CEO." Why? "Because I want to run things my way." Why is that important? Follow the thread until the identity structure beneath the career ambition is visible.</p>
+      </div>
+      <div class="card">
+        <h3>The Career Transitioner and the Two-Train Metaphor</h3>
+        <p>The key coaching challenge: the client frames the transition as a binary, trapped here vs leap into the unknown. The NLH coach refuses the binary. Keep the income train running, build the purpose work on the side, make the transition when the numbers support it.</p>
+        <div class="script-block">
+          <span class="script-label">When purpose and money conflict</span>
+          <p>"Your purpose is clear. The money is not there yet. Both of those things are true. Here is what we are going to build: a plan that keeps the income stable while we develop the purpose work into something that can eventually sustain you."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 PRODUCTIVE DAYS -->
+    <section class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <div>
+          <h2 class="section-title">Designing Productive Days</h2>
+          <p class="section-subtitle">Energy modes, ultradian rhythms, and the Three-Plan System</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>The Anti-Huberman Principle:</strong> there is no universal morning routine. The coach's job is not to prescribe the routine, it is to help the client discover theirs. Individual chronotype variation is real, significant, and largely genetic.</p>
+      </div>
+      <table class="ref-table">
+        <tr><th>Energy mode</th><th>What it includes</th><th>When it typically peaks</th></tr>
+        <tr><td><strong>Creative</strong></td><td>Writing, designing, strategising, content creation, visioning.</td><td>Varies by individual. Protect whenever it peaks.</td></tr>
+        <tr><td><strong>Learning</strong></td><td>Reading, studying, absorbing new information.</td><td>Many people naturally receptive in the evening; others in early morning.</td></tr>
+        <tr><td><strong>Doing</strong></td><td>Administrative tasks, emails, calls, execution.</td><td>Research suggests 10am-3pm for most people. Ultradian rhythms apply.</td></tr>
+      </table>
+      <div class="card">
+        <h3>Ultradian Rhythms: The 90-Minute Cycle</h3>
+        <p>Every approximately 90 minutes, the brain cycles through a peak of focused attention followed by a natural trough. Practical application:</p>
+        <ol>
+          <li>Work in 90-minute blocks. Single category of work per block.</li>
+          <li>After each block: genuine break. Get up, move, look at something far away. Not optional.</li>
+          <li>Three 90-minute blocks per day is roughly 4.5 hours of focused output. For most creative and knowledge work, that is a full productive day.</li>
+        </ol>
+      </div>
+      <div class="pillars-grid cols-3">
+        <div class="pillar-item">
+          <div class="pillar-name">Plan A: The Ideal Day</div>
+          <div class="pillar-desc">What the client does when everything goes right. Built around natural energy modes.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Plan B: The Disrupted Day</div>
+          <div class="pillar-desc">Shorter, simpler. Single highest-priority task. For when the meeting runs over, the child is sick, the fire needs putting out.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">Plan C: The Travel/Recovery Day</div>
+          <div class="pillar-desc">Minimal schedule. Permission to rest. Named and expected in advance, not improvised with guilt.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 GENDER -->
+    <section class="section" id="s13">
+      <div class="section-header">
+        <div class="section-num">13</div>
+        <div>
+          <h2 class="section-title">Money, Gender, and the Coaching Relationship</h2>
+          <p class="section-subtitle">Different patterns, different coaching directions</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Coaching Women on Money</h3>
+        <p>Consistent patterns driven by high agreeableness and conscientiousness (Big Five research):</p>
+        <ul>
+          <li>Accepting the first salary offer without negotiating</li>
+          <li>Undercharging for services</li>
+          <li>Deferring financial decisions to partners</li>
+          <li>Sacrificing financial self-advocacy for relational harmony</li>
+        </ul>
+        <p><strong>The "boss bitch" paradox:</strong> women who assert themselves financially receive harsher social evaluation than men exhibiting identical behaviour. The coach must acknowledge this reality while still helping the client advocate. The world being unfair does not mean you should accept unfair compensation. It means advocacy requires more courage, and more support.</p>
+      </div>
+      <div class="card">
+        <h3>Coaching Men on Money</h3>
+        <p>Consistent patterns from deep money-identity fusion:</p>
+        <ul>
+          <li>Refusal to accept jobs perceived as "beneath" them (identity protection, not rational calculation)</li>
+          <li>Financial setback experienced as identity crisis (money was constituting the sense of self)</li>
+          <li>Inability to ask for help (admitting financial difficulty = admitting inadequacy)</li>
+          <li>Risk-taking as identity performance ("I am the provider, the winner, the one who makes it big")</li>
+        </ul>
+        <div class="callout callout-forest">
+          <p><strong>The coaching direction for men:</strong> separate identity from net worth before the money anxiety will release. The man must be able to answer "who are you if you have no money?" with something other than panic.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14 SILO ECONOMY -->
+    <section class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">14</div>
+        <div>
+          <h2 class="section-title">The Silo Economy and the Future of Coaching</h2>
+          <p class="section-subtitle">Why coaching becomes more valuable as cognitive labor automates</p>
+        </div>
+      </div>
+      <div class="pillars-grid cols-2">
+        <div class="pillar-item">
+          <div class="pillar-name">The AI Disruption</div>
+          <div class="pillar-desc">Cognitive labor is being automated for the first time in history. Clients will increasingly present navigating this disruption.</div>
+        </div>
+        <div class="pillar-item">
+          <div class="pillar-name">The Micro-Trust Economy</div>
+          <div class="pillar-desc">People are building small, trusted networks of advisors: their person for health, their person for money, their person for relationships. The NLH coach sits at the intersection of what AI cannot replace.</div>
+        </div>
+      </div>
+      <div class="card-dark card">
+        <h3>Why coaching becomes more valuable, not less</h3>
+        <p>The more cognitive tasks are automated, the more valuable the uniquely human capacities become. AI can analyse data, generate content, answer questions, and simulate conversation. What it cannot do is sit with a human being in their subconscious pain, hold space for identity-level transformation, and guide someone through the dismantling of a childhood wound. The NLH coach works precisely in that space: embodied presence, regulated nervous system co-regulation, and the willingness to say the hard thing the client needs to hear.</p>
+      </div>
+    </section>
+
+    <!-- 15 SESSION MAP -->
+    <section class="section" id="s15">
+      <div class="section-header">
+        <div class="section-num">15</div>
+        <div>
+          <h2 class="section-title">The Money Coaching Session Map</h2>
+          <p class="section-subtitle">Perception, Ownership, Action across twelve months</p>
+        </div>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Three-phase arc</div>
+        <div class="timeline-phases">
+          <div class="phase-item"><div class="phase-dot">1</div><div class="phase-name">Perception</div><div class="phase-sub">Months 1-3. Ownership of the pattern.</div></div>
+          <div class="phase-item"><div class="phase-dot">2</div><div class="phase-name">Ownership</div><div class="phase-sub">Months 3-6. From "what is my pattern?" to "who do I want to become?"</div></div>
+          <div class="phase-item"><div class="phase-dot">3</div><div class="phase-name">Action</div><div class="phase-sub">Months 6-12. New identity meets the real world.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Phase 1: Perception (Months 1-3)</h3>
+        <p>Goal: by the end of three months the client can say, "This is my issue, my pattern, my story. Not my parents' fault. Not the economy's fault. Mine."</p>
+        <ul>
+          <li>Initial assessment: map the presenting concern to the Four Core Needs</li>
+          <li>Money history intake: family financial models, messages about money, worth, earning, spending</li>
+          <li>First BEEP session with money intention: "Breathe into the concept of money. What surfaces?"</li>
+          <li>Identify which of the eight money mindsets is operating</li>
+          <li>Pattern mapping: listen for the same financial behaviour showing up in different contexts</li>
+        </ul>
+        <p><strong>Milestone:</strong> the client can articulate their money pattern and its origin.</p>
+      </div>
+      <div class="card">
+        <h3>Phase 2: Ownership (Months 3-6)</h3>
+        <p>Goal: shift from "what is my pattern?" to "who do I want to become?"</p>
+        <ul>
+          <li>WET protocol: full written exposure on the primary money wound (three writes)</li>
+          <li>Abundance meditation introduced and assigned as near-daily homework</li>
+          <li>Dimensionalise money, if not already done in Phase 1</li>
+          <li>Begin small PRs calibrated to the specific block identified in Phase 1</li>
+          <li>Career visioning: "Who is the person who lives the financial and professional life I am moving toward?" The identity must precede the plan.</li>
+        </ul>
+        <p><strong>Milestone:</strong> the client has a clear articulation of their new money story and the identity that goes with it.</p>
+      </div>
+      <div class="card">
+        <h3>Phase 3: Action (Months 6-12)</h3>
+        <p>Goal: new identity meets the real world.</p>
+        <ul>
+          <li>Escalating PRs: from small financial PRs to larger, more consequential ones</li>
+          <li>Practical planning from the new identity: business plan, transition timeline, advancement strategy</li>
+          <li>Schedule design: Plan A/B/C, ultradian rhythm awareness, block time for deep work</li>
+          <li>Relapse navigation: when the old identity reasserts (it will), the coach normalises, processes, and redirects</li>
+          <li>Ongoing BEEP and journaling: new material surfaces as the client takes bigger actions</li>
+        </ul>
+        <p><strong>Milestone:</strong> financial behaviour has measurably changed in ways aligned with stated values and purpose. Not perfect, directional, and sustained.</p>
+      </div>
+      <div class="card-accent card">
+        <h3>Three-Month Check-In Questions</h3>
+        <ol>
+          <li>Can the client name their money pattern and its origin without defensiveness? (Perception milestone)</li>
+          <li>Can the client describe who they are becoming around money, not just what they want to do differently? (Ownership milestone)</li>
+          <li>Has the client's financial behaviour changed in at least one measurable way aligned with the new identity? (Action milestone)</li>
+          <li>Where on the stress continuum is the client now versus where they started?</li>
+          <li>Which money mindset is operating now versus the beginning? Has there been movement?</li>
+          <li>What is the client's relationship with receiving? Has the receiving block loosened?</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 16 CLINICAL QUICK REFERENCE -->
+    <section class="section" id="s16">
+      <div class="section-header">
+        <div class="section-num">16</div>
+        <div>
+          <h2 class="section-title">Clinical Quick Reference</h2>
+          <p class="section-subtitle">Tool selection by presentation, plus the master model card</p>
+        </div>
+      </div>
+      <table class="ref-table">
+        <tr><th>Client presentation</th><th>Recommended tools</th></tr>
+        <tr><td>Chronic financial anxiety despite adequate income</td><td>BEEP with money intention, WET on money wound, Abundance meditation, Graduated spending PRs</td></tr>
+        <tr><td>Cannot charge what their work is worth (worth ceiling)</td><td>Worth-focused WET, BEEP with price-stating sensation, Price increase PRs</td></tr>
+        <tr><td>Overspending / inability to save</td><td>Identify the core need driving the spending, BEEP with the trigger, Financial structure PRs</td></tr>
+        <tr><td>Career stagnation / keeps plateauing</td><td>Five Whys to identify the identity structure behind the ambition. Purpose-driven or wound-driven?</td></tr>
+        <tr><td>Wants to start a business but paralysed by fear</td><td>Map the specific fear, Two-train metaphor, E-Myth awareness, Design minimum viable business</td></tr>
+        <tr><td>Career transition, hates current job</td><td>Refuse the binary. Two-train framework. Build the bridge with side hustle PRs.</td></tr>
+        <tr><td>Acute financial crisis</td><td>Stress continuum: Struggle or Shock. Regulation first (BEEP, grounding). No insight work until stabilised.</td></tr>
+        <tr><td>Receiving block</td><td>Simon Sinek reframe: refusing to receive denies others the joy of contributing. Receiving PRs.</td></tr>
+      </table>
+      <table class="ref-table">
+        <tr><th>Model / framework</th><th>Use when</th></tr>
+        <tr><td><strong>SIGNAL Cascade</strong></td><td>Tracing the root level of a financial presentation</td></tr>
+        <tr><td><strong>Four Core Needs</strong></td><td>Identifying what money actually represents for this client</td></tr>
+        <tr><td><strong>Eight Money Mindsets</strong></td><td>Categorising the client's financial identity structure</td></tr>
+        <tr><td><strong>Three Human Levels</strong></td><td>Diagnosing whether money behaviour is driven by safety, status, or growth</td></tr>
+        <tr><td><strong>Power-Popularity-Pleasure-Purpose</strong></td><td>Identifying which false purpose story money is serving</td></tr>
+        <tr><td><strong>Job vs Work / Two-Train Metaphor</strong></td><td>Navigating career transitions. Preventing premature entrepreneurial leaps.</td></tr>
+        <tr><td><strong>Rewrite-Rewire-Retrain</strong></td><td>Structuring the full transformation arc</td></tr>
+        <tr><td><strong>MUD / Clay-Cement Scale</strong></td><td>Assessing severity. Soft MUD: awareness may be sufficient. Cement: prolonged multi-modal intervention needed.</td></tr>
+        <tr><td><strong>Stress Continuum</strong></td><td>Calibrating depth and pace of money coaching</td></tr>
+        <tr><td><strong>BEEP</strong></td><td>Accessing subconscious money material</td></tr>
+        <tr><td><strong>WET</strong></td><td>Rewriting the primary money wound</td></tr>
+        <tr><td><strong>Abundance Meditation</strong></td><td>Rewiring the emotional field from scarcity to abundance</td></tr>
+        <tr><td><strong>Financial PRs</strong></td><td>Retrain: graduated exposure to financial behaviours the old identity would not permit</td></tr>
+        <tr><td><strong>Generosity River Metaphor</strong></td><td>Rewiring the felt relationship to financial flow</td></tr>
+        <tr><td><strong>E-Myth Awareness</strong></td><td>Coaching entrepreneurial clients</td></tr>
+        <tr><td><strong>Ultradian Rhythms / Plan A-B-C</strong></td><td>Designing productive days</td></tr>
+        <tr><td><strong>Five Whys</strong></td><td>Peeling back career and financial goals to reveal the identity structure beneath</td></tr>
+        <tr><td><strong>Worst-Case / Best-Case Planning</strong></td><td>Financial decision-making. Preparing for catastrophe while priming for opportunity.</td></tr>
+      </table>
+    </section>
+
+    <!-- 17 BMR APPLICATIONS -->
+    <section class="section" id="s17">
+      <div class="section-header">
+        <div class="section-num">17</div>
+        <div>
+          <h2 class="section-title">BMR Applications</h2>
+          <p class="section-subtitle">Where this manual plugs into Better Man Recovery</p>
+        </div>
+      </div>
+      <div class="card">
+        <ol>
+          <li><strong>Shared origin of wounds:</strong> the worth wound and money wound often share the same origin as the shame wound. In BMR clients, all three are frequently downstream of the same SEES Event, often in the adolescent conditioning window (belonging, acceptance, "am I enough?").</li>
+          <li><strong>Pleaser-at-home and the receiving block appear together:</strong> the man who cannot ask for what he needs relationally is often also the man who cannot receive financially. Same architecture, different domain.</li>
+          <li><strong>Money-as-Placebo applies to BMR pricing:</strong> correct pricing signals that the problem is real and the work is serious. It activates the client's investment in the transformation. Underpricing communicates that the problem is not serious, the opposite of what Alex needs to believe to engage at depth.</li>
+          <li><strong>Productive Day frameworks feed the modules:</strong> the Three Energy Modes and Plan A/B/C are directly usable in the Success Blueprint and Recovery Game Plan. The identity work requires consistent, sustainable structure, not willpower-based discipline.</li>
+          <li><strong>The provider who withholds:</strong> the Generosity River and money-as-appreciation reframes are valuable for clients who are withholding from their partners while presenting as "providers." The financial and relational withholding patterns are often structurally identical.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section class="section" id="quiz">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+      <p class="quiz-intro">Fourteen questions spanning the whole manual: the river, the mindsets, the blocks, the protocols, and the session map.</p>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">What is the core premise of the Money, Abundance and Manifestation Manual?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Every money problem is a budgeting problem</button>
+          <button class="opt" data-opt="B">B) Every money problem is a knowledge problem</button>
+          <button class="opt" data-opt="C">C) Every money problem is an identity problem</button>
+          <button class="opt" data-opt="D">D) Every money problem is an income problem</button>
+        </div>
+        <div class="q-result" data-explain="Money stories installed in childhood run adult finances from below awareness. Coaching behaviour without reaching the story is coaching on the wrong floor."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">In the Generosity River metaphor, expecting the same person you give to to give back is described as what?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Building a dam in the river</button>
+          <button class="opt" data-opt="B">B) Trying to make the river flow in a circle</button>
+          <button class="opt" data-opt="C">C) Depleting the river at your location</button>
+          <button class="opt" data-opt="D">D) Diverting the river to yourself</button>
+        </div>
+        <div class="q-result" data-explain="Rivers do not flow in circles. The return comes from upstream: a different source, a different form, a different time."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">"My worth = my net worth" belongs to which level of money story?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Base Level</button>
+          <button class="opt" data-opt="B">B) Culture Level</button>
+          <button class="opt" data-opt="C">C) Next Level</button>
+          <button class="opt" data-opt="D">D) The Investor mindset</button>
+        </div>
+        <div class="q-result" data-explain="Culture Level treats money as status and belonging, social currency. The coaching entry point is worth work: separating identity from account balance."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">In the Replication-or-Rebellion pattern, what is true of both responses to a childhood money story?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Replication is unhealthy but rebellion is freedom</button>
+          <button class="opt" data-opt="B">B) Both eventually resolve on their own in adulthood</button>
+          <button class="opt" data-opt="C">C) Both only occur in Base Level money stories</button>
+          <button class="opt" data-opt="D">D) Both are driven by the original story, and neither is free</button>
+        </div>
+        <div class="q-result" data-explain="Replicating the parental pattern and aggressively overcorrecting against it are both organised by the same installed story. Freedom comes only from identity-level revision."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">Which of the Eight Money Mindsets produces the best financial outcomes?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Abundance</button>
+          <button class="opt" data-opt="B">B) Delayed Gratification</button>
+          <button class="opt" data-opt="C">C) Investor</button>
+          <button class="opt" data-opt="D">D) Growth</button>
+        </div>
+        <div class="q-result" data-explain="The Investor studies money as a skill domain and uses money to make money. It delivers the best outcomes of all eight but requires a learning commitment."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">Why does the Scarcity mindset rarely appear in coaching practice?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) People with a scarcity mindset won't spend money on coaching</button>
+          <button class="opt" data-opt="B">B) Scarcity is the rarest mindset in the population</button>
+          <button class="opt" data-opt="C">C) Scarcity resolves naturally with income growth</button>
+          <button class="opt" data-opt="D">D) Scarcity clients are referred to financial advisors instead</button>
+        </div>
+        <div class="q-result" data-explain="The hoard-and-protect pattern applies to coaching fees too. The mindset that most needs the work is the least likely to pay for it."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">What is the root of the Receiving Block?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) A safety/scarcity story from parental financial anxiety</button>
+          <button class="opt" data-opt="B">B) A worth wound: receiving would mean claiming to be valuable enough to receive</button>
+          <button class="opt" data-opt="C">C) Fear of obligation to the giver</button>
+          <button class="opt" data-opt="D">D) An autonomy story where receiving feels like being controlled</button>
+        </div>
+        <div class="q-result" data-explain="The person can give freely but deflects, minimises, or returns any gift. Coaching uses Receiving PRs: accept a compliment, let someone pay, say yes to help."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">According to the Money-as-Placebo Principle, what does undercharging do?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Makes coaching accessible to more clients, which is clinically positive</button>
+          <button class="opt" data-opt="B">B) Reduces coach burnout by lowering client expectations</button>
+          <button class="opt" data-opt="C">C) Has no clinical effect; pricing is purely commercial</button>
+          <button class="opt" data-opt="D">D) Signals the work is not worth much, undermining the client's conviction that change is possible</button>
+        </div>
+        <div class="q-result" data-explain="The act of payment activates belief in the value of the transformation. Charging what the work is worth is not just commercial, it is clinical."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">What does the manual say actually works in abundance meditation?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Visualising raining money and expensive possessions</button>
+          <button class="opt" data-opt="B">B) Repeating abundance affirmations in an elevated state</button>
+          <button class="opt" data-opt="C">C) Sitting in the felt sense of a life where money is not the problem and the Four Core Needs are met</button>
+          <button class="opt" data-opt="D">D) Visualising a specific income figure daily</button>
+        </div>
+        <div class="q-result" data-explain="Not the imagery of wealth but the feeling state: safety without hoarding, connection without earning it, freedom within structure, purpose with resources."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">When the "money as a packet of appreciation" reframe lands as felt truth, what happens to spending?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It becomes an act of appreciation rather than an act of loss</button>
+          <button class="opt" data-opt="B">B) It decreases as the client becomes more frugal</button>
+          <button class="opt" data-opt="C">C) It gets replaced by saving and investing</button>
+          <button class="opt" data-opt="D">D) It becomes an obligation to circulate money</button>
+        </div>
+        <div class="q-result" data-explain="Four things shift at once: spending becomes appreciation, receiving becomes allowing appreciation, generosity becomes natural, and the scarcity reflex softens."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 11</span>
+        <p class="q-text">What is the Habenula Hijack Principle?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The habenula drives compulsive spending when the client is stressed</button>
+          <button class="opt" data-opt="B">B) The brain's failure sensor suppresses motivation if a failed PR is treated as evidence of inadequacy, so failure must be reframed as data</button>
+          <button class="opt" data-opt="C">C) The habenula must be activated before any financial PR will hold</button>
+          <button class="opt" data-opt="D">D) The habenula blocks abundance meditation in scarcity-minded clients</button>
+        </div>
+        <div class="q-result" data-explain="Semper discendum: always be learning. Nothing is failure; everything is material for the next coaching cycle."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 12</span>
+        <p class="q-text">What is the two-train metaphor used for?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Balancing spending and saving in the same budget</button>
+          <button class="opt" data-opt="B">B) Choosing between two competing job offers</button>
+          <button class="opt" data-opt="C">C) Refusing the trapped-vs-leap binary in career transitions: keep the income running while building the purpose work on the side</button>
+          <button class="opt" data-opt="D">D) Separating the client's money story from their partner's money story</button>
+        </div>
+        <div class="q-result" data-explain="The client frames the transition as a binary. The NLH coach refuses it: keep the income train running, build the purpose work, transition when the numbers support it."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 13</span>
+        <p class="q-text">In ultradian rhythm terms, what counts as a full productive day for most knowledge work?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Eight hours of continuous focused work</button>
+          <button class="opt" data-opt="B">B) Two 4-hour deep work sessions with lunch between</button>
+          <button class="opt" data-opt="C">C) Six 60-minute blocks with short breaks</button>
+          <button class="opt" data-opt="D">D) Three 90-minute blocks, roughly 4.5 hours of focused output</button>
+        </div>
+        <div class="q-result" data-explain="The brain cycles through focus peaks and troughs roughly every 90 minutes. One category of work per block, with a genuine break after each."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 14</span>
+        <p class="q-text">What is the goal of Phase 1 (Perception, months 1-3) of the money coaching session map?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Ownership of the pattern: "This is my issue, my pattern, my story"</button>
+          <button class="opt" data-opt="B">B) Measurable change in financial behaviour</button>
+          <button class="opt" data-opt="C">C) A clear articulation of the new money story and identity</button>
+          <button class="opt" data-opt="D">D) Completing the WET three-write protocol on the money wound</button>
+        </div>
+        <div class="q-result" data-explain="Phase 1 ends when the client can name their money pattern and its origin: not my parents' fault, not the economy's fault, mine. WET and the new story belong to Phase 2; measurable behaviour change is the Phase 3 milestone."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      q.classList.add('answered');
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      q.querySelectorAll('.opt').forEach(function(b) {
+        b.disabled = true;
+        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+      });
+      if (chosen === answer) {
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

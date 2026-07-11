@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BRN Sessions · NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: block;
+    padding: 14px 18px 5px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    opacity: 0.6;
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 110px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">NLH Hub · Next Level Human</span>
+      <span class="title">BRN Sessions</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <span class="nav-section">On this page</span>
+    <ul class="sidebar-nav">
+      <li><a href="#s1">The Session Rules</a></li>
+      <li><a href="#s2">What BRN Sessions Are</a></li>
+      <li><a href="#s3">The Paradigm Behind BRN</a></li>
+      <li><a href="#s4">The Common Thread</a></li>
+      <li><a href="#s5">The Four Pillars</a></li>
+      <li><a href="#s6">A Week in Practice</a></li>
+      <li><a href="#s7">BEEP: Full Directions</a></li>
+      <li><a href="#quiz">Comprehension check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Perception · The Human Game · Session Protocols</div>
+      <h1>BRN <em>Sessions</em></h1>
+      <p class="hero-desc">Belief Repatterning and Neuroplasticity sessions, the deep-change protocols that rewrite the stories keeping you stuck. Four session types (DEEP, QEC, QAT, DELTA), the paradigm they run on, the rules for dosing them across a week, and the full 11-minute BEEP breath practice.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">7</span><span class="label">Sections</span></div>
+        <div class="hero-stat"><span class="num">10</span><span class="label">Quiz questions</span></div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: RULES -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">The Session Rules</h2>
+          <p class="section-subtitle">Dosing and sequencing. Read these before anything else on this page.</p>
+        </div>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Three rules, no exceptions</h3>
+        <ol>
+          <li><strong>Do at least one type per week.</strong> BRN work is a weekly minimum, not an occasional extra.</li>
+          <li><strong>Best sequence: DELTA or QAT on the days before AND after DEEP or QEC.</strong> Bracket the heavy sessions with the gentle ones.</li>
+          <li><strong>DEEP and QEC: once per week each, maximum.</strong> DELTA and QAT: as often as you wish.</li>
+        </ol>
+      </div>
+
+      <div class="callout-forest callout">
+        <p><strong>Why the limits exist:</strong> DEEP and QEC are the intensive sessions. They surface and move buried emotional material, and the system needs time to integrate what they open up. DELTA and QAT are the preparation and integration sessions, so there is no cap on them.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2: WHAT BRN SESSIONS ARE -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">What BRN Sessions Are</h2>
+          <p class="section-subtitle">Belief Repatterning and Neuroplasticity: the cornerstone of identity transformation at Next Level Human</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>BRN stands for <strong>Belief Repatterning and Neuroplasticity</strong> Sessions. They are immersive, science-meets-soul experiences that access and reprogram the subconscious mind.</p>
+        <p>At their core, BRN Sessions target the beliefs that unconsciously shape identity and behavior. These beliefs usually arise from the emotional judgments and interpretations formed at the inception of <strong>MUD</strong> (Misguided Unconscious Decisions). Those judgments begin as choices. Over time they solidify into ingrained belief structures that shape perception and physiology alike. BRN Sessions unravel and reprogram these beliefs through conscious intervention and neuroplastic remodeling.</p>
+        <p>This is not traditional meditation or breathwork. BRN Sessions are <strong>targeted transformation protocols</strong> designed to dismantle MUD by doing three things at once:</p>
+        <ul>
+          <li>Altering brainwave states</li>
+          <li>Shifting emotional energy</li>
+          <li>Rewriting the inner narratives that shape identity</li>
+        </ul>
+        <p>Every BRN Session changes perception, dissolves outdated patterns, and opens new possibilities for being. Whether you are confronting trauma, breaking old belief systems, or stepping into your next level of self, these sessions offer a precise and powerful path.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: PARADIGM -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">The Paradigm Behind BRN</h2>
+          <p class="section-subtitle">Consciousness is primary. The brain is the receiver, not the source.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Consciousness is primary</h4>
+        <p>BRN Sessions are built on a core claim: <strong>consciousness is primary</strong>. Outdated models assume the brain creates consciousness. Next Level Human aligns with a growing number of philosophers, psychologists, and physicists who view consciousness as the foundational energetic scaffolding of reality. Not a byproduct of the brain, but the field that informs it.</p>
+        <h4>The brain as receiver</h4>
+        <p>In this paradigm the brain is not the source of consciousness, it is the <strong>receiver</strong>. Much like a radio tunes to a frequency, the brain receives, organizes, and expresses consciousness through electrochemical patterns.</p>
+        <h4>The biofield and CPNEI</h4>
+        <p>The <strong>biofield</strong> is the energetic interface between consciousness and the body. It translates the vibrational intelligence of consciousness into the <strong>Conscious-Psycho-Neuroendocrine-Immune (CPNEI) system</strong>, the integrated, responsive network of biology, emotion, and perception. By working at the junction between the quantum field (consciousness) and the classical world (biochemistry and neurology), BRN Sessions initiate transformation from the top down and the inside out.</p>
+      </div>
+
+      <div class="card">
+        <h4>Belief change and neuroplasticity reinforce each other</h4>
+        <p>BRN Sessions operate on the principle that belief change and neuroplasticity are not separate but <strong>mutually reinforcing</strong>. Changing beliefs drives neurological restructuring, and those neural shifts in turn reinforce new patterns of thought, emotion, and behavior.</p>
+        <p>The sessions rewire the energetic body and the physical body simultaneously. They adjust belief structures, clear emotional and energetic holding patterns, and reshape the physiological architecture of the brain itself, the process known as <strong>neuroplasticity</strong>. Neuroplasticity becomes the physical mirror of what is happening energetically: the expansion of identity, the clearing of MUD, and the restoration of possibility.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>Why this matters for physical health:</strong> this energetic-to-physical healing is particularly important for chronic health issues, especially neurological concerns like brain fog, memory loss, trauma-related symptoms, and emotional dysregulation. Because the body truly keeps the score, BRN Sessions help resolve the physiological imprint of unresolved emotional stress. Clearing the energetic distortion in the biofield while supporting neuroplasticity in the brain makes these sessions a bridge between emotional release and physical healing.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: COMMON THREAD -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">The Common Thread</h2>
+          <p class="section-subtitle">Six things every BRN Session does, regardless of type</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>All BRN Sessions:</h3>
+        <ul>
+          <li>Access the subconscious mind through altered brainwave states</li>
+          <li>Engage the emotional body to dissolve energetic blockages</li>
+          <li>Use techniques that rewire neural pathways and rewrite limiting stories</li>
+          <li>Break up and clear different forms of MUD (from loose to cemented)</li>
+          <li>Help release emotional holding patterns stored in the body</li>
+          <li>Restore connection to Source, Self, and Authentic Identity</li>
+        </ul>
+      </div>
+
+      <div class="quote-block">
+        <p>MUD is not just a memory. It's a story fused with emotion, a dense field of stuck energy. Left unresolved, it distorts perception, behavior, and health. BRN Sessions are the tools we use to clean the MUD.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FOUR PILLARS -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">The Four Pillars of BRN</h2>
+          <p class="section-subtitle">DEEP, QEC, QAT, DELTA: what each one does and when to use it</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>1. DEEP · Depth Enhanced Emotional Processing</h3>
+        <p><strong>Primary function:</strong> Rewriting and Rewiring</p>
+        <p>DEEP is the most advanced transformational experience in the system. It uses <strong>BEEP</strong> (Breath Enhanced Emotional Processing) to stimulate the sympathetic nervous system and move emotional energy that has been buried or stuck. Through a guided sequence of breathwork, subconscious scripting, dimensionalized consciousness, and journaling, DEEP works like a psychological scalpel, cutting through layers of MUD to release and reprogram the unconscious.</p>
+        <p>Think of DEEP as the ultimate identity disruptor. It brings the knotted stories to the surface, then helps dissolve and rewire them.</p>
+        <div class="quote-block">
+          <p>"DEEP is for when you're ready to break cycles, not just understand them."</p>
+        </div>
+        <p><strong>Ideal for:</strong> breaking emotional patterns, major life reinvention, identity shifts, deep trauma work.</p>
+      </div>
+
+      <div class="card">
+        <h3>2. QEC · Quantum Energy Clearing</h3>
+        <p><strong>Primary function:</strong> Rewriting and Energetic Cleansing</p>
+        <p>QEC works through the <strong>chakra system</strong>, the energetic blueprint of the human body. Each session focuses on a specific energy center, using guided visualization, somatic awareness, and subconscious recalibration to clear emotional blocks. This is where belief meets biology.</p>
+        <p>QEC is especially potent for releasing trauma stored in the body and for health conditions with emotional roots. It is a mental-emotional hygiene practice, a full-body energy reset for the psyche.</p>
+        <div class="quote-block">
+          <p>"The body keeps the score. QEC clears it."</p>
+        </div>
+        <p><strong>Ideal for:</strong> health issues, energetic stagnation, emotional toxicity, chronic patterns rooted in survival programming.</p>
+      </div>
+
+      <div class="card">
+        <h3>3. QAT · Quantum Awareness Training</h3>
+        <p><strong>Primary function:</strong> Attunement to Source and Perception Expansion</p>
+        <p>QAT is a <strong>nothingness meditation</strong>. It could also be described as a "manifestation meditation." It teaches you how to access Source Consciousness by stepping into a state of pure awareness. It is not about doing, it is about being. As you align your nervous system with infinite intelligence, you begin to perceive synchronicity, insight, and guidance that were always there but filtered out by unconscious noise.</p>
+        <p>QAT develops your capacity to live from the inside out. To trust the field. To access clarity in stillness.</p>
+        <div class="quote-block">
+          <p>"QAT opens you to the you beyond the noise."</p>
+        </div>
+        <p><strong>Ideal for:</strong> enhancing intuition, creative insight, decision-making, and accessing non-ordinary states of awareness.</p>
+      </div>
+
+      <div class="card">
+        <h3>4. DELTA · Downregulation &amp; Nervous System Restoration</h3>
+        <p><strong>Primary function:</strong> Rewiring and Restoration</p>
+        <p>DELTA works with the deepest healing states of the brain, helping reset the nervous system from chronic fight-or-flight. Through brainwave entrainment, guided rest-state meditations, and deep parasympathetic activation, DELTA helps restore equilibrium, integrate emotional breakthroughs, and build a new baseline of safety.</p>
+        <p>If DEEP is the fire, DELTA is the water.</p>
+        <div class="quote-block">
+          <p>"You can't rewire while in survival mode. DELTA makes healing possible by creating safety in the system."</p>
+        </div>
+        <p><strong>Ideal for:</strong> nervous system reset, integrating breakthroughs from heavier sessions, and building a baseline of safety.</p>
+      </div>
+
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Session</th>
+            <th>Expansion</th>
+            <th>Primary function</th>
+            <th>Ideal for</th>
+            <th>Frequency limit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DEEP</strong></td>
+            <td>Depth Enhanced Emotional Processing</td>
+            <td>Rewriting and Rewiring</td>
+            <td>Breaking emotional patterns, major life reinvention, identity shifts, deep trauma work</td>
+            <td>Once per week maximum</td>
+          </tr>
+          <tr>
+            <td><strong>QEC</strong></td>
+            <td>Quantum Energy Clearing</td>
+            <td>Rewriting and Energetic Cleansing</td>
+            <td>Health issues, energetic stagnation, emotional toxicity, chronic survival-programmed patterns</td>
+            <td>Once per week maximum</td>
+          </tr>
+          <tr>
+            <td><strong>QAT</strong></td>
+            <td>Quantum Awareness Training</td>
+            <td>Attunement to Source, perception expansion</td>
+            <td>Intuition, creative insight, decision-making, non-ordinary states of awareness</td>
+            <td>As often as you wish</td>
+          </tr>
+          <tr>
+            <td><strong>DELTA</strong></td>
+            <td>Downregulation &amp; Nervous System Restoration</td>
+            <td>Rewiring and Restoration</td>
+            <td>Nervous system reset, integration, building a baseline of safety</td>
+            <td>As often as you wish</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout-forest callout">
+        <p><strong>These are not techniques. They are tools for becoming.</strong> They are how we break the unconscious loops of MUD and step into the reality that is waiting to emerge.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 6: WEEKLY SEQUENCE -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">A Week in Practice</h2>
+          <p class="section-subtitle">One way to apply the sequencing rule: gentle, heavy, gentle</p>
+        </div>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">Example sequence: bracketing a DEEP session</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">QAT</div>
+            <div class="phase-sub">Day before. Still the noise, prime awareness.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">DEEP</div>
+            <div class="phase-sub">Mid-week. The heavy session. Once this week, maximum.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">DELTA</div>
+            <div class="phase-sub">Day after. Downregulate and integrate the breakthrough.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>The same bracket applies to <strong>QEC</strong>: put DELTA or QAT on the days before and after it. Either gentle session works on either side, so QAT before and DELTA after is one option, DELTA on both sides is another.</p>
+        <p>Because DELTA and QAT are unlimited, they can also fill any other day of the week. The only hard caps are DEEP once per week and QEC once per week, and the weekly minimum of at least one session of any type.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7: BEEP -->
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">BEEP: Full Directions</h2>
+          <p class="section-subtitle">Breath Enhanced Emotional Processing, the 11-minute practice inside DEEP. Everything needed to run a session is on this page.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>What is BEEP?</h3>
+        <p>BEEP is an <strong>11-minute breath practice</strong> designed to help you process and transform emotions at the deepest level. It works by alternating between two types of breath:</p>
+        <ul>
+          <li><strong>Activating Breath</strong> to bring forward difficult sensations, memories, or emotions.</li>
+          <li><strong>Braking Breath</strong> to anchor positive, loving states that transmute those difficulties into insight and peace.</li>
+        </ul>
+        <p>The process is rooted in rest-based breathing: <strong>breathe until you can't, rest until you can.</strong> You control the intensity at all times.</p>
+      </div>
+
+      <div class="card">
+        <h3>Setup</h3>
+        <ul>
+          <li>Choose a quiet place where you will not be disturbed.</li>
+          <li>Use headphones and an eye mask if available.</li>
+          <li>Sit upright or lie down. Never standing or driving.</li>
+          <li>Best times: first thing in the morning or before bed, though any time will work.</li>
+          <li>Session length: about 11 minutes.</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:18px;font-weight:700;color:var(--forest);margin-bottom:12px;">The Two Breathing Modes</h3>
+      <div class="vs-table">
+        <div class="vs-header old">Activating (Accelerating) Breath</div>
+        <div class="vs-header new">Braking (Recovery) Breath</div>
+        <div class="vs-row-old"><strong>Mechanics:</strong> two quick inhales (belly, then chest), followed by a passive exhale.</div>
+        <div class="vs-row-new"><strong>Mechanics:</strong> one deep, full inhale, followed by a very slow, controlled exhale, preferably with a hum or vocalization.</div>
+        <div class="vs-row-old"><strong>Purpose:</strong> invite forward difficult material: memories, sensations, emotions, even fear.</div>
+        <div class="vs-row-new"><strong>Purpose:</strong> call in feelings of love, gratitude, compassion, safety.</div>
+        <div class="vs-row-old"><strong>Attitude:</strong> greet whatever arises as a friend and teacher. Ask silently: "What are you here to show me?"</div>
+        <div class="vs-row-new"><strong>Attitude:</strong> imagine bathing your body in healing light and warmth.</div>
+      </div>
+
+      <h3 style="font-size:18px;font-weight:700;color:var(--forest);margin-bottom:12px;">Step-by-Step Practice (11 Minutes)</h3>
+
+      <div class="script-block">
+        <span class="script-label">Minute 0&#8211;1 · Arrival</span>
+        <p>Close your eyes, relax your body, and set an intention.</p>
+        <p>Whisper inwardly: "I am open to meeting what arises with love and awareness."</p>
+      </div>
+
+      <div class="script-block">
+        <span class="script-label">Minute 1&#8211;7 · Activating Phase</span>
+        <p>Begin the activating breath: double inhale, passive exhale.</p>
+        <p>Breathe as intensely or gently as feels right.</p>
+        <p>Rest whenever you need to with the braking breath, then return to activating.</p>
+        <p>As difficult sensations or emotions surface, welcome them: "I see you. I welcome you. Teach me."</p>
+      </div>
+
+      <div class="script-block">
+        <span class="script-label">Minute 7&#8211;11 · Braking Phase</span>
+        <p>Transition fully into braking breath: big inhale, long humming exhale.</p>
+        <p>Let the exhale stretch as far as it naturally will.</p>
+        <p>With each breath, imagine filling your body with compassion, safety, and love.</p>
+        <p>Anchor this as your new baseline state.</p>
+      </div>
+
+      <div class="script-block">
+        <span class="script-label">Completion</span>
+        <p>Let your breath return to normal.</p>
+        <p>Gently move your fingers and toes.</p>
+        <p>Place one hand on your heart, take a final deep breath, and express gratitude for the session.</p>
+      </div>
+
+      <div class="card">
+        <h3>What to Expect</h3>
+        <ul>
+          <li><strong>Shedding responses:</strong> yawning, tears, shaking, goosebumps, temperature changes. These are signs of release.</li>
+          <li><strong>Movement:</strong> your body may want to sway, stretch, or shake. Allow it.</li>
+          <li><strong>Emotional waves:</strong> sadness, fear, anger, joy. Welcome all as teachers.</li>
+          <li><strong>Symbols / memories:</strong> images or intuitive insights may arise.</li>
+        </ul>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Integration</h3>
+        <ul>
+          <li>Whatever arises, pleasant or difficult, is material for growth.</li>
+          <li>Treat it as medicine, not a mistake.</li>
+          <li>After finishing, you may want to journal, stretch, or simply sit in silence.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION -->
+    <section class="section" id="quiz">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+      <p class="quiz-intro">Ten questions covering the session rules, the paradigm, all four pillars, and the BEEP mechanics.</p>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">Which two session types are capped at once per week each?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) DELTA and QAT</button>
+          <button class="opt" data-opt="B">B) DEEP and DELTA</button>
+          <button class="opt" data-opt="C">C) DEEP and QEC</button>
+          <button class="opt" data-opt="D">D) QEC and QAT</button>
+        </div>
+        <div class="q-result" data-explain="DEEP and QEC are the intensive sessions, limited to once per week each. DELTA and QAT can be done as often as you wish."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">What is the recommended sequencing around a DEEP or QEC session?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Do DEEP and QEC on back-to-back days for maximum effect</button>
+          <button class="opt" data-opt="B">B) Place DELTA or QAT on the days before and after it</button>
+          <button class="opt" data-opt="C">C) Take at least three full rest days on either side of it</button>
+          <button class="opt" data-opt="D">D) Always follow it with another DEEP session the same week</button>
+        </div>
+        <div class="q-result" data-explain="The rule is to bracket the heavy sessions: DELTA or QAT the days before and after DEEP or QEC. The gentle sessions prepare the system and then integrate the breakthrough."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">In the BRN paradigm, what is the brain's relationship to consciousness?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The brain generates consciousness through electrochemical activity</button>
+          <button class="opt" data-opt="B">B) The brain and consciousness are unrelated systems</button>
+          <button class="opt" data-opt="C">C) Consciousness is a useful illusion produced by the brain</button>
+          <button class="opt" data-opt="D">D) The brain is a receiver that tunes to consciousness, like a radio to a frequency</button>
+        </div>
+        <div class="q-result" data-explain="Consciousness is primary in this model. The brain does not create it; it receives, organizes, and expresses it through electrochemical patterns."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">What role does the biofield play?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It is the energetic interface that translates consciousness into the CPNEI system</button>
+          <button class="opt" data-opt="B">B) It is another name for the nervous system</button>
+          <button class="opt" data-opt="C">C) It blocks consciousness from affecting the body</button>
+          <button class="opt" data-opt="D">D) It stores memories that the brain has deleted</button>
+        </div>
+        <div class="q-result" data-explain="The biofield sits between consciousness and the body, translating the vibrational intelligence of consciousness into the Conscious-Psycho-Neuroendocrine-Immune (CPNEI) system."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">According to the common thread, what is MUD?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) A memory that fades naturally with time</button>
+          <button class="opt" data-opt="B">B) A purely physical imbalance in brain chemistry</button>
+          <button class="opt" data-opt="C">C) A story fused with emotion, a dense field of stuck energy</button>
+          <button class="opt" data-opt="D">D) A conscious decision that can be reversed by willpower</button>
+        </div>
+        <div class="q-result" data-explain="MUD is not just a memory. It is a story fused with emotion, and left unresolved it distorts perception, behavior, and health. BRN Sessions are the tools used to clean it."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">DEEP is described as a psychological scalpel. What breath practice does it use to move buried emotional energy?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) QAT</button>
+          <button class="opt" data-opt="B">B) BEEP</button>
+          <button class="opt" data-opt="C">C) Box breathing</button>
+          <button class="opt" data-opt="D">D) DELTA entrainment</button>
+        </div>
+        <div class="q-result" data-explain="DEEP uses BEEP (Breath Enhanced Emotional Processing) to stimulate the sympathetic nervous system, alongside subconscious scripting, dimensionalized consciousness, and journaling."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">Which session works through the chakra system and is described with the line "The body keeps the score. QEC clears it."?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) DEEP</button>
+          <button class="opt" data-opt="B">B) DELTA</button>
+          <button class="opt" data-opt="C">C) QAT</button>
+          <button class="opt" data-opt="D">D) QEC</button>
+        </div>
+        <div class="q-result" data-explain="QEC (Quantum Energy Clearing) works center by center through the chakra system and is especially potent for trauma stored in the body and health conditions with emotional roots."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">Why does DELTA matter in the system, per its quote?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) You can't rewire while in survival mode; DELTA creates safety in the system</button>
+          <button class="opt" data-opt="B">B) It is the only session that changes beliefs directly</button>
+          <button class="opt" data-opt="C">C) It replaces the need for DEEP and QEC entirely</button>
+          <button class="opt" data-opt="D">D) It activates the sympathetic nervous system for breakthroughs</button>
+        </div>
+        <div class="q-result" data-explain="DELTA downregulates the nervous system out of chronic fight-or-flight through brainwave entrainment, rest-state meditations, and parasympathetic activation. If DEEP is the fire, DELTA is the water."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">What is the mechanic of the activating breath in BEEP?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) One deep inhale, then a long humming exhale</button>
+          <button class="opt" data-opt="B">B) Equal-length inhale and exhale through the nose</button>
+          <button class="opt" data-opt="C">C) Two quick inhales (belly, then chest), followed by a passive exhale</button>
+          <button class="opt" data-opt="D">D) Holding the breath for as long as possible after a full inhale</button>
+        </div>
+        <div class="q-result" data-explain="The activating (accelerating) breath is a double inhale, belly then chest, with a passive exhale. Its job is to invite difficult material forward. The humming exhale belongs to the braking breath."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">How are the 11 minutes of a BEEP session divided?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) 0&#8211;5 activating, 5&#8211;10 braking, 10&#8211;11 arrival</button>
+          <button class="opt" data-opt="B">B) 0&#8211;1 arrival, 1&#8211;7 activating phase, 7&#8211;11 braking phase</button>
+          <button class="opt" data-opt="C">C) 0&#8211;7 braking phase, 7&#8211;11 activating phase</button>
+          <button class="opt" data-opt="D">D) Alternating one minute of each mode for 11 minutes</button>
+        </div>
+        <div class="q-result" data-explain="Minute 0 to 1 is arrival and intention-setting, minutes 1 to 7 are the activating phase (with braking rests as needed), and minutes 7 to 11 shift fully into the braking phase to anchor the new baseline."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      q.classList.add('answered');
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      q.querySelectorAll('.opt').forEach(function(b) {
+        b.disabled = true;
+        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+      });
+      if (chosen === answer) {
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

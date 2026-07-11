@@ -3,2345 +3,466 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NLH Hub | The Architect Education Portal</title>
+<meta name="robots" content="noindex, nofollow">
+<title>NLH Hub · Next Level Human</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ground:    #F6F4EE;
-  --surface:   #ECEAE3;
-  --surface-2: #E2DFD6;
-  --border:    #CCCABC;
-  --text:      #1C2B24;
-  --text-dim:  #6B7D72;
-  --accent:    #1E4FD8;
-  --accent-bg: #EBF0FC;
-  --correct:   #1A9B64;
-  --correct-bg:#E8F7EF;
-  --wrong:     #C0392B;
-  --wrong-bg:  #FCECEA;
-  --mono:      'Menlo', 'Monaco', 'Courier New', monospace;
-  --sans:      system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-body {
-  background-color: var(--ground);
-  background-image:
-    linear-gradient(rgba(30,79,216,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,79,216,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.65;
-  min-height: 100vh;
-}
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
 
-/* HEADER */
-header {
-  background: var(--ground);
-  border-bottom: 2px solid var(--accent);
-  padding: 2.5rem 1.5rem 2rem;
-  text-align: center;
-}
-.header-eyebrow {
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.2em;
-  color: var(--accent);
-  margin-bottom: 0.6rem;
-  text-transform: uppercase;
-}
-header h1 {
-  font-family: var(--mono);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  line-height: 1;
-  margin-bottom: 0.4rem;
-}
-header h1 span { color: var(--accent); }
-.header-sub {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  letter-spacing: 0.08em;
-}
+  /* HEADER */
+  .site-header {
+    background: var(--forest);
+    padding: 48px 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
 
-/* MODULE NAV */
-.module-nav {
-  background: var(--ground);
-  border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.module-nav::-webkit-scrollbar { display: none; }
-.nav-inner {
-  display: flex;
-  padding: 0 1rem;
-  gap: 0;
-  min-width: max-content;
-}
-.tab-btn {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  padding: 0.9rem 1rem;
-  text-transform: uppercase;
-  transition: color 0.15s, border-color 0.15s;
-  white-space: nowrap;
-}
-.tab-btn:hover { color: var(--text); }
-.tab-btn.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
 
-/* MAIN */
-main {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 5rem;
-}
+  .header-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
 
-.module-panel { display: none; }
-.module-panel.active { display: block; }
+  .site-header h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
 
-/* MODULE HEADER */
-.module-header { margin-bottom: 1.75rem; }
-.module-eyebrow {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
-}
-.module-title {
-  font-family: var(--mono);
-  font-size: clamp(1.2rem, 3vw, 1.75rem);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
-}
-.module-desc {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  max-width: 620px;
-}
+  .site-header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    max-width: 580px;
+    line-height: 1.7;
+  }
 
-/* SOURCE BLOCKS */
-.source-block {
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-  background: white;
-  overflow: hidden;
-}
-.source-label {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  padding: 0.7rem 1.1rem;
-  text-transform: uppercase;
-}
-.source-label.manual { color: var(--accent); }
-.source-label.videos { color: #B06A00; }
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 52px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
-/* VIDEO PLACEHOLDER */
-.video-placeholder {
-  padding: 2rem 1.5rem;
-  text-align: center;
-}
-.video-placeholder p {
-  color: var(--text-dim);
-  font-size: 0.875rem;
-  margin-bottom: 0.4rem;
-}
-.video-placeholder .how-to {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  color: #B06A00;
-  letter-spacing: 0.04em;
-}
+  .stat-item .val {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1;
+  }
 
-/* ACCORDION */
-.section-list { padding: 0.25rem 0 0.25rem; }
-.section-item { border-bottom: 1px solid var(--border); }
-.section-item:last-child { border-bottom: none; }
+  .stat-item .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-top: 4px;
+  }
 
-.section-toggle {
-  background: none;
-  border: none;
-  color: var(--text);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  text-align: left;
-  width: 100%;
-  transition: background 0.1s;
-}
-.section-toggle:hover { background: var(--surface); }
-.section-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .stat-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
 
-.section-num {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--accent);
-  letter-spacing: 0.1em;
-  min-width: 2.2rem;
-  flex-shrink: 0;
-}
-.section-name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  flex: 1;
-}
-.section-arrow {
-  color: var(--text-dim);
-  font-size: 0.65rem;
-  transition: transform 0.2s;
-  flex-shrink: 0;
-}
-.section-item.open .section-arrow { transform: rotate(90deg); }
-.section-body {
-  display: none;
-  padding: 0.25rem 1.25rem 1.5rem;
-}
-.section-item.open .section-body { display: block; }
+  /* CONTENT */
+  .page-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 52px;
+  }
 
-/* CONTENT */
-.key-insight {
-  background: var(--accent-bg);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 4px 4px 0;
-  font-size: 0.88rem;
-  font-style: italic;
-  margin: 0.75rem 0 1.1rem;
-  padding: 0.85rem 1rem;
-  color: var(--text);
-}
+  /* SECTION HEADER */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
 
-.content-block {
-  font-size: 0.875rem;
-  color: var(--text);
-  margin-bottom: 1.1rem;
-}
-.content-block p { margin-bottom: 0.6rem; }
-.content-block p:last-child { margin-bottom: 0; }
-.content-block strong { color: var(--accent); font-weight: 600; }
-.content-block ul { padding-left: 1.2rem; margin-top: 0.3rem; }
-.content-block li { margin-bottom: 0.3rem; }
+  .section-label h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--forest);
+    letter-spacing: -0.01em;
+  }
 
-.ref-table {
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  margin-bottom: 1.1rem;
-  width: 100%;
-  display: block;
-  overflow-x: auto;
-}
-.ref-table th {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text-dim);
-  font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  padding: 0.5rem 0.75rem;
-  text-align: left;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.ref-table td {
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 0.55rem 0.75rem;
-  vertical-align: top;
-}
-.ref-table td strong { color: var(--accent); font-weight: 600; }
-.ref-table tr:nth-child(even) td { background: var(--surface); }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
 
-/* QUIZ */
-.quiz-block {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  margin-top: 1.25rem;
-  padding: 1.1rem 1.25rem;
-}
-.quiz-label {
-  font-family: var(--mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.16em;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-.quiz-q { margin-bottom: 1.25rem; }
-.quiz-q:last-child { margin-bottom: 0; }
-.q-text {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 0.65rem;
-}
-.options { display: flex; flex-direction: column; gap: 0.35rem; }
-.opt {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 0.55rem 0.85rem;
-  text-align: left;
-  transition: background 0.1s, border-color 0.1s;
-  line-height: 1.4;
-}
-.opt:hover:not(:disabled) {
-  background: var(--accent-bg);
-  border-color: var(--accent);
-}
-.opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.opt.correct {
-  background: var(--correct-bg);
-  border-color: var(--correct);
-  color: #0D6B45;
-  font-weight: 600;
-}
-.opt.wrong {
-  background: var(--wrong-bg);
-  border-color: var(--wrong);
-  color: var(--wrong);
-}
-.opt:disabled { cursor: default; }
+  /* CARDS GRID */
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
 
-.q-result {
-  display: none;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  padding: 0.65rem 0.85rem;
-}
-.q-result.show { display: block; }
-.q-result.correct-result {
-  background: var(--correct-bg);
-  border: 1px solid var(--correct);
-  color: #0D6B45;
-}
-.q-result.wrong-result {
-  background: var(--wrong-bg);
-  border: 1px solid var(--wrong);
-  color: #8B1A12;
-}
-.result-label {
-  font-family: var(--mono);
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.3rem;
-  display: block;
-}
-.result-explanation { line-height: 1.5; }
+  /* SESSION CARD */
+  .session-card {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    position: relative;
+  }
 
-/* START HERE GRID */
-.intro-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-.intro-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 1.1rem;
-}
-.intro-card-label {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
-}
-.intro-card h3 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-}
-.intro-card p { font-size: 0.8rem; color: var(--text-dim); }
+  .session-card:hover {
+    border-color: var(--peach);
+    box-shadow: 0 4px 20px rgba(42,107,88,0.10);
+    transform: translateY(-2px);
+  }
 
-@media (max-width: 600px) {
-  header { padding: 2rem 1rem 1.5rem; }
-  main { padding: 1.5rem 1rem 3rem; }
-  .section-toggle { padding: 0.85rem 1rem; }
-  .section-body { padding: 0.25rem 1rem 1.25rem; }
-  .quiz-block { padding: 1rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; }
-}
+  .session-card .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .session-card .day-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: rgba(42,107,88,0.07);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2ba84a;
+    flex-shrink: 0;
+  }
+
+  .session-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .session-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .session-card .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--forest);
+    background: var(--forest-faint);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .tag-peach {
+    color: var(--peach);
+    background: var(--peach-faint);
+    border-color: rgba(232,86,63,0.18);
+  }
+
+  .session-card .read-more {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--peach);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* CALLOUT BOX */
+  .hub-callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .hub-callout .callout-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(232,86,63,0.14);
+    border: 1px solid rgba(232,86,63,0.3);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .hub-callout .callout-icon svg { width: 18px; height: 18px; stroke: var(--peach); fill: none; }
+
+  .hub-callout p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .hub-callout strong { color: var(--peach); font-weight: 700; }
+
+  /* FOOTER */
+  .site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 700px) {
+    .site-header, .stats-bar, .page-content, .site-footer { padding-left: 20px; padding-right: 20px; }
+    .stats-bar { gap: 20px; }
+    .stat-divider { display: none; }
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-eyebrow">Human Architect Certification</div>
-  <h1>NLH<span> Hub</span></h1>
-  <p class="header-sub">The Architect Education Portal</p>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-eyebrow">Better Man Recovery &middot; Private Study Hub</div>
+  <h1>Next Level Human Hub</h1>
+  <p>Distilled key learnings from every NLH manual and session protocol. Each card opens a full reference page: the frameworks, exact sequences, and clinical detail, with a comprehension check at the end to lock it in.</p>
 </header>
 
-<nav class="module-nav" role="navigation" aria-label="Module navigation">
-  <div class="nav-inner">
-    <button class="tab-btn active" data-module="start">Start Here</button>
-    <button class="tab-btn" data-module="methods">Coaching Methods</button>
-    <button class="tab-btn" data-module="m1">Module 1 — Psychology</button>
-    <button class="tab-btn" data-module="m2">Module 2 — Metabolism</button>
-    <button class="tab-btn" data-module="m3">Module 3 — Relationships</button>
-    <button class="tab-btn" data-module="m4">Module 4 — Money</button>
-    <button class="tab-btn" data-module="resources">Resources</button>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="val">6</div>
+    <div class="lbl">Modules with notes</div>
   </div>
-</nav>
-
-<main>
-
-<!-- ==================== START HERE ==================== -->
-<div class="module-panel active" id="start">
-  <div class="module-header">
-    <div class="module-eyebrow">Orientation</div>
-    <h2 class="module-title">Start Here</h2>
-    <p class="module-desc">How this hub works. What the NLH framework is. What to do next.</p>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="val">81</div>
+    <div class="lbl">Reference sections</div>
   </div>
-  <div class="intro-grid">
-    <div class="intro-card">
-      <div class="intro-card-label">This hub</div>
-      <h3>Two layers per module</h3>
-      <p>Each module has a Manual layer (distilled content + quiz) and a Video layer (fills as you transcribe sessions). Both are clearly labelled.</p>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-label">The manuals</div>
-      <h3>Written reference material</h3>
-      <p>Each video module has a matching written manual. The hub distils those manuals into sections. Start here, then use the videos to go deeper.</p>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-label">The quizzes</div>
-      <h3>Comprehension checks</h3>
-      <p>Each section ends with questions. No gates — you can move on regardless. The quiz tells you if the concept has landed.</p>
-    </div>
-    <div class="intro-card">
-      <div class="intro-card-label">Adding videos</div>
-      <h3>Record, transcribe, add</h3>
-      <p>Play the session, record the audio, run it through Whisper. Drop the transcript in to fill the Video layer of that module.</p>
-    </div>
-  </div>
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> NLH Framework Overview</div>
-    <div class="section-list">
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">01</span>
-          <span class="section-name">The Central Claim</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Identity-level change is the only change that lasts. All behaviour, emotion, and physiology is downstream of identity."</div>
-          <div class="content-block">
-            <p>The <strong>SIGNAL cascade</strong> runs: Identity → Nervous System → Hormones → Immune Function → Behaviour. Every automatic pattern a client presents with is at the bottom of this cascade. The coaching error is to target behaviour and call it change.</p>
-            <p>Behaviour is the output. The identity structure generating it is the problem. When you treat the output as the problem, you're working on a symptom while the cause continues running at full strength.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">02</span>
-          <span class="section-name">The Three Rs — Rewrite, Rewire, Retrain</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <table class="ref-table">
-            <thead><tr><th>Phase</th><th>Layer targeted</th><th>What it does</th><th>Primary tools</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Rewrite</strong></td><td>Story / Belief / DMN</td><td>Changes the narrative identity is running. Targets the meaning layer.</td><td>MUD Rewrite, WET, Chapter 10</td></tr>
-              <tr><td><strong>Rewire</strong></td><td>Emotional charge / body</td><td>Clears the emotional energy fused to the story. Targets the body, not the mind.</td><td>DEEP, BEEP, QEC, breathwork</td></tr>
-              <tr><td><strong>Retrain</strong></td><td>Behaviour / nervous system</td><td>Builds new lived patterns through repetition until the new path fires faster than the old one.</td><td>VIR, Fear PRs, Chapter 10, WER Loop</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Rewrite without Rewire</strong> = insight without embodiment. The story shifts but the emotional charge regenerates it. The client understands and still acts the old way.</p>
-            <p><strong>Rewire without Rewrite</strong> = temporary relief. The charge releases but the story regenerates it. All three phases must be addressed, in sequence.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">03</span>
-          <span class="section-name">MUD — What Gets Changed</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>MUD = Misguided Unconscious Decision.</strong> The core unit of conditioned identity. Formula: <strong>Stress Event + Story + Emotion = MUD</strong></p>
-            <p>MUD forms when a stressful experience generates a judgment, which crystallises into a simple absolute story ("I am not enough"), which fuses with emotion under stress, and hardens into an identity structure the brain now defends as real.</p>
-            <p>MUD is not pathology. It was adaptive at the time. The problem is that it calcified into the nervous system's operating assumption about who this person is — and the whole cascade runs from that assumption.</p>
-            <p>MUD hardening spectrum: <strong>fluid → clay → cement</strong>. Pre-verbal MUD is the deepest. Depth determines the intervention intensity required, not the severity of the original event.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="val">82</div>
+    <div class="lbl">Quiz questions</div>
   </div>
 </div>
 
-<!-- ==================== COACHING METHODS ==================== -->
-<div class="module-panel" id="methods">
-  <div class="module-header">
-    <div class="module-eyebrow">Materials &amp; Methods Manual</div>
-    <h2 class="module-title">Coaching Methods</h2>
-    <p class="module-desc">The neuroscience engine. Why the BRN protocols work when everything else doesn't. The most operationally important material in the framework.</p>
+<!-- MAIN CONTENT -->
+<div class="page-content">
+
+  <div class="hub-callout">
+    <div class="callout-icon"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <p><strong>How to use this hub:</strong> Each card opens a full module page covering every section of the source manual. Read to rebuild understanding fast, then run the comprehension check at the bottom of each page. Answer from memory first, then click to check. New material gets added as it is transcribed and distilled.</p>
   </div>
 
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> From the Manual</div>
-    <div class="section-list">
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">01</span>
-          <span class="section-name">Why Willpower Fails — Neural Assemblies &amp; Reconsolidation</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"We are not suppressing patterns. We are not overriding them. We are working within the reconsolidation window to update the underlying assembly itself."</div>
-          <div class="content-block">
-            <p>Every automatic pattern — the urge, the pull, the compulsion — is a <strong>neural assembly</strong>: a network of neurons that fires as a unit whenever any part of it is triggered (Hebb's Law). That assembly was built through repetition. Deciding differently does not change it. The wiring is where the work must happen.</p>
-            <p><strong>The reconsolidation window:</strong> Consolidated memories are not permanently fixed. When retrieved into active attention, they become temporarily unstable for 4–6 hours. During that labile window, the memory can be updated. The original assembly is not erased — it is re-encoded with new information.</p>
-            <p>Three things are required for reconsolidation to work. If any are missing, the intervention fails:</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Step</th><th>What it means</th><th>Why it matters</th></tr></thead>
-            <tbody>
-              <tr><td><strong>1. Retrieval</strong></td><td>Bring the assembly into active attention</td><td>The window only opens when the memory is live and emotionally activated</td></tr>
-              <tr><td><strong>2. Prediction Error</strong></td><td>Create a mismatch between what the assembly expects and what the client experiences</td><td>This is the trigger. No mismatch = window doesn't open = no update</td></tr>
-              <tr><td><strong>3. New Encoding</strong></td><td>Introduce new content during the labile window</td><td>Must happen before re-stabilisation. This is what changes the assembly.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>The four channels of prediction error</strong> the BRN protocols use simultaneously:</p>
-            <ul>
-              <li><strong>Somatic:</strong> body expected to react one way; it doesn't (the watcher stance and breath hold the client in a different state)</li>
-              <li><strong>Cognitive:</strong> pattern was encoded as "this is who I am"; new frame asks "what is your lesson? What are you here to teach?"</li>
-              <li><strong>Perceptual:</strong> sensory context (music, breath, eye mask) contradicts the context in which the pattern was reinforced</li>
-              <li><strong>Identity:</strong> the deepest channel. Watcher stance breaks identification — "I have this pattern, I am not this pattern." This is what makes the BRN protocols different from behaviour management.</li>
-            </ul>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why is insight alone insufficient for lasting change?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) People aren't motivated enough to follow through on what they understand</button>
-                <button class="opt" data-opt="B">B) Insight works at the cognitive layer but patterns live in neural assemblies — lasting change requires retrieval, prediction error, and new encoding</button>
-                <button class="opt" data-opt="C">C) Insight produces change but it fades after a few weeks without reinforcement</button>
-                <button class="opt" data-opt="D">D) The brain actively resists externally-introduced change</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">The reconsolidation window typically lasts how long after a memory is retrieved?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) 30–60 minutes</button>
-                <button class="opt" data-opt="B">B) 24–48 hours</button>
-                <button class="opt" data-opt="C">C) 4–6 hours</button>
-                <button class="opt" data-opt="D">D) 1–2 weeks</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">02</span>
-          <span class="section-name">The Protocol System — Prime, Work, Seal</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Every BRN protocol does one of two things: <strong>specific reconsolidation</strong> (targets a specific assembly) or <strong>global metaplasticity</strong> (prepares the brain's overall capacity for change).</p>
-            <p><strong>Metaplasticity:</strong> not all brain states are equally receptive to change. Safety, parasympathetic tone, and diffuse awareness increase the brain's plastic capacity. Stress and sympathetic dominance reduce it. Specific reconsolidation without metaplastic conditioning produces fragile change. Metaplastic conditioning without specific reconsolidation produces a flexible brain that hasn't updated its operative patterns. Both are required.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Protocol</th><th>Duration</th><th>Type</th><th>When to use</th></tr></thead>
-            <tbody>
-              <tr><td><strong>DELTA</strong></td><td>22 min</td><td>Global metaplasticity</td><td>Daily. Before/after DEEP or QEC. High stress. Nervous system restoration.</td></tr>
-              <tr><td><strong>DEEP</strong></td><td>55 min</td><td>Specific reconsolidation</td><td>Weekly. For specific charged memories or persistent patterns.</td></tr>
-              <tr><td><strong>QEC</strong></td><td>30–40 min</td><td>Specific reconsolidation</td><td>Pattern is distributed, or client can't do breathwork. Gentler inquiry-based.</td></tr>
-              <tr><td><strong>BEEP</strong></td><td>11 min</td><td>Specific reconsolidation (practice)</td><td>Daily between DEEP sessions. Quick subconscious access. Client homework.</td></tr>
-              <tr><td><strong>QAT</strong></td><td>30 min</td><td>Global metaplasticity (generative)</td><td>Manifestation work, generative goals, intention seeding from void state.</td></tr>
-              <tr><td><strong>VIR</strong></td><td>11 min</td><td>Retrain — identity rehearsal</td><td>Daily. Forward-encoding new identity through structured rehearsal.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Optimal sequence: Prime → Work → Seal.</strong> Prime with DELTA or QAT (establish metaplastic ground). Work with DEEP or QEC (specific reconsolidation). Seal with DELTA or QAT (lock in new encoding before the window closes).</p>
-            <p>Skipping the seal leaves reconsolidation open. The new encoding is partially in — but consolidation requires hours of parasympathetic recovery the client won't get if they go straight back into stress.</p>
-            <p><strong>DEEP opens the document. QEC line-edits it. DELTA and QAT format and bind it. The book is the client's life.</strong></p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">What is the correct Prime / Work / Seal sequence?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) DEEP → DELTA → BEEP</button>
-                <button class="opt" data-opt="B">B) DELTA or QAT → DEEP or QEC → DELTA or QAT</button>
-                <button class="opt" data-opt="C">C) BEEP → DEEP → QAT</button>
-                <button class="opt" data-opt="D">D) VIR → DELTA → DEEP</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">DELTA is best described as:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) A deep relaxation and stress-relief session</button>
-                <button class="opt" data-opt="B">B) Global metaplasticity — preparing the brain's overall capacity for plastic change, not relaxation</button>
-                <button class="opt" data-opt="C">C) A specific reconsolidation protocol for charged memories</button>
-                <button class="opt" data-opt="D">D) A breathing technique for in-session nervous system regulation</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">03</span>
-          <span class="section-name">The Watcher Stance &amp; Dimensionalising</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"The watcher is how the client meets what arises. Dimensionalising is what they do once they meet it."</div>
-          <div class="content-block">
-            <p><strong>Watcher Stance:</strong> The shift from being-the-experience to being-the-one-watching-the-experience. "I notice anger here" — not "I am angry." This is what makes deeper subconscious work safe. Without it, retrieval risks re-traumatisation. With it, retrieval becomes the doorway to updating.</p>
-            <p>In daily life this is what <strong>Chapter 10</strong> practice builds in real time: What am I about to do? What do I usually do next? What would my Next Level Self do instead? The watcher in the moment before the old path activates.</p>
-            <p><strong>Dimensionalising:</strong> Once the watcher stance is established, treat the internal experience as a separate entity. Give it a location, a colour, a texture, a temperature, a shape, a voice. What is it trying to say? What is its lesson?</p>
-            <p>Once an experience has been dimensionalised, the client is no longer fused with it. They are in relationship with it. From relationship, the work can happen. This is what makes the MUD Rewrite process feel different from journalling — the client is meeting the pattern as an entity, not analysing it. That distinction produces the identity-level prediction error the assembly needs to destabilise.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>The Eight Doorways</strong> — entry points into the subconscious. One usually presents first in a session. The coach follows what arises:</p>
-            <ul>
-              <li>Historical parts (child self, teen self, the wounded version)</li>
-              <li>Emotional parts (anger, grief, fear, shame — dimensionalised)</li>
-              <li>Body parts (heart, gut, throat, shoulders)</li>
-              <li>Physical sensations (tightness, heaviness, tingling, warmth)</li>
-              <li>Patterns (the recurring loop itself — what is it? what does it want?)</li>
-              <li>Memories (specific events and scenes)</li>
-              <li>Signs and symptoms (the body's physical expressions of held material)</li>
-              <li>Illnesses and diagnoses</li>
-            </ul>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">The Watcher Stance is the shift from:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Passive observation to active engagement with the experience</button>
-                <button class="opt" data-opt="B">B) Being the experience to being the one watching the experience — "I am angry" becomes "I notice anger here"</button>
-                <button class="opt" data-opt="C">C) Conscious processing to unconscious processing</button>
-                <button class="opt" data-opt="D">D) Thinking mode to feeling mode</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Dimensionalising works because:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Visualisation reduces the intensity of charged material by distracting the analytical mind</button>
-                <button class="opt" data-opt="B">B) Once the experience has dimensions, the client is in relationship with it rather than fused with it — and the work happens from that relational position</button>
-                <button class="opt" data-opt="C">C) It strengthens the neural assembly by reinforcing specific memory traces</button>
-                <button class="opt" data-opt="D">D) It moves material from unconscious to conscious processing</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">04</span>
-          <span class="section-name">The Breath System</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <table class="ref-table">
-            <thead><tr><th>Breath</th><th>Pattern</th><th>Effect</th><th>Clinical use</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Activating</strong></td><td>Double inhale (belly, then chest), passive exhale</td><td>Recreates sympathetic activation under which MUD was originally encoded</td><td>Retrieve the assembly with its full somatic-emotional signature without requiring actual danger</td></tr>
-              <tr><td><strong>Breaking</strong></td><td>Deep inhale, long slow exhale (optional hum)</td><td>Activates vagus nerve. Parasympathetic dominance. Downregulates amygdala.</td><td>Home base. Recovery between activating cycles. Sealing after the work.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Safety architecture — non-negotiable:</strong> The client drives the pace. Push the activating breath until you can't, then rest with the breaking breath until you can go again. The body governs pacing, not the coach's prompts. This prevents hypocapnia (CO2 drop causing lightheadedness, tingling, syncope in extreme cases).</p>
-            <p><strong>Contraindications for activating breath:</strong> Cardiovascular disease, recent stroke, pregnancy, active psychosis, severe dissociation or unstabilised PTSD, glaucoma, recent thoracic/abdominal surgery, epilepsy. For these clients, substitute coherence breath throughout — the work still happens at lower somatic intensity.</p>
-            <p><strong>Music is clinical, not atmospheric.</strong> Activation music drives sympathetic engagement. Rest music holds parasympathetic state during consolidation. Rules: no lyrics (pull attention into language processing), no familiar tracks (activate life associations that hijack the protocol). Two distinct phases. Volume calibrated to push-but-not-drown for activation, silence-like for rest.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why is the activating breath (double inhale) used to retrieve MUD?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) It increases oxygen and improves mental clarity for the work ahead</button>
-                <button class="opt" data-opt="B">B) MUD was encoded under sympathetic activation — to retrieve and update it, you recreate the encoding state, which opens the reconsolidation window</button>
-                <button class="opt" data-opt="C">C) It increases CO2 levels which deepen the parasympathetic state</button>
-                <button class="opt" data-opt="D">D) It produces a meditative state that makes the subconscious more accessible</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why must the client — not the coach — govern the pacing of activating breath?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) It builds self-regulation as a transferable skill</button>
-                <button class="opt" data-opt="B">B) To prevent hypocapnia — sustained activating breath drops CO2 and can cause lightheadedness and syncope if pushed past the body's threshold</button>
-                <button class="opt" data-opt="C">C) Coach-driven pacing produces the wrong type of sympathetic activation</button>
-                <button class="opt" data-opt="D">D) The client is more motivated when given autonomy over the process</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">05</span>
-          <span class="section-name">The Five Analytical Questions</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Run any module, worksheet, video, or practice prescription through these five questions before delivery. If it can't answer them clearly, it's probably not doing what it claims to do.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>#</th><th>Question</th><th>What it evaluates</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td><strong>What does this retrieve?</strong></td><td>Which assembly, memory, or pattern is being brought into active attention?</td></tr>
-              <tr><td>2</td><td><strong>Does it generate prediction error? Which channel?</strong></td><td>Somatic / Cognitive / Perceptual / Identity. Specify the channel or it's not designed well enough.</td></tr>
-              <tr><td>3</td><td><strong>What does it encode during the labile window?</strong></td><td>New content must be introduced while the window is open. What specifically is being encoded?</td></tr>
-              <tr><td>4</td><td><strong>Does it support metaplastic conditioning?</strong></td><td>Is the nervous system prepared to receive and hold the change?</td></tr>
-              <tr><td>5</td><td><strong>Where does it sit in the sequence — priming, working, or sealing?</strong></td><td>Every intervention is one of these. If you can't place it, it may be doing the wrong job at the wrong time.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">06</span>
-          <span class="section-name">The BRN Sessions: Paradigm and Four Pillars</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"BRN Sessions are not techniques. They are tools for becoming. They are how we break the unconscious loops of MUD and step into the reality that is waiting to emerge."</div>
-          <div class="content-block">
-            <p>BRN (Belief Repatterning and Neuroplasticity) Sessions target the beliefs that unconsciously shape identity and behaviour. These beliefs arise from the emotional judgments formed during MUD inception. They begin as choices, then solidify into ingrained belief structures that shape perception and physiology alike.</p>
-            <p><strong>The paradigm:</strong> Consciousness is primary. The brain is not the source of consciousness. It is the receiver. The <strong>biofield</strong> is the energetic interface between consciousness and the body. It translates the vibrational intelligence of consciousness into the <strong>CPNEI system</strong> (Conscious-Psycho-Neuro-Endocrine-Immune), the integrated, responsive network of biology, emotion, and perception. By working at the junction between the quantum field and the classical world (biochemistry and neurology), BRN Sessions initiate transformation from the top down and the inside out.</p>
-            <p><strong>What all BRN sessions share:</strong></p>
-            <ul>
-              <li>Access the subconscious mind through altered brainwave states</li>
-              <li>Engage the emotional body to dissolve energetic blockages</li>
-              <li>Rewire neural pathways and rewrite limiting stories</li>
-              <li>Break up and clear different forms of MUD (from fluid to cement)</li>
-              <li>Release emotional holding patterns stored in the body</li>
-              <li>Restore connection to Source, Self, and Authentic Identity</li>
-            </ul>
-          </div>
-          <div class="content-block">
-            <p><strong>DEEP: Depth Enhanced Emotional Processing</strong></p>
-            <p>Primary function: Rewriting and Rewiring. DEEP uses BEEP breathwork to stimulate the sympathetic nervous system and move emotional energy that has been buried or stuck. Through guided breathwork, subconscious scripting, dimensionalised consciousness, and journaling, DEEP works like a psychological scalpel, cutting through layers of MUD to release and reprogram the unconscious.</p>
-            <p>Ideal for: Breaking emotional patterns, major life reinvention, identity shifts, deep trauma work.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>QEC: Quantum Energy Clearing</strong></p>
-            <p>Primary function: Rewriting and Energetic Cleansing. QEC works through the chakra system, the energetic blueprint of the human body. Each session focuses on a specific energy centre, using guided visualisation, somatic awareness, and subconscious recalibration to clear emotional blocks. Gentler than DEEP. Suitable when breathwork intensity is contraindicated.</p>
-            <p>Ideal for: Health issues, energetic stagnation, emotional toxicity, chronic patterns rooted in survival programming.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>QAT: Quantum Awareness Training</strong></p>
-            <p>Primary function: Attunement to Source and Perception Expansion. QAT is a nothingness meditation, also described as a manifestation meditation. It teaches access to Source Consciousness by stepping into a state of pure awareness. As the nervous system aligns with this state, the client begins to perceive synchronicity, insight, and guidance that were filtered out by unconscious noise.</p>
-            <p>Ideal for: Enhancing intuition, creative insight, decision-making, manifestation work, and accessing non-ordinary states of awareness.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>DELTA: Downregulation and Nervous System Restoration</strong></p>
-            <p>Primary function: Rewiring and Restoration. DELTA works with the deepest healing states of the brain, resetting the nervous system from chronic fight-or-flight. Through brainwave entrainment, guided rest-state meditations, and deep parasympathetic activation, DELTA restores equilibrium, integrates emotional breakthroughs, and builds a new baseline of safety. If DEEP is the fire, DELTA is the water.</p>
-            <p>Ideal for: Daily use. Before and after DEEP or QEC. High-stress periods. Nervous system restoration.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">The biofield is best described as:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The electromagnetic field generated by the heart, detectable by other people in close proximity</button>
-                <button class="opt" data-opt="B">B) The energetic interface between consciousness and the body, translating consciousness into the CPNEI system</button>
-                <button class="opt" data-opt="C">C) A metaphor for the nervous system's sensitivity to environmental stress cues</button>
-                <button class="opt" data-opt="D">D) The measurable brainwave state accessed during deep meditation</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">A client cannot use high-intensity breathwork due to a cardiovascular condition. Which BRN protocol is the appropriate alternative for specific reconsolidation?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) DELTA — it achieves reconsolidation through the deepest brainwave states without breathwork</button>
-                <button class="opt" data-opt="B">B) QAT — pure awareness requires no physical technique</button>
-                <button class="opt" data-opt="C">C) QEC — it achieves specific reconsolidation through guided visualisation and somatic awareness without requiring high-intensity breathwork</button>
-                <button class="opt" data-opt="D">D) VIR — identity rehearsal can substitute for all reconsolidation protocols</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="A">
-              <p class="q-text">What distinguishes DEEP from all other BRN protocols?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) DEEP uses BEEP breathwork to recreate sympathetic activation and move buried emotional energy — it is the most intensive specific reconsolidation tool in the system</button>
-                <button class="opt" data-opt="B">B) DEEP is the only protocol that accesses the subconscious mind</button>
-                <button class="opt" data-opt="C">C) DEEP uses chakra-based visualisation to clear blocked energy centres</button>
-                <button class="opt" data-opt="D">D) DEEP works on the deepest brainwave states through parasympathetic entrainment</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">07</span>
-          <span class="section-name">Focused Attention vs Open Monitoring</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Every BRN protocol is built on one of two attentional modes. FA is the channel. OM is the field. Knowing which you are using tells you exactly what the protocol is doing to the nervous system."</div>
-          <div class="content-block">
-            <p><strong>Focused Attention (FA):</strong> Direct, narrow, sustained attention onto a specific object. Activates dorsolateral prefrontal cortex, anterior cingulate, and task-positive networks. In NLH terms: channel-based work. You tune the receiver to one station.</p>
-            <p><strong>Open Monitoring (OM):</strong> Broad, non-selective awareness in which whatever arises is observed without targeting. Activates the Default Mode Network and posterior integrative regions. In NLH terms: field-based work. You open the receiver to the entire spectrum at once. (Lutz, Slagter, Dunne &amp; Davidson, 2008)</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Mode</th><th>NLH name</th><th>Protocols</th><th>Function</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Focused Attention</strong></td><td>Channel-based</td><td>DEEP, QEC, BEEP</td><td>Specific reconsolidation — precision work on a targeted assembly</td></tr>
-              <tr><td><strong>Open Monitoring</strong></td><td>Field-based</td><td>DELTA, QAT</td><td>Global metaplasticity — brain-wide preparation and integration</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Which protocols are classified as "channel-based" (focused attention) in the BRN system?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) DELTA and QAT</button>
-                <button class="opt" data-opt="B">B) DEEP, QEC, and BEEP</button>
-                <button class="opt" data-opt="C">C) VIR and WIR</button>
-                <button class="opt" data-opt="D">D) DELTA, QAT, and BEEP</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">Open Monitoring primarily activates which neural network?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Dorsolateral prefrontal cortex and anterior cingulate</button>
-                <button class="opt" data-opt="B">B) The limbic system for emotional processing</button>
-                <button class="opt" data-opt="C">C) The Default Mode Network and posterior integrative regions</button>
-                <button class="opt" data-opt="D">D) The Central Executive Network for rational decision-making</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">08</span>
-          <span class="section-name">Brainwave States &amp; Theta-Gamma Coupling</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"The hypnagogic state is the target. Theta is its brainwave correlate. The phenomenological markers are dreamlike imagery, dialogues with parts, symbolic surfacing — the sense of being neither fully here nor fully gone."</div>
-          <table class="ref-table">
-            <thead><tr><th>State</th><th>Frequency</th><th>Clinical use in BRN</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Delta</strong></td><td>0.5-4 Hz</td><td>Deep sleep, profound rest, systems-level consolidation. The state DELTA is named for. The seal phase.</td></tr>
-              <tr><td><strong>Theta</strong></td><td>4-8 Hz</td><td>Hypnagogic, dreamlike, deeply intuitive, symbol and metaphor. The deepest reconsolidation work happens here. Target state for back half of DEEP and depths of QEC.</td></tr>
-              <tr><td><strong>Alpha</strong></td><td>8-12 Hz</td><td>Relaxed alertness. Bridge between conscious and subconscious. State DELTA enters in body-scan, QEC in sustained focus, DEEP's Compassion Integration phase.</td></tr>
-              <tr><td><strong>Beta</strong></td><td>13-30 Hz</td><td>Focused waking attention, logical thought. The state the client arrives in.</td></tr>
-              <tr><td><strong>High Beta</strong></td><td>Above 30 Hz</td><td>Hypervigilance, stress, sympathetic dominance. The state in which most MUD originally formed. DEEP intentionally re-creates this to access assemblies as they were laid down.</td></tr>
-              <tr><td><strong>Gamma</strong></td><td>30+ Hz</td><td>High-frequency integration, insight, peak experience. Sometimes spontaneously emerges in DEEP or QAT. Not pursued directly.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Theta-gamma coupling — the specific mechanism:</strong> Theta oscillations carry gamma bursts nested within them (theta-gamma phase-amplitude coupling). The hippocampus rides the theta rhythm; the gamma carries the specific content; the coupling between them is what allows the retrieved memory assembly to enter the labile state where it can be updated. (Bellfy, Smies &amp; Kwapis, 2020; Headley &amp; Pare, 2017)</p>
-            <p><strong>Why DEEP uses High Beta before Theta:</strong> MUD was encoded under sympathetic activation. To bring the assembly back to its labile state, the encoding state must be recreated. The activating breath deliberately re-creates High Beta without requiring actual danger. What follows — the shift into parasympathetic dominance through the breaking breath — is what allows reconsolidation around the new content rather than the old.</p>
-            <p>Brainwave language is a useful map, not the territory. The coach reads phenomenological markers: dreamlike imagery, dialogues with parts, symbolic surfacing, the sense of being neither fully here nor fully gone.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">The target brainwave state for deep reconsolidation work in DEEP and QEC is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Alpha — relaxed alertness and bridge to the subconscious</button>
-                <button class="opt" data-opt="B">B) Gamma — high-frequency integration and peak experience</button>
-                <button class="opt" data-opt="C">C) Theta — hypnagogic, dreamlike, deeply intuitive, memory gate open</button>
-                <button class="opt" data-opt="D">D) Delta — deep sleep and systems-level consolidation</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">Why does DEEP use the activating breath to recreate High Beta sympathetic states before dropping to Theta?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) High Beta reduces the client's resistance to the coach's suggestions</button>
-                <button class="opt" data-opt="B">B) The nervous system must be fully alert before entering hypnagogic states safely</button>
-                <button class="opt" data-opt="C">C) MUD was encoded under sympathetic activation — recreating that state brings the assembly back to labile so it can be updated</button>
-                <button class="opt" data-opt="D">D) High Beta directly produces the gamma bursts needed for theta-gamma coupling</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">09</span>
-          <span class="section-name">Coherence Breath, Vocalization &amp; Breath-to-State Mapping</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>The Coherence Breath:</strong> Six-second inhale paired with six-second exhale. No holds. Sustained as a continuous rhythm. Produces respiratory sinus arrhythmia at its maximal coherence point — measurably improves heart-rate variability, reduces stress markers, produces a balanced autonomic state. (McCraty &amp; Childre, 2010; Lehrer &amp; Gevirtz, 2014)</p>
-            <p>Two clinical uses: (1) The safe alternative for clients who cannot use the activating breath — all BRN protocols can be run with coherence breath substitution. (2) The integration breath — used during journaling phases, reflection, and standalone homework practice.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>Vocalization and sound:</strong> Humming reliably increases nasal nitric oxide, activates the vagus nerve via the laryngeal branch, and produces parasympathetic dominance. OM chanting studies show decreased limbic activity and increased heart-rate variability. (Eby, 2006; Kalyani et al., 2011)</p>
-            <p>Clinical uses in BRN: the hum on the breaking breath; sustained chakra tones in QEC variations (root through crown: uh, oh, ah, ay, ee, ohm, mmm); OM-style sustained tone at the close of QAT.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>State needed</th><th>How breath produces it</th></tr></thead>
-            <tbody>
-              <tr><td>Sympathetic activation for retrieval (DEEP, BEEP, QAT induction)</td><td>Activating breath, rest-based, paced with intense rhythmic music</td></tr>
-              <tr><td>Parasympathetic dominance for integration and seal</td><td>Breaking breath with humming exhale</td></tr>
-              <tr><td>Coherent reflective state for journaling</td><td>Coherence breath (6 in, 6 out)</td></tr>
-              <tr><td>Field-state awareness for metaplastic openness (DELTA, QAT void)</td><td>Slow, attention-released breath. Box breathing (4-4-4-4) as transitional structure.</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">The coherence breath pattern is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Double inhale belly then chest, passive exhale</button>
-                <button class="opt" data-opt="B">B) Box breathing — 4 counts in, 4 hold, 4 out, 4 hold</button>
-                <button class="opt" data-opt="C">C) Six-second inhale, six-second exhale, sustained as a continuous rhythm</button>
-                <button class="opt" data-opt="D">D) Long exhale with a humming tone on the out-breath</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">A client has a cardiovascular contraindication and cannot use the activating breath. The protocol default is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Skip the breathwork entirely and use journaling only</button>
-                <button class="opt" data-opt="B">B) Use the breaking breath throughout all phases</button>
-                <button class="opt" data-opt="C">C) Substitute the coherence breath throughout — all BRN protocols can still run</button>
-                <button class="opt" data-opt="D">D) Use DELTA only until the contraindication resolves</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">10</span>
-          <span class="section-name">The DEEP Protocol — Structure, Three Voices &amp; The Two Paths</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Most somatically and psychologically intensive specific-reconsolidation protocol in the BRN system. Uses breath, music, dimensionalised consciousness, and journaling stacked on each other. Approximately 55 minutes.</p>
-            <p><strong>Five phases:</strong> Induction / Activation (BEEP-style breath sequence) / Transition Hold / Compassion Integration / Sonic Rest. Followed by Three Voices journaling.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>Three Voices journaling:</strong></p>
-            <ul>
-              <li><strong>Voice One — The Psychic Entity Speaks (5 min):</strong> Client writes as the entity that came up — the memory, sensation, emotion, pattern, or part. Where it lives, what it looks like, what it has been trying to say. Full retrieval into the labile window through the writing channel.</li>
-              <li><strong>Voice Two — The Current Self Responds (4 min):</strong> Client writes back to the entity. Not blaming, not whimpering, not denying. Just telling their truth about how it has been to live with this.</li>
-              <li><strong>Voice Three — The Next-Level Human Self Writes (5 min):</strong> The future self, the wiser self, sits down with both. Explains the lesson. Explains why it had to be this way. Encodes the meaning-rich, purpose-rich frame that becomes the new content reconsolidated into the assembly.</li>
-            </ul>
-          </div>
-          <div class="content-block">
-            <p><strong>DEEP through the Five Analytical Questions:</strong></p>
-            <ul>
-              <li><strong>Retrieval:</strong> Specific charged assembly, full somatic-emotional signature via activating breath and dimensionalising.</li>
-              <li><strong>Prediction Error:</strong> All four channels simultaneously — somatic (body breathes through rather than reacts), cognitive (threat becomes teacher), perceptual (music, eye mask, headphones), identity (dimensionalising breaks identification).</li>
-              <li><strong>New Encoding:</strong> Compassion Integration phase encodes love, acceptance, and gratitude while the assembly is still labile. Three Voices journaling encodes the lesson and next-level frame.</li>
-              <li><strong>Metaplastic Conditioning:</strong> Sonic Rest and Compassion Integration produce extended parasympathetic dominance and DMN engagement.</li>
-              <li><strong>Sequencing:</strong> Work phase. Optimally primed by DELTA; sealed by DELTA in the days following.</li>
-            </ul>
-          </div>
-          <div class="content-block">
-            <p><strong>The Two Paths teaching:</strong> DEEP closes with this. The client did not erase the old path. They cannot. What they did is create a fork in the road. The old path — familiar and frustrating — is still there. The new path — foreign and fearful — is now also there. Choose the foreign one. The foreign and fearful path becomes the foreign and fun path. The more it is chosen, the more it becomes the new familiar.</p>
-            <p><strong>BEEP (Breath Enhanced Emotional Processing):</strong> Practice-level extension of DEEP. Approximately 11 minutes. Same breath-driven retrieval mechanism without the full multi-phase architecture. No extended Compassion Integration, no long Sonic Rest, no Three Voices journaling. Structured as DEEP's activation phase plus a brief integration. Prescribed as homework between DEEP sessions. Also the coach's daily nervous-system maintenance practice.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">In the Three Voices journaling structure, Voice Three is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The client as they are now, processing what surfaced during the session</button>
-                <button class="opt" data-opt="B">B) The original wound speaking — its location, what it looks like, what it has been trying to say</button>
-                <button class="opt" data-opt="C">C) The Next-Level Human Self: explains the lesson and encodes the meaning-rich frame as new content during the labile window</button>
-                <button class="opt" data-opt="D">D) A compassionate witness who observes both the wound and the current self without judgment</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">DEEP generates prediction error through all four channels simultaneously. Which answer correctly identifies all four?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Somatic, limbic, cognitive, and behavioural</button>
-                <button class="opt" data-opt="B">B) Somatic, cognitive, perceptual, and identity</button>
-                <button class="opt" data-opt="C">C) Memory, emotion, sensation, and belief</button>
-                <button class="opt" data-opt="D">D) Breath, music, body, and story</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">11</span>
-          <span class="section-name">The QEC Protocol &amp; Choosing Between DEEP and QEC</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Sustained-attention specific-reconsolidation protocol. Does not use breath-driven state induction. Uses focused inquiry sequentially across body regions or energy centres. Where DEEP is intensity-driven, QEC is inquiry-driven.</p>
-            <p><strong>Protocol: 30-40 min.</strong> Seven energy centres (root through crown), each with: 10 focused breaths into the area, three layered clearing statements (for MUD/beliefs, for history/memories, for sensations/illness), three humming releases.</p>
-            <p>Canonical version uses the chakra structure. Alternative version uses anatomical body regions: pelvis, abdomen, upper abdomen, chest, throat, head, top of head.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Choose DEEP when</th><th>Choose QEC when</th></tr></thead>
-            <tbody>
-              <tr><td>Specific identifiable charged memory or pattern</td><td>Pattern distributed across body or multiple locations</td></tr>
-              <tr><td>Client can tolerate sympathetic activation</td><td>Client cannot tolerate intense breathwork or has cardiovascular contraindications</td></tr>
-              <tr><td>Work needs full somatic-emotional retrieval intensity</td><td>Systemic issues: chronic pain syndromes, energetic complaints</td></tr>
-              <tr><td>Single dominant theme</td><td>Client prefers gentler, more inquiry-based experience</td></tr>
-              <tr><td>Full 55-minute session available</td><td>30-40 minutes and complete protocol cycle available</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Illustrative weekly schedule:</strong> Mon: DELTA (prime). Tue: DEEP (heavy specific reconsolidation). Wed: DELTA or BEEP (seal + light maintenance). Thu: QEC (distributed-pattern inquiry-based reconsolidation). Fri: QAT or DELTA (seal + generative work if appropriate). Weekend: rest. Optional Brain Breath or VIR for maintenance.</p>
-            <p>This structure is illustrative, not prescriptive. A client in acute distress should run DELTA daily until the nervous system stabilises, then add specific work in.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">You are working with a client who has fibromyalgia and chronic fatigue distributed across multiple body locations. They cannot tolerate high-intensity breathwork. The correct protocol is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) DEEP with activating breath at reduced intensity</button>
-                <button class="opt" data-opt="B">B) DELTA as a standalone until chronic symptoms improve</button>
-                <button class="opt" data-opt="C">C) QEC — pattern distributed across body, systemic issue, breathwork contraindicated</button>
-                <button class="opt" data-opt="D">D) VIR only until client can tolerate DEEP</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">The illustrative weekly schedule sequences:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) DEEP, QEC, DELTA, QAT on weekly rotation</button>
-                <button class="opt" data-opt="B">B) DELTA (prime), DEEP (reconsolidation), DELTA or BEEP (seal), QEC (distributed pattern), QAT or DELTA (seal/generative)</button>
-                <button class="opt" data-opt="C">C) Three DELTA sessions per week for every one DEEP session</button>
-                <button class="opt" data-opt="D">D) QAT as the opener and DELTA as the closer every session</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">12</span>
-          <span class="section-name">DELTA &amp; QAT In Depth — Protocols and Pairings</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>DELTA — Downregulation and Nervous System Restoration (~22 min):</strong> Global metaplasticity and parasympathetic restoration. Named for the delta-wave brain state it induces. The most accessible and most repeatable of the four BRN classes.</p>
-            <p><strong>Three phases:</strong> (1) Extended body-scan — begins as focused-attention work, progressively diffuses into open-monitoring. (2) Box-breathing rhythm with explicit identity-dissolution language. (3) Reconstruction phase — seeds the new identity into the now-metaplastic state.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>DELTA through the Five Analytical Questions:</strong></p>
-            <ul>
-              <li><strong>Retrieval:</strong> Minimal specific retrieval. DELTA is not a precision tool.</li>
-              <li><strong>Prediction Error:</strong> Diffuse, identity-level. "You are not your body, you are not your emotions, you are not your thoughts" generates identity-level prediction error against the entire ego-assembly.</li>
-              <li><strong>New Encoding:</strong> Non-specific identity-level seeding through reconstruction: "From this place of pure potential, begin to reassemble yourself. No old stories, no inherited scripts."</li>
-              <li><strong>Metaplastic Conditioning:</strong> Maximal. This is what DELTA does best.</li>
-              <li><strong>Sequencing:</strong> Prime and seal of the BRN system. Day before DEEP/QEC, day after, standalone daily.</li>
-            </ul>
-            <p><strong>FA-first then OM:</strong> Research confirms focused-attention-first followed by open-monitoring is more effective than OM-first for novices — FA establishes the attentional control that OM can then operate within. (Ishikawa et al., 2025). Two versions exist: DELTA 1 and DELTA 2 — same architecture, different language, allowing variation for clients running it regularly.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>QAT — Quantum Awareness Training (~30 min):</strong> Global metaplasticity protocol. Where DELTA is restorative, QAT is generative. Where DELTA dissolves identity to allow rest and reconstruction, QAT dissolves identity to allow seeding of intention into the field-state.</p>
-            <p><strong>Three rounds</strong> of accelerated breathwork (BEEP-style activation but more sustained), then into the void — identity dissolution, field-saturation. From the void, an intention is projected into the field. The intention is received back through the heart centre, paired with elevated affective states (joy, gratitude, completeness). Protocol closes with the explicit framing that the chosen reality has already shifted.</p>
-            <p><strong>On the void:</strong> Not metaphor. A specific phenomenological state characterised by identity dissolution, content emptying, sustained background awareness without object, and a sense of vast openness. From this state, the practitioner projects an intention — not a wish, not a fantasy, but a clear thought-form — into the field. (Chowdhury et al., 2025; Sacchet et al., 2024)</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Pairing</th><th>Why it works</th></tr></thead>
-            <tbody>
-              <tr><td><strong>DEEP + DELTA</strong></td><td>DEEP: deep, intense, sympathetic-driven specific reconsolidation. DELTA: deep, restorative, parasympathetic-driven metaplastic conditioning. Exact complements. DELTA before DEEP establishes the metaplastic ground. DELTA after DEEP seals the new encoding.</td></tr>
-              <tr><td><strong>QEC + QAT</strong></td><td>QEC: sustained-attention specific reconsolidation. QAT: field-state generative metaplastic work. Both share a meditative/contemplative register. QAT before QEC opens the field. QAT after QEC seals with intentional generative content.</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">DELTA begins with focused attention and transitions to open monitoring. Why FA before OM?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Open monitoring is too intense for the nervous system without a warmup</button>
-                <button class="opt" data-opt="B">B) The body-scan provides a physical ground before field-state awareness can be attempted</button>
-                <button class="opt" data-opt="C">C) Research confirms FA-first then OM is more effective for novices — FA establishes the attentional control that OM then operates within</button>
-                <button class="opt" data-opt="D">D) Focused attention creates the sympathetic activation DELTA needs for metaplastic conditioning</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">QAT pairs naturally with QEC (rather than DELTA) because:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) QEC and QAT are both shorter protocols, making them more efficient together</button>
-                <button class="opt" data-opt="B">B) Both QEC and QAT work through the chakra system</button>
-                <button class="opt" data-opt="C">C) They share a meditative/contemplative register — QAT opens the field and seals with intentional generative content around QEC's precision work</button>
-                <button class="opt" data-opt="D">D) DELTA and QEC cannot be used on the same day due to nervous system load</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">13</span>
-          <span class="section-name">The Retrain Tools — VIR, WIR &amp; Brain Breath</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Retrain tools work at the ice layer — nervous system as physical actor, biology and behaviour. Where Rewire tools do field-state work at the water layer, Retrain tools build new lived patterns through repetition until the new path fires faster than the old one. These are not subconscious protocols. They are conscious rehearsal and nervous-system maintenance.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Tool</th><th>Duration</th><th>Mechanism</th><th>Frequency</th></tr></thead>
-            <tbody>
-              <tr><td><strong>VIR — Virtual Identity Rehearsal</strong></td><td>~11 min</td><td>Guided audio meditation: embodying the next-level self. Forward-encoding of new identity through structured rehearsal. Builds the new path through repetition.</td><td>Daily</td></tr>
-              <tr><td><strong>WIR — Written Identity Rehearsal</strong></td><td>25-30 min</td><td>Journaling companion to VIR. Same forward-encoding of new identity through writing rather than guided audio. Activates different encoding pathways than audio-based rehearsal.</td><td>Weekly or alternated with VIR</td></tr>
-              <tr><td><strong>Brain Breath</strong></td><td>3 min</td><td>Autonomic reset: sympathetic activation then parasympathetic shift cycle. Resets the nervous system. Mechanism is biology and behaviour — not field-state work.</td><td>Daily maintenance and in-the-moment regulation</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Why Brain Breath is Retrain, not Rewire:</strong> Its mechanism is autonomic regulation — a sympathetic-activation-then-parasympathetic-shift cycle that resets the nervous system in three minutes. That is biology and behaviour at the ice layer, not field-state work at the water layer. This distinction matters for prescription. Brain Breath manages state; DEEP and QEC update assemblies.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">What distinguishes VIR from a Rewire tool like DEEP?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) VIR uses breathwork while DEEP uses journaling as its primary mechanism</button>
-                <button class="opt" data-opt="B">B) DEEP targets charged assemblies through reconsolidation. VIR forward-encodes the new identity through rehearsal — it builds the new path, not clears the old one.</button>
-                <button class="opt" data-opt="C">C) VIR works on the story layer (vapor) while DEEP works on the emotional charge layer (water)</button>
-                <button class="opt" data-opt="D">D) There is no functional distinction — both are forms of identity rehearsal</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">Brain Breath is classified as a Retrain tool (not Rewire) because:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Breathing exercises are always behavioural rather than subconscious</button>
-                <button class="opt" data-opt="B">B) Its duration (3 minutes) is too short to access Rewire-level states</button>
-                <button class="opt" data-opt="C">C) Its mechanism is autonomic regulation — sympathetic activation then parasympathetic shift — biology and behaviour at the ice layer, not field-state work</button>
-                <button class="opt" data-opt="D">D) Brain Breath is designed for daily use, and Rewire tools are not appropriate for daily use</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+  <!-- MANUALS -->
+  <div class="section-label">
+    <h2>The Manuals</h2>
   </div>
 
-  <div class="source-block">
-    <div class="source-label videos"><span>▶</span> From the Videos</div>
-    <div class="video-placeholder">
-      <p>No video transcripts added yet for Coaching Methods.</p>
-      <p class="how-to">Record session → run through Whisper → drop transcript here</p>
-    </div>
+  <div class="sessions-grid">
+
+    <a href="philosophy-psychology.html" class="session-card">
+      <div class="card-meta">
+        <span class="day-badge">Module 1</span>
+        <span class="status-dot" title="Notes available"></span>
+      </div>
+      <h3>Psychology, Philosophy &amp; Belief Physiology</h3>
+      <p>The foundational layer everything else stands on. Essentia and MUD, the SIGNAL cascade from identity to biology, the identity formation sequence, Drama vs Trauma, the Three Brains and why regulation precedes everything, oscillation vs relaxation, and the polyvagal working model. 23 sections covering the full Module 1 manual.</p>
+      <div class="card-tags">
+        <span class="tag">Essentia</span>
+        <span class="tag-peach">SIGNAL Cascade</span>
+        <span class="tag">Three Brains</span>
+        <span class="tag">Polyvagal</span>
+      </div>
+      <div class="read-more">Open module &#8594;</div>
+    </a>
+
+    <a href="quantum-metabolism.html" class="session-card">
+      <div class="card-meta">
+        <span class="day-badge">Module 2</span>
+        <span class="status-dot" title="Notes available"></span>
+      </div>
+      <h3>Quantum Metabolism</h3>
+      <p>The biological case that metabolism is downstream of consciousness. The SIGNAL cascade running top-down through the body (identity to cortisol to fat storage and testosterone suppression), the four striving archetypes and their metabolic signatures, the three hormonal axes, SHMEC/HEC markers, and why identity change is measurable endocrinology, not metaphor.</p>
+      <div class="card-tags">
+        <span class="tag">Metabolism</span>
+        <span class="tag-peach">Hormonal Axes</span>
+        <span class="tag">Archetypes</span>
+        <span class="tag">SHMEC</span>
+      </div>
+      <div class="read-more">Open module &#8594;</div>
+    </a>
+
+    <a href="relationships-romance.html" class="session-card">
+      <div class="card-meta">
+        <span class="day-badge">Module 3</span>
+        <span class="status-dot" title="Notes available"></span>
+      </div>
+      <h3>Personal Relationships</h3>
+      <p>Every relational pattern is downstream of identity: the argument, the distance, the hiding are subconscious knots tied in three developmental windows. The A.F.R.A.I.D. emotional stack, the four attachment styles, the Authentic Giver vs Pleaser split, Confident Detachment's six elements, and the White Pawn ten moves. Closes with the WET/BEEP toolset and the map onto BMR's Relationship Safety arc.</p>
+      <div class="card-tags">
+        <span class="tag">A.F.R.A.I.D.</span>
+        <span class="tag-peach">Attachment</span>
+        <span class="tag">100/100</span>
+        <span class="tag">Ten Moves</span>
+      </div>
+      <div class="read-more">Open module &#8594;</div>
+    </a>
+
+    <a href="money-abundance.html" class="session-card">
+      <div class="card-meta">
+        <span class="day-badge">Module 4</span>
+        <span class="status-dot" title="Notes available"></span>
+      </div>
+      <h3>Money Mindset &amp; Manifestation</h3>
+      <p>Every money problem is an identity problem: how a money story installed by one childhood SEES Event hardens into an adult financial identity, and how to revise it. The Generosity River, the Eight Money Mindsets, the Four Money Blocks and the worth wound beneath them, the Money-as-Placebo pricing principle, and the three-phase Perception/Ownership/Action session map. Includes the full clinical quick-reference tables.</p>
+      <div class="card-tags">
+        <span class="tag">Worth Wound</span>
+        <span class="tag-peach">Eight Mindsets</span>
+        <span class="tag">Generosity River</span>
+        <span class="tag">Session Map</span>
+      </div>
+      <div class="read-more">Open module &#8594;</div>
+    </a>
+
+    <a href="coaching-methods.html" class="session-card">
+      <div class="card-meta">
+        <span class="day-badge">Module 5 &middot; Materials &amp; Methods</span>
+        <span class="status-dot" title="Notes available"></span>
+      </div>
+      <h3>Coaching Methods</h3>
+      <p>The neuroscience engine behind the BRN protocols and the most operationally important material in the framework. Memory reconsolidation and the 4-6 hour window, prediction error, metaplasticity, Prime/Work/Seal sequencing, the Five Analytical Questions, the full breath system with the Coherence Breath, and the working detail of DEEP, BEEP, QEC, DELTA and QAT with weekly pairing schedules.</p>
+      <div class="card-tags">
+        <span class="tag">Reconsolidation</span>
+        <span class="tag-peach">Prime/Work/Seal</span>
+        <span class="tag">Breath System</span>
+        <span class="tag">Five Questions</span>
+      </div>
+      <div class="read-more">Open module &#8594;</div>
+    </a>
+
   </div>
+
+  <!-- SESSION PROTOCOLS -->
+  <div class="section-label">
+    <h2>Session Protocols</h2>
+  </div>
+
+  <div class="sessions-grid">
+
+    <a href="brn-sessions.html" class="session-card">
+      <div class="card-meta">
+        <span class="day-badge">Perception &middot; The Human Game</span>
+        <span class="status-dot" title="Notes available"></span>
+      </div>
+      <h3>BRN Sessions</h3>
+      <p>The four deep-change session protocols (DEEP, QEC, QAT, DELTA), what each one does, and the dosing rules that govern them: DEEP and QEC once per week maximum, always bracketed by DELTA or QAT. Includes the full 11-minute BEEP breath practice with exact mechanics, minute-by-minute phases, and integration steps, complete enough to run a session from the page.</p>
+      <div class="card-tags">
+        <span class="tag">Four Pillars</span>
+        <span class="tag-peach">Dosing Rules</span>
+        <span class="tag">BEEP Breathwork</span>
+      </div>
+      <div class="read-more">Open protocols &#8594;</div>
+    </a>
+
+  </div>
+
 </div>
 
-<!-- ==================== MODULE 1 ==================== -->
-<div class="module-panel" id="m1">
-  <div class="module-header">
-    <div class="module-eyebrow">Module 1 — Philosophy &amp; Psychology Manual</div>
-    <h2 class="module-title">Psychology, Philosophy &amp; Belief Physiology</h2>
-    <p class="module-desc">Identity formation, MUD, the SIGNAL cascade, why insight fails, and the neuroscience of the nervous system under stress.</p>
-  </div>
-
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> From the Manual</div>
-    <div class="section-list">
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">01</span>
-          <span class="section-name">Identity &amp; The SIGNAL Cascade</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Targeting behaviour without reaching identity is working on the wrong floor of the building."</div>
-          <div class="content-block">
-            <p>The SIGNAL cascade runs: <strong>Identity → Nervous System → Hormones → Immune Function → Behaviour</strong>. Every automatic pattern a client presents with is at the bottom. The coaching error is targeting the bottom.</p>
-            <p>Identity in NLH is not self-concept. It is a <strong>biological set point</strong> — the brain's best prediction of who this person is, defended homeostically the same way body temperature is defended. When new behaviour threatens the set point, the brain corrects back. This is not resistance or lack of motivation. It is biology.</p>
-            <p>This is why "be it until you see it" (not fake it till you make it) is neurobiologically accurate. Identity precedes behaviour because the nervous system is always acting in line with its current identity prediction. Change the identity, and behaviour follows.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">In the SIGNAL cascade, what sits at the top — upstream of everything else?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The nervous system</button>
-                <button class="opt" data-opt="B">B) Behaviour</button>
-                <button class="opt" data-opt="C">C) Identity</button>
-                <button class="opt" data-opt="D">D) Hormones</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why does the brain resist new behaviour even when the client genuinely wants to change?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The client is not motivated enough</button>
-                <button class="opt" data-opt="B">B) Identity is a biological set point defended homeostically — new behaviour that threatens the set point triggers a biological correction back to baseline</button>
-                <button class="opt" data-opt="C">C) Behaviour change takes time to become automatic habit</button>
-                <button class="opt" data-opt="D">D) The prefrontal cortex cannot override limbic patterns</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">02</span>
-          <span class="section-name">Drama vs Trauma — The Formation Sequence</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"You don't have trauma the way you think you do. What you have is drama — scripts, stories, performances written into your role when you didn't yet have the wisdom to choose for yourself."</div>
-          <div class="content-block">
-            <p>Most clients say "my childhood was fine." That is not resistance. That is the clinical signature of <strong>lowercase-sees conditioning</strong> — accumulated ordinary experience so normalised the client cannot see it as conditioning. The coaching error is waiting for a trauma story.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>#</th><th>Step</th><th>What happens</th></tr></thead>
-            <tbody>
-              <tr><td>1</td><td><strong>SEES Event</strong></td><td>Severe/Sudden OR Subtle/Continuous. The latter is more entrenched — it's invisible.</td></tr>
-              <tr><td>2</td><td><strong>Judgment</strong></td><td>Millisecond evaluation without the processing capacity to handle it accurately</td></tr>
-              <tr><td>3</td><td><strong>Story (MUD)</strong></td><td>Simple, absolute, structural: "I am not enough." "I cannot be trusted."</td></tr>
-              <tr><td>4</td><td><strong>Emotion fuses</strong></td><td>The rebar. Gives the story structural power that insight cannot break.</td></tr>
-              <tr><td>5</td><td><strong>Belief threshold</strong></td><td>Story + Emotion = Belief = Identity Structure. No longer an experience. Now it IS the person.</td></tr>
-              <tr><td>6</td><td><strong>Identity Part</strong></td><td>Semi-autonomous internal character. Adaptive, not pathological.</td></tr>
-              <tr><td>7</td><td><strong>Personality</strong></td><td>The aggregate of all identity parts. The set point.</td></tr>
-              <tr><td>8</td><td><strong>Cascade activates</strong></td><td>Personality drives the SIGNAL cascade through the nervous system to hormones and behaviour.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Critical distinction:</strong> Severity of the original event does not predict depth of MUD. Chronic subtle invalidation from a loving but limited parent often produces more entrenched MUD than a single dramatic event. The conditioning is in the water. The fish cannot see the water.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">Why do most BMR clients say "my childhood was fine"?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) They are protecting themselves from painful memories they haven't processed yet</button>
-                <button class="opt" data-opt="B">B) Their childhood actually was fine — the pattern developed as an adult</button>
-                <button class="opt" data-opt="C">C) Subtle continuous conditioning is so normalised they cannot see it as conditioning — this is the clinical signature, not resistance</button>
-                <button class="opt" data-opt="D">D) They are in the early stages of trust with the coach</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="A">
-              <p class="q-text">Which type of SEES event tends to produce more entrenched MUD?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Subtle/Continuous — because it's invisible and normalised, making it harder to trace and address</button>
-                <button class="opt" data-opt="B">B) Severe/Sudden — because the intensity of the event sears the story deeper</button>
-                <button class="opt" data-opt="C">C) Both produce equally entrenched MUD regardless of severity</button>
-                <button class="opt" data-opt="D">D) Severity of the original event directly predicts the depth of MUD</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">03</span>
-          <span class="section-name">The Rebar Insight — Why Insight Alone Never Sticks</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"MUD without emotional charge = a thought you can question. MUD with emotional charge = a felt reality you cannot argue with."</div>
-          <div class="content-block">
-            <p>The concrete (story) provides mass. The <strong>rebar (emotion) provides tensile strength</strong>. A client who intellectually understands that their worth doesn't depend on performance — but still feels a visceral wave of shame when they underperform — has loosened the cement. The rebar is still fully operational.</p>
-            <p>This explains the most common coaching failure: the client who "gets it" intellectually and still doesn't change. Rewrite has happened. Rewire has not. The story layer was addressed. The emotional charge fused to it was not.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>What was done</th><th>What happens</th></tr></thead>
-            <tbody>
-              <tr><td>Rewrite only — no Rewire</td><td>Insight without embodiment. The story shifts but the emotional charge regenerates it.</td></tr>
-              <tr><td>Rewire only — no Rewrite</td><td>Temporary relief. The charge releases but MUD regenerates it from the unchanged story.</td></tr>
-              <tr><td>Rewrite + Rewire</td><td>Lasting change. Cement and rebar both addressed.</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">A client fully understands his worth isn't tied to performance but still feels intense shame when he makes a mistake. Clinically, this means:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The Rewrite failed and needs to be repeated with different framing</button>
-                <button class="opt" data-opt="B">B) The cement has loosened (Rewrite worked) but the rebar — the emotional charge — is still operational and the Rewire hasn't been done</button>
-                <button class="opt" data-opt="C">C) The client is intellectualising to avoid doing the real work</button>
-                <button class="opt" data-opt="D">D) Progress is on track — insight always precedes embodiment by several months</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="A">
-              <p class="q-text">What does "Rewire without Rewrite" produce?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Temporary relief — the charge releases but MUD regenerates it from the unchanged story</button>
-                <button class="opt" data-opt="B">B) Lasting change — emotional release is the primary mechanism for durable transformation</button>
-                <button class="opt" data-opt="C">C) Insight without embodiment</button>
-                <button class="opt" data-opt="D">D) Nothing — both must happen in the same session to have any effect</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">04</span>
-          <span class="section-name">Why Activation Must Be Entered — The Oscillation Principle</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Regulation is NOT relaxation. Relaxation soothes the moment. Regulation builds the capacity to function inside activation."</div>
-          <div class="content-block">
-            <p>MUD was formed under sympathetic activation. High arousal seared the story into the system through limbic engagement and stress hormone signalling. If the story was cemented under activation, it cannot be fully reshaped in a state of sedation.</p>
-            <p>The oscillation is the mechanism: <strong>Activate → Reframe → Recover</strong></p>
-            <ul>
-              <li><strong>Activation:</strong> deliberately enter the encoding state (the nervous system goes up)</li>
-              <li><strong>Reframe:</strong> introduce meaning shift WHILE activated (cognitive flexibility under load)</li>
-              <li><strong>Recovery:</strong> slow exhale, self-touch, genuine elevated emotion — the system returns, but to a new baseline</li>
-            </ul>
-            <p>Each cycle deposits a new lived experience: "I can enter this state and come back differently." Repeated across many cycles, this rewrites the baseline autonomic tone. This is <strong>earned regulation</strong>, not relaxation.</p>
-            <p>The wellness world conflates regulation with relaxation. NLH does not. Relaxation soothes the moment. Regulation builds the capacity to function inside activation — to remain in the charged state long enough for new content to encode. These are fundamentally different outcomes.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why must MUD be retrieved under sympathetic activation (rather than in a calm, relaxed state)?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Activation makes the client more willing to engage with difficult material</button>
-                <button class="opt" data-opt="B">B) MUD was formed under activation — it cannot be fully reshaped in a state of sedation. The encoding state must be recreated to open the reconsolidation window with the full somatic signature.</button>
-                <button class="opt" data-opt="C">C) Calm states reduce access to subconscious material</button>
-                <button class="opt" data-opt="D">D) Activation drives the prediction error more effectively than a neutral state</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="A">
-              <p class="q-text">The distinction between regulation and relaxation is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Relaxation soothes the moment; regulation builds the capacity to function inside activation — they are different outcomes, not synonyms</button>
-                <button class="opt" data-opt="B">B) Regulation is deeper than relaxation but produces the same long-term result</button>
-                <button class="opt" data-opt="C">C) Relaxation is a prerequisite for regulation — you need one before the other</button>
-                <button class="opt" data-opt="D">D) They are effectively the same in clinical practice</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">05</span>
-          <span class="section-name">The Three Brains &amp; Neuroception</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"You cannot install software during a crash."</div>
-          <table class="ref-table">
-            <thead><tr><th>Stress level</th><th>Dominant system</th><th>Coaching implication</th></tr></thead>
-            <tbody>
-              <tr><td>Low</td><td>Creative brain leads (prefrontal/neocortex)</td><td>Identity work, insight, meaning-making fully accessible</td></tr>
-              <tr><td>Moderate</td><td>Social brain dominates (limbic)</td><td>Emotional reactivity up. Reasoning increasingly serves the emotional agenda.</td></tr>
-              <tr><td>High</td><td>Survival brain takes over (brainstem)</td><td>Creative brain substantially offline. Cannot install new patterns here.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p>The client who "knows better but does it anyway" is not failing at willpower. Their creative brain is partially offline because identity-level programming maintains a stress state that keeps survival and social brains disproportionately activated. The solution is <strong>Retrain</strong> — not more insight. Practice the new response in low-stakes conditions hundreds of times until it fires fast enough to compete with the old pathway when the system is under load.</p>
-            <p><strong>Safety vs Safeness:</strong> Safety = objective condition (threat actually absent). Safeness = physiological state (nervous system registers absence of threat). A client can be objectively safe and physiologically unsafe. The threat is not in the room — it is in the neuroception, calibrated by identity structures installed during conditioning.</p>
-            <p>You cannot convince a nervous system that it is safe. You create conditions for it to register safeness through its own channels. The coach's regulated presence is the primary instrument. This is co-regulation as clinical mechanism, not as metaphor.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">What is the distinction between Safety and Safeness?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Safety is emotional; safeness is physical and objective</button>
-                <button class="opt" data-opt="B">B) Safety is the objective condition (threat absent); safeness is the physiological state (nervous system registers absence of threat) — a client can be objectively safe but physiologically unsafe</button>
-                <button class="opt" data-opt="C">C) They refer to the same state — if a person is safe, they feel safe</button>
-                <button class="opt" data-opt="D">D) Safety is long-term; safeness is moment-to-moment</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">A client consistently knows better but acts on the old pattern under pressure. The NLH response is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) More insight work — the Rewrite hasn't landed yet at sufficient depth</button>
-                <button class="opt" data-opt="B">B) More emotional processing — the Rewire isn't complete</button>
-                <button class="opt" data-opt="C">C) Retrain — the new response needs hundreds of low-stakes repetitions to fire faster than the old pathway when the system is under load</button>
-                <button class="opt" data-opt="D">D) Medication to stabilise the nervous system before coaching can continue</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">06</span>
-          <span class="section-name">The Four Core Needs &amp; The Four Drives</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>The Four Core Needs form a hierarchy. A coaching conversation targeting a higher floor while a lower floor's need is chronically unmet is working in the wrong direction.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Core Need</th><th>When unmet</th><th>Coaching direction</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Safety &amp; Security</strong></td><td>Hypervigilance, control</td><td>Safety work first. No higher-level work until this is stable.</td></tr>
-              <tr><td><strong>Acceptance &amp; Belonging</strong></td><td>Approval-seeking, hiding</td><td>Worth and belonging work</td></tr>
-              <tr><td><strong>Freedom &amp; Autonomy</strong></td><td>Rebellion or compliance</td><td>Autonomy activation</td></tr>
-              <tr><td><strong>Authenticity, Growth, Creation</strong></td><td>Emptiness, drift despite success</td><td>Purpose construction</td></tr>
-            </tbody>
-          </table>
-          <table class="ref-table">
-            <thead><tr><th>Drive</th><th>Trap when unintegrated</th><th>Recovery relevance</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Power</strong></td><td>Achievement becomes identity (Striver)</td><td>Recovery effort itself becomes the striving behaviour — works his problem until he crashes</td></tr>
-              <tr><td><strong>Popularity</strong></td><td>Worth depends on others' approval (Pleaser)</td><td>Presenting as the perfect husband while hiding — worth managed through performance</td></tr>
-              <tr><td><strong>Pleasure</strong></td><td>Numbing discomfort compulsively (Soother)</td><td>Primary driver of compulsive sexual behaviour — the Pleasure drive running without Purpose</td></tr>
-              <tr><td><strong>Purpose</strong></td><td>The integrating drive — when active, the others find their place</td><td>Its absence is the structural condition that makes the Soother sticky</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">Compulsive sexual behaviour is which drive operating without Purpose as the organising principle?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Power</button>
-                <button class="opt" data-opt="B">B) Popularity</button>
-                <button class="opt" data-opt="C">C) Pleasure</button>
-                <button class="opt" data-opt="D">D) All four drives equally contribute</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="A">
-              <p class="q-text">A client presents with emptiness and lack of direction despite significant external success. Which Core Need is unmet?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Authenticity, Growth &amp; Creation (Purpose floor)</button>
-                <button class="opt" data-opt="B">B) Safety &amp; Security</button>
-                <button class="opt" data-opt="C">C) Acceptance &amp; Belonging</button>
-                <button class="opt" data-opt="D">D) Freedom &amp; Autonomy</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">07</span>
-          <span class="section-name">The High Self, The Parts &amp; The 5Ps</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>The High Self vs The Parts:</strong> The person is not a single unified self. They are a cast of internal characters, each formed around a specific wound. The goal of the work is not to eliminate any part — all parts were adaptive at the time. The goal is to help the <strong>High Self</strong> take its rightful place as the author of the life rather than one of the characters.</p>
-            <p>High Self = the organising intelligence that can hold all parts with compassion without being captured by any of them. This is the prefrontal cortex when it is online — which requires regulation first. You cannot access the High Self from the survival brain.</p>
-            <p>This is why identity work is not about "getting rid of" the shame, the rage, the withdrawal. It is about developing the High Self's capacity to meet those parts without being overrun by them.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>The 5Ps — and why Pain is the most important one:</strong></p>
-            <p>People / Passions / Personality / Powers / <strong>Pain</strong></p>
-            <p>Pain is not a liability to minimise. It is the primary pointer to unique work and the most direct raw material for Purpose construction. The client's recovery story is not a confession to get past. It is the most powerful asset in the coaching relationship and eventually in their contribution to others.</p>
-            <p>This reframe matters clinically: clients who are stuck in shame about their pain cannot access it as a resource. The coaching moves from "what is wrong with me?" to "what does this pain uniquely position me to do?"</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">The goal of working with internal "parts" is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) To eliminate the harmful parts and strengthen the useful ones</button>
-                <button class="opt" data-opt="B">B) To help the High Self take its place as author of the life — holding all parts with compassion without being captured by any of them</button>
-                <button class="opt" data-opt="C">C) To integrate all parts into a single unified self</button>
-                <button class="opt" data-opt="D">D) To understand the origin of each part so the client can choose which to act from</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why is Pain described as the most important of the 5Ps?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Pain motivates clients to do the work they would otherwise avoid</button>
-                <button class="opt" data-opt="B">B) Pain is the primary pointer to unique work and the most direct raw material for Purpose construction — the recovery story is an asset, not a confession</button>
-                <button class="opt" data-opt="C">C) Pain contains the most information about the client's identity formation sequence</button>
-                <button class="opt" data-opt="D">D) Pain is the only P that cannot be taught — it must be lived</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="source-block">
-    <div class="source-label videos"><span>▶</span> From the Videos</div>
-    <div class="video-placeholder">
-      <p>No video transcripts added yet for Module 1.</p>
-      <p class="how-to">Record session → run through Whisper → drop transcript here</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== MODULE 2 ==================== -->
-<div class="module-panel" id="m2">
-  <div class="module-header">
-    <div class="module-eyebrow">Module 2 — Quantum Metabolism Manual</div>
-    <h2 class="module-title">Quantum Metabolism</h2>
-    <p class="module-desc">How identity drives hormones, biology, and physical health. Why recovery is a metabolic intervention, not just a psychological one.</p>
-  </div>
-
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> From the Manual</div>
-    <div class="section-list">
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">01</span>
-          <span class="section-name">Metabolism is Downstream of Consciousness</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"You cannot out-diet a conditioned identity. You cannot out-exercise a chronic stress state."</div>
-          <div class="content-block">
-            <p>The body's ability to regulate energy, build muscle, manage fat, sleep deeply, and repair itself is not determined solely by diet and exercise. It is determined by the <strong>signal quality of the psychological and emotional life</strong> — which is determined by the identity structures running the SIGNAL cascade.</p>
-            <p>Biological interventions work. But they work far better when the psychological work has been done first. The cascade runs top-down. Identity is the top.</p>
-            <p><strong>The Awakening Phase as metabolic intervention:</strong> When Rewrite changes the story, the shift is not just psychological. The AFRAID emotional baseline begins shifting toward ELEVATED. Cortisol normalises. Sleep deepens. Testosterone and growth hormone recover. Inflammation reduces. The body moves from defend-and-store metabolism to grow-and-repair metabolism. This is measurable endocrinology. Identity change is a direct metabolic intervention.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">A client follows his protocol perfectly — sleep, nutrition, exercise — but SHMEC remains dysregulated. The NLH diagnosis is:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) He needs a stricter or more personalised protocol</button>
-                <button class="opt" data-opt="B">B) A conditioned identity is running a SIGNAL cascade that overrides the lifestyle interventions — identity-level work is needed, not another protocol change</button>
-                <button class="opt" data-opt="C">C) He needs more time — protocols take 6–12 months to produce measurable biological change</button>
-                <button class="opt" data-opt="D">D) Medical investigation is warranted before coaching continues</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">02</span>
-          <span class="section-name">The Four Striving Archetypes</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <table class="ref-table">
-            <thead><tr><th>Archetype</th><th>Core MUD</th><th>Metabolic signature</th><th>Recovery relevance</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Striver</strong></td><td>"I am only as good as my last result. Stopping = failure."</td><td>Chronic cortisol, disrupted sleep, burnout cycle, HEC dysregulation</td><td>Recovery effort becomes the striving behaviour. Works his problem until he crashes. Identity work: release achievement = worth.</td></tr>
-              <tr><td><strong>Seeker</strong></td><td>"I haven't found the answer yet. When I find it, everything will change."</td><td>Hormonal dysregulation from protocol inconsistency, blood sugar instability</td><td>Collects recovery insights without landing any. Needs Retrain (reps), not more knowledge.</td></tr>
-              <tr><td><strong>Soldier</strong></td><td>"Hard is good. Rest is weakness."</td><td>Overtrain/under-recover, inflammation, testosterone suppression, injury cycle</td><td>Recovery itself becomes discipline performance.</td></tr>
-              <tr><td><strong>Shamer</strong></td><td>"I am fundamentally flawed. People must not see the real me."</td><td>Restrict-binge cycle, cortisol from shame state, insulin dysregulation</td><td>BMR primary archetype. Shame is inflammatory. Reducing shame is a direct metabolic intervention.</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="D">
-              <p class="q-text">Which archetype is the primary BMR profile, and why?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Striver — high-performing men are overrepresented in recovery programs</button>
-                <button class="opt" data-opt="B">B) Seeker — clients keep looking for the right framework or approach</button>
-                <button class="opt" data-opt="C">C) Soldier — the discipline required for sustained recovery attracts this type</button>
-                <button class="opt" data-opt="D">D) Shamer — the shame wound that drives compulsive sexual behaviour maps directly to this archetype's core MUD, and chronic shame has a measurable metabolic signature</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">03</span>
-          <span class="section-name">SHMEC &amp; The Three Hormonal Axes</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>SHMEC: Sleep / Hunger / Mood / Energy / Cravings.</strong> When all five are stable, the coaching is working at the biological level. When any are dysregulated despite following the protocol, the identity cascade is overriding — identity-level work is needed before further protocol adjustment.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Axis</th><th>Disrupted by</th><th>Effect</th><th>Recovery relevance</th></tr></thead>
-            <tbody>
-              <tr><td><strong>HPA (stress)</strong></td><td>Chronic AFRAID state, MUD-driven cortisol</td><td>Visceral fat storage, muscle breakdown, insulin resistance, sleep disruption</td><td>The baseline physiology of the shame-driven client</td></tr>
-              <tr><td><strong>HPT (thyroid)</strong></td><td>Sustained cortisol from chronic conditioning</td><td>Metabolic rate decreases, energy drops, cognitive fog</td><td>Explains the "low energy" presentation many clients arrive with</td></tr>
-              <tr><td><strong>HPG (reproductive)</strong></td><td>Cortisol dominance — reproductive function is "non-essential" under threat</td><td>Testosterone and estrogen suppress, drive decreases, repair slows</td><td>Chronic shame + secrecy = HPG suppression. Low testosterone reinforces the sense of failure. Clearing MUD reverses this biologically, not through supplements.</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">A client with chronic shame and an active secrecy pattern is most likely experiencing suppression of which hormonal axis, and why?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) HPA — chronic shame directly elevates cortisol which is the primary disruption</button>
-                <button class="opt" data-opt="B">B) HPT — thyroid function is most sensitive to psychological stress states</button>
-                <button class="opt" data-opt="C">C) HPG — cortisol dominance signals "threat mode" to the brain, and reproductive function is deemed non-essential under threat. Low testosterone then reinforces the client's sense of failure.</button>
-                <button class="opt" data-opt="D">D) All three axes are equally suppressed</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">04</span>
-          <span class="section-name">The 4Ps — Full Metabolic Coaching</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <table class="ref-table">
-            <thead><tr><th>P</th><th>Domain</th><th>Without this</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Physiology</strong></td><td>Hormones, inflammation, sleep architecture, biological mechanisms</td><td>Missing the body layer entirely</td></tr>
-              <tr><td><strong>Psychology</strong></td><td>Identity structures driving the physiological patterns</td><td>Lifestyle interventions produce limited, temporary results</td></tr>
-              <tr><td><strong>Preferences</strong></td><td>What actually works for this specific person — chronotype, food response, exercise tolerance</td><td>Generic prescriptions that don't stick</td></tr>
-              <tr><td><strong>Practicals</strong></td><td>What is actually executable in this person's real life</td><td>Perfect plans that don't run in reality</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">A plan addressing only Physiology — diet, exercise, sleep hygiene — without Psychology will produce:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Lasting results if the client commits fully to the protocol</button>
-                <button class="opt" data-opt="B">B) Limited and temporary results — the identity cascade overrides lifestyle interventions, and the body cannot sustain change the identity set point is working against</button>
-                <button class="opt" data-opt="C">C) The same results as a full 4Ps plan given enough time</button>
-                <button class="opt" data-opt="D">D) Good results for 6–12 months before plateau</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="source-block">
-    <div class="source-label videos"><span>▶</span> From the Videos</div>
-    <div class="video-placeholder">
-      <p>No video transcripts added yet for Module 2.</p>
-      <p class="how-to">Record session → run through Whisper → drop transcript here</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== MODULE 3 ==================== -->
-<div class="module-panel" id="m3">
-  <div class="module-header">
-    <div class="module-eyebrow">Module 3 — Relationships &amp; Romance Manual</div>
-    <h2 class="module-title">Personal Relationships</h2>
-    <p class="module-desc">The neuroscience and psychology of human connection. Subconscious knots, attachment, the AFRAID stack, reciprocity, Confident Detachment, social architecture, and the ten moves of relational change.</p>
-  </div>
-
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> From the Manual</div>
-    <div class="section-list">
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">01</span>
-          <span class="section-name">Subconscious Knots and the Three Developmental Windows</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Every relational pattern is a downstream expression of identity structures installed during the three developmental windows."</div>
-          <div class="content-block">
-            <p>The ball of yarn metaphor: every relationship pattern is a tangle of threads that leads back to a single seed story. You can pull at the surface thread (the current argument, the distance, the recurring rupture) for years without reaching the knot. Or you can locate the knot and unravel it from the source.</p>
-            <p>Relational knots are tied within three developmental windows. The window determines the theme of the wound. The coach who knows which window is active can quickly narrow the territory of the work.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Window</th><th>Age Range</th><th>Core Wound Theme</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Childhood</strong></td><td>Birth - 10</td><td>Safety and security. "Can the world be trusted? Am I safe to be vulnerable?"</td></tr>
-              <tr><td><strong>Adolescent</strong></td><td>11 - 20</td><td>Belonging and acceptance. "Do I fit? Am I enough for the group? Do I deserve connection?"</td></tr>
-              <tr><td><strong>Adult</strong></td><td>20+</td><td>Betrayal and abandonment. "Can I trust specific people with my full self? What happens when intimacy breaks?"</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p>Window age is the developmental origin of the MUD, not the current age of the client. A 45-year-old client whose presenting wound is abandonment may be working on material encoded during an adolescent rejection. Identify the window, trace the seed story, work from there.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">02</span>
-          <span class="section-name">The A.F.R.A.I.D. Stack — Reading Emotional Depth</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Every presenting emotion points toward the one beneath it. Address the surface without tracing the stack and you produce temporary relief and re-entrenchment."</div>
-          <div class="content-block">
-            <p>The A.F.R.A.I.D. model organises emotional presentations from most surface to most foundational. The surface emotion is easiest to see. The foundational emotion drives the pattern. They are not the same layer of the same thing.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Level</th><th>Emotion</th><th>Clinical Signature</th></tr></thead>
-            <tbody>
-              <tr><td><strong>A</strong></td><td>Anger</td><td>Most surface. Story of injustice. Other-focused. Blame, grievance, moral outrage. The narrative is still external.</td></tr>
-              <tr><td><strong>F</strong></td><td>Frustration</td><td>Something is blocked. Wants to move but cannot. Energy without direction.</td></tr>
-              <tr><td><strong>R</strong></td><td>Resistance</td><td>Knows what to do, cannot make himself do it. MUD in direct conflict with desired action.</td></tr>
-              <tr><td><strong>A</strong></td><td>Anxiety</td><td>Neither option feels safe. The nervous system is in an unresolvable loop.</td></tr>
-              <tr><td><strong>I</strong></td><td>Insecurity</td><td>Worth wound activated. "I am not enough for this person, this situation, this life."</td></tr>
-              <tr><td><strong>D</strong></td><td>Depression</td><td>Deepest: disconnection from purpose and aliveness. Not sadness. Flatness. The signal from Source has become almost entirely blocked.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Clinical application:</strong> When a client presents with anger, look for insecurity beneath it. When they present with depression, trace back through the full stack. Each level points toward the one beneath it. The work happens at the deepest accessible level, not the one the client led with.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">A client opens a session with strong anger at his partner. What is the clinically correct move?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Validate the anger and help him express it more cleanly to his partner</button>
-                <button class="opt" data-opt="B">B) Challenge the accuracy of his grievance story</button>
-                <button class="opt" data-opt="C">C) Receive the anger and trace down the AFRAID stack, looking for the insecurity or worth wound beneath it</button>
-                <button class="opt" data-opt="D">D) Ask what outcome he wants from the conversation with his partner</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">A client presents with flatness, low energy, and a general sense of going through the motions. Clinically, this maps to which level of the AFRAID stack?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Anxiety — the nervous system has shut down activation to protect itself</button>
-                <button class="opt" data-opt="B">B) Depression — disconnection from purpose and aliveness. Not sadness. Flatness. The signal from Source is almost entirely blocked.</button>
-                <button class="opt" data-opt="C">C) Resistance — he knows what to do but cannot bring himself to do it</button>
-                <button class="opt" data-opt="D">D) Insecurity — the worth wound is active and suppressing forward energy</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">03</span>
-          <span class="section-name">The GROW Framework and Fear PRs</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>The GROW framework is the relational growth orientation. It defines how a Next Level Human approaches relational experience, including painful experience.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Letter</th><th>Principle</th><th>Application</th></tr></thead>
-            <tbody>
-              <tr><td><strong>G</strong></td><td>Growth Mindset</td><td>Every relational experience, especially the painful ones, is curriculum. What is this teaching me?</td></tr>
-              <tr><td><strong>R</strong></td><td>Radical Responsibility</td><td>Full authorship. No victim, no villain orientation. What is my role in this? What can I do differently?</td></tr>
-              <tr><td><strong>O</strong></td><td>Openness (Fear PRs)</td><td>Willingness to take graduated action in the face of relational fear. Fear is not the signal to stop.</td></tr>
-              <tr><td><strong>W</strong></td><td>Wisdom</td><td>The fruit of metabolised experience. Not information. Earned understanding from having lived through and grown from difficulty.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Fear PRs (Personal Records)</strong> are graduated behavioural challenges in the direction of the fear. In training, a PR is best performance on a specific lift. In relational coaching, it is best performance in a specific fear domain: doing the scary thing at a manageable level, notching the rep, then raising the bar over time.</p>
-            <p>Examples:</p>
-            <ul>
-              <li>Making eye contact with a stranger (social anxiety)</li>
-              <li>Expressing a preference when asked (Pleaser pattern)</li>
-              <li>Saying no to a small request (approval-seeker)</li>
-              <li>Initiating a vulnerable conversation about one specific topic (avoidant)</li>
-            </ul>
-            <p>The mechanism: the nervous system learns safety through repeated survivable experience, not through argument or intention. Fear PRs are designed exposures that build the biological evidence of safety the nervous system requires before it will update its neuroception.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">04</span>
-          <span class="section-name">The UME Model — Three Entities in Every Relationship</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Every significant relationship contains three distinct entities. The coaching error is to focus on only one or two of them.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Entity</th><th>What It Is</th></tr></thead>
-            <tbody>
-              <tr><td><strong>You (U)</strong></td><td>Your identity structures, attachment patterns, wounds, needs, capacities. The internal world you bring to every interaction.</td></tr>
-              <tr><td><strong>Me (M)</strong></td><td>Their identity structures, attachment patterns, wounds, needs, capacities. What the other person brings.</td></tr>
-              <tr><td><strong>Ensemble (E)</strong></td><td>The third entity: the relationship itself, with its own patterns, rituals, energy, and dynamics that exist independent of either individual.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>The 100/100 Principle:</strong> Healthy relationships are not 50/50. Each person brings 100% of their authentic self, takes 100% responsibility for their contribution to the dynamic, and operates from 100% genuine engagement. 50/50 means each person is withholding half of themselves, and the relationship runs on a deficit from the start.</p>
-            <p><strong>Differentiation vs Fusion:</strong></p>
-            <ul>
-              <li><strong>Fusion:</strong> Partners lose individual identity in service of relational harmony. The "we" swallows the "you" and the "me." The relationship feels close but is built on self-disappearance, not connection.</li>
-              <li><strong>Differentiation:</strong> Partners maintain full individual identity while being genuinely connected. The relationship is stronger because neither person has disappeared into it. Two fully present people creating a third thing together.</li>
-            </ul>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">A couple presents as deeply enmeshed. One partner cannot make decisions without the other; both have abandoned most individual friendships. This is clinically:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) A sign of deep relational security — healthy couples prioritise each other above all</button>
-                <button class="opt" data-opt="B">B) Fusion: individual identities have been swallowed by the "we." The relationship is built on self-disappearance, not genuine connection, and will generate resentment over time.</button>
-                <button class="opt" data-opt="C">C) Anxious attachment presenting as mutual dependency</button>
-                <button class="opt" data-opt="D">D) A temporary developmental stage that usually self-corrects</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">05</span>
-          <span class="section-name">Attachment Theory — The Relational Operating System</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Attachment patterns are not personality. They are the nervous system's best model of how closeness works, installed before the person had the wisdom to choose for themselves."</div>
-          <div class="content-block">
-            <p>Attachment patterns were laid down in early childhood through repeated interactions with primary caregivers. They represent the nervous system's learned predictions about what happens when you reach toward connection. In adult life, these predictions run automatically, shaping every significant relationship.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Style</th><th>Origin</th><th>Adult Signature</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Secure</strong></td><td>Consistently responsive caregiver</td><td>Comfortable with both intimacy and autonomy. Regulates well in conflict. Repairs readily. Can tolerate temporary disconnection without threat.</td></tr>
-              <tr><td><strong>Anxious</strong></td><td>Inconsistently responsive caregiver</td><td>Hypervigilant to abandonment signals. Pursues closeness. Conflict triggers fear of loss and produces protest behaviour. High activation, visible.</td></tr>
-              <tr><td><strong>Avoidant</strong></td><td>Consistently emotionally unavailable caregiver</td><td>Defensively independent. Discomfort with vulnerability and intimacy. Internal experience is significantly more activated than external presentation suggests.</td></tr>
-              <tr><td><strong>Disorganised</strong></td><td>Caregiver was source of both threat and comfort</td><td>Simultaneously desires and fears closeness. No consistent strategy. The most chaotic relational patterns. Approach-avoidance in the same relationship.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>Clinical note:</strong> The NLH coaching relationship itself activates the client's attachment system. A well-regulated coach provides the consistent, attuned presence that gradually demonstrates that closeness is safe. This is co-regulation as clinical mechanism, not metaphor. The coach's own nervous system is the primary therapeutic instrument.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">An Avoidant client appears calm and contained in sessions, but their partner reports explosive emotional reactivity at home. This is consistent with Avoidant attachment because:</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) Avoidants only activate with intimate partners — professional contexts don't trigger the pattern</button>
-                <button class="opt" data-opt="B">B) The client is managing their presentation in sessions to appear more functional</button>
-                <button class="opt" data-opt="C">C) Avoidants suppress external expression while internal activation is high. The gap between inner experience and outer presentation is a defining feature of this style.</button>
-                <button class="opt" data-opt="D">D) Avoidant activation only occurs in high-stakes conflict, not in everyday interaction</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">06</span>
-          <span class="section-name">Reciprocity Styles — Authentic Giver vs Pleaser</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p>Research identifies three fundamental relational orientations. In coaching, the most important distinction is not Giver vs Taker but Authentic Giver vs Pleaser. Both appear generous. Both give willingly. The difference is the source.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Style</th><th>Core Pattern</th><th>Coaching Implication</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Giver</strong></td><td>Gives time, energy, care without explicit expectation of return</td><td>Can be most impactful or most depleted. The critical question is source: fullness or emptiness?</td></tr>
-              <tr><td><strong>Taker</strong></td><td>Default is to receive. Giving is usually strategic.</td><td>Creates gradual depletion. Skilled at periodically resetting the relational scoreboard.</td></tr>
-              <tr><td><strong>Matcher</strong></td><td>Gives in proportion to what is received. Tracks fairness precisely.</td><td>Creates functional but often transactional relationships. Prevents the spontaneous generosity that deepens connection.</td></tr>
-            </tbody>
-          </table>
-          <table class="ref-table">
-            <thead><tr><th></th><th>Authentic Giver</th><th>Pleaser</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Source</strong></td><td>Gives from fullness</td><td>Gives from emptiness. Giving manages anxiety.</td></tr>
-              <tr><td><strong>Can say no?</strong></td><td>Yes, without significant distress</td><td>No. Saying no produces significant anxiety or guilt.</td></tr>
-              <tr><td><strong>Energy</strong></td><td>Giving is self-replenishing</td><td>Depletes. Resentment accumulates invisibly.</td></tr>
-              <tr><td><strong>Motivation</strong></td><td>Aligned with values</td><td>Gives to avoid conflict, rejection, or abandonment.</td></tr>
-              <tr><td><strong>Receiving</strong></td><td>Receives easily</td><td>Difficulty receiving. Giving is how control of the dynamic is maintained.</td></tr>
-              <tr><td><strong>Endings</strong></td><td>Clean exits if relationship ends</td><td>Exits often explosive. The Pleaser implodes after long silence.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p>Teaching a Pleaser to "just say no" without addressing the fear architecture produces shame, failure, and re-entrenchment. The Pleaser gives from emptiness, to manage anxiety about rejection or abandonment. The fear must be addressed before any behavioural change is sustainable.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="A">
-              <p class="q-text">What is the fundamental difference between an Authentic Giver and a Pleaser?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The source: Authentic Givers give from fullness and alignment with values. Pleasers give from emptiness, as an anxiety management strategy. Both appear generous. The difference is invisible from the outside.</button>
-                <button class="opt" data-opt="B">B) How much they give: Authentic Givers give sustainably, Pleasers give excessively</button>
-                <button class="opt" data-opt="C">C) Their attachment style: Authentic Givers are Secure, Pleasers are Anxious</button>
-                <button class="opt" data-opt="D">D) Their awareness: Authentic Givers know why they give, Pleasers do not</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">07</span>
-          <span class="section-name">Confident Detachment — The Six Elements</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"Confident Detachment is not indifference. It is the combination of genuine care and genuine self-possession."</div>
-          <div class="content-block">
-            <p>Confident Detachment is the relational stance of the Next Level Human. Fully engaged with others while remaining rooted in themselves. Not controlled by how others respond. Not disappearing to maintain connection. Present and self-possessed simultaneously.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Element</th><th>What It Means</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Standards</strong></td><td>Clear non-negotiables about how you will be treated and how you will treat others. The floor, not the ceiling.</td></tr>
-              <tr><td><strong>Boundaries</strong></td><td>The behavioural expression of standards. What you will and will not participate in. Not ultimatums. Self-expression.</td></tr>
-              <tr><td><strong>Managing Expectations</strong></td><td>Honest communication about what is possible and what is not. Prevents resentment from unspoken expectations.</td></tr>
-              <tr><td><strong>Communication</strong></td><td>Direct, non-blaming expression of needs, observations, and limits. From the I, not the You.</td></tr>
-              <tr><td><strong>Mutual Reciprocity</strong></td><td>The relationship requires genuine exchange. Not scorekeeping, but ensuring both parties are investing. A one-way relationship is not a relationship.</td></tr>
-              <tr><td><strong>Detachment from Outcomes</strong></td><td>Operating from values regardless of the other person's response. The goal is authentic self-expression, not controlling their reaction.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">08</span>
-          <span class="section-name">Social Architecture — Tribal 20 and MVP Roles</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>The Tribal 20 Exercise:</strong> Map the 20 people most present in your current life. Each person either charges or drains your social battery. The composition of your tribe predicts your emotional baseline over time. The exercise is not about cutting people. It is about becoming conscious of the social architecture you are living inside.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Tribal MVP Role</th><th>Function</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Supporters</strong></td><td>Presence and loyalty. Show up, witness, affirm existence. The baseline relational need.</td></tr>
-              <tr><td><strong>Believers</strong></td><td>Hold your potential. See what you are becoming before you do. Often more accurate than your own self-assessment.</td></tr>
-              <tr><td><strong>Counselors</strong></td><td>Honest perspective. Will tell you when you are off course. Most valuable when they are also supporters, not just critics.</td></tr>
-              <tr><td><strong>Coaches</strong></td><td>Structured growth challenge. Push capacity. Have a specific expertise to offer.</td></tr>
-              <tr><td><strong>Mentors</strong></td><td>Lived experience from the path you are walking. They have been where you are going.</td></tr>
-            </tbody>
-          </table>
-          <div class="content-block">
-            <p><strong>The 3R Model of Social Agility:</strong></p>
-            <ul>
-              <li><strong>Responsive:</strong> Attuned to the social environment. Reads the room without being controlled by it.</li>
-              <li><strong>Recognition:</strong> Sees others genuinely. Not as props in your own narrative. The capacity to be interested rather than interesting.</li>
-              <li><strong>Real:</strong> Authentic presence over performed connection. People feel the difference between being seen and being managed.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">09</span>
-          <span class="section-name">The Ten Moves — Human Chess and Relational Change</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"In chess, a pawn moving forward one square at a time opens options not visible from the starting position. Relational change works the same way."</div>
-          <div class="content-block">
-            <p>The White Pawn Principle: relational change happens through deliberate, incremental moves, not dramatic overhauls. Each move forward opens new options not visible from the starting position. Move 1 makes Move 2 possible. Move 2 makes Move 3 possible. The sequence builds on itself.</p>
-          </div>
-          <table class="ref-table">
-            <thead><tr><th>Move</th><th>Principle</th></tr></thead>
-            <tbody>
-              <tr><td><strong>1</strong></td><td><strong>Radical Responsibility:</strong> Own your contribution to every dynamic. Remove victim and villain orientation entirely.</td></tr>
-              <tr><td><strong>2</strong></td><td><strong>Confident Detachment:</strong> Engage fully while releasing attachment to the other person's response.</td></tr>
-              <tr><td><strong>3</strong></td><td><strong>The Morpheus Effect:</strong> Offer perspective without forcing it. Plant the seed, let the other person choose to see.</td></tr>
-              <tr><td><strong>4</strong></td><td><strong>Vetting:</strong> Deliberately assess who earns deeper access to your inner world before granting it.</td></tr>
-              <tr><td><strong>5</strong></td><td><strong>Establishing Boundaries:</strong> Behaviourally express your standards. Not as ultimatums. As self-expression.</td></tr>
-              <tr><td><strong>6</strong></td><td><strong>The Standard / Checkmate:</strong> Know your non-negotiable and be prepared to hold it, even when it is costly.</td></tr>
-              <tr><td><strong>7</strong></td><td><strong>Clearing Energy / Ho'oponopono:</strong> Release the charge from past injury. Not for the other person. For the restoration of your own signal.</td></tr>
-              <tr><td><strong>8</strong></td><td><strong>The Honor Code:</strong> Pre-decide how you will behave regardless of provocation. Commit to the person you are before the situation tests you.</td></tr>
-              <tr><td><strong>9</strong></td><td><strong>Love Box Audit:</strong> Assess the actual quality of love in each key relationship. Is this relationship feeding or diminishing?</td></tr>
-              <tr><td><strong>10</strong></td><td><strong>Pattern Interrupt:</strong> Deliberately break the automatic sequence before it completes. New response in the middle of the old pattern.</td></tr>
-            </tbody>
-          </table>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="B">
-              <p class="q-text">Why must Radical Responsibility come first in the Ten Moves sequence?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) It is the most psychologically difficult move, so tackling it first builds the most momentum</button>
-                <button class="opt" data-opt="B">B) All subsequent moves require full authorship of your own contribution. Without Radical Responsibility, every later move operates from a victim or villain frame and produces the wrong result.</button>
-                <button class="opt" data-opt="C">C) It is the quickest win — clients can do it immediately without any skill development</button>
-                <button class="opt" data-opt="D">D) It establishes trust with the other person before anything else is attempted</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">10</span>
-          <span class="section-name">Tools for Relational Work</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="content-block">
-            <p><strong>WET (Written Exposure Therapy)</strong> — Primary Rewrite tool for relationship wounds. Three writes:</p>
-            <ul>
-              <li><strong>Write 1:</strong> The wound as it happened. Unfiltered, embodied, full weight. No editing.</li>
-              <li><strong>Write 2:</strong> The rewrite from the adult self. What the adult now knows that the younger self did not.</li>
-              <li><strong>Write 3:</strong> The future self living the new relational story. Identity forward-encoded through narrative.</li>
-            </ul>
-          </div>
-          <div class="content-block">
-            <p><strong>Box Breathing</strong> — Physiological reset before high-stakes relational conversations. 4-count inhale, 4 hold, 4 exhale, 4 hold. Activates parasympathetic. Creates the regulated nervous system state required for a conversation to be productive rather than reactive.</p>
-          </div>
-          <div class="content-block">
-            <p><strong>FEEEL Model</strong> (for relationship endings or major relational loss):</p>
-            <ul>
-              <li><strong>Feel:</strong> Allow the grief, anger, and relief fully. Do not suppress.</li>
-              <li><strong>Exercise:</strong> Move the charge through the body. Emotion is energy. Motion is the discharge mechanism.</li>
-              <li><strong>Edit:</strong> Rewrite the story of what the relationship was and what it means.</li>
-              <li><strong>Eliminate / Erase:</strong> Release the energetic attachment. Not to deny what happened. To reclaim your own signal.</li>
-              <li><strong>Live:</strong> Reengage life from the new identity. Not from the wound.</li>
-            </ul>
-          </div>
-          <div class="content-block">
-            <p><strong>EXPLORE Model</strong> (for deepening existing relationships): Engaging, X-Factor experiences, Perspective-changing conversations, Low-tech (face-to-face), Outside environment, Relational renewal practices, Enriching shared experiences. Research consistently shows that novelty and shared challenge deepen relational bonds more than routine comfort.</p>
-          </div>
-          <div class="quiz-block">
-            <div class="quiz-label">Comprehension Check</div>
-            <div class="quiz-q" data-answer="C">
-              <p class="q-text">In the WET protocol, why are there three separate writes rather than one?</p>
-              <div class="options">
-                <button class="opt" data-opt="A">A) The first two writes prime the nervous system — only the third produces lasting change</button>
-                <button class="opt" data-opt="B">B) Three writes forces the client to process the same event from multiple cognitive angles</button>
-                <button class="opt" data-opt="C">C) Each write targets a different layer: Write 1 retrieves the wound at full somatic weight, Write 2 introduces the adult reframe during the labile window, Write 3 encodes the new identity through forward narrative. Together they complete Rewrite across all three layers.</button>
-                <button class="opt" data-opt="D">D) Three writes corresponds to the three developmental windows where relational MUD is formed</button>
-              </div>
-              <div class="q-result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="source-block">
-    <div class="source-label videos"><span>▶</span> From the Videos</div>
-    <div class="video-placeholder">
-      <p>No video transcripts added yet for Module 3.</p>
-      <p class="how-to">Record session → run through Whisper → drop transcript here</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== MODULE 4 ==================== -->
-<div class="module-panel" id="m4">
-  <div class="module-header">
-    <div class="module-eyebrow">Module 4 — Money, Abundance &amp; Manifestation Manual</div>
-    <h2 class="module-title">Money Mindset &amp; Manifestation</h2>
-    <p class="module-desc">Money stories as identity structures. Worth wounds and financial ceilings. The same SEES sequence operating in the financial domain.</p>
-  </div>
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> From the Manual</div>
-    <div class="video-placeholder">
-      <p>Manual content for Module 4 not yet added to this hub.</p>
-      <p class="how-to">Content available in vault — add when needed</p>
-    </div>
-  </div>
-  <div class="source-block">
-    <div class="source-label videos"><span>▶</span> From the Videos</div>
-    <div class="video-placeholder">
-      <p>No video transcripts added yet for Module 4.</p>
-      <p class="how-to">Record session → run through Whisper → drop transcript here</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== RESOURCES ==================== -->
-<div class="module-panel" id="resources">
-  <div class="module-header">
-    <div class="module-eyebrow">Reference</div>
-    <h2 class="module-title">Resources</h2>
-    <p class="module-desc">Anchor phrases and quick-reference material across the framework.</p>
-  </div>
-  <div class="source-block">
-    <div class="source-label manual"><span>◈</span> Anchor Phrases</div>
-    <div class="section-list">
-      <div class="section-item">
-        <button class="section-toggle" aria-expanded="false">
-          <span class="section-num">01</span>
-          <span class="section-name">Key Phrases Worth Memorising</span>
-          <span class="section-arrow">▶</span>
-        </button>
-        <div class="section-body">
-          <div class="key-insight">"We are not suppressing patterns. We are not overriding them. We are working within the reconsolidation window to update the underlying assembly itself."</div>
-          <div class="key-insight">"You cannot install software during a crash."</div>
-          <div class="key-insight">"Regulation is not relaxation. Relaxation soothes the moment. Regulation builds the capacity to function inside activation."</div>
-          <div class="key-insight">"Specific reconsolidation without metaplastic conditioning produces fragile change. Metaplastic conditioning without specific reconsolidation produces a flexible brain that has not updated its operative maladaptive patterns. Both are required."</div>
-          <div class="key-insight">"DEEP opens the document. QEC line-edits it. DELTA and QAT format and bind it. The book is the client's life."</div>
-          <div class="key-insight">"The watcher is how the client meets what arises. Dimensionalising is what they do once they meet it."</div>
-          <div class="key-insight">"Pain is not a liability to minimise. It is the primary pointer to unique work and the most direct raw material for Purpose construction."</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</main>
-
-<script>
-(function () {
-  var EXPLANATIONS = {
-    // Coaching Methods 01
-    'cm-01-q1': { correct: 'B', text: 'Insight works at the cognitive layer but the pattern lives in the neural assembly — built somatically and emotionally, not conceptually. Understanding alone doesn\'t update the wiring.' },
-    'cm-01-q2': { correct: 'C', text: '4–6 hours is the labile window. This is why sealing the work matters — skipping the seal leaves the window open without locking in the new encoding.' },
-    // Coaching Methods 02
-    'cm-02-q1': { correct: 'B', text: 'Prime with a global metaplasticity tool to prepare the ground, work with specific reconsolidation, then seal with a global tool again to consolidate. DELTA and QAT serve both prime and seal roles.' },
-    'cm-02-q2': { correct: 'B', text: 'DELTA is not relaxation. It establishes the brain-wide parasympathetic state that increases receptivity to change. This distinction is critical for prescription.' },
-    // Coaching Methods 03
-    'cm-03-q1': { correct: 'B', text: 'The watcher stance is an active attentional shift, not passivity. The client remains fully present but is no longer identical to the experience. This shift is what makes retrieval safe.' },
-    'cm-03-q2': { correct: 'B', text: 'Fusion is the clinical problem. Once dimensionalised, the client is in relationship with the pattern rather than captured by it. From relationship, updating becomes possible.' },
-    // Coaching Methods 04
-    'cm-04-q1': { correct: 'B', text: 'MUD was encoded under sympathetic activation. To retrieve and update it, the encoding state must be recreated. The activating breath does this without requiring actual danger or stress.' },
-    'cm-04-q2': { correct: 'B', text: 'Safety architecture is non-negotiable. Hypocapnia is a real physiological risk of sustained activating breath. The body governs pacing — coach-driven pacing risks pushing past the safety threshold.' },
-    // Module 1 01
-    'm1-01-q1': { correct: 'C', text: 'Identity is upstream of everything. Nervous system, hormones, immune function, and behaviour all flow down from it. This is what makes identity work different from behaviour management.' },
-    'm1-01-q2': { correct: 'B', text: 'This is not a motivational issue. The brain defends the identity set point exactly as it defends body temperature. The intervention must reach the set point level to produce durable change.' },
-    // Module 1 02
-    'm1-02-q1': { correct: 'C', text: 'This is the clinical signature of lowercase-sees events — conditioning so normalised it\'s invisible. The coaching error is waiting for a dramatic story rather than tracing backward from the current pattern.' },
-    'm1-02-q2': { correct: 'A', text: 'Subtle/Continuous events produce deeper MUD because they are invisible and normalised. The severity of the original event does NOT predict the depth of MUD.' },
-    // Module 1 03
-    'm1-03-q1': { correct: 'B', text: 'This is the most common coaching failure. The story layer has been addressed but the emotional charge fused to it has not. Rewire — DEEP, BEEP, breathwork — is the next step.' },
-    'm1-03-q2': { correct: 'A', text: 'The story is the generator. Without changing the story, the charge reforms. Both layers must be addressed for durable change.' },
-    // Module 1 04
-    'm1-04-q1': { correct: 'B', text: 'MUD was formed under activation. Sedation doesn\'t open the reconsolidation window with the same somatic signature the pattern was encoded with. You need the encoding state to update the assembly.' },
-    'm1-04-q2': { correct: 'A', text: 'Regulation and relaxation are different outcomes. Relaxation soothes. Regulation builds capacity to function under load — which is what the client needs when the old pattern fires in real life.' },
-    // Module 1 05
-    'm1-05-q1': { correct: 'B', text: 'Neuroception is calibrated by identity structures, not objective reality. The threat isn\'t in the room — it\'s in the nervous system\'s pattern. The coach\'s regulated presence is the primary instrument for building safeness.' },
-    'm1-05-q2': { correct: 'C', text: 'Under high stress, the creative brain goes offline. The new pathway can\'t compete with the old one unless it\'s been practised enough at low stakes to fire automatically. This is Retrain work.' },
-    // Module 1 06
-    'm1-06-q1': { correct: 'C', text: 'The Pleasure drive (Soother archetype) is the numbing mechanism. The absence of Purpose as an organising anchor is the structural condition that makes the Soother pattern sticky — not the behaviour itself.' },
-    'm1-06-q2': { correct: 'A', text: 'Emptiness and drift despite external success signal unmet need for Authenticity, Growth, and Creation — the Purpose floor. Important: don\'t do Purpose work if Safety is also unmet.' },
-    // Module 1 07
-    'm1-07-q1': { correct: 'B', text: 'The goal is not elimination — all parts were adaptive. It\'s to help the High Self hold all parts with compassion without being captured by any of them. The High Self is the author, not one of the characters.' },
-    'm1-07-q2': { correct: 'B', text: 'Pain points directly to unique work and is the raw material for Purpose construction. The recovery story is an asset in the coaching relationship and in the client\'s eventual contribution to others.' },
-    // Module 2 01
-    'm2-01-q1': { correct: 'B', text: 'SHMEC dysregulation despite doing everything right is the diagnostic signal that the identity-level cascade is overriding. More protocol won\'t solve an identity problem.' },
-    // Module 2 02
-    'm2-02-q1': { correct: 'D', text: 'Chronic shame is not just psychological — it\'s inflammatory. It suppresses testosterone, disrupts sleep and appetite, and drives the restrict-binge cycle. Clearing the shame is a direct metabolic intervention.' },
-    // Module 2 03
-    'm2-03-q1': { correct: 'C', text: 'Cortisol dominance signals "threat mode." Reproductive function is non-essential under threat, so HPG suppresses. Low testosterone then reinforces the client\'s sense of failure — biology amplifying the shame. Identity work is the upstream fix.' },
-    // Module 2 04
-    'm2-04-q1': { correct: 'B', text: 'Metabolism is downstream of consciousness. The identity cascade overrides lifestyle interventions. Psychology is not optional — it is the upstream layer the physiology depends on.' },
-    // Module 3 01
-    'm3-01-q1': { correct: 'C', text: 'Anger is the most surface emotion in the AFRAID stack. In relationship contexts, insecurity (the worth wound) is almost always beneath it. Coaching the anger without tracing the stack produces temporary relief.' },
-    // Module 3 02
-    'm3-02-q1': { correct: 'B', text: 'The Pleaser gives from emptiness — to manage anxiety about rejection or abandonment. Until the fear architecture is addressed, behavioural instruction produces more shame when it fails, not change.' },
-    // Module 1 08
-    'm1-08-q1': { correct: 'B', text: 'The Soother drive does not disappear when the specific behaviour is suppressed — it relocates to the next available numbing outlet. The work is identity-level: address the AFRAID baseline and activate Purpose, not manage the outlet.' },
-    'm1-08-q2': { correct: 'C', text: 'The client\'s social brain monitors the coach\'s nervous system in real time. Co-regulation is a clinical mechanism, not a metaphor. Steve\'s regulated presence is the primary therapeutic instrument — his own practice is clinical preparation.' },
-    // Coaching Methods 06 — BRN Sessions Paradigm & Four Pillars
-    'cm-05-q1': { correct: 'B', text: 'The biofield is the energetic interface between consciousness and the body. It translates the vibrational intelligence of consciousness into the CPNEI system — the integrated network of biology, emotion, and perception. This is the mechanism through which BRN Sessions initiate change from the top down and the inside out.' },
-    'cm-05-q2': { correct: 'C', text: 'QEC achieves specific reconsolidation through visualisation and somatic awareness, without requiring high-intensity breathwork. DELTA is global metaplasticity preparation, not specific reconsolidation. QAT is a generative attunement protocol. VIR is Retrain (identity rehearsal), not reconsolidation.' },
-    'cm-05-q3': { correct: 'A', text: 'DEEP is the only protocol that uses BEEP breathwork to deliberately recreate sympathetic activation and move buried emotional energy to the surface for clearing. This intensity is what makes it the most advanced and transformational tool in the BRN system.' },
-    // Coaching Methods 07 — Focused Attention vs Open Monitoring
-    'cm-06-q1': { correct: 'B', text: 'DEEP, QEC, and BEEP are all channel-based (focused attention) protocols — precision work targeting a specific assembly through specific reconsolidation. DELTA and QAT are field-based (open monitoring) — global metaplasticity that prepares the brain for change.' },
-    'cm-06-q2': { correct: 'C', text: 'Open Monitoring activates the Default Mode Network and posterior integrative regions. The DMN is the network of self-referential processing, memory consolidation, and integrative awareness — which is exactly what field-based metaplastic work is trying to access.' },
-    // Coaching Methods 08 — Brainwave States & Theta-Gamma Coupling
-    'cm-07-q1': { correct: 'C', text: 'Theta (4-8 Hz) is the hypnagogic state — the target for deep reconsolidation. Dreamlike, deeply intuitive, symbol and metaphor. The memory gate (hippocampus) operates here. Delta is deep sleep. Gamma is integration/peak experience. Alpha is the bridge state, not the target for reconsolidation work.' },
-    'cm-07-q2': { correct: 'C', text: 'MUD was encoded under sympathetic activation — the nervous system was in High Beta when the original assembly was formed. To bring that assembly back to its labile state (where it can be updated), you recreate the encoding state. The activating breath does this without requiring actual danger. Once in the labile state, the shift to parasympathetic allows reconsolidation around the new content.' },
-    // Coaching Methods 09 — Coherence Breath, Vocalization & Mapping
-    'cm-08-q1': { correct: 'C', text: 'The coherence breath is 6-second inhale, 6-second exhale, no holds, sustained continuously. This specific rhythm produces respiratory sinus arrhythmia at its maximal coherence point, measurably improving heart-rate variability and producing a balanced autonomic state.' },
-    'cm-08-q2': { correct: 'C', text: 'The coherence breath substitution is the protocol default when the activating breath is contraindicated. All BRN protocols can still run — the work happens at lower somatic intensity but the mechanism remains intact. The breaking breath is home base for recovery within sessions, not a full protocol substitute.' },
-    // Coaching Methods 10 — The DEEP Protocol
-    'cm-09-q1': { correct: 'C', text: 'Voice Three is the Next-Level Human Self: the wiser, future self who sits down with both the wound (Voice One) and the current self (Voice Two) and explains the lesson. This is the new content — meaning-rich, purpose-rich — that gets encoded into the assembly during the labile window the session has opened.' },
-    'cm-09-q2': { correct: 'B', text: 'DEEP generates prediction error through all four channels simultaneously: Somatic (body breathes through rather than reacting), Cognitive (threat reframed as teacher), Perceptual (music, eye mask, headphones create a completely new context), Identity (dimensionalising breaks the fusion — the client is no longer the pattern). All four channels open simultaneously, which is what makes DEEP the most intensive reconsolidation tool in the system.' },
-    // Coaching Methods 11 — The QEC Protocol
-    'cm-10-q1': { correct: 'C', text: 'QEC is the correct choice: the pattern is distributed across multiple body locations (not a single identifiable assembly), the client has a systemic condition, and breathwork is contraindicated. QEC works through focused inquiry across body regions without requiring high-intensity breath-driven state induction.' },
-    'cm-10-q2': { correct: 'B', text: 'The weekly schedule sequences DELTA (prime/prepare) on Monday, DEEP (heavy specific reconsolidation) on Tuesday, DELTA or BEEP (seal and light maintenance) Wednesday, QEC (distributed pattern work, inquiry-based) Thursday, QAT or DELTA (generative or seal) Friday, rest at the weekend. This is illustrative — the prescription adapts to the client.' },
-    // Coaching Methods 12 — DELTA & QAT In Depth
-    'cm-11-q1': { correct: 'C', text: 'Research confirms that FA-first then OM is more effective than OM-first for novices (Ishikawa et al., 2025). FA establishes the attentional control that OM can then operate within. Without the focused-attention ground, open monitoring can become diffuse drifting rather than the sustained, aware field-state that DELTA needs to do its work.' },
-    'cm-11-q2': { correct: 'C', text: 'QEC and QAT share a meditative/contemplative tonal register — both are gentler, more inquiry-based or awareness-based than the intensity-driven DEEP/DELTA pairing. QAT opens the field before QEC does its precision work, and QAT seals with intentional generative content after. DEEP+DELTA pair because they are exact somatic complements (sympathetic-driven then parasympathetic-driven).' },
-    // Coaching Methods 13 — The Retrain Tools
-    'cm-12-q1': { correct: 'B', text: 'DEEP targets a specific charged assembly through reconsolidation — it retrieves, generates prediction error, and re-encodes. VIR does not target or clear anything. It forward-encodes the new identity through structured rehearsal, building the new neural path through repetition. One clears the old path; the other builds the new one. Both are required.' },
-    'cm-12-q2': { correct: 'C', text: 'Brain Breath is classified as Retrain because its mechanism is autonomic regulation — sympathetic activation followed by parasympathetic shift. This is biology and behaviour at the ice layer. It resets state; it does not access or update assemblies. Rewire tools (DEEP, QEC) work at the water layer through field-state processes. The layer distinction determines the classification.' },
-    // Module 3 — Relationships & Romance
-    'm3-01-q1': { correct: 'C', text: 'Anger is the most surface emotion in the AFRAID stack. Receiving it and tracing down — looking for the worth wound beneath — is the clinical move. Validating the anger or challenging the story both work at the wrong level.' },
-    'm3-01-q2': { correct: 'B', text: 'Flatness is the clinical signature of the D in AFRAID. Not sadness — flatness. The signal from Source is almost entirely blocked. This is disconnection from purpose and aliveness, not suppressed emotion.' },
-    'm3-02-q1': { correct: 'B', text: 'Enmeshment is fusion: individual identities have been swallowed by the "we." The relationship is built on self-disappearance, not connection. Differentiation — maintaining full individual identity while being genuinely connected — is the NLH relational ideal.' },
-    'm3-03-q1': { correct: 'C', text: 'The gap between inner experience and outer presentation is a defining feature of the Avoidant style. Internal activation is high; expression is suppressed. This is not performance or manipulation — it is the nervous system pattern that was laid down under an emotionally unavailable caregiver.' },
-    'm3-04-q1': { correct: 'A', text: 'The source is everything. Both appear generous. The Authentic Giver gives from values and fullness — it is self-replenishing. The Pleaser gives from emptiness to manage anxiety about rejection or abandonment. Teaching the Pleaser to stop giving without addressing the fear architecture produces shame and re-entrenchment, not change.' },
-    'm3-05-q1': { correct: 'B', text: 'Radical Responsibility is Move 1 because every subsequent move requires authorship of your own contribution. Without it, Confident Detachment becomes blame with distance, Vetting becomes judgment, and Pattern Interrupt becomes counter-attack. The frame must be right before any move is made.' },
-    'm3-06-q1': { correct: 'C', text: 'Each write targets a distinct layer of the Rewrite phase: Write 1 retrieves the wound with its full somatic signature, Write 2 introduces the adult reframe during the labile window created by retrieval, and Write 3 encodes the new identity forward through narrative. All three layers of the story must be addressed for the Rewrite to hold.' }
-  };
-
-  // Assign quiz IDs
-  var panels = {
-    'methods': 'cm',
-    'm1': 'm1',
-    'm2': 'm2',
-    'm3': 'm3'
-  };
-
-  Object.keys(panels).forEach(function(panelId) {
-    var prefix = panels[panelId];
-    var panel = document.getElementById(panelId);
-    if (!panel) return;
-    var quizBlocks = panel.querySelectorAll('.quiz-block');
-    quizBlocks.forEach(function(block, bi) {
-      var questions = block.querySelectorAll('.quiz-q');
-      questions.forEach(function(q, qi) {
-        var id = prefix + '-' + String(bi + 1).padStart(2, '0') + '-q' + (qi + 1);
-        q.setAttribute('data-id', id);
-      });
-    });
-  });
-
-  // Tabs
-  document.querySelectorAll('.tab-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-      document.querySelectorAll('.module-panel').forEach(function(p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      var panel = document.getElementById(btn.getAttribute('data-module'));
-      if (panel) panel.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-
-  // Accordion
-  document.querySelectorAll('.section-toggle').forEach(function(toggle) {
-    toggle.addEventListener('click', function() {
-      var item = toggle.closest('.section-item');
-      var open = item.classList.contains('open');
-      item.classList.toggle('open', !open);
-      toggle.setAttribute('aria-expanded', String(!open));
-    });
-  });
-
-  // Quiz
-  document.querySelectorAll('.quiz-q').forEach(function(q) {
-    var correctAns = q.getAttribute('data-answer');
-    var id = q.getAttribute('data-id');
-    var resultEl = q.querySelector('.q-result');
-    var opts = q.querySelectorAll('.opt');
-
-    opts.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        if (btn.disabled) return;
-        opts.forEach(function(o) { o.disabled = true; });
-
-        var chosen = btn.getAttribute('data-opt');
-        var isCorrect = chosen === correctAns;
-
-        if (isCorrect) {
-          btn.classList.add('correct');
-          resultEl.className = 'q-result show correct-result';
-          var explanation = (id && EXPLANATIONS[id]) ? EXPLANATIONS[id].text : '';
-          resultEl.innerHTML = '<span class="result-label">✓ Correct.</span><span class="result-explanation">' + explanation + '</span>';
-        } else {
-          btn.classList.add('wrong');
-          opts.forEach(function(o) {
-            if (o.getAttribute('data-opt') === correctAns) o.classList.add('correct');
-          });
-          resultEl.className = 'q-result show wrong-result';
-          var explanation = (id && EXPLANATIONS[id]) ? EXPLANATIONS[id].text : '';
-          resultEl.innerHTML = '<span class="result-label">✗ Not quite — the correct answer is ' + correctAns + '.</span><span class="result-explanation">' + explanation + '</span>';
-        }
-      });
-    });
-  });
-})();
-</script>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+</footer>
 
 </body>
 </html>
