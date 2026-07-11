@@ -594,6 +594,43 @@
 
   .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
 
+  /* PART DIVIDER */
+  .part-divider {
+    background: var(--forest);
+    padding: 34px 52px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .part-divider .part-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--peach-bright);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 6px 12px;
+    flex-shrink: 0;
+  }
+  .part-divider h2 {
+    font-size: 21px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .part-divider p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-left: auto;
+    max-width: 340px;
+    text-align: right;
+  }
+  @media (max-width: 860px) {
+    .part-divider { padding: 26px 22px; flex-wrap: wrap; }
+    .part-divider p { margin-left: 0; text-align: left; }
+  }
+
   /* QUIZ */
   .quiz-intro {
     font-size: 14px;
@@ -709,7 +746,7 @@
       <span class="title">Coaching Methods</span>
       <a href="index.html" class="back-link">&#8592; Back to hub</a>
     </div>
-    <span class="nav-section">On this page</span>
+    <span class="nav-section">Part 1 &middot; The manual</span>
     <ul class="sidebar-nav">
       <li><a href="#s1">01 &middot; How This Manual Works</a></li>
       <li><a href="#s2">02 &middot; Protocols at a Glance</a></li>
@@ -723,13 +760,14 @@
       <li><a href="#s10">10 &middot; QEC &amp; Choosing DEEP vs QEC</a></li>
       <li><a href="#s11">11 &middot; DELTA &amp; QAT</a></li>
       <li><a href="#s12">12 &middot; The Retrain Tools</a></li>
+      <li><a href="#quiz">Manual comprehension check</a></li>
     </ul>
-    <span class="nav-section">From the videos</span>
+    <span class="nav-section">Part 2 &middot; Video training</span>
     <ul class="sidebar-nav">
       <li><a href="#s13">13 &middot; Module Welcome: Science, Philosophy &amp; Art</a></li>
       <li><a href="#s14">14 &middot; Running Conversation Circles</a></li>
       <li><a href="#s15">15 &middot; Coaching Dialogue: The Three Moves</a></li>
-      <li><a href="#quiz">Comprehension check</a></li>
+      <li><a href="#quiz-videos">Video comprehension check</a></li>
     </ul>
   </aside>
 
@@ -742,13 +780,20 @@
       <h1>Coaching <em>Methods</em></h1>
       <p class="hero-desc">The neuroscience engine behind every BRN protocol. The other NLH manuals tell you the why and the what. This one is the how. It explains, in plain biology, why willpower and insight fail and what actually updates a pattern: retrieve the neural assembly, generate a mismatch, encode new content inside the reconsolidation window, and prepare the brain state that lets the change hold. This page distils the manual for fast re-reading, exact numbers, protocol durations, sequencing rules, and the breath system intact.</p>
       <div class="hero-stats">
-        <div class="hero-stat"><span class="num">15</span><span class="label">Sections</span></div>
-        <div class="hero-stat"><span class="num">20</span><span class="label">Quiz questions</span></div>
+        <div class="hero-stat"><span class="num">12</span><span class="label">Manual sections</span></div>
+        <div class="hero-stat"><span class="num">3</span><span class="label">Video sessions</span></div><div class="hero-stat"><span class="num">20</span><span class="label">Quiz questions</span></div>
         <div class="hero-stat"><span class="num">9</span><span class="label">Protocols covered</span></div>
       </div>
     </header>
 
     <!-- SECTION 01 -->
+    <!-- PART 1 -->
+    <div class="part-divider" id="part-manual">
+      <span class="part-num">PART 1</span>
+      <h2>The Manual</h2>
+      <p>Distilled from the Materials &amp; Methods Manual. Twelve sections plus a comprehension check.</p>
+    </div>
+
     <section class="section" id="s1">
       <div class="section-header">
         <div class="section-num">01</div>
@@ -1371,115 +1416,13 @@
       </div>
     </section>
 
-    <!-- FROM THE VIDEOS -->
-    <section class="section" id="s13">
-      <div class="section-header">
-        <div class="section-num">13</div>
-        <div>
-          <h2 class="section-title">Module Welcome: Science, Philosophy &amp; Art</h2>
-          <p class="section-subtitle">From the module videos. The continuum that guides the whole coaching craft.</p>
-        </div>
-      </div>
-
-      <div class="quote-block">
-        <p>"You and I could be teaching the exact same thing. They just could not hear it from me. They hear it from you. Your essential is matched to theirs."</p>
-      </div>
-
-      <div class="card">
-        <p>This module teaches the coaching craft itself, arguably the most important module in the whole framework, because it is guided by three things at once: the science, the philosophy, and the art. Think of it as a continuum, not a hierarchy.</p>
-      </div>
-
-      <table class="ref-table">
-        <thead><tr><th>Layer</th><th>What it is</th><th>Role</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Science</strong></td><td>The frameworks, protocols, and logic-based tools that get measurable results</td><td>Without it, coaching is just making things up</td></tr>
-          <tr><td><strong>Philosophy</strong></td><td>The NLH worldview (covered in full in the Psychology &amp; Philosophy module)</td><td>Sits in the middle. Anchors the science so it points somewhere, and evolves as understanding deepens</td></tr>
-          <tr><td><strong>Art</strong></td><td>Intuition, feel, the things logic can't explain</td><td>Can't be taught. Has to be leaned into, not trained out</td></tr>
-        </tbody>
-      </table>
-
-      <div class="card card-accent">
-        <h3>The warning built into this module</h3>
-        <p>The coach is about to be handed a lot of frameworks: do it this way, here's the ABC, here's the one-two-three. Adhering to those exclusively costs the coach their heart, their intuitive sense, their ability to truly connect. That connection is exactly why a given client can hear something from one coach and not another, even teaching the identical content.</p>
-        <p>Personal tools and interests a coach already carries (tarot, astrology, anything) are welcome in the work, but they have to fit inside the NLH science framework, not replace it. Neither side gets abandoned for the other: not art for science, not science for art. Both married is what a good coach does.</p>
-      </div>
-    </section>
-
-    <section class="section" id="s14">
-      <div class="section-header">
-        <div class="section-num">14</div>
-        <div>
-          <h2 class="section-title">Running Conversation Circles (Story Circles)</h2>
-          <p class="section-subtitle">From the module videos. A distinct delivery format, not a variant of coaching.</p>
-        </div>
-      </div>
-
-      <div class="quote-block">
-        <p>"This is not coaching. Instead, what you are doing is facilitating a conversation, or facilitating a witnessing. In the authentic telling of the story of struggle, healing is done."</p>
-      </div>
-
-      <div class="card">
-        <p>Story circles (also called conversation circles) are a distinct delivery format alongside 1:1 coaching, group coaching, and BRN classes, not a variant of any of them. The model takes its inspiration from 12-step: the mechanism that matters is <strong>story, and being witnessed in the telling of it.</strong></p>
-        <p>The clinical link back to reconsolidation: retrieving a memory makes it labile, loosely held and changeable (see Section 05). When someone is prompted to tell their story slightly differently, naming the pattern, naming a gift, the story itself begins to change as they hold it. The circle is a reconsolidation event delivered through group witnessing rather than a protocol.</p>
-      </div>
-
-      <table class="ref-table">
-        <thead><tr><th>SUG Step</th><th>What they tell</th><th>Why it's asked</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Struggle</strong></td><td>The authentic story, what happened</td><td>The raw material. Told straight, without performance.</td></tr>
-          <tr><td><strong>Understanding</strong></td><td>What the struggle means, coping mechanisms and patterns noticed</td><td>Moves them from event to pattern-recognition</td></tr>
-          <tr><td><strong>Gift</strong></td><td>What they've learned, a word of wisdom for someone earlier in the same struggle</td><td>Most people don't see a gift in their struggle unfacilitated. Naming one is the reconsolidation move. It changes how the story is held, not just how it's told.</td></tr>
-        </tbody>
-      </table>
-
-      <div class="card">
-        <h4>Running the circle</h4>
-        <ul>
-          <li><strong>Two roles, both named and thanked explicitly at the open:</strong> some are there to witness (not share), some are there to share. Naming both roles out loud makes the witness role feel like a real, useful contribution rather than a consolation.</li>
-          <li><strong>Ground rule: no coaching, no advice.</strong> If a participant asks for it directly, the line is: "We don't do coaching or advice on these calls. I know that can feel frustrating, but there's power in just sitting with the story. Troubleshoot and coach later." Facilitator reflections at the end of a share are personal ("this made me think..."), never directive.</li>
-          <li><strong>Timing:</strong> 3-7 minutes framed, nudge at 5-10 minutes if needed ("That's amazing, Jane, let's go ahead into the gift now"). Full circle runs about 60 minutes; anyone who doesn't get to share continues it inside the community.</li>
-          <li><strong>Back pocket, if no one volunteers:</strong> facilitator shares their own SUG first to model brevity and structure, or moves the group into a journalling round (write the SUG instead of speaking it), then re-invites sharing. An allegory, proverb, or shared scene (a movie moment, a client story kept confidential) can also open the conversation without forcing disclosure.</li>
-          <li>Facilitator must be fully present, no phone, no looking away, and holds the witness role too, not just the timekeeper role.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="s15">
-      <div class="section-header">
-        <div class="section-num">15</div>
-        <div>
-          <h2 class="section-title">Coaching Dialogue: The Human Rule, Empathy Rule &amp; Curious Detective</h2>
-          <p class="section-subtitle">From the module videos. Three moves, used in sequence, before any pattern work begins.</p>
-        </div>
-      </div>
-
-      <div class="quote-block">
-        <p>"You don't tell them this part, but what you're essentially doing is looking for the pattern they need to break. Rather than saying 'here's your pattern,' you always play the curious, questioning detective."</p>
-      </div>
-
-      <table class="ref-table">
-        <thead><tr><th>Move</th><th>What you say</th><th>Why it works</th></tr></thead>
-        <tbody>
-          <tr><td><strong>1. Human Rule</strong></td><td>"You're not alone, I've seen so many people go through this," or "I've been through something similar myself"</td><td>Normalises. Every human suffers; the goal is to make the client feel like a member of the human race, not a broken case</td></tr>
-          <tr><td><strong>2. Empathy Rule</strong></td><td>"I can't even imagine, that must be so hard"</td><td>You're not claiming to imagine the trauma itself. You're naming that you can't imagine being them. Felt understanding without false claims of shared experience</td></tr>
-          <tr><td><strong>3. Curious Detective</strong></td><td>"I could be completely wrong, correct me, but I wonder if... / I think..."</td><td>Names the pattern as a hedged guess, not a verdict. Keeps the client's guard down long enough to actually consider it</td></tr>
-        </tbody>
-      </table>
-
-      <div class="card card-accent">
-        <h3>Why the hedge matters</h3>
-        <p>A direct assertion ("here's your pattern," "you're messed up about this") puts the client's guard up immediately. Shame walls come up before the idea even lands. A hedged offer ("maybe I'm off, but is it possible your mum took that comment as her being a bad mother?") does the opposite: "maybe" opens an exploratory brain state instead of a defensive one, dropping the idea in as a breadcrumb rather than a diagnosis. The client can pick it up, push back on it, or let it sit. Either way, the door stays open, which a flat assertion closes.</p>
-        <p><strong>Practical pattern:</strong> "I'm unsure, you can tell me I'm wrong, please correct me, but I wonder / I think [pattern observation]." Said in that hedging, secondary-position tone, not an authoritative one.</p>
-      </div>
-    </section>
-
     <!-- QUIZ SECTION -->
     <section class="section" id="quiz">
       <div class="section-header">
         <div class="section-num">Q</div>
         <div>
-          <h2 class="section-title">Comprehension Check</h2>
-          <p class="section-subtitle">Answer from memory first. Click an option to check. Twenty questions across the manual and the module videos.</p>
+          <h2 class="section-title">Manual Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check. Fourteen questions across the manual.</p>
         </div>
       </div>
 
@@ -1651,8 +1594,129 @@
         <div class="q-result" data-explain="Voice One is the entity, Voice Two is the current self responding, and Voice Three is the future, wiser self encoding the lesson and next-level frame while the assembly is still labile."></div>
       </div>
 
+    </section>
+
+    <!-- PART 2 -->
+    <div class="part-divider" id="part-videos">
+      <span class="part-num">PART 2</span>
+      <h2>Video Training</h2>
+      <p>Session notes from the module videos. Separate from the manual, with its own comprehension check.</p>
+    </div>
+
+    <!-- FROM THE VIDEOS -->
+    <section class="section" id="s13">
+      <div class="section-header">
+        <div class="section-num">13</div>
+        <div>
+          <h2 class="section-title">Module Welcome: Science, Philosophy &amp; Art</h2>
+          <p class="section-subtitle">From the module videos. The continuum that guides the whole coaching craft.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"You and I could be teaching the exact same thing. They just could not hear it from me. They hear it from you. Your essential is matched to theirs."</p>
+      </div>
+
+      <div class="card">
+        <p>This module teaches the coaching craft itself, arguably the most important module in the whole framework, because it is guided by three things at once: the science, the philosophy, and the art. Think of it as a continuum, not a hierarchy.</p>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Layer</th><th>What it is</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Science</strong></td><td>The frameworks, protocols, and logic-based tools that get measurable results</td><td>Without it, coaching is just making things up</td></tr>
+          <tr><td><strong>Philosophy</strong></td><td>The NLH worldview (covered in full in the Psychology &amp; Philosophy module)</td><td>Sits in the middle. Anchors the science so it points somewhere, and evolves as understanding deepens</td></tr>
+          <tr><td><strong>Art</strong></td><td>Intuition, feel, the things logic can't explain</td><td>Can't be taught. Has to be leaned into, not trained out</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card card-accent">
+        <h3>The warning built into this module</h3>
+        <p>The coach is about to be handed a lot of frameworks: do it this way, here's the ABC, here's the one-two-three. Adhering to those exclusively costs the coach their heart, their intuitive sense, their ability to truly connect. That connection is exactly why a given client can hear something from one coach and not another, even teaching the identical content.</p>
+        <p>Personal tools and interests a coach already carries (tarot, astrology, anything) are welcome in the work, but they have to fit inside the NLH science framework, not replace it. Neither side gets abandoned for the other: not art for science, not science for art. Both married is what a good coach does.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">14</div>
+        <div>
+          <h2 class="section-title">Running Conversation Circles (Story Circles)</h2>
+          <p class="section-subtitle">From the module videos. A distinct delivery format, not a variant of coaching.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"This is not coaching. Instead, what you are doing is facilitating a conversation, or facilitating a witnessing. In the authentic telling of the story of struggle, healing is done."</p>
+      </div>
+
+      <div class="card">
+        <p>Story circles (also called conversation circles) are a distinct delivery format alongside 1:1 coaching, group coaching, and BRN classes, not a variant of any of them. The model takes its inspiration from 12-step: the mechanism that matters is <strong>story, and being witnessed in the telling of it.</strong></p>
+        <p>The clinical link back to reconsolidation: retrieving a memory makes it labile, loosely held and changeable (see Section 05). When someone is prompted to tell their story slightly differently, naming the pattern, naming a gift, the story itself begins to change as they hold it. The circle is a reconsolidation event delivered through group witnessing rather than a protocol.</p>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>SUG Step</th><th>What they tell</th><th>Why it's asked</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Struggle</strong></td><td>The authentic story, what happened</td><td>The raw material. Told straight, without performance.</td></tr>
+          <tr><td><strong>Understanding</strong></td><td>What the struggle means, coping mechanisms and patterns noticed</td><td>Moves them from event to pattern-recognition</td></tr>
+          <tr><td><strong>Gift</strong></td><td>What they've learned, a word of wisdom for someone earlier in the same struggle</td><td>Most people don't see a gift in their struggle unfacilitated. Naming one is the reconsolidation move. It changes how the story is held, not just how it's told.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <h4>Running the circle</h4>
+        <ul>
+          <li><strong>Two roles, both named and thanked explicitly at the open:</strong> some are there to witness (not share), some are there to share. Naming both roles out loud makes the witness role feel like a real, useful contribution rather than a consolation.</li>
+          <li><strong>Ground rule: no coaching, no advice.</strong> If a participant asks for it directly, the line is: "We don't do coaching or advice on these calls. I know that can feel frustrating, but there's power in just sitting with the story. Troubleshoot and coach later." Facilitator reflections at the end of a share are personal ("this made me think..."), never directive.</li>
+          <li><strong>Timing:</strong> 3-7 minutes framed, nudge at 5-10 minutes if needed ("That's amazing, Jane, let's go ahead into the gift now"). Full circle runs about 60 minutes; anyone who doesn't get to share continues it inside the community.</li>
+          <li><strong>Back pocket, if no one volunteers:</strong> facilitator shares their own SUG first to model brevity and structure, or moves the group into a journalling round (write the SUG instead of speaking it), then re-invites sharing. An allegory, proverb, or shared scene (a movie moment, a client story kept confidential) can also open the conversation without forcing disclosure.</li>
+          <li>Facilitator must be fully present, no phone, no looking away, and holds the witness role too, not just the timekeeper role.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="s15">
+      <div class="section-header">
+        <div class="section-num">15</div>
+        <div>
+          <h2 class="section-title">Coaching Dialogue: The Human Rule, Empathy Rule &amp; Curious Detective</h2>
+          <p class="section-subtitle">From the module videos. Three moves, used in sequence, before any pattern work begins.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"You don't tell them this part, but what you're essentially doing is looking for the pattern they need to break. Rather than saying 'here's your pattern,' you always play the curious, questioning detective."</p>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Move</th><th>What you say</th><th>Why it works</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Human Rule</strong></td><td>"You're not alone, I've seen so many people go through this," or "I've been through something similar myself"</td><td>Normalises. Every human suffers; the goal is to make the client feel like a member of the human race, not a broken case</td></tr>
+          <tr><td><strong>2. Empathy Rule</strong></td><td>"I can't even imagine, that must be so hard"</td><td>You're not claiming to imagine the trauma itself. You're naming that you can't imagine being them. Felt understanding without false claims of shared experience</td></tr>
+          <tr><td><strong>3. Curious Detective</strong></td><td>"I could be completely wrong, correct me, but I wonder if... / I think..."</td><td>Names the pattern as a hedged guess, not a verdict. Keeps the client's guard down long enough to actually consider it</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card card-accent">
+        <h3>Why the hedge matters</h3>
+        <p>A direct assertion ("here's your pattern," "you're messed up about this") puts the client's guard up immediately. Shame walls come up before the idea even lands. A hedged offer ("maybe I'm off, but is it possible your mum took that comment as her being a bad mother?") does the opposite: "maybe" opens an exploratory brain state instead of a defensive one, dropping the idea in as a breadcrumb rather than a diagnosis. The client can pick it up, push back on it, or let it sit. Either way, the door stays open, which a flat assertion closes.</p>
+        <p><strong>Practical pattern:</strong> "I'm unsure, you can tell me I'm wrong, please correct me, but I wonder / I think [pattern observation]." Said in that hedging, secondary-position tone, not an authoritative one.</p>
+      </div>
+    </section>
+
+    <!-- VIDEO QUIZ SECTION -->
+    <section class="section" id="quiz-videos">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Video Training Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check. Six questions across the three video sessions.</p>
+        </div>
+      </div>
+
       <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 15</span>
+        <span class="q-num">Question 1</span>
         <p class="q-text">Why does NLH insist coaches keep their own intuitive style and interests alongside the taught frameworks, rather than teaching pure technique?</p>
         <div class="options">
           <button class="opt" data-opt="A">A) Frameworks alone are too rigid to apply to real client situations</button>
@@ -1664,7 +1728,7 @@
       </div>
 
       <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 16</span>
+        <span class="q-num">Question 2</span>
         <p class="q-text">On the science-philosophy-art continuum, where does philosophy sit, and why?</p>
         <div class="options">
           <button class="opt" data-opt="A">A) On the art end, because philosophy is inherently intuitive rather than logical</button>
@@ -1676,7 +1740,7 @@
       </div>
 
       <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 17</span>
+        <span class="q-num">Question 3</span>
         <p class="q-text">Why does the SUG model deliberately ask participants to name a "gift" in their struggle, even though most people don't see one at first?</p>
         <div class="options">
           <button class="opt" data-opt="A">A) It keeps the circle upbeat and prevents the session from becoming too heavy</button>
@@ -1688,7 +1752,7 @@
       </div>
 
       <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 18</span>
+        <span class="q-num">Question 4</span>
         <p class="q-text">A participant shares their story, then asks the facilitator directly for advice on what to do next. What's the correct move?</p>
         <div class="options">
           <button class="opt" data-opt="A">A) Give a brief piece of coaching, since they asked directly</button>
@@ -1700,7 +1764,7 @@
       </div>
 
       <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 19</span>
+        <span class="q-num">Question 5</span>
         <p class="q-text">Why does hedged language ("I could be wrong, correct me, but I wonder...") work better than a direct assertion ("here's your pattern") when naming a client's pattern?</p>
         <div class="options">
           <button class="opt" data-opt="A">A) It sounds more polite and professional</button>
@@ -1712,7 +1776,7 @@
       </div>
 
       <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 20</span>
+        <span class="q-num">Question 6</span>
         <p class="q-text">What are the Human Rule and Empathy Rule designed to establish before any pattern work starts?</p>
         <div class="options">
           <button class="opt" data-opt="A">A) That the coach has personally experienced the exact same trauma as the client</button>
