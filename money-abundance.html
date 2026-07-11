@@ -123,15 +123,23 @@
   }
 
   .nav-section {
-    display: block;
-    padding: 14px 18px 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 12px 8px;
+    padding: 10px 12px;
+    background: var(--forest);
+    color: #fff;
+    border-radius: 6px;
     font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--forest);
     font-weight: 700;
-    opacity: 0.6;
+  }
+
+  .nav-section.videos {
+    background: var(--peach);
   }
 
   /* MAIN */
