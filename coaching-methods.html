@@ -2020,19 +2020,18 @@ document.querySelectorAll('.quiz-q').forEach(function(q) {
   q.querySelectorAll('.opt').forEach(function(btn) {
     btn.addEventListener('click', function() {
       if (q.classList.contains('answered')) return;
-      q.classList.add('answered');
       var chosen = btn.getAttribute('data-opt');
       var explain = result.getAttribute('data-explain') || '';
-      q.querySelectorAll('.opt').forEach(function(b) {
-        b.disabled = true;
-        if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
-      });
       if (chosen === answer) {
+        q.classList.add('answered');
+        q.querySelectorAll('.opt').forEach(function(b) { b.disabled = true; });
+        btn.classList.add('correct');
         result.textContent = 'Correct. ' + explain;
         result.className = 'q-result show right';
       } else {
         btn.classList.add('incorrect');
-        result.textContent = 'Not quite. The answer is ' + answer + '. ' + explain;
+        btn.disabled = true;
+        result.textContent = 'Not quite. Try another answer.';
         result.className = 'q-result show wrong';
       }
     });
