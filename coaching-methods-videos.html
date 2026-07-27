@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Video Training · Coaching Methods · NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo {
+    padding: 0 18px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .sidebar-logo .belt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-logo .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .sidebar-logo .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+
+  .sidebar-nav li a {
+    display: block;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+    line-height: 1.4;
+  }
+
+  .sidebar-nav li a:hover {
+    color: var(--forest);
+    background: var(--forest-tint);
+    border-left-color: var(--peach);
+  }
+
+  .nav-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 12px 8px;
+    padding: 10px 12px;
+    background: var(--forest);
+    color: #fff;
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .nav-section.videos {
+    background: var(--peach);
+  }
+
+  /* MAIN */
+  .main { min-width: 0; }
+
+  /* HERO */
+  .hero {
+    background: var(--forest);
+    padding: 60px 52px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peach-bright);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 36px;
+    background: var(--peach-bright);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--peach-bright);
+    font-weight: 700;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .hero-stat .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--peach-bright);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 48px 52px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--peach);
+    letter-spacing: 0.1em;
+    margin-top: 7px;
+    flex-shrink: 0;
+    width: 26px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--forest);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+
+  .card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--forest);
+    margin-bottom: 8px;
+    margin-top: 20px;
+    opacity: 0.7;
+  }
+
+  .card h4:first-child { margin-top: 0; }
+
+  .card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul, .card ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+
+  .card-accent {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+    border-left: 3px solid var(--peach);
+  }
+
+  .card-dark {
+    background: var(--forest);
+    border-color: transparent;
+  }
+
+  .card-dark h3 { color: #fff; }
+  .card-dark h4 { color: var(--peach-bright); opacity: 1; }
+  .card-dark p, .card-dark li { color: rgba(255,255,255,0.85); }
+  .card-dark strong { color: #fff; }
+
+  /* QUOTE */
+  .quote-block {
+    background: var(--forest-faint);
+    border-left: 3px solid var(--forest);
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .quote-block p {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--forest);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* SCRIPT / PROTOCOL BLOCKS */
+  .script-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+
+  .script-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .script-block p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 8px;
+  }
+  .script-block p:last-child { margin-bottom: 0; }
+
+  /* CALLOUTS */
+  .callout {
+    background: var(--peach-faint);
+    border: 1px solid rgba(232,86,63,0.22);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .callout strong { color: var(--peach); font-weight: 700; }
+
+  .callout-forest {
+    background: var(--forest-faint);
+    border-color: var(--border-strong);
+  }
+
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  /* VS TABLE */
+  .vs-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .vs-header {
+    padding: 12px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .vs-header.old { background: var(--red-faint); color: #c03030; }
+  .vs-header.new { background: var(--green-faint); color: #1a7a50; }
+
+  .vs-row-old, .vs-row-new {
+    padding: 11px 18px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .vs-row-old { background: rgba(220,50,50,0.04); color: #7a2020; border-bottom: 1px solid rgba(220,50,50,0.07); }
+  .vs-row-new { background: rgba(30,160,90,0.04); color: #1a5030; border-bottom: 1px solid rgba(30,160,90,0.07); }
+
+  /* REFERENCE TABLE */
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13.5px;
+  }
+
+  .ref-table th {
+    background: var(--forest);
+    color: #fff;
+    text-align: left;
+    padding: 11px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .ref-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  .table-scroll { overflow-x: auto; margin-bottom: 20px; }
+  .table-scroll .ref-table { margin-bottom: 0; }
+
+  /* DIAGRAMS */
+  .diagram-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .diagram-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.7;
+  }
+
+  .diagram-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* TIMELINE / PHASE FLOW */
+  .timeline-phases {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-phases::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong));
+    z-index: 0;
+  }
+
+  .phase-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .phase-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 150px;
+  }
+
+  /* PILLARS GRID */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .pillars-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .pillars-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .pillar-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    border-top: 3px solid var(--peach);
+  }
+
+  .pillar-item .pillar-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+
+  .pillar-item .pillar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+  /* PART DIVIDER */
+  .part-divider {
+    background: var(--forest);
+    padding: 34px 52px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .part-divider .part-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--peach-bright);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 6px 12px;
+    flex-shrink: 0;
+  }
+  .part-divider h2 {
+    font-size: 21px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .part-divider p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-left: auto;
+    max-width: 340px;
+    text-align: right;
+  }
+  @media (max-width: 860px) {
+    .part-divider { padding: 26px 22px; flex-wrap: wrap; }
+    .part-divider p { margin-left: 0; text-align: left; }
+  }
+
+  /* QUIZ */
+  .quiz-intro {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .quiz-q {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+
+  .quiz-q .q-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .quiz-q .q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .quiz-q .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quiz-q .opt {
+    text-align: left;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 15px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+
+  .quiz-q .q-result {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    display: none;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  /* FOOTER */
+
+  /* CHIP NAV */
+  .chip-nav { list-style: none; }
+  .chip-nav li { margin-bottom: 8px; }
+  .chip-nav a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--ink); font-size: 12.5px; font-weight: 600;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .chip-nav a:hover { border-color: var(--border-strong); background: #fff; }
+  .chip-num {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; color: #fff;
+    background: var(--forest); width: 20px; height: 20px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .chip-nav.videos .chip-num { background: var(--peach); }
+  .chip-nav .not-built-link { opacity: 0.6; }
+  .chip-nav .not-built-link .chip-num { background: var(--text-muted); }
+  .missing-tag {
+    font-family: var(--mono); font-size: 8.5px; color: var(--peach); background: var(--peach-faint);
+    padding: 1px 5px; border-radius: 4px; margin-left: auto; flex-shrink: 0;
+  }
+  .section.not-built .section-num { background: var(--peach-faint); color: var(--peach); border: 1px dashed var(--peach); }
+  .hero.videos { background: var(--peach); }
+
+  .site-footer {
+    background: var(--surface);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+
+  .site-footer a {
+    font-size: 12px;
+    color: var(--peach);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .pillars-grid, .pillars-grid.cols-3, .pillars-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+    .vs-table { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">Video Training</span>
+      <span class="title">Coaching Methods</span>
+      <a href="coaching-methods.html" class="back-link">&#8592; Back to Coaching Methods</a>
+    </div>
+    <ul class="chip-nav videos">
+      <li><a href="#s13"><span class="chip-num">01</span> Module Welcome &amp; Resources</a></li>
+      <li><a href="#s-coach-model" class="not-built-link"><span class="chip-num">02</span> The COACH Model (coaching 1 on 1)<span class="missing-tag">not built</span></a></li>
+      <li><a href="#s18"><span class="chip-num">03</span> Compound Coaching (Group- 4P Method)</a></li>
+      <li><a href="#s14"><span class="chip-num">04</span> Running Conversation Circles</a></li>
+      <li><a href="#s15"><span class="chip-num">05</span> Coaching Dialogue</a></li>
+      <li><a href="#s16"><span class="chip-num">06</span> Dimensionalization of Consciousness</a></li>
+      <li><a href="#s17"><span class="chip-num">07</span> Dimensional Consciousness Technique</a></li>
+      <li><a href="#s-memory-reconsolidation" class="not-built-link"><span class="chip-num">08</span> Memory Reconsolidation<span class="missing-tag">not built</span></a></li>
+      <li><a href="#quiz-videos"><span class="chip-num">Q</span> Comprehension Check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero videos">
+      <div class="hero-eyebrow">Video Training &middot; Coaching Area Lessons</div>
+      <h1>Coaching <em>Methods</em></h1>
+      <p class="hero-desc">Notes from Jade's coaching-area video lessons for this module. Titles and order match the coaching area exactly &mdash; two lessons don't have a transcript pulled yet, tagged below rather than left unlabelled.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">6</span><span class="label">Built</span></div>
+        <div class="hero-stat"><span class="num">2</span><span class="label">Not yet built</span></div>
+        <div class="hero-stat"><span class="num">21</span><span class="label">Quiz questions</span></div>
+      </div>
+    </header>
+
+    <section class="section" id="s13">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">Module Welcome &amp; Resources</h2>
+          <p class="section-subtitle">From the module videos. The continuum that guides the whole coaching craft.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"You and I could be teaching the exact same thing. They just could not hear it from me. They hear it from you. Your essential is matched to theirs."</p>
+      </div>
+
+      <div class="card">
+        <p>This module teaches the coaching craft itself, arguably the most important module in the whole framework, because it is guided by three things at once: the science, the philosophy, and the art. Think of it as a continuum, not a hierarchy.</p>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Layer</th><th>What it is</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Science</strong></td><td>The frameworks, protocols, and logic-based tools that get measurable results</td><td>Without it, coaching is just making things up</td></tr>
+          <tr><td><strong>Philosophy</strong></td><td>The NLH worldview (covered in full in the Psychology &amp; Philosophy module)</td><td>Sits in the middle. Anchors the science so it points somewhere, and evolves as understanding deepens</td></tr>
+          <tr><td><strong>Art</strong></td><td>Intuition, feel, insight, the things logic can't explain</td><td>Can't be taught. Intuitive and insight-based, not intellect-based. Leaned into, not trained out</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card card-accent">
+        <h3>The warning built into this module</h3>
+        <p>The coach is about to be handed a lot of frameworks: do it this way, here's the ABC, here's the one-two-three. Adhering to those exclusively costs the coach their heart, their intuitive sense, their ability to truly connect. That connection is exactly why a given client can hear something from one coach and not another, even teaching the identical content. There are people only you can reach.</p>
+        <p>Personal tools and interests a coach already carries (tarot, astrology, anything) are welcome in the work, but they have to fit inside the NLH science framework, not replace it, otherwise the results can't be measured. Neither side gets abandoned for the other: not art for science, not science for art. Both married is what a good coach does.</p>
+      </div>
+    </section>
+
+
+    <section class="section not-built" id="s-coach-model">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">The COACH Model (coaching 1 on 1)</h2>
+          <p class="section-subtitle">Not built yet</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p>No transcript pulled for this lesson yet. It sits here because this is where it lives in Jade's coaching area &mdash; the numbering and order are already locked in. Record or pull the transcript and this section fills in.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s18">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">Compound Coaching (Group- 4P Method)</h2>
+          <p class="section-subtitle">From the module video. How to coach a room in 60 minutes and have everyone leave coached.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"Watch and attend as many group coaching sessions as you can. Do as many as you can. This is how you get good."</p>
+      </div>
+
+      <a href="group-coaching-cheat-sheet.html" style="text-decoration:none; display:block; margin-bottom:24px;">
+        <div class="callout" style="display:flex; align-items:center; justify-content:space-between; gap:16px; cursor:pointer;">
+          <p style="margin:0;"><strong>COACH CHEAT SHEET</strong> &mdash; standalone one-page reference, separate document. Open it before you run a session.</p>
+          <span style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--peach); white-space:nowrap;">Open handout &rarr;</span>
+        </div>
+      </a>
+
+      <div class="diagram-title">From the video</div>
+
+      <div class="card card-accent">
+        <h3>Why group beats 1:1</h3>
+        <p><strong>Compound learning.</strong> Many get coached live, but everyone in the room gets coached. Coach 6 people out of 10 and all 10 walk away with 6 viewpoints and 6 plans. Human patterns overlap, so every rep lands for more than one person. The goal never changes: shift perception to change identity and behaviour.</p>
+      </div>
+
+      <div class="card">
+        <h4>The actual mechanism: identity-escape</h4>
+        <p>Compound learning isn't just "you overhear a useful tip." When Jane is being coached on her own struggle, she can't be objective. She's inside it, emotional blocks up. But watching you coach Jeff right after her, on an overlapping pattern, she gets to <strong>try on being less objective</strong>. She escapes her own identity by listening to Jeff's situation, and the way you manage Jeff lands the insight for Jane too. Every time you deliver one new insight, the whole room has the potential for that same insight.</p>
+      </div>
+
+      <div class="card">
+        <h4>Pre-session email prompt</h4>
+        <p>Ask everyone to arrive with the <strong>4 Ps</strong> already filled out: the problem (the pain), the pattern (where it's familiar, the coping mechanisms), the possibilities (the hardest one for people to do alone -- the growth opportunity), and the plan (single step or steps to clear it). The pre-work is self-coaching practice, it builds a shared language, and it makes the live session faster.</p>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">The coaching frame: the 4 Ps</div>
+        <table class="ref-table">
+          <thead><tr><th>P</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Problem</strong></td><td>The obstacle or pain. The pain point</td></tr>
+            <tr><td><strong>Pattern</strong></td><td>The repeating response or coping style. How it repeats and how they cope</td></tr>
+            <tr><td><strong>Possibilities</strong></td><td>The lesson, the promise, the new perception. The growth hidden in the struggle</td></tr>
+            <tr><td><strong>Plan</strong></td><td>The smallest viable action now. A single step or a tiny stack</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">Keep bringing every share back to the 4 Ps. That is what keeps group coaching tight and scalable.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>4 Ps in practice &mdash; worked examples</h3>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:0;">Composite examples, not real clients. Adapted to sex addiction / compulsive sexual behaviour coaching so this is ready to send out or explain to someone straight off this page. Four examples, one per coping cluster plus the partner-side angle, so the range of what "Pattern" can look like is clear.</p>
+
+        <h4 style="margin-top:18px;">Example 1 &middot; Soothing</h4>
+        <table class="ref-table">
+          <thead><tr><th>P</th><th>What he says / what the coach hears</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Problem</strong></td><td>"I feel like I'm failing my marriage. My wife doesn't trust me and I don't know how to fix it." Underneath: a stuck Relationships / Acceptance &amp; Belonging need. He doesn't feel safe or accepted in his own home.</td></tr>
+            <tr><td><strong>Pattern</strong></td><td>Soothing. He numbs out on porn late at night when the shame or disconnection gets loud, then hides it, then feels worse, then repeats. The coach's job: don't let him call the numbing "the problem" -- it's the pattern sitting on top of the real problem.</td></tr>
+            <tr><td><strong>Possibilities</strong></td><td>He's unique, this is his work to do, and the struggle is showing him exactly where he's been avoiding honesty with himself and his wife. The lesson: learning to sit in discomfort instead of numbing it is the same skill that will rebuild the trust he's lost.</td></tr>
+            <tr><td><strong>Plan</strong></td><td>Not "stop watching porn." Something concrete and small: "Tonight, when the urge hits, I tell my wife I'm struggling instead of going quiet and disappearing into the phone."</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Example 2 &middot; Striving</h4>
+        <table class="ref-table">
+          <thead><tr><th>P</th><th>What he says / what the coach hears</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Problem</strong></td><td>"I don't even know why I keep doing this, I've got a good life, a good job, I should have this handled by now." Underneath: a Growth &amp; Mattering wound. He's made "having it handled" his identity, so the pattern feels like proof he's fundamentally not enough.</td></tr>
+            <tr><td><strong>Pattern</strong></td><td>Striving. He buries the shame under more work, another goal, another early gym session, never sitting still long enough to feel what's underneath. Looks like discipline. Isn't.</td></tr>
+            <tr><td><strong>Possibilities</strong></td><td>The constant doing is itself a form of avoidance, just a more socially rewarded one than the pattern he's ashamed of. The lesson: he doesn't need to earn the right to rest or to be struggling. Stillness isn't laziness.</td></tr>
+            <tr><td><strong>Plan</strong></td><td>"Once this week, when I feel the urge to fill the silence with another task, I sit with it for two minutes before I move."</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Example 3 &middot; Seeking</h4>
+        <table class="ref-table">
+          <thead><tr><th>P</th><th>What he says / what the coach hears</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Problem</strong></td><td>"I've read every book, listened to every podcast, I understand exactly why I do this, but nothing changes." Underneath: a Freedom &amp; Autonomy problem. He feels controlled by the urge, and understanding it has become a substitute for confronting it.</td></tr>
+            <tr><td><strong>Pattern</strong></td><td>Seeking. Endless research, another framework, another expert, another why -- and it keeps him one step removed from actually doing anything about it. Analysis as a coping mechanism, not a step toward one.</td></tr>
+            <tr><td><strong>Possibilities</strong></td><td>He already has enough understanding to act. The missing piece was never more information, it's trusting himself enough to act on what he already knows. The lesson: insight without action is just a more intellectual way to stay stuck.</td></tr>
+            <tr><td><strong>Plan</strong></td><td>"Before I read or listen to anything else about this, I pick one thing I already know I need to do, and I do it this week."</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Example 4 &middot; The partner side (attack / monitor)</h4>
+        <table class="ref-table">
+          <thead><tr><th>P</th><th>What she says / what the coach hears</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Problem</strong></td><td>"I don't trust anything anymore, not him, not my own judgement." A Safety &amp; Security problem. Betrayal has made her own home feel unpredictable, and she can no longer tell a real threat from a false alarm.</td></tr>
+            <tr><td><strong>Pattern</strong></td><td>The "attack"/monitor coping style. Checking his phone, re-asking the same question different ways, needing constant reassurance she can't actually absorb. Not weakness, it's her nervous system trying to buy back a sense of control.</td></tr>
+            <tr><td><strong>Possibilities</strong></td><td>Control feels like safety but isn't -- it's just a different way of managing an unbearable feeling, the same job the pattern was doing for him. The lesson: learning to tolerate uncertainty (with real evidence over time, not surveillance) is what actually rebuilds trust.</td></tr>
+            <tr><td><strong>Plan</strong></td><td>"Tonight, instead of checking his phone, I ask him directly what I want to know."</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h4>Managing a big room -- the hybrid</h4>
+        <p>If hundreds turn up instead of a handful, walk the whole room through the 4 Ps as a timed guided journal, then take volunteers. Sample script, run live:</p>
+        <div class="quote-block" style="margin-bottom:10px;">
+          <p>"Okay everybody, you were asked to come with the four Ps. Take out your journals and write out the problem. If you already wrote it, expand on it. What is the problem, the pain point? Think about it from all aspects -- how does it make you think, feel, choose and act? Where does it live in your body? Does it have a personality? What does it do to you or for you?"</p>
+        </div>
+        <div class="quote-block" style="margin-bottom:10px;">
+          <p>"Now we're going to talk about the pattern. Many of you will confuse problem and pattern -- don't worry, we all do this. The problem is the thing you keep running into, the obstacle. The pattern is how it recurs, and how you tend to cope with it."</p>
+        </div>
+        <div class="quote-block" style="margin-bottom:10px;">
+          <p>"Now the hardest part -- write down the possibilities. Everything happening to you is exactly what's required for you to break free, to awaken. What are the growth opportunities here? What is it forcing you to see? What's the promise if you broke this?"</p>
+        </div>
+        <div class="quote-block" style="margin:0;">
+          <p>"What is the single action you can take right now that would begin to break this pattern and solve this problem? Who has questions, or who wants to volunteer theirs?"</p>
+        </div>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Problem vs Pattern: the core diagnostic</h3>
+        <p>The coach's whole job is to <strong>separate the Problem from the Pattern</strong>, then reveal the Possibilities that bridge to a Plan. Getting these two mixed up is where coaching goes loose.</p>
+        <table class="ref-table">
+          <thead><tr><th></th><th>Problem</th><th>Pattern</th></tr></thead>
+          <tbody>
+            <tr><td><strong>What it is</strong></td><td>The recurrent struggle, repeated obstacle, or stuck emotion</td><td>The person's repeated response to that problem</td></tr>
+            <tr><td><strong>Looks like</strong></td><td>Core needs implicated: Safety &amp; Security, Acceptance &amp; Belonging, Freedom &amp; Autonomy, Growth &amp; Mattering. Usually in Money, Health, Relationships or Purpose</td><td>People-pleasing, denial, distraction, whimper, whine, avoid, attack</td></tr>
+            <tr><td><strong>Tell them apart</strong></td><td>Recurs as a stuck struggle or obstacle sitting in front of the person</td><td>Recurs as something the person <em>does</em> -- a repeated behaviour in response to the obstacle</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-bottom:6px;"><strong>The three coping clusters (the Pattern side):</strong></p>
+        <div class="pillars-grid cols-3">
+          <div class="pillar-item"><div class="pillar-name">Soothing</div><div class="pillar-desc">Food, alcohol, sex, screens</div></div>
+          <div class="pillar-item"><div class="pillar-name">Striving</div><div class="pillar-desc">Overwork, overtraining, nonstop doing</div></div>
+          <div class="pillar-item"><div class="pillar-name">Seeking</div><div class="pillar-desc">Obsessive why-hunting, analysis loops</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">These three are the same Soother / Striver / Seeker identity traps used across the recovery work. For Alex, the Soother cluster (screens, sex) is usually the presenting Pattern, sitting on top of a Problem in Relationships or Growth &amp; Mattering.</p>
+      </div>
+
+      <div class="card">
+        <h4>The Possibilities move</h4>
+        <p>This is where the reframe happens, and it's the hardest part to coach. Weave in the three NLH assumptions: the person is unique; as a result they have unique work only they can do; and <strong>source consciousness</strong> is giving them their struggles and problems so they can awaken and do that work, learning the lessons through the struggle itself. Then bridge it for them:</p>
+        <div class="quote-block" style="margin:0;">
+          <p>"Here is your problem and your pattern. Here is what you want. The lessons inside this struggle are the missing bridge."</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Live coaching: Jane and Jeff, and psychological license</h4>
+        <p>With around 20 or fewer in the room, go straight to live coaching. "Okay Jane, you're up. Tell me the problem and pattern." Most people confuse the two, so it's the coach's job to separate them.</p>
+        <p>If Jane runs long, you can cut in with "let's get to the plan, Jane -- what's your plan of action?" without it landing as a slight. She already did the 4 Ps before arriving and knows you'll run the same format on her, so following the format publicly gives you <strong>psychological license</strong> to jump or skip steps under time pressure. It reads as the container everyone agreed to, not an arbitrary cut-off.</p>
+      </div>
+
+      <div class="card">
+        <h4>Session flow</h4>
+        <p><strong>Drop-in phase.</strong> Pick one brief opener: BEEP or simple breathwork (aim for alpha, theta if possible), a journaling prompt on the 4 Ps, or a short teaching bite, movement or art activity. The opener does two jobs: it primes the subconscious, and it is your fallback if nobody volunteers.</p>
+        <p><strong>Live coaching rounds.</strong> Call a volunteer, walk them through the 4 Ps, keep it time-bound, then repeat with new volunteers.</p>
+        <p><strong>When the room is big,</strong> run a guided journaling sequence first, then take 2 to 4 volunteers for quick laser rounds:</p>
+        <table class="ref-table">
+          <thead><tr><th>Time</th><th>Prompt</th></tr></thead>
+          <tbody>
+            <tr><td>5-10 min</td><td>Problem: sensations, thoughts, feelings, choices, actions</td></tr>
+            <tr><td>5-10 min</td><td>Pattern: recurring coping, major and minor</td></tr>
+            <tr><td>5-7 min</td><td>Possibilities: lessons, promises, growth</td></tr>
+            <tr><td>2-5 min</td><td>Plan: single step or tiny stack</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Running the container</h3>
+        <table class="ref-table">
+          <thead><tr><th>Rule</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Timekeeping</strong></td><td>60 minutes, end on time. Individual shares 3-7 minutes each, cap around 10. If someone runs long, pivot them with "What is your gift or plan now?"</td></tr>
+            <tr><td><strong>If no volunteers</strong></td><td>Make the opener the main event (breathwork or journaling on the 4 Ps), then invite 1 or 2 brief shares</td></tr>
+            <tr><td><strong>Closing</strong></td><td>Recap the insights quickly. Point those who didn't get coached to the community or the next session. Re-affirm the 60-minute boundary. Clarity builds trust</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">Priming the room, strict timing and a clean close are what keep the container powerful and safe. The close also <strong>trains efficiency</strong>: people learn there's only 60 minutes, so next time they aren't wondering if or when they'll get a turn.</p>
+      </div>
+
+      <div class="quote-block">
+        <p>"This is about reps. Reps, reps, reps. The more you do, the better you get."</p>
+      </div>
+    </section>
+
+    <section class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">Running Conversation Circles</h2>
+          <p class="section-subtitle">From the module videos. A distinct delivery format, not a variant of coaching. Facilitate a conversation or a witnessing.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"This is not coaching. Instead, what you are doing is facilitating a conversation, or facilitating a witnessing. In the authentic telling of the story of struggle, healing is done."</p>
+      </div>
+
+      <div class="card">
+        <h4>Where circles sit in the delivery menu</h4>
+        <p>There are several distinct ways to deliver the Next Level Human methods, and the point of keeping them straight is so you can <strong>run different experiences and stack them in your business</strong>. A circle should never feel like a watered-down version of coaching. It is its own thing.</p>
+        <table class="ref-table">
+          <thead><tr><th>Format</th><th>What it is</th></tr></thead>
+          <tbody>
+            <tr><td><strong>One-on-ones</strong></td><td>Individual coaching</td></tr>
+            <tr><td><strong>Group coaching</strong></td><td>A completely different experience from 1:1</td></tr>
+            <tr><td><strong>BRN classes</strong></td><td>Belief Repatterning and Neuroplasticity classes</td></tr>
+            <tr><td><strong>Sessions / circles / conversations</strong></td><td>The subject of this training. Story and witnessing, not coaching</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">When you run this in your business it must feel distinct from group coaching, distinct from one-on-ones, distinct from classes. Its own experience.</p>
+      </div>
+
+      <div class="card">
+        <h4>Why it works: story, MUD, and being witnessed</h4>
+        <p>The model takes its inspiration from 12-step (AA is the most famous). Strip the method down and the active ingredient is <strong>story, and being witnessed in the telling of it.</strong></p>
+        <p>This lines up directly with NLH. MUD (misguided unconscious decisions) is <em>made of story</em> - the stories we tell are the mud we hold, and the mud we hold determines the identity and beliefs we hold. So giving someone the chance to tell their story authentically is not a soft add-on. In the authentic telling of the story of struggle, healing is done.</p>
+        <p>The clinical link is reconsolidation: retrieving a memory makes it labile, loosely held and changeable (see Section 05). When someone is prompted to tell the story slightly differently, naming the pattern, naming a gift, the story itself begins to change as they hold it. The circle is a reconsolidation event delivered through group witnessing rather than a protocol.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Two things you're actually doing (neither is coaching)</h3>
+        <table class="ref-table">
+          <thead><tr><th>Mode</th><th>What it looks like</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Facilitating a conversation</strong></td><td>You put a topic in the room ("let's talk about how telling our stories dissolves our patterns. What have you learned?"), invite named people to speak ("go ahead, Jane"), and let each person think out loud with no one interrupting. When they finish: "Does that remind anyone else of anything?"</td></tr>
+            <tr><td><strong>Facilitating a witnessing</strong></td><td>The story circle proper. People tell their SUG and are witnessed in the telling. You hold the space, keep time, and witness. You do not respond with coaching.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>SUG Step</th><th>What they tell</th><th>Why it's asked</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Struggle</strong></td><td>The authentic story, what happened, told straight without performance</td><td>The raw material</td></tr>
+          <tr><td><strong>Understanding</strong></td><td>How it feels, what they've made it mean, the coping mechanisms and patterns they're noticing</td><td>Moves them from event to pattern-recognition</td></tr>
+          <tr><td><strong>Gift</strong></td><td>What they've learned, and if they wish, a word of wisdom for others</td><td>Most people don't see a gift unfacilitated. Naming one is the reconsolidation move: it changes how the story is held, not just how it's told. Prompt for it: "if someone else was just beginning this struggle, what would you tell them?"</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <h4>The opening script (read aloud)</h4>
+        <p>There is a handout for this in the download section below the video. The coach reads it aloud at the open:</p>
+        <div class="quote-block">
+          <p>"Welcome to Story Circles. Let's remember, this is not about coaching, advice, or therapy. This is a place for you to tell your story and be witnessed. Some of you are here just as witnesses. Thank you for being here, you may not tell your story. Some of you are here to share. I'm so excited you're here, thank you for sharing. Each of you will have about three to seven minutes. I'll keep time, and if you start going over I'll gently nudge you. Remember the format: tell us your <strong>struggle</strong>, what happened, your authentic story; your <strong>understanding</strong>, how it feels, what you've made it mean, the coping mechanisms and patterns you're noticing; and last, the <strong>gift</strong>, what you've learned, and if you wish a word of wisdom for others."</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h4>Running the circle</h4>
+        <ul>
+          <li><strong>Primed before they arrive:</strong> an email goes out ahead of the circle telling people to come prepared, having already thought through their Struggle, their Understanding (the pattern or coping mechanism around it), and their Gift. The SUG frame is set before the call and reminded again during it.</li>
+          <li><strong>Two roles, both named and thanked explicitly at the open:</strong> some are there to witness (not share), some are there to share. Naming both roles out loud makes the witness role feel like a real, useful contribution rather than a consolation.</li>
+          <li><strong>Share your own SUG first (when they're new to you):</strong> going first models how it's done and, just as important, models brevity, so people learn how to keep it tight.</li>
+          <li><strong>Timing, kept strict:</strong> frame it as 3-7 minutes, plan to nudge at 5-10. Whole circle runs about 60 minutes, as many people as you can fit. Anyone who doesn't get to share continues it inside the community (or the NLH community if coaching for NLH).</li>
+          <li><strong>How to nudge:</strong> "That's amazing, Jane. Let's go ahead into the gift now. What can we say about the gift?" Moves them along without cutting them off.</li>
+          <li><strong>Ground rule: no coaching, no advice.</strong> Reflections at the end of a share are personal ("this made me think...", "this, for me..."), then "does this bring something up for anyone else?" If anyone tries to coach: "We don't do coaching, let's not do advice. No coaching, no advice here." If a participant asks directly: "We don't do coaching or advice on these calls, that's what we bring into the group coaching. I know that can feel frustrating, but there's power in just sitting with the story. Troubleshoot and coach later."</li>
+          <li><strong>Be present:</strong> no phone, no looking away. Engaged, and holding the witness role yourself, not just the timekeeper role.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h4>Back pocket: if no one wants to share</h4>
+        <p>You can't assume or force people to share, so have a fallback ready. A circle can legitimately become a journalling session or a conversation.</p>
+        <ul>
+          <li><strong>Share your own story</strong> first, then re-invite.</li>
+          <li><strong>Do a little breath work (BEEP)</strong> to settle the room, then re-invite.</li>
+          <li><strong>Turn it into a journalling round:</strong> "Take the next 10 minutes to write your struggle, the next 5 for your understanding, the next 3 for the lessons and gifts." Then: "Does anyone want to share what they wrote?"</li>
+          <li><strong>Open with an allegory, a proverb, a client story (kept confidential), or a movie scene</strong> (a Harry Potter courage moment) and turn it into a conversation: "let's talk about what courage means to you."</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="s15">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">Coaching Dialogue</h2>
+          <p class="section-subtitle">From the module videos. Three moves, used in sequence, before any pattern work begins.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"You don't tell them this part, but what you're essentially doing is looking for the pattern they need to break. Rather than saying 'here's your pattern,' you always play the curious, questioning detective."</p>
+      </div>
+
+      <div class="card">
+        <p>Three techniques for how you talk to an individual. The first two are so intuitive that most coaches never recognise them as tools at all, which is exactly why they're so powerful. Used together, they build trust and rapport fast, before any pattern work begins.</p>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Move</th><th>What you say</th><th>Why it works</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. Human Rule</strong></td><td>"You're only human. We all suffer. You're not alone." Two ways in: (a) "I've seen so many people go through something similar, you're not alone," or (b) "I've been through something similar myself. It's not the same, but you're not alone."</td><td>Suffering is the one thing that binds all humans. The goal is to give them a place to feel normal, not crazy, a member of the human race rather than a broken case</td></tr>
+          <tr><td><strong>2. Empathy Rule</strong></td><td>"I can see how hard that is. That must be so hard. I can't even imagine."</td><td>You're not claiming you can't imagine the trauma. You're naming that you can't imagine being <em>them</em>, because you're not. Felt understanding without a false claim of shared experience</td></tr>
+          <tr><td><strong>3. Curious Detective</strong></td><td>"I'm unsure, you can tell me I'm wrong, please correct me, but I wonder... / I think... X."</td><td>Names the pattern as a hedged guess, not a verdict. Builds trust fast and keeps the client's guard down long enough to actually consider it</td></tr>
+        </tbody>
+      </table>
+
+      <div class="card">
+        <h4>The premise under move 3: it's all useful</h4>
+        <p>The third move rests on a belief you hold, but never announce: whatever they're going through is useful. Buried in every trauma, drama and difficulty is a lesson, a piece of wisdom, something to learn. So silently you set out to find the patterns they need to break to get those lessons. Out loud, you never say "here's your pattern." You play the curious, questioning detective instead.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Why the hedge matters</h3>
+        <p>A direct assertion ("here's your pattern," "I think you're messed up") puts the client's guard up immediately. Shame walls come up before the idea even lands. A hedged offer does the opposite. "Maybe I'm off, but is it possible your mum took that comment as her being a bad mother?" The word <strong>"maybe" opens an exploratory brain state</strong> instead of a defensive one. That's real neuroplasticity: their perceptual awareness opens enough to try on a new idea. You're dropping breadcrumbs, not delivering a diagnosis.</p>
+        <p><strong>The tone is a secondary position, not authority:</strong> "I'm clueless here, I could be way off, I have some ideas, please educate me. I'm going to push on you, but push back on me." Said that way, you'll see where they stonewall or block, but more often than not they open up with "you know... maybe." That's the whole game. Jade's name for it: the curious, humble detective and friend. Use it all the time.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s16">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">Dimensionalization of Consciousness (shamanism, parts work, IFS, etc)</h2>
+          <p class="section-subtitle">From the module videos. A Rewrite-phase perception tool. Meet a part, then integrate it.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"This is a tool for perception. It's part of the Rewrite, something you can pull out into your toolbox."</p>
+      </div>
+
+      <div class="card">
+        <p><strong>Dimensionalised consciousness</strong> is the (deliberately cumbersome) bucket name for treating an aspect of yourself as a thing you can move around inside: go deeper into it, further out of it, back into the past, or forward into the future. Once an internal experience is dimensionalised, you are no longer fused with it. You are in relationship with it. The manual covers the same stance and the Eight Doorways in Section 03.</p>
+        <p>The most common form is <strong>parts work</strong> (parts integration). Its roots aren't clinical. Jade met it first in <strong>shamanism</strong>, where the practitioner goes into a place, calls up spiritual guides and different aspects of the self, and dwells in those worlds. Internal Family Systems and modern parts work are, in this view, an extension of that shamanic lineage.</p>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">What you can dimensionalise</div>
+        <div class="pillars-grid cols-3">
+          <div class="pillar-item"><div class="pillar-name">Selves</div><div class="pillar-desc">Past selves (child, teen, young adult) and future selves</div></div>
+          <div class="pillar-item"><div class="pillar-name">Body parts</div><div class="pillar-desc">Down to the organ and cell: liver, kidney, cells</div></div>
+          <div class="pillar-item"><div class="pillar-name">Memories</div><div class="pillar-desc">Specific events and scenes</div></div>
+          <div class="pillar-item"><div class="pillar-name">Sensations</div><div class="pillar-desc">Felt in the body (tightness, heat). Distinct from feelings</div></div>
+          <div class="pillar-item"><div class="pillar-name">Feelings / emotions</div><div class="pillar-desc">Anger, grief, fear, shame, longing</div></div>
+          <div class="pillar-item"><div class="pillar-name">Patterns</div><div class="pillar-desc">A recurring loop or behavioural signature</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">Feelings and sensations are not the same thing. Feelings are emotions; sensations are what shows up in the body. Both are valid doorways.</p>
+      </div>
+
+      <div class="card">
+        <h4>The integration meditation (the way it's run)</h4>
+        <p>Do all three at once, in one guided meditation, so the client moves through each past self in sequence rather than across separate sessions.</p>
+        <table class="ref-table">
+          <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Go to the part</strong></td><td>The client is brought to the child self, then the teen self, then the young adult (wounded adult) self</td></tr>
+            <tr><td><strong>2. Dialogue &amp; express</strong></td><td>They dialogue with that self and let it fully express itself</td></tr>
+            <tr><td><strong>3. Safe place</strong></td><td>That self goes to a safe place. If they had one at that age, they go there; if not, they build one inside the meditation</td></tr>
+            <tr><td><strong>4. Greet</strong></td><td>The Next Level / current / wise self is called into the room and greets the part</td></tr>
+            <tr><td><strong>5. Integrate</strong></td><td>The wise self integrates that part into the body. Then the whole loop repeats. Child, teen, young adult, three times</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Why:</strong> the aim is to get the nervous system to recognise and respond in a new way to the different parts of our past selves. It can be run inside a session or sent home as a homework assignment.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Where it sits among the Rewrite tools</h3>
+        <p>Parts work is the calm, controlled end of the toolkit. Relaxing music, soothing voice, safely revisiting places a person normally never dwells in. That is what separates it from the activating tools.</p>
+        <table class="ref-table">
+          <thead><tr><th>Tool</th><th>State</th><th>What it works with</th></tr></thead>
+          <tbody>
+            <tr><td><strong>BEEP</strong></td><td>Sympathetic. Intensity followed by relaxation</td><td>Emotions and memories</td></tr>
+            <tr><td><strong>DEEP</strong></td><td>Sympathetic-parasympathetic</td><td>A physical stressor: a workout, sauna therapy, cold plunge</td></tr>
+            <tr><td><strong>WET</strong></td><td>Written</td><td>Written Exposure Therapy</td></tr>
+            <tr><td><strong>Parts work</strong></td><td>Controlled, soothing, parasympathetic</td><td>Safely revisiting and integrating past selves</td></tr>
+          </tbody>
+        </table>
+        <p><strong>In-session use:</strong> when something emotional or difficult surfaces mid-session, you can call the client to visit and dimensionalise that part in the moment, not only as a set-piece meditation.</p>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">Cross-reference to check: in this video DEEP is framed as a physical sympathetic stressor (workout, sauna, cold plunge). Section 12 of the manual defines DEEP as Depth Enhanced Emotional Processing (breathwork + subconscious scripting). Worth reconciling which sense is canonical.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s17">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">Dimensional Consciousness Technique</h2>
+          <p class="section-subtitle">The companion video. Parts work is one door. This one shows all the doors, and how to turn what's behind them into a person you can talk to.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"The subconscious holds messages. It holds stories. It holds information you're not aware of. It holds MUD. If we can get them dialoguing with it rather than the conscious mind, we get material that would never have come up otherwise."</p>
+      </div>
+
+      <div class="card">
+        <p>Dimensionalising is drawn from shamanism, where there are many <strong>doorways</strong> into a person's subconscious. Each doorway is a different way in, the same way one person learns best through sight, another through sound, another through movement. Parts work and Internal Family Systems are just two of these doors: they dimensionalise a historical part or an emotion. This video goes further, opening the rest.</p>
+      </div>
+
+      <div class="diagram-wrap">
+        <div class="diagram-title">The doorways in</div>
+        <div class="pillars-grid cols-3">
+          <div class="pillar-item"><div class="pillar-name">Parts</div><div class="pillar-desc">Historical selves: the 8-year-old, the 28-year-old betrayed self, the exhausted 40-year-old, the angry teenager</div></div>
+          <div class="pillar-item"><div class="pillar-name">Emotions</div><div class="pillar-desc">A feeling you dialogue with directly</div></div>
+          <div class="pillar-item"><div class="pillar-name">Physical parts</div><div class="pillar-desc">Down to the organ and cell: liver, kidney, cells</div></div>
+          <div class="pillar-item"><div class="pillar-name">Patterns</div><div class="pillar-desc">The overeating self, the overstriving self, the self-soothing self</div></div>
+          <div class="pillar-item"><div class="pillar-name">Sensations</div><div class="pillar-desc">A queasiness or uneasiness in the stomach. Distinct from an emotion</div></div>
+          <div class="pillar-item"><div class="pillar-name">Illnesses, signs &amp; symptoms</div><div class="pillar-desc">A cancer, a painful hip. You can dialogue with these too</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">You bring the client in through whichever doorway is open. The goal is the same behind every door: get them talking to the subconscious.</p>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Anthropomorphising: turn it into a person</h3>
+        <p>The second half of the method. Once you've picked a doorway, you make what's behind it into an <strong>entity</strong>, a personality, a person. That gives the client a window into their own subconscious. You do it by interrogating it, then giving it a character.</p>
+        <table class="ref-table">
+          <thead><tr><th>Ask</th><th>What you're building</th></tr></thead>
+          <tbody>
+            <tr><td>Where is it? Where does it live in the body?</td><td>Location</td></tr>
+            <tr><td>What's its texture? Rough, smooth, like cotton?</td><td>Texture</td></tr>
+            <tr><td>What's its temperature? What's its colour?</td><td>Physical signature</td></tr>
+            <tr><td>If it were a person, what's its personality? A tough-love parent, a gentle partner, an angry child, an attacking monster?</td><td>Personality and demeanour</td></tr>
+            <tr><td>What's it saying? What message does it have? What's the lesson?</td><td>The payload. This is the point of the whole exercise</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">The physical questions (location, texture, temperature, colour) are the on-ramp. The message and the lesson are what you're actually after.</p>
+      </div>
+
+      <div class="card">
+        <h4>The technique in motion (worked example)</h4>
+        <p>No other tool is required. You can run this on its own.</p>
+        <table class="ref-table">
+          <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td><strong>1. Close the eyes</strong></td><td>Removes the physical stimulation all around them, so they can go inward</td></tr>
+            <tr><td><strong>2. Enter through a doorway</strong></td><td>Say it starts with a painful ankle. You go in through the physical, and describe and anthropomorphise it</td></tr>
+            <tr><td><strong>3. Track where it moves</strong></td><td>Ask: is it moving anywhere? What's it telling you? The ankle may hand off to a pain in the stomach. Now interrogate the stomach: temperature, texture, personality</td></tr>
+            <tr><td><strong>4. Follow it into a memory</strong></td><td>Next thing, you're in a memory. Ask what the memory is saying. Ask: is the memory talking to the stomach or the ankle? What do these things have in common?</td></tr>
+            <tr><td><strong>5. Reconsolidate</strong></td><td>Once you're in the emotional place and getting information, you can run a reconsolidation technique</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card card-accent">
+        <h3>Why it changes anything: pain is a prediction</h3>
+        <p>One example of reconsolidation, given without warning at the emotional peak: have the client <strong>count backward from 40 by twos</strong>. Dropping a cognitive challenge into a deeply subconscious state changes the way they hold the painful ankle.</p>
+        <p>The reason it works: <strong>pain, stories and memories are predictions made by the nervous system.</strong> They are not fixed facts. If you can change the prediction, you can change the way the body is holding the thing. That is the mechanism underneath every doorway and every reconsolidation move.</p>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">Reconsolidation is its own separate education. This video only names it. The next video in the module is "Dimensional Consciousness Technique."</p>
+      </div>
+    </section>
+
+
+    <section class="section not-built" id="s-memory-reconsolidation">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">Memory Reconsolidation</h2>
+          <p class="section-subtitle">Not built yet</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p>No transcript pulled for this lesson yet. It sits here because this is where it lives in Jade's coaching area &mdash; the numbering and order are already locked in. Record or pull the transcript and this section fills in.</p>
+      </div>
+    </section>
+
+    <section class="section" id="quiz-videos">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Video Training Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check. Twenty-one questions across the six video sessions.</p>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">Why does NLH insist coaches keep their own intuitive style and interests alongside the taught frameworks, rather than teaching pure technique?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Frameworks alone are too rigid to apply to real client situations</button>
+          <button class="opt" data-opt="B">B) It gives coaches something to differentiate their marketing with</button>
+          <button class="opt" data-opt="C">C) A client's essential self is matched to the coach's unique voice and experience. The same content lands differently depending on who delivers it, and losing intuition to over-reliance on framework loses that connection</button>
+          <button class="opt" data-opt="D">D) It keeps coaching sessions more varied and interesting for the coach</button>
+        </div>
+        <div class="q-result" data-explain="The module welcome makes this explicit: two coaches can teach the identical content and a given client can only hear it from one of them, because the coach's essential is matched to theirs. Over-adherence to frameworks costs the connection that makes the content land."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">On the science-philosophy-art continuum, where does philosophy sit, and why?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) On the art end, because philosophy is inherently intuitive rather than logical</button>
+          <button class="opt" data-opt="B">B) In the middle. It anchors the measurable science to a guiding worldview, without which science becomes isolated technique-following</button>
+          <button class="opt" data-opt="C">C) On the science end, because it is the most rigorously defined layer</button>
+          <button class="opt" data-opt="D">D) Philosophy isn't part of the continuum. Only science and art are</button>
+        </div>
+        <div class="q-result" data-explain="Science gives measurable tools, art gives intuition, and philosophy sits between them, anchoring the science so it points somewhere and evolving as understanding deepens."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">Why does the SUG model deliberately ask participants to name a "gift" in their struggle, even though most people don't see one at first?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It keeps the circle upbeat and prevents the session from becoming too heavy</button>
+          <button class="opt" data-opt="B">B) It gives the facilitator something positive to close on</button>
+          <button class="opt" data-opt="C">C) Retelling the story under this new frame is a reconsolidation event. Naming a gift changes how the memory is held, not just how it's narrated</button>
+          <button class="opt" data-opt="D">D) It filters out participants who aren't ready to do the deeper work</button>
+        </div>
+        <div class="q-result" data-explain="Telling the story retrieves the memory and makes it labile. Prompting a gift means the story is re-encoded with a new frame while it is changeable, which is the same reconsolidation mechanism the protocols use, delivered through witnessing."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">A participant shares their story, then asks the facilitator directly for advice on what to do next. What's the correct move?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Give a brief piece of coaching, since they asked directly</button>
+          <button class="opt" data-opt="B">B) Name that this isn't a coaching or advice space, acknowledge the frustration, and let the story stand as told. Troubleshooting happens elsewhere</button>
+          <button class="opt" data-opt="C">C) Redirect the question to the group and let another participant coach them instead</button>
+          <button class="opt" data-opt="D">D) End the circle early since the format has broken down</button>
+        </div>
+        <div class="q-result" data-explain="The circle's ground rule is no coaching and no advice, even on request. The healing mechanism is being witnessed in the authentic telling, and coaching would break that container. The scripted line acknowledges the frustration and defers troubleshooting."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">In a story circle you are explicitly not coaching. What are the two things you're actually doing?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Diagnosing the client's pattern and prescribing a practice</button>
+          <button class="opt" data-opt="B">B) Facilitating a conversation (putting a topic in the room and letting people think aloud without interruption) or facilitating a witnessing (people tell their SUG and are witnessed in the telling)</button>
+          <button class="opt" data-opt="C">C) Teaching the framework, then testing whether people understood it</button>
+          <button class="opt" data-opt="D">D) Running a lighter-touch version of group coaching</button>
+        </div>
+        <div class="q-result" data-explain="Neither is coaching. A conversation is a topic put in the room plus uninterrupted sharing, closed with 'does that remind anyone of anything?'. A witnessing is the story circle proper: people tell their SUG and are witnessed. You hold the space and keep time; you do not respond with coaching."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">People show up to a circle but no one wants to share. What are the sanctioned back-pocket moves?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) End the circle early. It can't run without volunteers</button>
+          <button class="opt" data-opt="B">B) Call on people by name until someone talks</button>
+          <button class="opt" data-opt="C">C) Share your own SUG, do a little BEEP breath work, or turn it into a journalling round (10 min struggle, 5 min understanding, 3 min gifts), then re-invite. An allegory, proverb or movie scene can also open it as a conversation</button>
+          <button class="opt" data-opt="D">D) Switch the session into one-on-one coaching</button>
+        </div>
+        <div class="q-result" data-explain="You can't assume or force people to share, so a circle can legitimately become a journalling session or a conversation. Fallbacks: share your own story, BEEP, journal the SUG on set timings, or open with an allegory, proverb or movie scene, then re-invite sharing."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">Why does NLH treat telling one's story as a genuine change mechanism, not just sharing for its own sake?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It builds community bonds that improve program retention</button>
+          <button class="opt" data-opt="B">B) MUD is made of story: the stories we tell are the mud we hold, and that determines identity and beliefs. Telling the story authentically and being witnessed changes how it's held</button>
+          <button class="opt" data-opt="C">C) It gives the coach raw material to coach on afterwards</button>
+          <button class="opt" data-opt="D">D) Talking a problem through always lowers stress</button>
+        </div>
+        <div class="q-result" data-explain="MUD (misguided unconscious decisions) is made of story, and the stories we hold determine identity and beliefs. In the authentic telling of the story of struggle, witnessed by the group, the memory is labile and re-encoded. That is why story is the mechanism, not a soft add-on."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">Why does hedged language ("I could be wrong, correct me, but I wonder...") work better than a direct assertion ("here's your pattern") when naming a client's pattern?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It sounds more polite and professional</button>
+          <button class="opt" data-opt="B">B) A direct assertion triggers shame walls and defensiveness; hedged language keeps the client's threat-detection calm enough to actually consider the idea instead of guarding against it</button>
+          <button class="opt" data-opt="C">C) It protects the coach from being wrong in front of the client</button>
+          <button class="opt" data-opt="D">D) It slows the session down enough to fill the allotted coaching time</button>
+        </div>
+        <div class="q-result" data-explain="'Maybe' opens an exploratory brain state instead of a defensive one. The pattern lands as a breadcrumb the client can pick up or push back on, and the door stays open either way. A flat assertion closes it."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 9</span>
+        <p class="q-text">What are the Human Rule and Empathy Rule designed to establish before any pattern work starts?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) That the coach has personally experienced the exact same trauma as the client</button>
+          <button class="opt" data-opt="B">B) That the session has a clear time limit and structure</button>
+          <button class="opt" data-opt="C">C) Normalisation and felt understanding. The client isn't alone and isn't crazy, which builds trust and rapport quickly, before any exploratory or pattern work begins</button>
+          <button class="opt" data-opt="D">D) That the client's problem is more common and less serious than they think</button>
+        </div>
+        <div class="q-result" data-explain="The Human Rule normalises (every human suffers, you're not a broken case). The Empathy Rule gives felt understanding without claiming shared experience. Only after both land does the Curious Detective offer the pattern as a hedged guess."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 10</span>
+        <p class="q-text">What belief underpins the Curious Detective move, and how does the coach act on it?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) That clients hide the real problem, so the coach interrogates until it surfaces</button>
+          <button class="opt" data-opt="B">B) That the coach already knows the pattern and is steering the client to admit it</button>
+          <button class="opt" data-opt="C">C) That whatever the client is going through is useful. A lesson is buried in every difficulty, so the coach silently hunts the pattern to break but never announces it, playing the questioning detective instead</button>
+          <button class="opt" data-opt="D">D) That naming the pattern directly is fine once enough rapport is built</button>
+        </div>
+        <div class="q-result" data-explain="The premise is that it's all useful. A lesson or piece of wisdom is buried in every trauma, drama and difficulty. So the coach silently looks for the pattern that needs to break, but never says 'here's your pattern.' They stay in the curious, questioning detective role and let the client try the idea on."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 11</span>
+        <p class="q-text">Dimensionalisation of consciousness (parts work) belongs to which phase of the work, and what is it fundamentally for?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The Retrain phase. It builds new behavioural reps through repetition</button>
+          <button class="opt" data-opt="B">B) The Rewire phase. It discharges stored emotional charge through activation and intensity</button>
+          <button class="opt" data-opt="C">C) The Rewrite phase. It's a perception tool. You meet an aspect of self as a separate entity you can dialogue with and integrate, so you're in relationship with it rather than fused to it</button>
+          <button class="opt" data-opt="D">D) The assessment phase. It maps which of the Eight Doorways to use before any deeper work</button>
+        </div>
+        <div class="q-result" data-explain="It's explicitly named as a Rewrite-phase perception tool. Dimensionalising an aspect of self (a past self, a body part, a pattern) shifts the client from being fused with it to being in relationship with it, which is what lets the story be rewritten."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 12</span>
+        <p class="q-text">In the integration meditation, after a past self (child, teen, or young adult) has dialogued and gone to its safe place, what happens next?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The client writes the memory down as a homework assignment for the next session</button>
+          <button class="opt" data-opt="B">B) The Next Level / wise self is called in, greets the part, and integrates it into the body. The loop is repeated three times across child, teen and young adult</button>
+          <button class="opt" data-opt="C">C) The coach interprets the pattern and names it directly for the client</button>
+          <button class="opt" data-opt="D">D) The client moves straight to the next self without integrating the previous one</button>
+        </div>
+        <div class="q-result" data-explain="The wise / current self greets each part in its safe place and integrates it into the body, and the whole loop runs three times. The point is to get the nervous system to respond in a new way to each past self."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 13</span>
+        <p class="q-text">What distinguishes parts work from BEEP as a Rewrite tool?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Parts work is written and BEEP is spoken aloud</button>
+          <button class="opt" data-opt="B">B) Parts work is controlled and soothing, safely revisiting places a person normally never dwells in. BEEP is sympathetic: intensity followed by relaxation, working with emotions and memories</button>
+          <button class="opt" data-opt="C">C) Parts work is for the body and BEEP is only for the mind</button>
+          <button class="opt" data-opt="D">D) There's no real difference. They're two names for the same protocol</button>
+        </div>
+        <div class="q-result" data-explain="Parts work sits at the calm, controlled end (relaxing music, soothing voice, safe revisiting of past selves). BEEP is the activating tool, bringing up a sympathetic state, an intensity followed by relaxation, and works mainly with emotions and memories."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 14</span>
+        <p class="q-text">Dimensionalising uses the idea of doorways. Which of these is NOT one of the doorways named in the video?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) A pattern, such as the overeating self or the self-soothing self</button>
+          <button class="opt" data-opt="B">B) An illness or symptom, such as a cancer or a painful hip</button>
+          <button class="opt" data-opt="C">C) The client's astrological chart and birth date</button>
+          <button class="opt" data-opt="D">D) A physical part, down to the organ or cell</button>
+        </div>
+        <div class="q-result" data-explain="The doorways named are parts (historical selves), emotions, physical parts, patterns, sensations, and illnesses / signs and symptoms. Each is a different way into the subconscious. Parts work and IFS are just two of these doors."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 15</span>
+        <p class="q-text">In the anthropomorphising method you ask location, texture, temperature, colour, then personality. Why is that sequence not the actual goal?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It is the goal. A full physical description is the finished outcome of the exercise</button>
+          <button class="opt" data-opt="B">B) The physical questions are the on-ramp. What you're actually after is the message the part carries and the lesson in it, because the subconscious holds information the conscious mind can't reach</button>
+          <button class="opt" data-opt="C">C) The description exists only to distract the client while the coach analyses them</button>
+          <button class="opt" data-opt="D">D) The colour and temperature are the diagnosis and no further questions are needed</button>
+        </div>
+        <div class="q-result" data-explain="Location, texture, temperature and colour turn the experience into an entity the client can relate to. But the point of anthropomorphising is the payload: what's it saying, what message does it have, what's the lesson. That's the subconscious material that would never surface otherwise."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 16</span>
+        <p class="q-text">A coach suddenly has the client count backward from 40 by twos at the emotional peak. What is the underlying reason this can change how they hold a painful ankle?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Pain, stories and memories are predictions made by the nervous system, not fixed facts. Dropping a cognitive challenge into a subconscious state disrupts the prediction, and if you change the prediction you change how the body holds it</button>
+          <button class="opt" data-opt="B">B) Counting distracts the client so they simply forget the pain was there</button>
+          <button class="opt" data-opt="C">C) Arithmetic burns the calories that were feeding the inflammation in the ankle</button>
+          <button class="opt" data-opt="D">D) The numbers reset the client's identity set point back to zero</button>
+        </div>
+        <div class="q-result" data-explain="The mechanism is prediction. Pain, stories and memories are predictions by the nervous system. A cognitive challenge delivered without warning in a deep subconscious state interferes with the prediction, which changes the way the ankle is held. This is one example of a reconsolidation technique, which is its own separate education."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 17</span>
+        <p class="q-text">What is the core reason group coaching is framed as beating 1:1?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It's cheaper to run and fits more paying clients into the same hour</button>
+          <button class="opt" data-opt="B">B) It lets the coach avoid the harder work of deep individual sessions</button>
+          <button class="opt" data-opt="C">C) Compound learning. Coaching a few people live still coaches everyone, because human patterns overlap so each rep lands for multiple people. Coach 6 of 10 and all 10 leave with 6 viewpoints and plans</button>
+          <button class="opt" data-opt="D">D) Group pressure forces faster breakthroughs than a client would reach alone</button>
+        </div>
+        <div class="q-result" data-explain="The stated reason is compound learning. Because human patterns overlap, every live coaching rep lands for more than the one person being coached. Coach 6 of 10 and all 10 receive 6 viewpoints and 6 plans. The goal is unchanged: shift perception to change identity and behaviour."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 18</span>
+        <p class="q-text">A client says: "I keep numbing out on screens and porn at night, and I feel like I'm failing my marriage." Using the 4 Ps, which is the Problem and which is the Pattern?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The screens and porn are the Problem; the marriage is the Pattern</button>
+          <button class="opt" data-opt="B">B) The Problem is the struggle underneath (a stuck need in Relationships or Growth &amp; Mattering); the Pattern is the repeated coping response, here Soothing (screens, sex)</button>
+          <button class="opt" data-opt="C">C) Both are Patterns, and there is no Problem until the coach assigns one</button>
+          <button class="opt" data-opt="D">D) Feeling like a failure is the Plan; the numbing is the Possibility</button>
+        </div>
+        <div class="q-result" data-explain="The Problem is the recurrent struggle or stuck need (Relationships, or Growth & Mattering). The Pattern is the person's repeated coping response to it, which here is the Soothing cluster (food, alcohol, sex, screens). The coach's job is to separate the two, then reveal the Possibilities that bridge to a Plan."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 19</span>
+        <p class="q-text">In a 60-minute group, no one volunteers to be coached. What does the cheat sheet say to do?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Make the opener the main event: run breathwork or journaling on the 4 Ps, then invite 1 or 2 brief shares</button>
+          <button class="opt" data-opt="B">B) Extend the session past 60 minutes until someone is willing to share</button>
+          <button class="opt" data-opt="C">C) Call on people by name whether they want to share or not</button>
+          <button class="opt" data-opt="D">D) End the session early and refund the participants</button>
+        </div>
+        <div class="q-result" data-explain="The opener is designed to double as the fallback. If no one volunteers, the breathwork or 4 Ps journaling becomes the main event, and you then invite one or two brief shares. The 60-minute boundary still holds, because clarity and clean timing are what keep the container safe."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 20</span>
+        <p class="q-text">Jane is coached and doesn't seem to get the insight. Right after her, you coach Jeff on an overlapping pattern, and Jane suddenly gets it. What is actually happening?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Jeff's coaching was simply clearer, so it landed better than Jane's own session did</button>
+          <button class="opt" data-opt="B">B) Jane can't be objective about her own struggle (emotional blocks up), but watching Jeff lets her try on being less objective. She escapes her own identity by listening, and the same insight lands secondhand</button>
+          <button class="opt" data-opt="C">C) Jane was pretending not to understand the first time to get more airtime</button>
+          <button class="opt" data-opt="D">D) Repetition of the 4 Ps format is what did it, not anything about Jeff's specific content</button>
+        </div>
+        <div class="q-result" data-explain="This is the actual mechanism behind compound learning, not just overlap in content. Being inside your own problem keeps you subjective. Watching someone else's overlapping struggle gets coached lets you try on their situation without your own emotional blocks in the way."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 21</span>
+        <p class="q-text">A volunteer is running long and you need to move the session along. Why can you say "let's get to the plan" without it landing as a slight?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Because as the coach you have authority to cut anyone off at any time</button>
+          <button class="opt" data-opt="B">B) It can't be avoided. Some participants will always feel shortchanged when time runs out</button>
+          <button class="opt" data-opt="C">C) Psychological license. Everyone arrived having done the 4 Ps pre-work and knows you'll run the same format on them, so jumping or skipping steps reads as following the shared container, not as an arbitrary cut-off</button>
+          <button class="opt" data-opt="D">D) Because the plan step is optional, so skipping to it isn't really cutting anything short</button>
+        </div>
+        <div class="q-result" data-explain="The pre-session email sets the 4 Ps up front. Because the client already agreed to that structure, moving through it briskly (or skipping ahead under time pressure) doesn't feel like being shut down, it feels like the coach running the format everyone signed up for."></div>
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      if (chosen === answer) {
+        q.classList.add('answered');
+        q.querySelectorAll('.opt').forEach(function(b) { b.disabled = true; });
+        btn.classList.add('correct');
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        btn.disabled = true;
+        result.textContent = 'Not quite. Try another answer.';
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
