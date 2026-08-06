@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Coaching In Action &middot; "I'm Not Good Enough" &middot; NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .page-wrap { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+
+  .sidebar {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    background: var(--surface); border-right: 1px solid var(--border);
+    padding: 24px 0; display: flex; flex-direction: column;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo { padding: 0 18px 20px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .sidebar-logo .belt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--peach); font-weight: 600; display: block; margin-bottom: 4px;
+  }
+  .sidebar-logo .title { font-size: 13px; font-weight: 700; color: var(--forest); line-height: 1.3; }
+  .sidebar-logo .back-link {
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
+    font-size: 11px; color: var(--text-muted); text-decoration: none; font-weight: 500;
+  }
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+  .sidebar-nav li a {
+    display: block; padding: 7px 18px; font-size: 12px; font-weight: 500;
+    color: var(--text-muted); text-decoration: none; border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s; line-height: 1.4;
+  }
+  .sidebar-nav li a:hover { color: var(--forest); background: var(--forest-tint); border-left-color: var(--peach); }
+
+  .nav-section {
+    display: flex; align-items: center; gap: 8px; margin: 18px 12px 8px; padding: 10px 12px;
+    background: var(--forest); color: #fff; border-radius: 6px; font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700;
+  }
+
+  .main { min-width: 0; }
+
+  .hero {
+    background: var(--forest); padding: 60px 52px 52px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -80px; right: -80px; width: 360px; height: 360px;
+    border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--peach-bright); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::after { content: ''; display: block; height: 1px; width: 36px; background: var(--peach-bright); opacity: 0.6; }
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px); font-weight: 800; line-height: 1.1; color: #ffffff;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--peach-bright); font-weight: 700; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.75); max-width: 620px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-stats { display: flex; gap: 36px; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; gap: 3px; }
+  .hero-stat .num { font-size: 28px; font-weight: 800; color: var(--peach-bright); line-height: 1; letter-spacing: -0.02em; }
+  .hero-stat .label { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+
+  .section { padding: 48px 52px; border-bottom: 1px solid var(--border); }
+  .section-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 32px; }
+  .section-num {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--peach);
+    letter-spacing: 0.1em; margin-top: 7px; flex-shrink: 0; width: 26px;
+  }
+  .section-title { font-size: 26px; font-weight: 800; color: var(--forest); line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-subtitle { font-size: 13px; color: var(--text-muted); }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; }
+  .card h3 { font-size: 18px; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
+  .card h4 {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--forest); margin-bottom: 8px; margin-top: 20px; opacity: 0.7;
+  }
+  .card h4:first-child { margin-top: 0; }
+  .card p { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 10px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul, .card ol { padding-left: 20px; margin-bottom: 10px; }
+  .card li { font-size: 14px; line-height: 1.65; color: var(--text); margin-bottom: 5px; }
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+  .card-accent { background: var(--forest-faint); border-color: var(--border-strong); border-left: 3px solid var(--peach); }
+
+  .quote-block {
+    background: var(--forest-faint); border-left: 3px solid var(--forest); padding: 18px 22px;
+    margin-bottom: 14px; border-radius: 0 6px 6px 0;
+  }
+  .quote-block p { font-size: 16px; font-weight: 600; font-style: italic; color: var(--forest); line-height: 1.55; margin: 0; }
+
+  .script-block { background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 6px; padding: 18px 22px; margin-bottom: 14px; }
+  .script-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--peach); font-weight: 700; margin-bottom: 10px; display: block;
+  }
+  .script-block p { font-size: 13.5px; line-height: 1.7; color: var(--text); margin: 0 0 8px; }
+  .script-block p:last-child { margin-bottom: 0; }
+  .script-line { margin-bottom: 6px; }
+  .script-line .who { font-weight: 700; color: var(--forest); }
+  .script-line .who.client { color: var(--peach); }
+
+  .callout { background: var(--peach-faint); border: 1px solid rgba(232,86,63,0.22); border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .callout p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.6; }
+  .callout strong { color: var(--peach); font-weight: 700; }
+  .callout-forest { background: var(--forest-faint); border-color: var(--border-strong); }
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  .ref-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 20px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 13.5px;
+  }
+  .ref-table th {
+    background: var(--forest); color: #fff; text-align: left; padding: 11px 16px; font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; font-weight: 600;
+  }
+  .ref-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+  .ref-table tr:last-child td { border-bottom: none; }
+  .ref-table tr:nth-child(even) td { background: var(--forest-faint); }
+  .ref-table td strong { color: var(--forest); }
+
+  .timeline-phases { display: flex; gap: 0; position: relative; margin-bottom: 8px; }
+  .timeline-phases::before {
+    content: ''; position: absolute; top: 20px; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, var(--border-strong), var(--peach), var(--border-strong)); z-index: 0;
+  }
+  .phase-item { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; position: relative; z-index: 1; }
+  .phase-dot { width: 40px; height: 40px; border-radius: 50%; background: var(--peach); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #fff; }
+  .phase-name { font-size: 13px; font-weight: 700; color: var(--forest); }
+  .phase-sub { font-size: 11px; color: var(--text-muted); line-height: 1.5; max-width: 140px; }
+
+  .step-list { list-style: none; padding: 0; }
+  .step-list li {
+    display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border);
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    font-family: var(--mono); font-size: 13px; font-weight: 800; color: #fff; background: var(--peach);
+    width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-body h4 { font-family: 'Figtree', sans-serif; font-size: 14.5px; font-weight: 700; color: var(--forest); text-transform: none; letter-spacing: 0; opacity: 1; margin: 0 0 4px; }
+  .step-body p { font-size: 13.5px; color: var(--text); line-height: 1.6; margin: 0; }
+
+  .diagram-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+  .diagram-title {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest);
+    font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; opacity: 0.7;
+  }
+  .diagram-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  details.transcript-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; }
+  details.transcript-toggle summary {
+    cursor: pointer; padding: 16px 20px; font-weight: 700; color: var(--forest); font-size: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  details.transcript-toggle summary::after { content: '+'; font-size: 18px; color: var(--peach); }
+  details.transcript-toggle[open] summary::after { content: '\2212'; }
+  details.transcript-toggle .transcript-body { padding: 4px 20px 20px; }
+
+  /* QUIZ */
+  .quiz-intro { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+  .quiz-q { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px 26px; margin-bottom: 16px; }
+  .quiz-q .q-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); font-weight: 700; display: block; margin-bottom: 8px; }
+  .quiz-q .q-text { font-size: 15px; font-weight: 700; color: var(--forest); margin-bottom: 14px; line-height: 1.5; }
+  .quiz-q .options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-q .opt {
+    text-align: left; background: var(--ground); border: 1px solid var(--border); border-radius: 6px; padding: 11px 15px;
+    font-family: 'Figtree', sans-serif; font-size: 13.5px; line-height: 1.5; color: var(--text); cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+  .quiz-q .q-result { margin-top: 12px; font-size: 13px; line-height: 1.6; display: none; padding: 12px 16px; border-radius: 6px; }
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  .chip-nav { list-style: none; }
+  .chip-nav li { margin-bottom: 8px; }
+  .chip-nav a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--ink); font-size: 12.5px; font-weight: 600;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .chip-nav a:hover { border-color: var(--border-strong); background: #fff; }
+  .chip-num {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; color: #fff;
+    background: var(--forest); width: 20px; height: 20px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  .site-footer { background: var(--surface); padding: 24px 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+  .site-footer a { font-size: 12px; color: var(--peach); text-decoration: none; font-weight: 600; }
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+    .timeline-phases { flex-direction: column; gap: 18px; }
+    .timeline-phases::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">Coaching In Action</span>
+      <span class="title">"I'm Not Good Enough"</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <ul class="chip-nav">
+      <li><a href="#s1"><span class="chip-num">01</span> What This Is</a></li>
+      <li><a href="#s2"><span class="chip-num">02</span> The Session Arc</a></li>
+      <li><a href="#s3"><span class="chip-num">03</span> Rewrite: Exit the Intellect</a></li>
+      <li><a href="#s4"><span class="chip-num">04</span> Dimensionalizing the Wound</a></li>
+      <li><a href="#s5"><span class="chip-num">05</span> The Watcher Stance</a></li>
+      <li><a href="#s6"><span class="chip-num">06</span> The Prediction Error</a></li>
+      <li><a href="#s7"><span class="chip-num">07</span> Rewire: Opposing Identity</a></li>
+      <li><a href="#s8"><span class="chip-num">08</span> Closing: His Words, Not Mine</a></li>
+      <li><a href="#s9"><span class="chip-num">09</span> Full Transcript</a></li>
+      <li><a href="#quiz-session"><span class="chip-num">Q</span> Comprehension Check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Real Session &middot; Coaching Craft, Not Curriculum</div>
+      <h1>Watch The Method <em>Actually Run</em></h1>
+      <p class="hero-desc">A real ~5 minute identity coaching session (Steve's own NLH cert call with Jade, posted publicly with face/voice altered), broken down step by step. Not a manual and not a module video &mdash; this is what the frameworks look like live, in real time, on a real belief.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">10</span><span class="label">Technique Steps</span></div>
+        <div class="hero-stat"><span class="num">5:04</span><span class="label">Session Length</span></div>
+        <div class="hero-stat"><span class="num">8</span><span class="label">Quiz Questions</span></div>
+      </div>
+    </header>
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">What This Is</h2>
+          <p class="section-subtitle">A worked example, not a new framework.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>Jade posted this to his socials as "Inside The Method" &mdash; his own real coaching call, face and voice altered to protect the client's identity, with text cards overlaid at each key moment explaining what he's doing and why. The belief being worked is "I'm not good enough / I'm not a good enough man."</p>
+        <p>Everything here is craft, not curriculum. The frameworks (dimensionalizing, watcher stance, prediction error, Rewrite/Rewire) are already documented in the Coaching Methods manual and video pages. This page exists to show them running together, live, in the order a real session actually uses them &mdash; which is not always the order a manual lists them in.</p>
+      </div>
+      <div class="callout">
+        <p><strong>Source:</strong> Jade Teta / Next Level Human, YouTube, "Watch a Real Identity Coaching Session: Rewriting 'I'm Not Good Enough.'" Full transcript and on-screen card text preserved in Section 9 below.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">The Session Arc</h2>
+          <p class="section-subtitle">Rewrite, then a touch of Rewire, in under five minutes.</p>
+        </div>
+      </div>
+      <div class="diagram-wrap">
+        <div class="diagram-title">Where this session sits in the three-phase model</div>
+        <div class="timeline-phases">
+          <div class="phase-item">
+            <div class="phase-dot">1</div>
+            <div class="phase-name">Rewrite</div>
+            <div class="phase-sub">Exit intellect &rarr; dimensionalize &rarr; watcher stance &rarr; surface the contradiction</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">2</div>
+            <div class="phase-name">Rewire</div>
+            <div class="phase-sub">Raise an opposing feeling: Leader. Protector. Teacher.</div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot">3</div>
+            <div class="phase-name">Retrain</div>
+            <div class="phase-sub">Happens after the session &mdash; the client's own closing words become the homework</div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text-muted);margin:0;">Retrain isn't shown on camera &mdash; it's the repetition the client does afterward. The session's whole job is to set up what gets retrained.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The ten moves, in order</h3>
+        <ol>
+          <li>Close the eyes &mdash; exit the intellect</li>
+          <li>State the old story out loud, at full strength</li>
+          <li>Dimensionalize: age, color, texture</li>
+          <li>Follow the age down to the actual wound</li>
+          <li>Shift to the watcher stance &mdash; coach it, don't be it</li>
+          <li>Ask a question it can't easily answer, then hold silence</li>
+          <li>Let the client surface his own contradiction</li>
+          <li>Rewire: raise an opposing feeling, one identity word at a time</li>
+          <li>Close on the client's own words, spoken for himself</li>
+          <li>No certainty claimed &mdash; name what was attempted, not a guarantee</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">Rewrite: Exit The Intellect</h2>
+          <p class="section-subtitle">Moves 1-2. Get out of the thinking brain before the belief is even named.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the session</span>
+        <p class="script-line"><span class="who">Jade:</span> "I'm just going to close your eyes for me."</p>
+        <p class="script-line"><span class="who">Jade:</span> "And I really want you to internalize that you're not good enough. You're not a good enough man."</p>
+      </div>
+      <div class="card">
+        <p><strong>Why the eyes close first, before anything else.</strong> The story doesn't live in the intellect &mdash; it lives in the body. Closing the eyes is the very first move of the session, before the belief is even stated out loud. It's not a relaxation cue, it's a location change: get the client out of head-space so the work that follows lands somewhere it can actually change something.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Why the old story is spoken at full strength, not softened</h3>
+        <p>Jade says the harsh version directly: "you're not a good enough man," not a hedged paraphrase. This isn't cruelty, it's mechanism. A subconscious story only rewrites while its emotion is active &mdash; that's the reconsolidation window. A cool, intellectual discussion of the belief never opens that window. Heat does. So the coach's first job with the belief is to make it hot, not to talk around it.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">Dimensionalizing The Wound</h2>
+          <p class="section-subtitle">Moves 3-4. Turn a vague feeling into something workable, then follow it to source.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the session</span>
+        <p class="script-line"><span class="who">Jade:</span> "Does it have an age?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "...six. Six years old."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Years old, okay. Does it have a color?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "Red."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Mhm. What's the texture of it?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "Like spongy. It's pain."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Okay, that's good. Stay there. Pain. What kind of pain? What is the pain? Where is the pain?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "It's like a deep, like an internal wound."</p>
+      </div>
+      <div class="card">
+        <h4>The sequence</h4>
+        <p>Age, color, texture &mdash; asked fast, one after another, no pause for analysis. Same tool as the anthropomorphising/dimensionalizing method already documented in the Coaching Methods video notes, shown here running at conversational speed rather than as a slow guided meditation. The physical-description questions aren't the goal &mdash; they're the on-ramp that turns "a vague bad feeling" into an object the client can actually work with.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The age is the root, not a data point</h3>
+        <p>Jade doesn't log "six years old" and move on. He follows it straight down to the wound itself &mdash; what kind of pain, where it lives. The age that surfaces during dimensionalizing is treated as the actual source. What the client presents as an adult problem ("I'm not good enough") is thirty years of habit sitting on top of something that installed at six.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">The Watcher Stance</h2>
+          <p class="section-subtitle">Moves 5-7. Coach the wound instead of being it, then let silence do its work.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the session</span>
+        <p class="script-line"><span class="who">Jade:</span> "And I want you to coach it out loud. Like you're coaching somebody else in the room. Disconnect from it. It's not you. Coach it. Tell it &mdash;"</p>
+        <p class="script-line"><span class="who client">Client:</span> "It needs to lay down these walls, these guardrails. Just lay down the walls so I can &mdash;"</p>
+        <p class="script-line"><span class="who">Jade:</span> "Okay, but if it does that, how can it be sure it will be safe?"</p>
+        <p class="script-line" style="font-style:italic;color:var(--text-muted);">[silence held &mdash; not rushed]</p>
+        <p class="script-line"><span class="who client">Client:</span> "I can tell it that I'm ready to, you know, that I'm a grown-up, not a kid anymore, and I'm ready to lay this down."</p>
+      </div>
+      <div class="card">
+        <h4>Coach it, don't be it</h4>
+        <p>One line does the whole identity move: "coach it out loud, like you're coaching somebody else, disconnect from it, it's not you." The client stops being fused with the six-year-old's fear and starts relating to it from an adult, capable vantage point &mdash; the same fused-vs-in-relationship-with shift the Dimensionalization of Consciousness material already teaches, shown here as a single spoken instruction instead of a scripted protocol.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Don't rescue the silence</h3>
+        <p>After the hardest question ("how can it be sure it will be safe?"), Jade doesn't fill the gap. The pause itself is a signal &mdash; the client has left the intellect and gone deeper into the subconscious. Rushing in to prompt or rephrase would pull him back out. This happens twice in the session (also right after the eyes close): holding silence is a deliberate coaching move, not a gap that needs managing.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">The Prediction Error</h2>
+          <p class="section-subtitle">The belief doesn't rewrite because the coach argues with it. It rewrites because the client contradicts it himself.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>The client's own answer &mdash; "I'm a grown-up now, I'm ready to lay this down" &mdash; is the prediction error in action. The brain expected "not good enough" and got the opposite, generated from the client's own mouth, not from Jade telling him he's wrong.</p>
+      </div>
+      <div class="quote-block">
+        <p>"The prediction error: the brain expects 'not good enough' and meets the opposite. No guarantee&hellip; but the hotter the emotion, and the more he surfaces his own contradiction, the more likely the rewrite."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Self-generated contradiction, not coach reassurance</h3>
+        <p>This is the mechanism that separates real rewrite work from a pep talk. "You ARE good enough" from the coach is external reassurance &mdash; it doesn't touch the reconsolidation window. The client discovering and stating his own contradiction, while the emotion is still hot, is what actually has a shot at changing the story. Two conditions stack: heat, and self-generation. Either one alone is weaker than both together.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">Rewire: Opposing Identity, One Word At A Time</h2>
+          <p class="section-subtitle">Move 8. Not one sentence of opposing belief &mdash; three separate identity words, each confirmed and felt.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the session</span>
+        <p class="script-line"><span class="who">Jade:</span> "Let me ask you this. Are you a leader?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "Uh&hellip;"</p>
+        <p class="script-line"><span class="who">Jade:</span> "You're a leader. You're a leader. Feel what that feels like."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Are you a protector?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "Yes."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Yes. You feel what that feels like."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Are you a teacher?"</p>
+        <p class="script-line"><span class="who client">Client:</span> "Yes."</p>
+        <p class="script-line"><span class="who">Jade:</span> "Yes. You're a teacher. Feel what that feels like."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Short words, stacked and separately confirmed</h3>
+        <p>This is the Rewire step: he raises a feeling that opposes the old story. Not one long affirmation ("you're actually a good enough man") &mdash; three short, separate identity words (Leader. Protector. Teacher.), each one individually asked, individually confirmed, and individually felt in the body before moving to the next. A technique for Rewire not spelled out this specifically anywhere else in the manual: stack short, one-word identity confirmations rather than a single sentence of opposing belief.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">Closing: His Words, Not Mine</h2>
+          <p class="section-subtitle">Moves 9-10. The homework is whatever the client says for himself &mdash; and no certainty is claimed.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the session</span>
+        <p class="script-line"><span class="who">Jade:</span> "Now, I want you to give yourself any final words that you need, and I want you to say it out loud, not for me, but for you, before you open your eyes."</p>
+        <p class="script-line"><span class="who client">Client:</span> "Trust in this process." &hellip; "I am enough."</p>
+        <p class="script-line"><span class="who client">Client:</span> "Yep, it was very powerful. I could feel it all through my body."</p>
+        <p class="script-line"><span class="who">Jade:</span> "If you're a coach, this is the level where change happens."</p>
+      </div>
+      <div class="card">
+        <h4>The homework-selection rule</h4>
+        <p>"His words, not mine. Whatever he surfaces becomes the homework&hellip; the retrain he does after the session." The coach doesn't assign homework &mdash; the coach lets the client's own closing language become the homework. It has to be the client's own words, not the coach's, because self-generated language is what actually gets carried out and retrained through repetition afterward.</p>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>No certainty claimed.</strong> "A rewrite and a rewire. You can never be certain in the room&hellip; but that's what we're after." The method doesn't oversell a guaranteed result inside a single session &mdash; it names what was attempted and lets the real-world retrain confirm it or not.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">Full Transcript</h2>
+          <p class="section-subtitle">Everything said in the session and every "Inside The Method" card, in order.</p>
+        </div>
+      </div>
+
+      <details class="transcript-toggle">
+        <summary>Open full transcript with on-screen cards</summary>
+        <div class="transcript-body">
+          <div class="card">
+            <h4>Card 1 &middot; 0:00</h4>
+            <p>"This is a real coaching session. The client's face and voice are changed to protect him. Watch how a subconscious story gets rewritten."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who">Jade:</span> "I'm just going to close your eyes for me."</p>
+          </div>
+          <div class="card">
+            <h4>Card 2 &middot; 0:45</h4>
+            <p>"By having the client close his eyes, he leaves the intellect. The story does not live there. It lives in the body."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who">Jade:</span> "So, I &mdash; and I really want you to internalize that you're not good enough. You're not a good enough man."</p>
+          </div>
+          <div class="card">
+            <h4>Card 3 &middot; 1:02</h4>
+            <p>"Notice the heat. A subconscious story only rewrites while the emotion is active. That's the reconsolidation window."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who">Jade:</span> "Does it have an age?"</p>
+            <p class="script-line"><span class="who client">Client:</span> "&hellip;six. Six years old."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Years old, okay. Does it have a color?"</p>
+            <p class="script-line"><span class="who client">Client:</span> "Red."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Mhm. What's the texture of it?"</p>
+          </div>
+          <div class="card">
+            <h4>Card 4 &middot; 1:24</h4>
+            <p>"Dimensionalizing: age, color, texture. A vague feeling becomes something he can work with."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who client">Client:</span> "Like spongy. It's pain."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Okay, that's good. Stay there. Pain. What kind of pain? What is the pain? Where is the pain?"</p>
+            <p class="script-line"><span class="who client">Client:</span> "It's like a deep, like an internal wound."</p>
+            <p class="script-line"><span class="who">Jade:</span> "There it is. Age six."</p>
+          </div>
+          <div class="card">
+            <h4>Card 5 &middot; 2:07</h4>
+            <p>"Now we nudge him to take the watcher stance. This causes him to step outside of the feeling, and engage with it differently by coaching it."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who">Jade:</span> "And I want you to coach it out loud. Like you're coaching somebody else in the room. Disconnect from it. It's not you. Coach it. Tell it &mdash;"</p>
+            <p class="script-line"><span class="who client">Client:</span> "It needs to lay down these walls, these guardrails. Just lay down the walls so I can &mdash;"</p>
+            <p class="script-line"><span class="who">Jade:</span> "Okay, but if it does that, how can it be sure it will be safe?"</p>
+          </div>
+          <div class="card">
+            <h4>Card 6 &middot; 2:50</h4>
+            <p>"Notice the silence. Don't rush it. He's out of the intellect now&hellip; deeper into the subconscious."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who client">Client:</span> "I can tell it that I'm ready to, you know, that I'm a grown-up, not a kid anymore, and I'm ready to lay this down."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Anything else?"</p>
+          </div>
+          <div class="card">
+            <h4>Card 7 &middot; 3:15</h4>
+            <p>"The prediction error: the brain expects 'not good enough' and meets the opposite. No guarantee&hellip; but the hotter the emotion, and the more he surfaces his own contradiction, the more likely the rewrite."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who">Jade:</span> "Let me ask you this. Are you a leader?"</p>
+            <p class="script-line"><span class="who client">Client:</span> "Uh&hellip;"</p>
+            <p class="script-line"><span class="who">Jade:</span> "You're a leader. You're a leader. Feel what that feels like."</p>
+          </div>
+          <div class="card">
+            <h4>Card 8 &middot; 3:40</h4>
+            <p>"Now the rewire. He raises a feeling that opposes the old story. Leader. Protector. Teacher."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who">Jade:</span> "Are you a protector?"</p>
+            <p class="script-line"><span class="who client">Client:</span> "Yes."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Yes. You feel what that feels like."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Are you a teacher?"</p>
+            <p class="script-line"><span class="who client">Client:</span> "Yes."</p>
+            <p class="script-line"><span class="who">Jade:</span> "Yes. You're a teacher. Feel what that feels like. Now, I want you to give yourself any final words that you need, and I want you to say it out loud, not for me, but for you, before you open your eyes."</p>
+            <p class="script-line"><span class="who client">Client:</span> "Trust in this process."</p>
+          </div>
+          <div class="card">
+            <h4>Card 9 &middot; 4:28</h4>
+            <p>"His words, not mine. Whatever he surfaces becomes the homework&hellip; the retrain he does after the session."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who client">Client:</span> "I am enough."</p>
+          </div>
+          <div class="card">
+            <h4>Card 10 &middot; 4:42</h4>
+            <p>"A rewrite and a rewire. You can never be certain in the room&hellip; but that's what we're after."</p>
+          </div>
+          <div class="script-block">
+            <p class="script-line"><span class="who client">Client:</span> "Yep, it was very powerful. I could feel it all through my body."</p>
+            <p class="script-line"><span class="who">Jade:</span> "If you're a coach, this is the level where change happens. Take the free identity audit at audit.humaniversity.com."</p>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="quiz-session">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">Why does the session start by having the client close his eyes, before the belief is even named?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It's a relaxation technique to lower the client's heart rate before hard content</button>
+          <button class="opt" data-opt="B">B) The story doesn't live in the intellect, it lives in the body, so the client needs to exit head-space before the work can land anywhere useful</button>
+          <button class="opt" data-opt="C">C) It stops the client from reading the coach's facial expressions and being influenced by them</button>
+          <button class="opt" data-opt="D">D) It's purely a privacy measure so the client's face isn't visible on camera</button>
+        </div>
+        <div class="q-result" data-explain="Closing the eyes is a location change, not a relaxation cue. The story lives in the body, not the intellect, so getting the client out of head-space is the first move, done before the belief is even stated."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">Jade states the old story at full strength ("you're not a good enough man") instead of softening it. Why?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Softened language would confuse the client about what belief is being worked</button>
+          <button class="opt" data-opt="B">B) It establishes the coach's authority early in the session</button>
+          <button class="opt" data-opt="C">C) A subconscious story only rewrites while its emotion is active (the reconsolidation window). Cool, intellectual discussion never opens that window; heat does</button>
+          <button class="opt" data-opt="D">D) It matches the client's own internal tone, which builds rapport faster</button>
+        </div>
+        <div class="q-result" data-explain="The reconsolidation window only opens while the story's emotion is live. Talking around the belief calmly keeps it cold and unreachable. Stating it at full strength is what activates the emotion the rest of the session works with."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">During dimensionalizing, the client surfaces "six years old." What does Jade do with that number?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Follows it straight down to the actual wound &mdash; treats the age as the root source, not just a descriptive data point</button>
+          <button class="opt" data-opt="B">B) Notes it for later and moves straight to asking about color and texture</button>
+          <button class="opt" data-opt="C">C) Corrects the client, since ages surfaced this way are usually inaccurate memories</button>
+          <button class="opt" data-opt="D">D) Uses it to calculate how many years of habit have reinforced the pattern, purely as a statistic</button>
+        </div>
+        <div class="q-result" data-explain="Jade keeps asking (what kind of pain, where is it) until the client names the actual wound. The age surfaced during dimensionalizing is treated as the root: the adult-presenting problem is decades of habit sitting on top of something installed at that age."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">"Coach it out loud, like you're coaching somebody else, disconnect from it, it's not you." What is this instruction doing?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Testing whether the client actually understands coaching technique</button>
+          <button class="opt" data-opt="B">B) Distracting the client from the emotional intensity of the moment</button>
+          <button class="opt" data-opt="C">C) Preparing the client to eventually become a coach himself</button>
+          <button class="opt" data-opt="D">D) Shifting the client from being fused with the wounded part to relating to it from an adult, capable vantage point &mdash; the watcher stance</button>
+        </div>
+        <div class="q-result" data-explain="This is the watcher-stance move. The client stops being fused with the six-year-old's fear and starts relating to it as something separate he can coach, which is the same fused-vs-in-relationship-with shift used elsewhere in dimensionalization work."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">After asking "how can it be sure it will be safe?", Jade doesn't say anything for several seconds. What is that silence doing?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Nothing &mdash; it's just a natural pause while Jade decides his next question</button>
+          <button class="opt" data-opt="B">B) It's a signal the client has left the intellect and gone deeper into the subconscious; filling the gap would pull him back out</button>
+          <button class="opt" data-opt="C">C) It gives the editing team a natural cut point for the video</button>
+          <button class="opt" data-opt="D">D) It tests whether the client will fill the silence himself, which reveals his level of self-awareness</button>
+        </div>
+        <div class="q-result" data-explain="The silence is deliberate coaching, not a gap to manage. It happens twice in the session (also right after the eyes close), each time signalling deeper subconscious engagement that rushing in would interrupt."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">The client says, unprompted, "I'm a grown-up now, I'm ready to lay this down." Why does this matter more than Jade simply telling him he's wrong about being "not good enough"?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It doesn't matter more &mdash; either source of reassurance works equally well</button>
+          <button class="opt" data-opt="B">B) It matters because the client said it more confidently than the coach would have</button>
+          <button class="opt" data-opt="C">C) This is the prediction error: the brain expected "not good enough" and got the opposite, generated from the client's own mouth while the emotion was still hot. Self-generated contradiction is what has a shot at rewriting the story; external reassurance doesn't touch the reconsolidation window</button>
+          <button class="opt" data-opt="D">D) It matters only because it was said out loud rather than thought silently</button>
+        </div>
+        <div class="q-result" data-explain="External reassurance ('you ARE good enough') is a pep talk that doesn't open the reconsolidation window. Self-generated contradiction, delivered while the emotion is still hot, is the actual mechanism behind the rewrite."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">In the Rewire step, Jade asks "are you a leader?", "are you a protector?", "are you a teacher?" as three separate questions rather than one sentence like "you're actually a good, strong man." What's the technique here?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Stack short, one-word identity confirmations, each individually asked, confirmed, and felt in the body, rather than a single sentence of opposing belief</button>
+          <button class="opt" data-opt="B">B) Ask the same underlying question three different ways to make sure the client actually means it</button>
+          <button class="opt" data-opt="C">C) Give the client three chances to disagree, so the exercise feels less forced</button>
+          <button class="opt" data-opt="D">D) Build suspense before revealing the main affirmation at the end</button>
+        </div>
+        <div class="q-result" data-explain="This is Rewire: raising a feeling that opposes the old story. Instead of one long affirmation, it's three short, separate identity words, each individually confirmed and felt before moving to the next."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">At the end, Jade asks for "any final words you need, said out loud, not for me, but for you." Why does the homework have to be the client's own words rather than something Jade assigns?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It saves the coach time by not having to design specific homework for each client</button>
+          <button class="opt" data-opt="B">B) It protects the coach from liability if the homework doesn't work</button>
+          <button class="opt" data-opt="C">C) Clients are more likely to comply with instructions if they think it was their own idea</button>
+          <button class="opt" data-opt="D">D) Self-generated language is what actually gets carried out and retrained through repetition afterward &mdash; whatever the client surfaces becomes the homework, his words, not the coach's</button>
+        </div>
+        <div class="q-result" data-explain="'His words, not mine.' Whatever the client surfaces becomes the retrain he does after the session. It has to be his own language because that's what actually gets carried out and repeated, not because of compliance psychology or convenience."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      if (chosen === answer) {
+        q.classList.add('answered');
+        q.querySelectorAll('.opt').forEach(function(b) { b.disabled = true; });
+        btn.classList.add('correct');
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        btn.disabled = true;
+        result.textContent = 'Not quite. Try another answer.';
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
