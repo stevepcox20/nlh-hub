@@ -737,6 +737,11 @@
   }
   .section.not-built .section-num { background: var(--peach-faint); color: var(--peach); border: 1px dashed var(--peach); }
   .hero.videos { background: var(--peach); }
+  /* On the peach hero, peach-bright accent text is orange-on-orange -- force white instead */
+  .hero.videos .hero-eyebrow { color: #ffffff; }
+  .hero.videos .hero-eyebrow::after { background: rgba(255,255,255,0.6); }
+  .hero.videos h1 em { color: #ffffff; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.5); }
+  .hero.videos .hero-stat .num { color: #ffffff; }
 
   .site-footer {
     background: var(--surface);
@@ -2003,20 +2008,36 @@
 </div>
 
 <script>
-document.querySelectorAll('.quiz-q').forEach(function(q) {
+var STORAGE_PREFIX = 'nlh-quiz:' + location.pathname + ':';
+
+function lockCorrect(q, answer, result, explain) {
+  q.classList.add('answered');
+  q.querySelectorAll('.opt').forEach(function(b) {
+    b.disabled = true;
+    if (b.getAttribute('data-opt') === answer) b.classList.add('correct');
+  });
+  result.textContent = 'Correct. ' + explain;
+  result.className = 'q-result show right';
+}
+
+document.querySelectorAll('.quiz-q').forEach(function(q, idx) {
   var answer = q.getAttribute('data-answer');
   var result = q.querySelector('.q-result');
+  var explain = result.getAttribute('data-explain') || '';
+  var key = STORAGE_PREFIX + idx;
+
+  // Restore a previously-correct answer on page load, so revisiting doesn't wipe progress.
+  if (localStorage.getItem(key) === 'correct') {
+    lockCorrect(q, answer, result, explain);
+  }
+
   q.querySelectorAll('.opt').forEach(function(btn) {
     btn.addEventListener('click', function() {
       if (q.classList.contains('answered')) return;
       var chosen = btn.getAttribute('data-opt');
-      var explain = result.getAttribute('data-explain') || '';
       if (chosen === answer) {
-        q.classList.add('answered');
-        q.querySelectorAll('.opt').forEach(function(b) { b.disabled = true; });
-        btn.classList.add('correct');
-        result.textContent = 'Correct. ' + explain;
-        result.className = 'q-result show right';
+        localStorage.setItem(key, 'correct');
+        lockCorrect(q, answer, result, explain);
       } else {
         btn.classList.add('incorrect');
         btn.disabled = true;
