@@ -252,6 +252,46 @@
     gap: 5px;
   }
 
+  /* SPLIT CARD -- modules with both a manual and a separate video-training page get two clear
+     ways in, instead of the split being buried in a small tag */
+  .split-card {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .split-card:hover { box-shadow: 0 4px 20px rgba(42,107,88,0.10); }
+  .split-card-top { padding: 22px 24px 16px; }
+  .split-card-top h3 { font-size: 16px; font-weight: 700; color: var(--forest); margin-bottom: 8px; }
+  .split-card-top p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .split-card-top .card-tags { margin-top: 12px; }
+  .split-buttons { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .split-btn {
+    padding: 16px 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: filter 0.12s;
+  }
+  .split-btn:hover { filter: brightness(1.08); }
+  .split-btn.manual { background: var(--forest); }
+  .split-btn.video { background: var(--peach); border-left: 1px solid rgba(0,0,0,0.08); }
+  .split-btn .sb-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.75);
+  }
+  .split-btn .sb-title { font-size: 14px; font-weight: 700; color: #fff; }
+  .split-btn .sb-count { font-size: 11.5px; color: rgba(255,255,255,0.85); }
+  @media (max-width: 700px) {
+    .split-buttons { grid-template-columns: 1fr; }
+    .split-btn.video { border-left: none; border-top: 1px solid rgba(0,0,0,0.08); }
+  }
+
   /* CALLOUT BOX */
   .hub-callout {
     background: var(--peach-faint);
@@ -415,22 +455,34 @@
       <div class="read-more">Open module &#8594;</div>
     </a>
 
-    <a href="coaching-methods.html" class="session-card">
-      <div class="card-meta">
-        <span class="day-badge">The Human Game &middot; Materials &amp; Methods Manual</span>
-        <span class="status-dot" title="Notes available"></span>
+    <div class="split-card">
+      <div class="split-card-top">
+        <div class="card-meta">
+          <span class="day-badge">The Human Game &middot; Materials &amp; Methods Manual</span>
+          <span class="status-dot" title="Notes available"></span>
+        </div>
+        <h3>Coaching Methods</h3>
+        <p>The coaching craft itself: the neuroscience engine behind the BRN protocols, and the coaching-area video training. Two separate ways in below &mdash; read the manual anytime, or work through the videos and pass the quiz on each.</p>
+        <div class="card-tags">
+          <span class="tag">Reconsolidation</span>
+          <span class="tag-peach">Prime/Work/Seal</span>
+          <span class="tag">Breath System</span>
+          <span class="tag">Five Questions</span>
+        </div>
       </div>
-      <h3>Coaching Methods</h3>
-      <p>The neuroscience engine behind the BRN protocols and the most operationally important material in the framework. Memory reconsolidation and the 4-6 hour window, prediction error, metaplasticity, Prime/Work/Seal sequencing, the Five Analytical Questions, the full breath system with the Coherence Breath, and the working detail of DEEP, BEEP, QEC, DELTA and QAT with weekly pairing schedules. Plus notes from the module's 24-video coaching-area training (8 built so far): the COACH 1:1 model, memory reconsolidation, the science-philosophy-art continuum, running story circles, the three-move coaching dialogue, parts work and dimensionalising consciousness, and group coaching's 4 Ps and compound learning.</p>
-      <div class="card-tags">
-        <span class="tag">Reconsolidation</span>
-        <span class="tag-peach">Prime/Work/Seal</span>
-        <span class="tag">Breath System</span>
-        <span class="tag">Five Questions</span>
-        <span class="tag-peach">8 of 24 Video Sessions</span>
+      <div class="split-buttons">
+        <a class="split-btn manual" href="coaching-methods-manual.html">
+          <span class="sb-label">Reference &middot; Read anytime</span>
+          <span class="sb-title">Study the Manual</span>
+          <span class="sb-count">Full Materials &amp; Methods Manual</span>
+        </a>
+        <a class="split-btn video" href="coaching-methods-videos.html">
+          <span class="sb-label">Study &middot; Pass the quiz</span>
+          <span class="sb-title">Watch &amp; Quiz</span>
+          <span class="sb-count">8 of 24 videos &middot; 38 quiz questions</span>
+        </a>
       </div>
-      <div class="read-more">Open module &#8594;</div>
-    </a>
+    </div>
 
   </div>
 
