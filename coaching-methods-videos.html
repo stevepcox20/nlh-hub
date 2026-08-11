@@ -711,6 +711,31 @@
   .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
   .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
 
+  /* SECTION CHECK -- per-section mini quiz, sits right after its section instead of one big quiz at the end.
+     Lives nested inside .section (which already pads 48px 52px), so bleed out to the section's own
+     edges rather than doubling the padding. */
+  .section-check {
+    background: var(--forest-faint);
+    border-top: 1px solid var(--border-strong);
+    border-left: 3px solid var(--peach);
+    margin: 32px -52px -48px;
+    padding: 24px 52px 40px 49px;
+  }
+  .section-check .sc-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--peach);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .section-check .quiz-q { background: var(--surface); }
+  @media (max-width: 860px) {
+    .section-check { margin: 26px -22px -48px; padding: 20px 22px 32px 19px; }
+  }
+
   /* FOOTER */
 
   /* CHIP NAV */
@@ -810,7 +835,6 @@
       <li><a href="#s22" class="not-built-link"><span class="chip-num">22</span> Introduction to QEC, QAT &amp; DELTA<span class="missing-tag">not built</span></a></li>
       <li><a href="#s23" class="not-built-link"><span class="chip-num">23</span> Introduction to WET (Written Exposure Therapy)<span class="missing-tag">not built</span></a></li>
       <li><a href="#s24" class="not-built-link"><span class="chip-num">24</span> Introduction to Visualization (VIR &amp; WIR)<span class="missing-tag">not built</span></a></li>
-      <li><a href="#quiz-videos"><span class="chip-num">Q</span> Comprehension Check</a></li>
     </ul>
   </aside>
 
@@ -861,7 +885,28 @@
         <p>The coach is about to be handed a lot of frameworks: do it this way, here's the ABC, here's the one-two-three. Adhering to those exclusively costs the coach their heart, their intuitive sense, their ability to truly connect. That connection is exactly why a given client can hear something from one coach and not another, even teaching the identical content. There are people only you can reach.</p>
         <p>Personal tools and interests a coach already carries (tarot, astrology, anything) are welcome in the work, but they have to fit inside the NLH science framework, not replace it, otherwise the results can't be measured. Neither side gets abandoned for the other: not art for science, not science for art. Both married is what a good coach does.</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 2 questions</span>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">Why does NLH insist coaches keep their own intuitive style and interests alongside the taught frameworks, rather than teaching pure technique?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Frameworks alone are too rigid to apply to real client situations</button>
+          <button class="opt" data-opt="B">B) It gives coaches something to differentiate their marketing with</button>
+          <button class="opt" data-opt="C">C) A client's essential self is matched to the coach's unique voice and experience. The same content lands differently depending on who delivers it, and losing intuition to over-reliance on framework loses that connection</button>
+          <button class="opt" data-opt="D">D) It keeps coaching sessions more varied and interesting for the coach</button></div>
+          <div class="q-result" data-explain="The module welcome makes this explicit: two coaches can teach the identical content and a given client can only hear it from one of them, because the coach's essential is matched to theirs. Over-adherence to frameworks costs the connection that makes the content land."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">On the science-philosophy-art continuum, where does philosophy sit, and why?</p>
+          <div class="options"><button class="opt" data-opt="A">A) On the art end, because philosophy is inherently intuitive rather than logical</button>
+          <button class="opt" data-opt="B">B) In the middle. It anchors the measurable science to a guiding worldview, without which science becomes isolated technique-following</button>
+          <button class="opt" data-opt="C">C) On the science end, because it is the most rigorously defined layer</button>
+          <button class="opt" data-opt="D">D) Philosophy isn't part of the continuum. Only science and art are</button></div>
+          <div class="q-result" data-explain="Science gives measurable tools, art gives intuition, and philosophy sits between them, anchoring the science so it points somewhere and evolving as understanding deepens."></div>
+        </div>
+    </div>
+</section>
 
 
     <section class="section" id="s-coach-model">
@@ -1012,7 +1057,100 @@
       <div class="quote-block">
         <p>"We connect, we observe, we assess, we coach, we give homework. And then the next time the people come back, we essentially continue from there."</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 10 questions</span>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">What's the actual difference between a coach and a therapist, per the COACH model?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Coaches only work with clients who don't have deeper trauma</button>
+          <button class="opt" data-opt="B">B) Coaches are directive. They tell the client what to try, what action to take, what choice to make. That's why homework is critical, not optional</button>
+          <button class="opt" data-opt="C">C) Coaches never touch subconscious material, only conscious behaviour</button>
+          <button class="opt" data-opt="D">D) There's no meaningful difference, just different licensing</button></div>
+          <div class="q-result" data-explain="The model states this directly: a coach says do X, try X, take this action, make this choice. Homework is the directive piece that separates coaching from therapy, and it's treated as critical, not optional."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">A first-time client (FOC) has been talking for 15 minutes and you're still in Connect. What do you do?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Let it run as long as it takes, connection always comes first</button>
+          <button class="opt" data-opt="B">B) Move on. 15 minutes is the hard cap on connection time in a first session, even though the call itself runs 45-60 minutes</button>
+          <button class="opt" data-opt="C">C) End the session and reschedule for more connection time</button>
+          <button class="opt" data-opt="D">D) Skip straight to homework since time is short</button></div>
+          <div class="q-result" data-explain="FOC connection time is 5-15 minutes, capped at 15. Past that point you're behind on the rest of the acronym and need to move into Observe. Return sessions (ROC) only need 1-5 minutes of connection."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">What's the distinction between the Human Rule and the Empathy Rule in the Connect step?</p>
+          <div class="options"><button class="opt" data-opt="A">A) They're the same thing said two different ways for variety</button>
+          <button class="opt" data-opt="B">B) Human Rule is for FOC only, Empathy Rule is for ROC only</button>
+          <button class="opt" data-opt="C">C) Human Rule normalises ("we're all only human, you're not crazy"). Empathy Rule acknowledges their suffering specifically without comparing it to anyone else's ("I can see how hard this is for you")</button>
+          <button class="opt" data-opt="D">D) Human Rule is spoken, Empathy Rule is only conveyed through body language</button></div>
+          <div class="q-result" data-explain="Human Rule normalises the person so they don't feel crazy or alone. Empathy Rule is the acknowledgement that suffering can't be compared or ranked against anyone else's; it just validates that this is hard for them, specifically."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 4</span>
+          <p class="q-text">A client says "my problem is binge eating." How does the COACH model reframe this in the Observe step?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Binge eating is confirmed as the problem and becomes the homework focus directly</button>
+          <button class="opt" data-opt="B">B) Binge eating is likely the pattern (the coping mechanism). The real problem underneath is probably stress, overwhelm, or a Safety/Security need not being met</button>
+          <button class="opt" data-opt="C">C) It's neither problem nor pattern, it's a medical issue to refer out</button>
+          <button class="opt" data-opt="D">D) The problem is whatever the client names first, always taken at face value</button></div>
+          <div class="q-result" data-explain="The model treats the presenting behaviour (binge eating) as the pattern/coping mechanism, and pushes to find the problem underneath it, usually one of the five core needs like Safety & Security."></div>
+        </div>
+        <div class="quiz-q" data-answer="A">
+          <span class="q-num">Question 5</span>
+          <p class="q-text">Why does the model tell coaches to ask "what happened, and how did you respond?" instead of asking "why do you do that?"</p>
+          <div class="options"><button class="opt" data-opt="A">A) "Why" rarely produces a useful answer. Asking what happened and how they responded, repeated, surfaces the pattern (and often the why) on its own</button>
+          <button class="opt" data-opt="B">B) "Why" questions are considered rude in a coaching context</button>
+          <button class="opt" data-opt="C">C) It's purely a time-management technique to keep sessions shorter</button>
+          <button class="opt" data-opt="D">D) There's no real difference, it's a stylistic preference</button></div>
+          <div class="q-result" data-explain="Asking why directly rarely gets a useful answer. Asking what happened and how they responded, run as a repeated Socratic loop, is what actually surfaces the pattern, and the why usually falls out of it."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 6</span>
+          <p class="q-text">A client keeps blaming their spouse for a recurring conflict. What does the COACH model say to do?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Coach the spouse's pattern indirectly through the client, since that's the real source</button>
+          <button class="opt" data-opt="B">B) Agree the spouse is the problem and help the client build a case for leaving</button>
+          <button class="opt" data-opt="C">C) Bring it back to the client. Neither of you can change the spouse; the only lever is the client changing themselves first, which may or may not change the spouse in response</button>
+          <button class="opt" data-opt="D">D) Refuse to discuss the spouse at all and redirect to an unrelated topic</button></div>
+          <div class="q-result" data-explain="Clients will make the problem about other people. The rule is: other people are often part of it, but you can't change them, and neither can the client. Change has to start with the client, and it may or may not change the other person's behaviour in response. If not, that's where boundaries and standards come in."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 7</span>
+          <p class="q-text">In the Coach step, why does the coach say "I could be completely off with this, but I'm wondering..." instead of stating the pattern directly?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It's a legal disclaimer to protect the coach from liability</button>
+          <button class="opt" data-opt="B">B) It's dropping a breadcrumb, not a verdict. A hedged, curious offer keeps the client's guard down enough to consider it, and lets the coach stay open to being wrong and test the reaction</button>
+          <button class="opt" data-opt="C">C) Coaches are required to always sound uncertain regardless of confidence</button>
+          <button class="opt" data-opt="D">D) It fills time while the coach decides what to say next</button></div>
+          <div class="q-result" data-explain="A good coach doesn't take the ball and say 'dribble like this' -- they ask what the player thinks they're doing wrong. Same here: the hypothesis is offered as a hedged guess (a breadcrumb), then tested by watching how the client reacts, because the coach has to stay genuinely open to being wrong."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 8</span>
+          <p class="q-text">What is the White Pawn Principle used for in the Homework step?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Teaching the client to wait for the other person to change first</button>
+          <button class="opt" data-opt="B">B) A breathing technique used at the start of every session</button>
+          <button class="opt" data-opt="C">C) The client moves first, like white in chess. They change their own response (e.g. noticing and thanking small effort instead of nagging) before waiting for the other person to change</button>
+          <button class="opt" data-opt="D">D) A way to assess which of the five core problems is active</button></div>
+          <div class="q-result" data-explain="White always moves first in chess. The White Pawn Principle has the client make the first move in their own behaviour change (e.g. thanking any small effort instead of nagging about the dishes), rather than waiting on the other person to change."></div>
+        </div>
+        <div class="quiz-q" data-answer="D">
+          <span class="q-num">Question 9</span>
+          <p class="q-text">After a client tries the White Pawn move and their spouse doesn't change at all, even gets defensive, what does the model say this is for?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Proof the White Pawn Principle failed and should be abandoned</button>
+          <button class="opt" data-opt="B">B) A sign the client should give up and disengage entirely</button>
+          <button class="opt" data-opt="C">C) Evidence the coach misdiagnosed the pattern in the Assess step</button>
+          <button class="opt" data-opt="D">D) This is exactly where boundaries, standards, and taking care of self come in. The client still makes their own change regardless of whether the other person meets them there</button></div>
+          <div class="q-result" data-explain="Both outcomes of the White Pawn move are useful. If the spouse doesn't change, that's the entry point for teaching boundaries and standards, so the client's own change doesn't depend on the other person responding."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 10</span>
+          <p class="q-text">What's always part of the homework, on top of whatever is specific to that session?</p>
+          <div class="options"><button class="opt" data-opt="A">A) A written journal entry submitted before the next call</button>
+          <button class="opt" data-opt="B">B) BRN classes and story circles / discussion circles, as a standing default</button>
+          <button class="opt" data-opt="C">C) A 1:1 follow-up call with a second coach</button>
+          <button class="opt" data-opt="D">D) Nothing. Homework is fully custom to each session with no defaults</button></div>
+          <div class="q-result" data-explain="On top of the session-specific action, the default homework is always to keep attending BRN (Belief Repatterning and Neuroplasticity) classes and story circles / discussion circles."></div>
+        </div>
+    </div>
+</section>
 
     <section class="section" id="s18">
       <div class="section-header">
@@ -1197,7 +1335,55 @@
       <div class="quote-block">
         <p>"This is about reps. Reps, reps, reps. The more you do, the better you get."</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 5 questions</span>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">What is the core reason group coaching is framed as beating 1:1?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It's cheaper to run and fits more paying clients into the same hour</button>
+          <button class="opt" data-opt="B">B) It lets the coach avoid the harder work of deep individual sessions</button>
+          <button class="opt" data-opt="C">C) Compound learning. Coaching a few people live still coaches everyone, because human patterns overlap so each rep lands for multiple people. Coach 6 of 10 and all 10 leave with 6 viewpoints and plans</button>
+          <button class="opt" data-opt="D">D) Group pressure forces faster breakthroughs than a client would reach alone</button></div>
+          <div class="q-result" data-explain="The stated reason is compound learning. Because human patterns overlap, every live coaching rep lands for more than the one person being coached. Coach 6 of 10 and all 10 receive 6 viewpoints and 6 plans. The goal is unchanged: shift perception to change identity and behaviour."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">A client says: "I keep numbing out on screens and porn at night, and I feel like I'm failing my marriage." Using the 4 Ps, which is the Problem and which is the Pattern?</p>
+          <div class="options"><button class="opt" data-opt="A">A) The screens and porn are the Problem; the marriage is the Pattern</button>
+          <button class="opt" data-opt="B">B) The Problem is the struggle underneath (a stuck need in Relationships or Growth &amp; Mattering); the Pattern is the repeated coping response, here Soothing (screens, sex)</button>
+          <button class="opt" data-opt="C">C) Both are Patterns, and there is no Problem until the coach assigns one</button>
+          <button class="opt" data-opt="D">D) Feeling like a failure is the Plan; the numbing is the Possibility</button></div>
+          <div class="q-result" data-explain="The Problem is the recurrent struggle or stuck need (Relationships, or Growth & Mattering). The Pattern is the person's repeated coping response to it, which here is the Soothing cluster (food, alcohol, sex, screens). The coach's job is to separate the two, then reveal the Possibilities that bridge to a Plan."></div>
+        </div>
+        <div class="quiz-q" data-answer="A">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">In a 60-minute group, no one volunteers to be coached. What does the cheat sheet say to do?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Make the opener the main event: run breathwork or journaling on the 4 Ps, then invite 1 or 2 brief shares</button>
+          <button class="opt" data-opt="B">B) Extend the session past 60 minutes until someone is willing to share</button>
+          <button class="opt" data-opt="C">C) Call on people by name whether they want to share or not</button>
+          <button class="opt" data-opt="D">D) End the session early and refund the participants</button></div>
+          <div class="q-result" data-explain="The opener is designed to double as the fallback. If no one volunteers, the breathwork or 4 Ps journaling becomes the main event, and you then invite one or two brief shares. The 60-minute boundary still holds, because clarity and clean timing are what keep the container safe."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 4</span>
+          <p class="q-text">Jane is coached and doesn't seem to get the insight. Right after her, you coach Jeff on an overlapping pattern, and Jane suddenly gets it. What is actually happening?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Jeff's coaching was simply clearer, so it landed better than Jane's own session did</button>
+          <button class="opt" data-opt="B">B) Jane can't be objective about her own struggle (emotional blocks up), but watching Jeff lets her try on being less objective. She escapes her own identity by listening, and the same insight lands secondhand</button>
+          <button class="opt" data-opt="C">C) Jane was pretending not to understand the first time to get more airtime</button>
+          <button class="opt" data-opt="D">D) Repetition of the 4 Ps format is what did it, not anything about Jeff's specific content</button></div>
+          <div class="q-result" data-explain="This is the actual mechanism behind compound learning, not just overlap in content. Being inside your own problem keeps you subjective. Watching someone else's overlapping struggle gets coached lets you try on their situation without your own emotional blocks in the way."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 5</span>
+          <p class="q-text">A volunteer is running long and you need to move the session along. Why can you say "let's get to the plan" without it landing as a slight?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Because as the coach you have authority to cut anyone off at any time</button>
+          <button class="opt" data-opt="B">B) It can't be avoided. Some participants will always feel shortchanged when time runs out</button>
+          <button class="opt" data-opt="C">C) Psychological license. Everyone arrived having done the 4 Ps pre-work and knows you'll run the same format on them, so jumping or skipping steps reads as following the shared container, not as an arbitrary cut-off</button>
+          <button class="opt" data-opt="D">D) Because the plan step is optional, so skipping to it isn't really cutting anything short</button></div>
+          <div class="q-result" data-explain="The pre-session email sets the 4 Ps up front. Because the client already agreed to that structure, moving through it briskly (or skipping ahead under time pressure) doesn't feel like being shut down, it feels like the coach running the format everyone signed up for."></div>
+        </div>
+    </div>
+</section>
 
     <section class="section" id="s14">
       <div class="section-header">
@@ -1285,7 +1471,55 @@
           <li><strong>Open with an allegory, a proverb, a client story (kept confidential), or a movie scene</strong> (a Harry Potter courage moment) and turn it into a conversation: "let's talk about what courage means to you."</li>
         </ul>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 5 questions</span>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">Why does the SUG model deliberately ask participants to name a "gift" in their struggle, even though most people don't see one at first?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It keeps the circle upbeat and prevents the session from becoming too heavy</button>
+          <button class="opt" data-opt="B">B) It gives the facilitator something positive to close on</button>
+          <button class="opt" data-opt="C">C) Retelling the story under this new frame is a reconsolidation event. Naming a gift changes how the memory is held, not just how it's narrated</button>
+          <button class="opt" data-opt="D">D) It filters out participants who aren't ready to do the deeper work</button></div>
+          <div class="q-result" data-explain="Telling the story retrieves the memory and makes it labile. Prompting a gift means the story is re-encoded with a new frame while it is changeable, which is the same reconsolidation mechanism the protocols use, delivered through witnessing."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">A participant shares their story, then asks the facilitator directly for advice on what to do next. What's the correct move?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Give a brief piece of coaching, since they asked directly</button>
+          <button class="opt" data-opt="B">B) Name that this isn't a coaching or advice space, acknowledge the frustration, and let the story stand as told. Troubleshooting happens elsewhere</button>
+          <button class="opt" data-opt="C">C) Redirect the question to the group and let another participant coach them instead</button>
+          <button class="opt" data-opt="D">D) End the circle early since the format has broken down</button></div>
+          <div class="q-result" data-explain="The circle's ground rule is no coaching and no advice, even on request. The healing mechanism is being witnessed in the authentic telling, and coaching would break that container. The scripted line acknowledges the frustration and defers troubleshooting."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">In a story circle you are explicitly not coaching. What are the two things you're actually doing?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Diagnosing the client's pattern and prescribing a practice</button>
+          <button class="opt" data-opt="B">B) Facilitating a conversation (putting a topic in the room and letting people think aloud without interruption) or facilitating a witnessing (people tell their SUG and are witnessed in the telling)</button>
+          <button class="opt" data-opt="C">C) Teaching the framework, then testing whether people understood it</button>
+          <button class="opt" data-opt="D">D) Running a lighter-touch version of group coaching</button></div>
+          <div class="q-result" data-explain="Neither is coaching. A conversation is a topic put in the room plus uninterrupted sharing, closed with 'does that remind anyone of anything?'. A witnessing is the story circle proper: people tell their SUG and are witnessed. You hold the space and keep time; you do not respond with coaching."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 4</span>
+          <p class="q-text">People show up to a circle but no one wants to share. What are the sanctioned back-pocket moves?</p>
+          <div class="options"><button class="opt" data-opt="A">A) End the circle early. It can't run without volunteers</button>
+          <button class="opt" data-opt="B">B) Call on people by name until someone talks</button>
+          <button class="opt" data-opt="C">C) Share your own SUG, do a little BEEP breath work, or turn it into a journalling round (10 min struggle, 5 min understanding, 3 min gifts), then re-invite. An allegory, proverb or movie scene can also open it as a conversation</button>
+          <button class="opt" data-opt="D">D) Switch the session into one-on-one coaching</button></div>
+          <div class="q-result" data-explain="You can't assume or force people to share, so a circle can legitimately become a journalling session or a conversation. Fallbacks: share your own story, BEEP, journal the SUG on set timings, or open with an allegory, proverb or movie scene, then re-invite sharing."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 5</span>
+          <p class="q-text">Why does NLH treat telling one's story as a genuine change mechanism, not just sharing for its own sake?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It builds community bonds that improve program retention</button>
+          <button class="opt" data-opt="B">B) MUD is made of story: the stories we tell are the mud we hold, and that determines identity and beliefs. Telling the story authentically and being witnessed changes how it's held</button>
+          <button class="opt" data-opt="C">C) It gives the coach raw material to coach on afterwards</button>
+          <button class="opt" data-opt="D">D) Talking a problem through always lowers stress</button></div>
+          <div class="q-result" data-explain="MUD (misguided unconscious decisions) is made of story, and the stories we hold determine identity and beliefs. In the authentic telling of the story of struggle, witnessed by the group, the memory is labile and re-encoded. That is why story is the mechanism, not a soft add-on."></div>
+        </div>
+    </div>
+</section>
 
     <section class="section" id="s15">
       <div class="section-header">
@@ -1323,7 +1557,37 @@
         <p>A direct assertion ("here's your pattern," "I think you're messed up") puts the client's guard up immediately. Shame walls come up before the idea even lands. A hedged offer does the opposite. "Maybe I'm off, but is it possible your mum took that comment as her being a bad mother?" The word <strong>"maybe" opens an exploratory brain state</strong> instead of a defensive one. That's real neuroplasticity: their perceptual awareness opens enough to try on a new idea. You're dropping breadcrumbs, not delivering a diagnosis.</p>
         <p><strong>The tone is a secondary position, not authority:</strong> "I'm clueless here, I could be way off, I have some ideas, please educate me. I'm going to push on you, but push back on me." Said that way, you'll see where they stonewall or block, but more often than not they open up with "you know... maybe." That's the whole game. Jade's name for it: the curious, humble detective and friend. Use it all the time.</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 3 questions</span>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">Why does hedged language ("I could be wrong, correct me, but I wonder...") work better than a direct assertion ("here's your pattern") when naming a client's pattern?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It sounds more polite and professional</button>
+          <button class="opt" data-opt="B">B) A direct assertion triggers shame walls and defensiveness; hedged language keeps the client's threat-detection calm enough to actually consider the idea instead of guarding against it</button>
+          <button class="opt" data-opt="C">C) It protects the coach from being wrong in front of the client</button>
+          <button class="opt" data-opt="D">D) It slows the session down enough to fill the allotted coaching time</button></div>
+          <div class="q-result" data-explain="'Maybe' opens an exploratory brain state instead of a defensive one. The pattern lands as a breadcrumb the client can pick up or push back on, and the door stays open either way. A flat assertion closes it."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">What are the Human Rule and Empathy Rule designed to establish before any pattern work starts?</p>
+          <div class="options"><button class="opt" data-opt="A">A) That the coach has personally experienced the exact same trauma as the client</button>
+          <button class="opt" data-opt="B">B) That the session has a clear time limit and structure</button>
+          <button class="opt" data-opt="C">C) Normalisation and felt understanding. The client isn't alone and isn't crazy, which builds trust and rapport quickly, before any exploratory or pattern work begins</button>
+          <button class="opt" data-opt="D">D) That the client's problem is more common and less serious than they think</button></div>
+          <div class="q-result" data-explain="The Human Rule normalises (every human suffers, you're not a broken case). The Empathy Rule gives felt understanding without claiming shared experience. Only after both land does the Curious Detective offer the pattern as a hedged guess."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">What belief underpins the Curious Detective move, and how does the coach act on it?</p>
+          <div class="options"><button class="opt" data-opt="A">A) That clients hide the real problem, so the coach interrogates until it surfaces</button>
+          <button class="opt" data-opt="B">B) That the coach already knows the pattern and is steering the client to admit it</button>
+          <button class="opt" data-opt="C">C) That whatever the client is going through is useful. A lesson is buried in every difficulty, so the coach silently hunts the pattern to break but never announces it, playing the questioning detective instead</button>
+          <button class="opt" data-opt="D">D) That naming the pattern directly is fine once enough rapport is built</button></div>
+          <div class="q-result" data-explain="The premise is that it's all useful. A lesson or piece of wisdom is buried in every trauma, drama and difficulty. So the coach silently looks for the pattern that needs to break, but never says 'here's your pattern.' They stay in the curious, questioning detective role and let the client try the idea on."></div>
+        </div>
+    </div>
+</section>
 
     <section class="section" id="s16">
       <div class="section-header">
@@ -1387,7 +1651,37 @@
         <p><strong>In-session use:</strong> when something emotional or difficult surfaces mid-session, you can call the client to visit and dimensionalise that part in the moment, not only as a set-piece meditation.</p>
         <p style="font-size:13px;color:var(--text-muted);margin:0;">Cross-reference to check: in this video DEEP is framed as a physical sympathetic stressor (workout, sauna, cold plunge). Section 12 of the manual defines DEEP as Depth Enhanced Emotional Processing (breathwork + subconscious scripting). Worth reconciling which sense is canonical.</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 3 questions</span>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">Dimensionalisation of consciousness (parts work) belongs to which phase of the work, and what is it fundamentally for?</p>
+          <div class="options"><button class="opt" data-opt="A">A) The Retrain phase. It builds new behavioural reps through repetition</button>
+          <button class="opt" data-opt="B">B) The Rewire phase. It discharges stored emotional charge through activation and intensity</button>
+          <button class="opt" data-opt="C">C) The Rewrite phase. It's a perception tool. You meet an aspect of self as a separate entity you can dialogue with and integrate, so you're in relationship with it rather than fused to it</button>
+          <button class="opt" data-opt="D">D) The assessment phase. It maps which of the Eight Doorways to use before any deeper work</button></div>
+          <div class="q-result" data-explain="It's explicitly named as a Rewrite-phase perception tool. Dimensionalising an aspect of self (a past self, a body part, a pattern) shifts the client from being fused with it to being in relationship with it, which is what lets the story be rewritten."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">In the integration meditation, after a past self (child, teen, or young adult) has dialogued and gone to its safe place, what happens next?</p>
+          <div class="options"><button class="opt" data-opt="A">A) The client writes the memory down as a homework assignment for the next session</button>
+          <button class="opt" data-opt="B">B) The Next Level / wise self is called in, greets the part, and integrates it into the body. The loop is repeated three times across child, teen and young adult</button>
+          <button class="opt" data-opt="C">C) The coach interprets the pattern and names it directly for the client</button>
+          <button class="opt" data-opt="D">D) The client moves straight to the next self without integrating the previous one</button></div>
+          <div class="q-result" data-explain="The wise / current self greets each part in its safe place and integrates it into the body, and the whole loop runs three times. The point is to get the nervous system to respond in a new way to each past self."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">What distinguishes parts work from BEEP as a Rewrite tool?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Parts work is written and BEEP is spoken aloud</button>
+          <button class="opt" data-opt="B">B) Parts work is controlled and soothing, safely revisiting places a person normally never dwells in. BEEP is sympathetic: intensity followed by relaxation, working with emotions and memories</button>
+          <button class="opt" data-opt="C">C) Parts work is for the body and BEEP is only for the mind</button>
+          <button class="opt" data-opt="D">D) There's no real difference. They're two names for the same protocol</button></div>
+          <div class="q-result" data-explain="Parts work sits at the calm, controlled end (relaxing music, soothing voice, safe revisiting of past selves). BEEP is the activating tool, bringing up a sympathetic state, an intensity followed by relaxation, and works mainly with emotions and memories."></div>
+        </div>
+    </div>
+</section>
 
     <section class="section" id="s17">
       <div class="section-header">
@@ -1456,7 +1750,37 @@
         <p>The reason it works: <strong>pain, stories and memories are predictions made by the nervous system.</strong> They are not fixed facts. If you can change the prediction, you can change the way the body is holding the thing. That is the mechanism underneath every doorway and every reconsolidation move.</p>
         <p style="font-size:13px;color:var(--text-muted);margin:0;">Reconsolidation is its own separate education. This video only names it. The next video in the module is "Dimensional Consciousness Technique."</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 3 questions</span>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">Dimensionalising uses the idea of doorways. Which of these is NOT one of the doorways named in the video?</p>
+          <div class="options"><button class="opt" data-opt="A">A) A pattern, such as the overeating self or the self-soothing self</button>
+          <button class="opt" data-opt="B">B) An illness or symptom, such as a cancer or a painful hip</button>
+          <button class="opt" data-opt="C">C) The client's astrological chart and birth date</button>
+          <button class="opt" data-opt="D">D) A physical part, down to the organ or cell</button></div>
+          <div class="q-result" data-explain="The doorways named are parts (historical selves), emotions, physical parts, patterns, sensations, and illnesses / signs and symptoms. Each is a different way into the subconscious. Parts work and IFS are just two of these doors."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">In the anthropomorphising method you ask location, texture, temperature, colour, then personality. Why is that sequence not the actual goal?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It is the goal. A full physical description is the finished outcome of the exercise</button>
+          <button class="opt" data-opt="B">B) The physical questions are the on-ramp. What you're actually after is the message the part carries and the lesson in it, because the subconscious holds information the conscious mind can't reach</button>
+          <button class="opt" data-opt="C">C) The description exists only to distract the client while the coach analyses them</button>
+          <button class="opt" data-opt="D">D) The colour and temperature are the diagnosis and no further questions are needed</button></div>
+          <div class="q-result" data-explain="Location, texture, temperature and colour turn the experience into an entity the client can relate to. But the point of anthropomorphising is the payload: what's it saying, what message does it have, what's the lesson. That's the subconscious material that would never surface otherwise."></div>
+        </div>
+        <div class="quiz-q" data-answer="A">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">A coach suddenly has the client count backward from 40 by twos at the emotional peak. What is the underlying reason this can change how they hold a painful ankle?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Pain, stories and memories are predictions made by the nervous system, not fixed facts. Dropping a cognitive challenge into a subconscious state disrupts the prediction, and if you change the prediction you change how the body holds it</button>
+          <button class="opt" data-opt="B">B) Counting distracts the client so they simply forget the pain was there</button>
+          <button class="opt" data-opt="C">C) Arithmetic burns the calories that were feeding the inflammation in the ankle</button>
+          <button class="opt" data-opt="D">D) The numbers reset the client's identity set point back to zero</button></div>
+          <div class="q-result" data-explain="The mechanism is prediction. Pain, stories and memories are predictions by the nervous system. A cognitive challenge delivered without warning in a deep subconscious state interferes with the prediction, which changes the way the ankle is held. This is one example of a reconsolidation technique, which is its own separate education."></div>
+        </div>
+    </div>
+</section>
 
 
     <section class="section" id="s-memory-reconsolidation">
@@ -1533,7 +1857,73 @@
         <p>None of the six are used in isolation only. DEEP and other protocols are built by literally stacking layers on top of each other: stimulating breath, then relaxing breath, then humming, onto a specific visualisation, onto a specific reframe, onto writing. Music and breathwork can also be layered in ahead of any of the six to move someone into alpha/theta states before the reconsolidation work starts, amplifying the effect.</p>
         <p style="font-size:13px;color:var(--text-muted);margin:0;">This is described as the bread and butter of the whole coaching craft &mdash; not one tool among many, the mechanism the other tools are built on.</p>
       </div>
-    </section>
+        <div class="section-check">
+      <span class="sc-label">Section Check &middot; 7 questions</span>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 1</span>
+          <p class="q-text">What actually happens to a memory, neuroscientifically, the moment it's recalled and replayed in the mind?</p>
+          <div class="options"><button class="opt" data-opt="A">A) It gets permanently erased once the emotional charge fades</button>
+          <button class="opt" data-opt="B">B) Nothing changes; memories are fixed once formed and recall is just playback</button>
+          <button class="opt" data-opt="C">C) It becomes labile, changeable and flexible for as long as it's held active, which is what makes reconsolidation techniques possible</button>
+          <button class="opt" data-opt="D">D) It gets duplicated into a second, separate memory trace</button></div>
+          <div class="q-result" data-explain="This is the core neuroscience the whole session is built on. Recalling and replaying a memory makes it labile, open to change, for as long as it stays active in the mind. That window is what every one of the six techniques works inside."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 2</span>
+          <p class="q-text">In the mud/clay/cement metaphor, what role do emotions play?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Emotions are the water that keeps mud soft and easy to reshape</button>
+          <button class="opt" data-opt="B">B) Emotions are the rebar. They're what strengthens and hardens the mud (the stories, judgements and beliefs) in the first place</button>
+          <button class="opt" data-opt="C">C) Emotions are irrelevant to how solid or soft the mud is</button>
+          <button class="opt" data-opt="D">D) Emotions only form after the mud has already hardened, never before</button></div>
+          <div class="q-result" data-explain="MUD is stories, judgements and beliefs that have solidified anywhere from watery to cement-hard. Emotion is described as the rebar: it's what strengthens and hardens that mud, which is why bringing up the emotion attached to a memory is necessary, not incidental, to loosening it."></div>
+        </div>
+        <div class="quiz-q" data-answer="A">
+          <span class="q-num">Question 3</span>
+          <p class="q-text">A client can't recall any specific memory tied to their pattern. Does memory reconsolidation still apply?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Yes. Any of the six techniques can run on a sensation, a pattern, or a sign/symptom instead of an episodic memory, since what's being reconsolidated is whatever is currently holding the mud in place</button>
+          <button class="opt" data-opt="B">B) No, an actual episodic memory is required for every technique to work</button>
+          <button class="opt" data-opt="C">C) Only future pacing works without a memory; the other five require one</button>
+          <button class="opt" data-opt="D">D) The coach should manufacture a plausible memory for the client to use instead</button></div>
+          <div class="q-result" data-explain="A memory isn't required. Sensations (a shoulder issue), patterns (money issues), or signs and symptoms (headaches, an illness) all work as the material to bring up and reconsolidate, using the exact same six techniques."></div>
+        </div>
+        <div class="quiz-q" data-answer="C">
+          <span class="q-num">Question 4</span>
+          <p class="q-text">In Dual Process (Dual Task) Interference, why does the coach introduce the cognitive task as a surprise, mid-memory, rather than announcing it upfront?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Surprise isn't part of the technique; it's just a stylistic choice</button>
+          <button class="opt" data-opt="B">B) Announcing it in advance would violate informed consent requirements</button>
+          <button class="opt" data-opt="C">C) The interference has to land while the emotional charge and the memory are both fully active, so the two tasks (emotional and cognitive) compete for the same mental resources at once</button>
+          <button class="opt" data-opt="D">D) It's a test of the client's ability to multitask under stress</button></div>
+          <div class="q-result" data-explain="The technique's mechanism is the dual task: an emotional task and a cognitive/logical task running at the same time, right in the middle of the charged memory. That collision is what drives the charge rating down over repeated rounds."></div>
+        </div>
+        <div class="quiz-q" data-answer="B">
+          <span class="q-num">Question 5</span>
+          <p class="q-text">Why is eye-movement bilateral stimulation (the EMDR style) sometimes avoided when a technique also requires visualisation?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Eye movements are considered outdated compared to tapping or havening</button>
+          <button class="opt" data-opt="B">B) Most people are visually dominant, so moving the eyes competes with and interferes with the image they're meant to be holding in mind</button>
+          <button class="opt" data-opt="C">C) Eye movements only work for physical sensations, never for memories</button>
+          <button class="opt" data-opt="D">D) There's no real reason; it's purely a personal style preference with no functional basis</button></div>
+          <div class="q-result" data-explain="Cross-body movement plus stroking is preferred over eye-movement EMDR specifically when the technique needs to run alongside visualisation, because eye movement competes with the visual channel most people rely on to hold an image in mind."></div>
+        </div>
+        <div class="quiz-q" data-answer="D">
+          <span class="q-num">Question 6</span>
+          <p class="q-text">In Imagery Rescripting, a client replays a past assault and this time fights off the attacker in the visualisation. What is this reconsolidating?</p>
+          <div class="options"><button class="opt" data-opt="A">A) The factual record of what happened, so the client believes it occurred differently</button>
+          <button class="opt" data-opt="B">B) Nothing real; it's a comforting fantasy with no neurological effect</button>
+          <button class="opt" data-opt="C">C) The client's ability to physically defend themselves in a future incident</button>
+          <button class="opt" data-opt="D">D) How the brain holds the memory emotionally: inserting a different action reconsolidates it around resilience, resolve and strength instead of helplessness</button></div>
+          <div class="q-result" data-explain="The point isn't rewriting facts, it's changing how the nervous system holds the memory. Imagining a different response (fighting back, standing up) reconsolidates the memory around 'I was resilient, I had resolve' rather than the original helplessness."></div>
+        </div>
+        <div class="quiz-q" data-answer="A">
+          <span class="q-num">Question 7</span>
+          <p class="q-text">Before running any of the six reconsolidation techniques, what does "resourcing" the client mean?</p>
+          <div class="options"><button class="opt" data-opt="A">A) Grounding them in present safety first ("it is not then, it is now"), and offering a safe place to return to, before bringing up the charged material</button>
+          <button class="opt" data-opt="B">B) Giving them a written handout explaining the science before starting</button>
+          <button class="opt" data-opt="C">C) Confirming they've already tried and failed at therapy before attempting this</button>
+          <button class="opt" data-opt="D">D) Billing and scheduling the session properly in advance</button></div>
+          <div class="q-result" data-explain="Resourcing means orienting the client to present safety before opening anything up: reminding them where and when they actually are, that they're safe with you, and giving them a real or created safe place to return to at any point during the work."></div>
+        </div>
+    </div>
+</section>
 
     <section class="section not-built" id="s09">
       <div class="section-header">
@@ -1663,472 +2053,7 @@
       <div class="callout"><p>No transcript pulled for this lesson yet. It sits here because this is where it lives in Jade's coaching area &mdash; the numbering and order are already locked in. Record or pull the transcript and this section fills in.</p></div>
     </section>
 
-    <section class="section" id="quiz-videos">
-      <div class="section-header">
-        <div class="section-num">Q</div>
-        <div>
-          <h2 class="section-title">Video Training Comprehension Check</h2>
-          <p class="section-subtitle">Answer from memory first. Click an option to check. Thirty-eight questions across the eight built video sessions (16 more lessons still to come).</p>
-        </div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 1</span>
-        <p class="q-text">What's the actual difference between a coach and a therapist, per the COACH model?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Coaches only work with clients who don't have deeper trauma</button>
-          <button class="opt" data-opt="B">B) Coaches are directive. They tell the client what to try, what action to take, what choice to make. That's why homework is critical, not optional</button>
-          <button class="opt" data-opt="C">C) Coaches never touch subconscious material, only conscious behaviour</button>
-          <button class="opt" data-opt="D">D) There's no meaningful difference, just different licensing</button>
-        </div>
-        <div class="q-result" data-explain="The model states this directly: a coach says do X, try X, take this action, make this choice. Homework is the directive piece that separates coaching from therapy, and it's treated as critical, not optional."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 2</span>
-        <p class="q-text">A first-time client (FOC) has been talking for 15 minutes and you're still in Connect. What do you do?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Let it run as long as it takes, connection always comes first</button>
-          <button class="opt" data-opt="B">B) Move on. 15 minutes is the hard cap on connection time in a first session, even though the call itself runs 45-60 minutes</button>
-          <button class="opt" data-opt="C">C) End the session and reschedule for more connection time</button>
-          <button class="opt" data-opt="D">D) Skip straight to homework since time is short</button>
-        </div>
-        <div class="q-result" data-explain="FOC connection time is 5-15 minutes, capped at 15. Past that point you're behind on the rest of the acronym and need to move into Observe. Return sessions (ROC) only need 1-5 minutes of connection."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 3</span>
-        <p class="q-text">What's the distinction between the Human Rule and the Empathy Rule in the Connect step?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) They're the same thing said two different ways for variety</button>
-          <button class="opt" data-opt="B">B) Human Rule is for FOC only, Empathy Rule is for ROC only</button>
-          <button class="opt" data-opt="C">C) Human Rule normalises ("we're all only human, you're not crazy"). Empathy Rule acknowledges their suffering specifically without comparing it to anyone else's ("I can see how hard this is for you")</button>
-          <button class="opt" data-opt="D">D) Human Rule is spoken, Empathy Rule is only conveyed through body language</button>
-        </div>
-        <div class="q-result" data-explain="Human Rule normalises the person so they don't feel crazy or alone. Empathy Rule is the acknowledgement that suffering can't be compared or ranked against anyone else's; it just validates that this is hard for them, specifically."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 4</span>
-        <p class="q-text">A client says "my problem is binge eating." How does the COACH model reframe this in the Observe step?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Binge eating is confirmed as the problem and becomes the homework focus directly</button>
-          <button class="opt" data-opt="B">B) Binge eating is likely the pattern (the coping mechanism). The real problem underneath is probably stress, overwhelm, or a Safety/Security need not being met</button>
-          <button class="opt" data-opt="C">C) It's neither problem nor pattern, it's a medical issue to refer out</button>
-          <button class="opt" data-opt="D">D) The problem is whatever the client names first, always taken at face value</button>
-        </div>
-        <div class="q-result" data-explain="The model treats the presenting behaviour (binge eating) as the pattern/coping mechanism, and pushes to find the problem underneath it, usually one of the five core needs like Safety & Security."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="A">
-        <span class="q-num">Question 5</span>
-        <p class="q-text">Why does the model tell coaches to ask "what happened, and how did you respond?" instead of asking "why do you do that?"</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) "Why" rarely produces a useful answer. Asking what happened and how they responded, repeated, surfaces the pattern (and often the why) on its own</button>
-          <button class="opt" data-opt="B">B) "Why" questions are considered rude in a coaching context</button>
-          <button class="opt" data-opt="C">C) It's purely a time-management technique to keep sessions shorter</button>
-          <button class="opt" data-opt="D">D) There's no real difference, it's a stylistic preference</button>
-        </div>
-        <div class="q-result" data-explain="Asking why directly rarely gets a useful answer. Asking what happened and how they responded, run as a repeated Socratic loop, is what actually surfaces the pattern, and the why usually falls out of it."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 6</span>
-        <p class="q-text">A client keeps blaming their spouse for a recurring conflict. What does the COACH model say to do?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Coach the spouse's pattern indirectly through the client, since that's the real source</button>
-          <button class="opt" data-opt="B">B) Agree the spouse is the problem and help the client build a case for leaving</button>
-          <button class="opt" data-opt="C">C) Bring it back to the client. Neither of you can change the spouse; the only lever is the client changing themselves first, which may or may not change the spouse in response</button>
-          <button class="opt" data-opt="D">D) Refuse to discuss the spouse at all and redirect to an unrelated topic</button>
-        </div>
-        <div class="q-result" data-explain="Clients will make the problem about other people. The rule is: other people are often part of it, but you can't change them, and neither can the client. Change has to start with the client, and it may or may not change the other person's behaviour in response. If not, that's where boundaries and standards come in."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 7</span>
-        <p class="q-text">In the Coach step, why does the coach say "I could be completely off with this, but I'm wondering..." instead of stating the pattern directly?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It's a legal disclaimer to protect the coach from liability</button>
-          <button class="opt" data-opt="B">B) It's dropping a breadcrumb, not a verdict. A hedged, curious offer keeps the client's guard down enough to consider it, and lets the coach stay open to being wrong and test the reaction</button>
-          <button class="opt" data-opt="C">C) Coaches are required to always sound uncertain regardless of confidence</button>
-          <button class="opt" data-opt="D">D) It fills time while the coach decides what to say next</button>
-        </div>
-        <div class="q-result" data-explain="A good coach doesn't take the ball and say 'dribble like this' -- they ask what the player thinks they're doing wrong. Same here: the hypothesis is offered as a hedged guess (a breadcrumb), then tested by watching how the client reacts, because the coach has to stay genuinely open to being wrong."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 8</span>
-        <p class="q-text">What is the White Pawn Principle used for in the Homework step?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Teaching the client to wait for the other person to change first</button>
-          <button class="opt" data-opt="B">B) A breathing technique used at the start of every session</button>
-          <button class="opt" data-opt="C">C) The client moves first, like white in chess. They change their own response (e.g. noticing and thanking small effort instead of nagging) before waiting for the other person to change</button>
-          <button class="opt" data-opt="D">D) A way to assess which of the five core problems is active</button>
-        </div>
-        <div class="q-result" data-explain="White always moves first in chess. The White Pawn Principle has the client make the first move in their own behaviour change (e.g. thanking any small effort instead of nagging about the dishes), rather than waiting on the other person to change."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="D">
-        <span class="q-num">Question 9</span>
-        <p class="q-text">After a client tries the White Pawn move and their spouse doesn't change at all, even gets defensive, what does the model say this is for?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Proof the White Pawn Principle failed and should be abandoned</button>
-          <button class="opt" data-opt="B">B) A sign the client should give up and disengage entirely</button>
-          <button class="opt" data-opt="C">C) Evidence the coach misdiagnosed the pattern in the Assess step</button>
-          <button class="opt" data-opt="D">D) This is exactly where boundaries, standards, and taking care of self come in. The client still makes their own change regardless of whether the other person meets them there</button>
-        </div>
-        <div class="q-result" data-explain="Both outcomes of the White Pawn move are useful. If the spouse doesn't change, that's the entry point for teaching boundaries and standards, so the client's own change doesn't depend on the other person responding."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 10</span>
-        <p class="q-text">What's always part of the homework, on top of whatever is specific to that session?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) A written journal entry submitted before the next call</button>
-          <button class="opt" data-opt="B">B) BRN classes and story circles / discussion circles, as a standing default</button>
-          <button class="opt" data-opt="C">C) A 1:1 follow-up call with a second coach</button>
-          <button class="opt" data-opt="D">D) Nothing. Homework is fully custom to each session with no defaults</button>
-        </div>
-        <div class="q-result" data-explain="On top of the session-specific action, the default homework is always to keep attending BRN (Belief Repatterning and Neuroplasticity) classes and story circles / discussion circles."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 11</span>
-        <p class="q-text">Why does NLH insist coaches keep their own intuitive style and interests alongside the taught frameworks, rather than teaching pure technique?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Frameworks alone are too rigid to apply to real client situations</button>
-          <button class="opt" data-opt="B">B) It gives coaches something to differentiate their marketing with</button>
-          <button class="opt" data-opt="C">C) A client's essential self is matched to the coach's unique voice and experience. The same content lands differently depending on who delivers it, and losing intuition to over-reliance on framework loses that connection</button>
-          <button class="opt" data-opt="D">D) It keeps coaching sessions more varied and interesting for the coach</button>
-        </div>
-        <div class="q-result" data-explain="The module welcome makes this explicit: two coaches can teach the identical content and a given client can only hear it from one of them, because the coach's essential is matched to theirs. Over-adherence to frameworks costs the connection that makes the content land."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 12</span>
-        <p class="q-text">On the science-philosophy-art continuum, where does philosophy sit, and why?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) On the art end, because philosophy is inherently intuitive rather than logical</button>
-          <button class="opt" data-opt="B">B) In the middle. It anchors the measurable science to a guiding worldview, without which science becomes isolated technique-following</button>
-          <button class="opt" data-opt="C">C) On the science end, because it is the most rigorously defined layer</button>
-          <button class="opt" data-opt="D">D) Philosophy isn't part of the continuum. Only science and art are</button>
-        </div>
-        <div class="q-result" data-explain="Science gives measurable tools, art gives intuition, and philosophy sits between them, anchoring the science so it points somewhere and evolving as understanding deepens."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 13</span>
-        <p class="q-text">Why does the SUG model deliberately ask participants to name a "gift" in their struggle, even though most people don't see one at first?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It keeps the circle upbeat and prevents the session from becoming too heavy</button>
-          <button class="opt" data-opt="B">B) It gives the facilitator something positive to close on</button>
-          <button class="opt" data-opt="C">C) Retelling the story under this new frame is a reconsolidation event. Naming a gift changes how the memory is held, not just how it's narrated</button>
-          <button class="opt" data-opt="D">D) It filters out participants who aren't ready to do the deeper work</button>
-        </div>
-        <div class="q-result" data-explain="Telling the story retrieves the memory and makes it labile. Prompting a gift means the story is re-encoded with a new frame while it is changeable, which is the same reconsolidation mechanism the protocols use, delivered through witnessing."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 14</span>
-        <p class="q-text">A participant shares their story, then asks the facilitator directly for advice on what to do next. What's the correct move?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Give a brief piece of coaching, since they asked directly</button>
-          <button class="opt" data-opt="B">B) Name that this isn't a coaching or advice space, acknowledge the frustration, and let the story stand as told. Troubleshooting happens elsewhere</button>
-          <button class="opt" data-opt="C">C) Redirect the question to the group and let another participant coach them instead</button>
-          <button class="opt" data-opt="D">D) End the circle early since the format has broken down</button>
-        </div>
-        <div class="q-result" data-explain="The circle's ground rule is no coaching and no advice, even on request. The healing mechanism is being witnessed in the authentic telling, and coaching would break that container. The scripted line acknowledges the frustration and defers troubleshooting."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 15</span>
-        <p class="q-text">In a story circle you are explicitly not coaching. What are the two things you're actually doing?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Diagnosing the client's pattern and prescribing a practice</button>
-          <button class="opt" data-opt="B">B) Facilitating a conversation (putting a topic in the room and letting people think aloud without interruption) or facilitating a witnessing (people tell their SUG and are witnessed in the telling)</button>
-          <button class="opt" data-opt="C">C) Teaching the framework, then testing whether people understood it</button>
-          <button class="opt" data-opt="D">D) Running a lighter-touch version of group coaching</button>
-        </div>
-        <div class="q-result" data-explain="Neither is coaching. A conversation is a topic put in the room plus uninterrupted sharing, closed with 'does that remind anyone of anything?'. A witnessing is the story circle proper: people tell their SUG and are witnessed. You hold the space and keep time; you do not respond with coaching."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 16</span>
-        <p class="q-text">People show up to a circle but no one wants to share. What are the sanctioned back-pocket moves?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) End the circle early. It can't run without volunteers</button>
-          <button class="opt" data-opt="B">B) Call on people by name until someone talks</button>
-          <button class="opt" data-opt="C">C) Share your own SUG, do a little BEEP breath work, or turn it into a journalling round (10 min struggle, 5 min understanding, 3 min gifts), then re-invite. An allegory, proverb or movie scene can also open it as a conversation</button>
-          <button class="opt" data-opt="D">D) Switch the session into one-on-one coaching</button>
-        </div>
-        <div class="q-result" data-explain="You can't assume or force people to share, so a circle can legitimately become a journalling session or a conversation. Fallbacks: share your own story, BEEP, journal the SUG on set timings, or open with an allegory, proverb or movie scene, then re-invite sharing."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 17</span>
-        <p class="q-text">Why does NLH treat telling one's story as a genuine change mechanism, not just sharing for its own sake?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It builds community bonds that improve program retention</button>
-          <button class="opt" data-opt="B">B) MUD is made of story: the stories we tell are the mud we hold, and that determines identity and beliefs. Telling the story authentically and being witnessed changes how it's held</button>
-          <button class="opt" data-opt="C">C) It gives the coach raw material to coach on afterwards</button>
-          <button class="opt" data-opt="D">D) Talking a problem through always lowers stress</button>
-        </div>
-        <div class="q-result" data-explain="MUD (misguided unconscious decisions) is made of story, and the stories we hold determine identity and beliefs. In the authentic telling of the story of struggle, witnessed by the group, the memory is labile and re-encoded. That is why story is the mechanism, not a soft add-on."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 18</span>
-        <p class="q-text">Why does hedged language ("I could be wrong, correct me, but I wonder...") work better than a direct assertion ("here's your pattern") when naming a client's pattern?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It sounds more polite and professional</button>
-          <button class="opt" data-opt="B">B) A direct assertion triggers shame walls and defensiveness; hedged language keeps the client's threat-detection calm enough to actually consider the idea instead of guarding against it</button>
-          <button class="opt" data-opt="C">C) It protects the coach from being wrong in front of the client</button>
-          <button class="opt" data-opt="D">D) It slows the session down enough to fill the allotted coaching time</button>
-        </div>
-        <div class="q-result" data-explain="'Maybe' opens an exploratory brain state instead of a defensive one. The pattern lands as a breadcrumb the client can pick up or push back on, and the door stays open either way. A flat assertion closes it."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 19</span>
-        <p class="q-text">What are the Human Rule and Empathy Rule designed to establish before any pattern work starts?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) That the coach has personally experienced the exact same trauma as the client</button>
-          <button class="opt" data-opt="B">B) That the session has a clear time limit and structure</button>
-          <button class="opt" data-opt="C">C) Normalisation and felt understanding. The client isn't alone and isn't crazy, which builds trust and rapport quickly, before any exploratory or pattern work begins</button>
-          <button class="opt" data-opt="D">D) That the client's problem is more common and less serious than they think</button>
-        </div>
-        <div class="q-result" data-explain="The Human Rule normalises (every human suffers, you're not a broken case). The Empathy Rule gives felt understanding without claiming shared experience. Only after both land does the Curious Detective offer the pattern as a hedged guess."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 20</span>
-        <p class="q-text">What belief underpins the Curious Detective move, and how does the coach act on it?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) That clients hide the real problem, so the coach interrogates until it surfaces</button>
-          <button class="opt" data-opt="B">B) That the coach already knows the pattern and is steering the client to admit it</button>
-          <button class="opt" data-opt="C">C) That whatever the client is going through is useful. A lesson is buried in every difficulty, so the coach silently hunts the pattern to break but never announces it, playing the questioning detective instead</button>
-          <button class="opt" data-opt="D">D) That naming the pattern directly is fine once enough rapport is built</button>
-        </div>
-        <div class="q-result" data-explain="The premise is that it's all useful. A lesson or piece of wisdom is buried in every trauma, drama and difficulty. So the coach silently looks for the pattern that needs to break, but never says 'here's your pattern.' They stay in the curious, questioning detective role and let the client try the idea on."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 21</span>
-        <p class="q-text">Dimensionalisation of consciousness (parts work) belongs to which phase of the work, and what is it fundamentally for?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) The Retrain phase. It builds new behavioural reps through repetition</button>
-          <button class="opt" data-opt="B">B) The Rewire phase. It discharges stored emotional charge through activation and intensity</button>
-          <button class="opt" data-opt="C">C) The Rewrite phase. It's a perception tool. You meet an aspect of self as a separate entity you can dialogue with and integrate, so you're in relationship with it rather than fused to it</button>
-          <button class="opt" data-opt="D">D) The assessment phase. It maps which of the Eight Doorways to use before any deeper work</button>
-        </div>
-        <div class="q-result" data-explain="It's explicitly named as a Rewrite-phase perception tool. Dimensionalising an aspect of self (a past self, a body part, a pattern) shifts the client from being fused with it to being in relationship with it, which is what lets the story be rewritten."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 22</span>
-        <p class="q-text">In the integration meditation, after a past self (child, teen, or young adult) has dialogued and gone to its safe place, what happens next?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) The client writes the memory down as a homework assignment for the next session</button>
-          <button class="opt" data-opt="B">B) The Next Level / wise self is called in, greets the part, and integrates it into the body. The loop is repeated three times across child, teen and young adult</button>
-          <button class="opt" data-opt="C">C) The coach interprets the pattern and names it directly for the client</button>
-          <button class="opt" data-opt="D">D) The client moves straight to the next self without integrating the previous one</button>
-        </div>
-        <div class="q-result" data-explain="The wise / current self greets each part in its safe place and integrates it into the body, and the whole loop runs three times. The point is to get the nervous system to respond in a new way to each past self."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 23</span>
-        <p class="q-text">What distinguishes parts work from BEEP as a Rewrite tool?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Parts work is written and BEEP is spoken aloud</button>
-          <button class="opt" data-opt="B">B) Parts work is controlled and soothing, safely revisiting places a person normally never dwells in. BEEP is sympathetic: intensity followed by relaxation, working with emotions and memories</button>
-          <button class="opt" data-opt="C">C) Parts work is for the body and BEEP is only for the mind</button>
-          <button class="opt" data-opt="D">D) There's no real difference. They're two names for the same protocol</button>
-        </div>
-        <div class="q-result" data-explain="Parts work sits at the calm, controlled end (relaxing music, soothing voice, safe revisiting of past selves). BEEP is the activating tool, bringing up a sympathetic state, an intensity followed by relaxation, and works mainly with emotions and memories."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 24</span>
-        <p class="q-text">Dimensionalising uses the idea of doorways. Which of these is NOT one of the doorways named in the video?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) A pattern, such as the overeating self or the self-soothing self</button>
-          <button class="opt" data-opt="B">B) An illness or symptom, such as a cancer or a painful hip</button>
-          <button class="opt" data-opt="C">C) The client's astrological chart and birth date</button>
-          <button class="opt" data-opt="D">D) A physical part, down to the organ or cell</button>
-        </div>
-        <div class="q-result" data-explain="The doorways named are parts (historical selves), emotions, physical parts, patterns, sensations, and illnesses / signs and symptoms. Each is a different way into the subconscious. Parts work and IFS are just two of these doors."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 25</span>
-        <p class="q-text">In the anthropomorphising method you ask location, texture, temperature, colour, then personality. Why is that sequence not the actual goal?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It is the goal. A full physical description is the finished outcome of the exercise</button>
-          <button class="opt" data-opt="B">B) The physical questions are the on-ramp. What you're actually after is the message the part carries and the lesson in it, because the subconscious holds information the conscious mind can't reach</button>
-          <button class="opt" data-opt="C">C) The description exists only to distract the client while the coach analyses them</button>
-          <button class="opt" data-opt="D">D) The colour and temperature are the diagnosis and no further questions are needed</button>
-        </div>
-        <div class="q-result" data-explain="Location, texture, temperature and colour turn the experience into an entity the client can relate to. But the point of anthropomorphising is the payload: what's it saying, what message does it have, what's the lesson. That's the subconscious material that would never surface otherwise."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="A">
-        <span class="q-num">Question 26</span>
-        <p class="q-text">A coach suddenly has the client count backward from 40 by twos at the emotional peak. What is the underlying reason this can change how they hold a painful ankle?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Pain, stories and memories are predictions made by the nervous system, not fixed facts. Dropping a cognitive challenge into a subconscious state disrupts the prediction, and if you change the prediction you change how the body holds it</button>
-          <button class="opt" data-opt="B">B) Counting distracts the client so they simply forget the pain was there</button>
-          <button class="opt" data-opt="C">C) Arithmetic burns the calories that were feeding the inflammation in the ankle</button>
-          <button class="opt" data-opt="D">D) The numbers reset the client's identity set point back to zero</button>
-        </div>
-        <div class="q-result" data-explain="The mechanism is prediction. Pain, stories and memories are predictions by the nervous system. A cognitive challenge delivered without warning in a deep subconscious state interferes with the prediction, which changes the way the ankle is held. This is one example of a reconsolidation technique, which is its own separate education."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 27</span>
-        <p class="q-text">What is the core reason group coaching is framed as beating 1:1?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It's cheaper to run and fits more paying clients into the same hour</button>
-          <button class="opt" data-opt="B">B) It lets the coach avoid the harder work of deep individual sessions</button>
-          <button class="opt" data-opt="C">C) Compound learning. Coaching a few people live still coaches everyone, because human patterns overlap so each rep lands for multiple people. Coach 6 of 10 and all 10 leave with 6 viewpoints and plans</button>
-          <button class="opt" data-opt="D">D) Group pressure forces faster breakthroughs than a client would reach alone</button>
-        </div>
-        <div class="q-result" data-explain="The stated reason is compound learning. Because human patterns overlap, every live coaching rep lands for more than the one person being coached. Coach 6 of 10 and all 10 receive 6 viewpoints and 6 plans. The goal is unchanged: shift perception to change identity and behaviour."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 28</span>
-        <p class="q-text">A client says: "I keep numbing out on screens and porn at night, and I feel like I'm failing my marriage." Using the 4 Ps, which is the Problem and which is the Pattern?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) The screens and porn are the Problem; the marriage is the Pattern</button>
-          <button class="opt" data-opt="B">B) The Problem is the struggle underneath (a stuck need in Relationships or Growth &amp; Mattering); the Pattern is the repeated coping response, here Soothing (screens, sex)</button>
-          <button class="opt" data-opt="C">C) Both are Patterns, and there is no Problem until the coach assigns one</button>
-          <button class="opt" data-opt="D">D) Feeling like a failure is the Plan; the numbing is the Possibility</button>
-        </div>
-        <div class="q-result" data-explain="The Problem is the recurrent struggle or stuck need (Relationships, or Growth & Mattering). The Pattern is the person's repeated coping response to it, which here is the Soothing cluster (food, alcohol, sex, screens). The coach's job is to separate the two, then reveal the Possibilities that bridge to a Plan."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="A">
-        <span class="q-num">Question 29</span>
-        <p class="q-text">In a 60-minute group, no one volunteers to be coached. What does the cheat sheet say to do?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Make the opener the main event: run breathwork or journaling on the 4 Ps, then invite 1 or 2 brief shares</button>
-          <button class="opt" data-opt="B">B) Extend the session past 60 minutes until someone is willing to share</button>
-          <button class="opt" data-opt="C">C) Call on people by name whether they want to share or not</button>
-          <button class="opt" data-opt="D">D) End the session early and refund the participants</button>
-        </div>
-        <div class="q-result" data-explain="The opener is designed to double as the fallback. If no one volunteers, the breathwork or 4 Ps journaling becomes the main event, and you then invite one or two brief shares. The 60-minute boundary still holds, because clarity and clean timing are what keep the container safe."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 30</span>
-        <p class="q-text">Jane is coached and doesn't seem to get the insight. Right after her, you coach Jeff on an overlapping pattern, and Jane suddenly gets it. What is actually happening?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Jeff's coaching was simply clearer, so it landed better than Jane's own session did</button>
-          <button class="opt" data-opt="B">B) Jane can't be objective about her own struggle (emotional blocks up), but watching Jeff lets her try on being less objective. She escapes her own identity by listening, and the same insight lands secondhand</button>
-          <button class="opt" data-opt="C">C) Jane was pretending not to understand the first time to get more airtime</button>
-          <button class="opt" data-opt="D">D) Repetition of the 4 Ps format is what did it, not anything about Jeff's specific content</button>
-        </div>
-        <div class="q-result" data-explain="This is the actual mechanism behind compound learning, not just overlap in content. Being inside your own problem keeps you subjective. Watching someone else's overlapping struggle gets coached lets you try on their situation without your own emotional blocks in the way."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 31</span>
-        <p class="q-text">A volunteer is running long and you need to move the session along. Why can you say "let's get to the plan" without it landing as a slight?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Because as the coach you have authority to cut anyone off at any time</button>
-          <button class="opt" data-opt="B">B) It can't be avoided. Some participants will always feel shortchanged when time runs out</button>
-          <button class="opt" data-opt="C">C) Psychological license. Everyone arrived having done the 4 Ps pre-work and knows you'll run the same format on them, so jumping or skipping steps reads as following the shared container, not as an arbitrary cut-off</button>
-          <button class="opt" data-opt="D">D) Because the plan step is optional, so skipping to it isn't really cutting anything short</button>
-        </div>
-        <div class="q-result" data-explain="The pre-session email sets the 4 Ps up front. Because the client already agreed to that structure, moving through it briskly (or skipping ahead under time pressure) doesn't feel like being shut down, it feels like the coach running the format everyone signed up for."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 32</span>
-        <p class="q-text">What actually happens to a memory, neuroscientifically, the moment it's recalled and replayed in the mind?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) It gets permanently erased once the emotional charge fades</button>
-          <button class="opt" data-opt="B">B) Nothing changes; memories are fixed once formed and recall is just playback</button>
-          <button class="opt" data-opt="C">C) It becomes labile, changeable and flexible for as long as it's held active, which is what makes reconsolidation techniques possible</button>
-          <button class="opt" data-opt="D">D) It gets duplicated into a second, separate memory trace</button>
-        </div>
-        <div class="q-result" data-explain="This is the core neuroscience the whole session is built on. Recalling and replaying a memory makes it labile, open to change, for as long as it stays active in the mind. That window is what every one of the six techniques works inside."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 33</span>
-        <p class="q-text">In the mud/clay/cement metaphor, what role do emotions play?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Emotions are the water that keeps mud soft and easy to reshape</button>
-          <button class="opt" data-opt="B">B) Emotions are the rebar. They're what strengthens and hardens the mud (the stories, judgements and beliefs) in the first place</button>
-          <button class="opt" data-opt="C">C) Emotions are irrelevant to how solid or soft the mud is</button>
-          <button class="opt" data-opt="D">D) Emotions only form after the mud has already hardened, never before</button>
-        </div>
-        <div class="q-result" data-explain="MUD is stories, judgements and beliefs that have solidified anywhere from watery to cement-hard. Emotion is described as the rebar: it's what strengthens and hardens that mud, which is why bringing up the emotion attached to a memory is necessary, not incidental, to loosening it."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="A">
-        <span class="q-num">Question 34</span>
-        <p class="q-text">A client can't recall any specific memory tied to their pattern. Does memory reconsolidation still apply?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Yes. Any of the six techniques can run on a sensation, a pattern, or a sign/symptom instead of an episodic memory, since what's being reconsolidated is whatever is currently holding the mud in place</button>
-          <button class="opt" data-opt="B">B) No, an actual episodic memory is required for every technique to work</button>
-          <button class="opt" data-opt="C">C) Only future pacing works without a memory; the other five require one</button>
-          <button class="opt" data-opt="D">D) The coach should manufacture a plausible memory for the client to use instead</button>
-        </div>
-        <div class="q-result" data-explain="A memory isn't required. Sensations (a shoulder issue), patterns (money issues), or signs and symptoms (headaches, an illness) all work as the material to bring up and reconsolidate, using the exact same six techniques."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="C">
-        <span class="q-num">Question 35</span>
-        <p class="q-text">In Dual Process (Dual Task) Interference, why does the coach introduce the cognitive task as a surprise, mid-memory, rather than announcing it upfront?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Surprise isn't part of the technique; it's just a stylistic choice</button>
-          <button class="opt" data-opt="B">B) Announcing it in advance would violate informed consent requirements</button>
-          <button class="opt" data-opt="C">C) The interference has to land while the emotional charge and the memory are both fully active, so the two tasks (emotional and cognitive) compete for the same mental resources at once</button>
-          <button class="opt" data-opt="D">D) It's a test of the client's ability to multitask under stress</button>
-        </div>
-        <div class="q-result" data-explain="The technique's mechanism is the dual task: an emotional task and a cognitive/logical task running at the same time, right in the middle of the charged memory. That collision is what drives the charge rating down over repeated rounds."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="B">
-        <span class="q-num">Question 36</span>
-        <p class="q-text">Why is eye-movement bilateral stimulation (the EMDR style) sometimes avoided when a technique also requires visualisation?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Eye movements are considered outdated compared to tapping or havening</button>
-          <button class="opt" data-opt="B">B) Most people are visually dominant, so moving the eyes competes with and interferes with the image they're meant to be holding in mind</button>
-          <button class="opt" data-opt="C">C) Eye movements only work for physical sensations, never for memories</button>
-          <button class="opt" data-opt="D">D) There's no real reason; it's purely a personal style preference with no functional basis</button>
-        </div>
-        <div class="q-result" data-explain="Cross-body movement plus stroking is preferred over eye-movement EMDR specifically when the technique needs to run alongside visualisation, because eye movement competes with the visual channel most people rely on to hold an image in mind."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="D">
-        <span class="q-num">Question 37</span>
-        <p class="q-text">In Imagery Rescripting, a client replays a past assault and this time fights off the attacker in the visualisation. What is this reconsolidating?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) The factual record of what happened, so the client believes it occurred differently</button>
-          <button class="opt" data-opt="B">B) Nothing real; it's a comforting fantasy with no neurological effect</button>
-          <button class="opt" data-opt="C">C) The client's ability to physically defend themselves in a future incident</button>
-          <button class="opt" data-opt="D">D) How the brain holds the memory emotionally: inserting a different action reconsolidates it around resilience, resolve and strength instead of helplessness</button>
-        </div>
-        <div class="q-result" data-explain="The point isn't rewriting facts, it's changing how the nervous system holds the memory. Imagining a different response (fighting back, standing up) reconsolidates the memory around 'I was resilient, I had resolve' rather than the original helplessness."></div>
-      </div>
-
-      <div class="quiz-q" data-answer="A">
-        <span class="q-num">Question 38</span>
-        <p class="q-text">Before running any of the six reconsolidation techniques, what does "resourcing" the client mean?</p>
-        <div class="options">
-          <button class="opt" data-opt="A">A) Grounding them in present safety first ("it is not then, it is now"), and offering a safe place to return to, before bringing up the charged material</button>
-          <button class="opt" data-opt="B">B) Giving them a written handout explaining the science before starting</button>
-          <button class="opt" data-opt="C">C) Confirming they've already tried and failed at therapy before attempting this</button>
-          <button class="opt" data-opt="D">D) Billing and scheduling the session properly in advance</button>
-        </div>
-        <div class="q-result" data-explain="Resourcing means orienting the client to present safety before opening anything up: reminding them where and when they actually are, that they're safe with you, and giving them a real or created safe place to return to at any point during the work."></div>
-      </div>
-
-    </section>
+    
 
 
     <!-- FOOTER -->
