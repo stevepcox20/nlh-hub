@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Coaching Lab 01 &middot; Don't Go Intellectual &middot; NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .page-wrap { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+
+  .sidebar {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    background: var(--surface); border-right: 1px solid var(--border);
+    padding: 24px 0; display: flex; flex-direction: column;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo { padding: 0 18px 20px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .sidebar-logo .belt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--peach); font-weight: 600; display: block; margin-bottom: 4px;
+  }
+  .sidebar-logo .title { font-size: 13px; font-weight: 700; color: var(--forest); line-height: 1.3; }
+  .sidebar-logo .back-link {
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
+    font-size: 11px; color: var(--text-muted); text-decoration: none; font-weight: 500;
+  }
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+  .sidebar-nav li a {
+    display: block; padding: 7px 18px; font-size: 12px; font-weight: 500;
+    color: var(--text-muted); text-decoration: none; border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s; line-height: 1.4;
+  }
+  .sidebar-nav li a:hover { color: var(--forest); background: var(--forest-tint); border-left-color: var(--peach); }
+
+  .main { min-width: 0; }
+
+  .hero {
+    background: var(--forest); padding: 60px 52px 52px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -80px; right: -80px; width: 360px; height: 360px;
+    border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--peach-bright); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::after { content: ''; display: block; height: 1px; width: 36px; background: var(--peach-bright); opacity: 0.6; }
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px); font-weight: 800; line-height: 1.1; color: #ffffff;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--peach-bright); font-weight: 700; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.75); max-width: 620px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-stats { display: flex; gap: 36px; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; gap: 3px; }
+  .hero-stat .num { font-size: 28px; font-weight: 800; color: var(--peach-bright); line-height: 1; letter-spacing: -0.02em; }
+  .hero-stat .label { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+
+  .section { padding: 48px 52px; border-bottom: 1px solid var(--border); }
+  .section-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 32px; }
+  .section-num {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--peach);
+    letter-spacing: 0.1em; margin-top: 7px; flex-shrink: 0; width: 26px;
+  }
+  .section-title { font-size: 26px; font-weight: 800; color: var(--forest); line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-subtitle { font-size: 13px; color: var(--text-muted); }
+
+  .section.section-admin { padding: 28px 52px; background: var(--surface-2); }
+  .section-admin .section-title { font-size: 18px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; }
+  .card h3 { font-size: 18px; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
+  .card h4 {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--forest); margin-bottom: 8px; margin-top: 20px; opacity: 0.7;
+  }
+  .card h4:first-child { margin-top: 0; }
+  .card p { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 10px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul, .card ol { padding-left: 20px; margin-bottom: 10px; }
+  .card li { font-size: 14px; line-height: 1.65; color: var(--text); margin-bottom: 5px; }
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+  .card-accent { background: var(--forest-faint); border-color: var(--border-strong); border-left: 3px solid var(--peach); }
+
+  .quote-block {
+    background: var(--forest-faint); border-left: 3px solid var(--forest); padding: 18px 22px;
+    margin-bottom: 14px; border-radius: 0 6px 6px 0;
+  }
+  .quote-block p { font-size: 16px; font-weight: 600; font-style: italic; color: var(--forest); line-height: 1.55; margin: 0; }
+
+  .script-block { background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 6px; padding: 18px 22px; margin-bottom: 14px; }
+  .script-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--peach); font-weight: 700; margin-bottom: 10px; display: block;
+  }
+  .script-block p { font-size: 13.5px; line-height: 1.7; color: var(--text); margin: 0 0 8px; }
+  .script-block p:last-child { margin-bottom: 0; }
+  .script-line { margin-bottom: 6px; }
+  .script-line .who { font-weight: 700; color: var(--forest); }
+  .script-line .who.client { color: var(--peach); }
+
+  .callout { background: var(--peach-faint); border: 1px solid rgba(232,86,63,0.22); border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .callout p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.6; }
+  .callout strong { color: var(--peach); font-weight: 700; }
+  .callout-forest { background: var(--forest-faint); border-color: var(--border-strong); }
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  .step-list { list-style: none; padding: 0; }
+  .step-list li {
+    display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border);
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    font-family: var(--mono); font-size: 13px; font-weight: 800; color: #fff; background: var(--peach);
+    width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-body h4 { font-family: 'Figtree', sans-serif; font-size: 14.5px; font-weight: 700; color: var(--forest); text-transform: none; letter-spacing: 0; opacity: 1; margin: 0 0 4px; }
+  .step-body p { font-size: 13.5px; color: var(--text); line-height: 1.6; margin: 0; }
+
+  .diagram-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+  .diagram-title {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest);
+    font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; opacity: 0.7;
+  }
+  .diagram-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  details.transcript-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; }
+  details.transcript-toggle summary {
+    cursor: pointer; padding: 16px 20px; font-weight: 700; color: var(--forest); font-size: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  details.transcript-toggle summary::after { content: '+'; font-size: 18px; color: var(--peach); }
+  details.transcript-toggle[open] summary::after { content: '\2212'; }
+  details.transcript-toggle .transcript-body { padding: 4px 20px 20px; }
+
+  /* QUIZ */
+  .quiz-intro { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+  .quiz-q { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px 26px; margin-bottom: 16px; }
+  .quiz-q .q-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); font-weight: 700; display: block; margin-bottom: 8px; }
+  .quiz-q .q-text { font-size: 15px; font-weight: 700; color: var(--forest); margin-bottom: 14px; line-height: 1.5; }
+  .quiz-q .options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-q .opt {
+    text-align: left; background: var(--ground); border: 1px solid var(--border); border-radius: 6px; padding: 11px 15px;
+    font-family: 'Figtree', sans-serif; font-size: 13.5px; line-height: 1.5; color: var(--text); cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+  .quiz-q .q-result { margin-top: 12px; font-size: 13px; line-height: 1.6; display: none; padding: 12px 16px; border-radius: 6px; }
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  .chip-nav { list-style: none; }
+  .chip-nav li { margin-bottom: 8px; }
+  .chip-nav a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--ink); font-size: 12.5px; font-weight: 600;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .chip-nav a:hover { border-color: var(--border-strong); background: #fff; }
+  .chip-num {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; color: #fff;
+    background: var(--forest); width: 20px; height: 20px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .chip-num.admin { background: var(--text-muted); }
+
+  .site-footer { background: var(--surface); padding: 24px 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+  .site-footer a { font-size: 12px; color: var(--peach); text-decoration: none; font-weight: 600; }
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">Coaching Labs &middot; Session 01</span>
+      <span class="title">Don't Go Intellectual</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <ul class="chip-nav">
+      <li><a href="#s1"><span class="chip-num">01</span> What This Is</a></li>
+      <li><a href="#s0admin"><span class="chip-num admin">i</span> Housekeeping (admin)</a></li>
+      <li><a href="#s2"><span class="chip-num">02</span> Don't Go Intellectual</a></li>
+      <li><a href="#s3"><span class="chip-num">03</span> Get Into The Work Fast</a></li>
+      <li><a href="#s4"><span class="chip-num">04</span> Two Tools: Breath &amp; Beep</a></li>
+      <li><a href="#s5"><span class="chip-num">05</span> Catching The Emotion</a></li>
+      <li><a href="#s6"><span class="chip-num">06</span> Breadcrumbs &amp; Reconsolidation</a></li>
+      <li><a href="#s7"><span class="chip-num">07</span> Live Demo: Working The Thread</a></li>
+      <li><a href="#s8"><span class="chip-num">08</span> Debrief: What Actually Happened</a></li>
+      <li><a href="#s9"><span class="chip-num">09</span> When A Client Is Stuck</a></li>
+      <li><a href="#s10"><span class="chip-num">10</span> Coach Self-Regulation</a></li>
+      <li><a href="#s11"><span class="chip-num">11</span> Full Transcript</a></li>
+      <li><a href="#quiz-lab"><span class="chip-num">Q</span> Comprehension Check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Live Coaching Lab &middot; Unscripted, Debriefed In Real Time</div>
+      <h1>Find The Charge. <em>Don't Talk About It.</em></h1>
+      <p class="hero-desc">A live NLH Coaching Lab: Jade lectures on a mistake he's seeing across the group, runs an unrehearsed 1-on-1 demo on a volunteer (attorney anxiety tracing back to a father wound), then the whole group debriefs it together &mdash; including Jade naming his own misses. Closes with a self-regulation lecture on crying with clients, discharge, and self-disclosure.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">2</span><span class="label">Coach Tools</span></div>
+        <div class="hero-stat"><span class="num">8</span><span class="label">Live Demo Moves</span></div>
+        <div class="hero-stat"><span class="num">8</span><span class="label">Quiz Questions</span></div>
+      </div>
+    </header>
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">What This Is</h2>
+          <p class="section-subtitle">A live training call, not a polished demo.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>Coaching Labs are Jade's live group training calls for NLH-certified coaches. Unlike the <a href="coaching-in-action-not-good-enough.html" style="color:var(--peach);font-weight:600;">Coaching In Action</a> page (one edited public demo with on-screen cards), a Coaching Lab is unscripted: real coaches (Rose, Heather, Lisa, Annalise on this call), a live lecture on a pattern Jade is currently seeing go wrong, an unrehearsed 1-on-1 demo on a volunteer, and a group debrief where Jade names his own misses out loud.</p>
+        <p>This page holds the coaching craft and self-regulation content only. Housekeeping and admin from the call (portal changes, program structure) is kept in its own short section below, separate from the teaching content, since none of it is coaching methodology.</p>
+      </div>
+    </section>
+
+    <section class="section section-admin" id="s0admin">
+      <div class="section-header">
+        <div class="section-num" style="color:var(--text-muted);">i</div>
+        <div>
+          <h2 class="section-title">Housekeeping (admin -- not coaching craft)</h2>
+          <p class="section-subtitle">Kept separate on purpose. Skip this section for the actual training content.</p>
+        </div>
+      </div>
+      <div class="card">
+        <ul>
+          <li>GoHighLevel portal migration in progress (design only, function unchanged). Known bug: some completed lessons and unrelated content showed as locked after the migration &mdash; report with screenshots.</li>
+          <li>Full Next Level Human site rebuild going live imminently (new white/red design). A link back to this portal will be added.</li>
+          <li>Coaching Lab has replaced 1-on-1 coaching calls as the certification pathway. Architects can still be hired at a discounted rate.</li>
+          <li>Post-January restructure: Architect portal access is retained permanently. Mastermind unbundles into its own paid tier ($5K held, capped numbers, two live rooms/year), with licensing extended to Jade's internal AI tools (meditation generator, Core 4, Pre-coaching AI).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">Don't Go Intellectual</h2>
+          <p class="section-subtitle">The regression Jade opened the lecture with.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the lecture</span>
+        <p class="script-line"><span class="who">Jade:</span> "If you find the emotional charge, that's everything that you've been looking for. And if you start going intellectual, you completely bypassed it."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The tell</h3>
+        <p>Client gets emotional &rarr; coach asks a deeper question about it ("Jade, tell me more about that"). It's the natural instinct from therapy and normal coaching, and it's the wrong move here. Therapy is valuable, but it's not built to get into the body and the subconscious the way this work needs to. Once you spot a charge, the move is to work it somatically, not to talk about it.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">Get Into The Work Fast</h2>
+          <p class="section-subtitle">Skip the catch-up. Open with the real question.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the lecture</span>
+        <p class="script-line"><span class="who">Jade:</span> "If there's something I could snap my fingers and make it disappear right now in this moment, what is going on for you? That's how you get into the work deeply."</p>
+      </div>
+      <div class="card">
+        <p>Skip "how are you / how'd things go since last time." None of that is wrong, exactly &mdash; it's just intellectual processing again, and this work is only one-third Retrain (the lived repetition). The other two-thirds, Rewrite and Rewire, need the session time. With an established long-term client there's room for a brief connection point first; in a short Coaching Lab session, go straight in.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">Two Tools: Breath &amp; Beep</h2>
+          <p class="section-subtitle">To drop someone into a subconscious state quickly.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h4>Stress / brain breath</h4>
+        <p>20 activating breaths (double inhale) &rarr; 10-second hold &rarr; 5 relaxing breaths. As homework, give it as a count: 20, 10, 5.</p>
+        <h4>11-minute Beep session</h4>
+        <p>Pull this in any time a client is being too intellectual/talky, or hasn't been doing their own between-session work (deeps, deltas, meditations). If they're already doing that work on their own, you usually don't need to force it into the session.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">Catching The Emotion</h2>
+          <p class="section-subtitle">The three-part move, and the somatic signal most coaches miss.</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>"Stay here. Feel this. What's coming up?"</p>
+      </div>
+      <div class="card">
+        <p>Clients will try to move past a feeling the moment it surfaces. Don't let them wriggle away &mdash; the three-part line above holds them there. Closing the eyes when emotion surfaces helps too: it detaches them slightly and pushes them deeper instead of letting them talk their way out.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Watch for movement</h3>
+        <p>Swaying, twitching, a neck snap, involuntary motion &mdash; this is a <em>good</em> sign, not something to settle. It means the client is deep in it. Invite it rather than interrupt it: "Does it want you to move? Let it move through you."</p>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">Breadcrumbs &amp; Reconsolidation</h2>
+          <p class="section-subtitle">Why the coach shouldn't be the one to supply the insight.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p><strong>Drop breadcrumbs early.</strong> Plant an "always be learning" frame in normal conversation before the emotional work starts, so the client is primed to surface their own counterexample once the charge comes up later.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Reconsolidation vs. extinction</h3>
+        <p>If the client surfaces the counterexample themselves, that's a true <strong>reconsolidation event</strong> &mdash; the new story now dominates. If they don't and the coach gives it to them instead, that's only an <strong>extinction/inhibition event</strong>: a competing story sitting alongside the old one, not a full rewrite. Most good coaching gets to extinction and stops there. Most coaching and therapy doesn't even get that far.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">Live Demo: Working The Thread</h2>
+          <p class="section-subtitle">Presenting issue: an unresponsive attorney. Root: a father who made her feel stupid.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the demo</span>
+        <p class="script-line"><span class="who client">Volunteer:</span> "In the last three weeks, he's disappeared on me&hellip; have I been stupid again?"</p>
+        <p class="script-line"><span class="who">Jade:</span> "Tell me about 'disappearing.'"</p>
+        <p class="script-line"><span class="who">Jade:</span> "Where is this familiar? Is there any other place in your life where this happens?"</p>
+        <p class="script-line"><span class="who client">Volunteer:</span> "I could probably tie that back to my father."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The eight moves, narrated live</h3>
+        <ol>
+          <li><strong>Find the thread in her own words</strong> ("disappeared") and reflect it back open-ended rather than asking a leading question.</li>
+          <li><strong>Follow the thread, not every detail</strong> &mdash; her own next line ("been stupid again") is the real material.</li>
+          <li><strong>Battle-test the hypothesis instead of asserting it.</strong> "This could have something to do with your father, may not &mdash; I don't know. What's your intuition?" Never declare it outright; that's "therapising."</li>
+          <li><strong>Once she confirms it herself, go straight to the felt sense</strong> &mdash; location, temperature, texture ("hot," "in the gut").</li>
+          <li><strong>Separate the parts and locate them spatially.</strong> Her "little girl" lived in her gut and throat; her "next-level self" was located outside her body, over her shoulder. Real technique, not incidental detail.</li>
+          <li><strong>Stage the confrontation scene</strong> &mdash; the wounded child and the original figure in a remembered moment, then bring the adult self into the room.</li>
+          <li><strong>Bring it back to the present problem</strong> (the lawyer) and check whether the felt charge has actually shifted.</li>
+          <li><strong>Close with a specific, checkable commitment</strong> tied to the next-level self, not the wounded part: "Is this the little girl's job, or the next-level self's job?"</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <div>
+          <h2 class="section-title">Debrief: What Actually Happened</h2>
+          <p class="section-subtitle">Jade names his own miss, live. Then the group offers three other valid entry points.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">Jade's own debrief</span>
+        <p class="script-line"><span class="who">Jade:</span> "I did not fully get a rewrite that I was trying to get&hellip; notice how she completely avoided the father, which to me is avoiding the lawyer."</p>
+      </div>
+      <div class="card">
+        <p>Jade was steering toward the volunteer standing up to her father directly &mdash; that would have signalled a fuller rewrite. She avoided it, handing the moment to the "little girl" instead of keeping the adult self in charge. That avoidance is itself diagnostic: avoiding the father in the visualisation mirrors avoiding the lawyer in real life. Jade said plainly, on the call, that he probably only landed an extinction/inhibition event, and wasn't confident she'd actually follow through &mdash; the charge wasn't strong enough.</p>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>This is normal, not failure.</strong> Most sessions land here. The point of a Coaching Lab is watching exactly where it stalled, in real time, which sets up what to try differently next session.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>Three other valid entry points (the group debrief)</h3>
+        <ul>
+          <li><strong>Annalise:</strong> would have made the internal somatic connection between the two body locations directly ("what's in the gut that needs to come out through the throat?") instead of jumping back to the intellectual "tell me about this lawyer now."</li>
+          <li><strong>Lisa:</strong> noticed a parallel money/authority story running alongside the father story ("I'm paying $750/hour so they must be smarter than me") &mdash; an equally valid thread to have pulled instead.</li>
+          <li><strong>Heather:</strong> flagged that the lawyer came back into the conversation too fast after the somatic work with the father &mdash; staying in the somatic longer before returning to the presenting problem likely would have worked better.</li>
+        </ul>
+        <p>Many paths lead to the same root. Don't assume your first read is the only right one, and don't feel obligated to circle back to the presenting problem once root work is underway &mdash; it isn't always necessary.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <div>
+          <h2 class="section-title">When A Client Is Stuck</h2>
+          <p class="section-subtitle">Heather's three difficult cases: emotional in-session, but never connecting the dot after.</p>
+        </div>
+      </div>
+      <div class="card card-accent">
+        <h3>Reframe failure first</h3>
+        <p>Regulation/inhibition work is valuable even without a full rewrite. ~3 months in is normal before a coach has a real handle on a client, and even then you're still peeling layers, not "done." Getting assigned the hardest cases is a sign of capability, not a problem &mdash; the actual block to fix is the coach's own perfectionism about every session landing cleanly.</p>
+      </div>
+      <div class="script-block">
+        <span class="script-label">The direct move for a stuck client</span>
+        <p class="script-line"><span class="who">Jade:</span> "We're getting nice emotional movement, but we're not seeing the story yet, and I think it's because you're not doing the classes between sessions. So we're going to start our next few sessions with Beep."</p>
+      </div>
+      <div class="card">
+        <h4>For a client who can't visualise or feel anything at all ("fantasia" block, high armour)</h4>
+        <p>Run the Beep session, then have them <strong>journal by hand for ~10 minutes</strong> (half the session), then discuss the journal together. This puts the surfacing work on the client instead of the coach doing all of it.</p>
+        <h4>Journaling modality hierarchy</h4>
+        <p>Handwriting (best, fullest brain processing) &gt; eyes-closed dictation &gt; typing (worst &mdash; eyes-open, hands-on-keyboard keeps the brain partly checked out).</p>
+      </div>
+    </section>
+
+    <section class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <div>
+          <h2 class="section-title">Coach Self-Regulation</h2>
+          <p class="section-subtitle">Prompted by a coach naming that certain material makes her cry in-session.</p>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p>"You cannot allow that to happen&hellip; part of the therapeutic bond happens from the intention that this person is here to hold this space."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The hard rule: don't cry with a client</h3>
+        <p>Crying pulls the coach out of the therapeutic role. Regulation and appropriateness are the first two lessons in doing emotional work at all. If you know beforehand you're not regulated enough, don't see clients that day &mdash; not a judgment call to push through, a hard stop.</p>
+      </div>
+      <div class="card">
+        <h4>Pre-session anchoring</h4>
+        <p>Fast personal breath work (20/10/5) before going in if not in a good headspace, plus a stated mental frame: <em>"I'm just a vehicle. I will step aside and let whatever needs to come through, come through. This is not me doing this."</em></p>
+        <h4>Post-session discharge</h4>
+        <p>Physically shed the energy afterward rather than carrying it &mdash; Jade's own example was an improvised HAKA-style release (chest, growling, movement) after an especially heavy session. Cited research: exercise helps prevent difficult emotional material from "sticking" the way sitting still does. At minimum, get a workout in after a heavy session.</p>
+        <h4>If emotion does surface in-session</h4>
+        <p>Name and join without collapsing into it: <em>"This is heavy. Let's feel this together."</em> Never "gushing" &mdash; that's the least therapeutic thing you can do. If literal tears surface, name them without owning them: <em>"I'm feeling tears right now. Not sure whose they are."</em></p>
+      </div>
+      <div class="card card-accent">
+        <h3>The self-disclosure test</h3>
+        <p>Before sharing anything personal with a client, ask: "Am I sharing this for me, or for the client's benefit?" Only share if it's for their benefit, keep it contained, and return immediately to their material.</p>
+      </div>
+      <div class="callout">
+        <p><strong>Cautionary evidence, from the client's side:</strong> a client's prior therapist cried with her, and she experienced it as unhelpful &mdash; it put the burden on her to manage the therapist's emotions and made her feel she couldn't be fully vulnerable. Direct evidence for the rule above, from the receiving end.</p>
+      </div>
+      <div class="card">
+        <h4>The "do-it-for-me" client pattern</h4>
+        <p>Some clients unconsciously want the coach to do the emotional/insight work for them. Beep + independent journaling (not coach-led synthesis) is the structural fix &mdash; it hands the reps back to the client instead of the coach absorbing them.</p>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>Who decides if a session worked?</strong> The client does &mdash; not the coach's in-the-room read. A session that felt incomplete to the coach can still have cracked something open that keeps working afterward. Whoever's in the room, saying what they're saying, is enough for the work that's supposed to happen there &mdash; even an apparent miss can still be doing its job.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <div>
+          <h2 class="section-title">Full Transcript</h2>
+          <p class="section-subtitle">Complete session, both parts, as recorded. Housekeeping/admin included for completeness.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>Note:</strong> Speaker labels in the source recording are unreliable (transcription mislabels who's talking). Preserved as-received below &mdash; the sections above correct attribution based on content.</p>
+      </div>
+
+      <details class="transcript-toggle">
+        <summary>Open full transcript</summary>
+        <div class="transcript-body">
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">Full raw transcript (both parts) is preserved in the vault: <em>Resources/NLH - Coaching Lab - Live Session (Shannon 1-on-1 Demo) - Transcript - 2026-09-09 - Part 1.md</em>. Not duplicated in full here to keep this page focused &mdash; the sections above cover every key concept from it. Open the vault file for the verbatim line-by-line record, including the housekeeping discussion, the complete live demo dialogue, and the full self-regulation discussion from Part 2.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="quiz-lab">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">A client gets emotional and the coach asks "tell me more about that." Why is this the wrong move here?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It's rude to ask follow-up questions when someone is upset</button>
+          <button class="opt" data-opt="B">B) It's intellectual processing that bypasses the charge &mdash; more like therapy than the somatic, subconscious work this method needs</button>
+          <button class="opt" data-opt="C">C) It takes too long and wastes session time</button>
+          <button class="opt" data-opt="D">D) It puts the coach in a position of appearing too curious about the client's personal life</button>
+        </div>
+        <div class="q-result" data-explain="Finding the emotional charge IS the target. Asking a deeper question about it intellectually bypasses it completely -- that instinct is trained in from therapy and normal coaching, but it doesn't get into the body and subconscious the way this work needs to."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">What's the difference between a reconsolidation event and an extinction/inhibition event?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) There's no real difference, they're two names for the same outcome</button>
+          <button class="opt" data-opt="B">B) Extinction is permanent, reconsolidation is temporary</button>
+          <button class="opt" data-opt="C">C) Reconsolidation happens when the client surfaces the counterexample themselves and the new story dominates; extinction happens when the coach supplies it, creating a competing story that sits alongside the old one, not a full rewrite</button>
+          <button class="opt" data-opt="D">D) Reconsolidation only applies to childhood memories, extinction applies to adult problems</button>
+        </div>
+        <div class="q-result" data-explain="Wait for the client to surface the counterexample themselves -- that's true reconsolidation. If they don't and the coach gives it to them, that's only extinction/inhibition: most good coaching gets here and stops, which is still valuable but not a full rewrite."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">In the live demo, why does Jade ask "where is this familiar?" instead of saying "this sounds like it's about your father"?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) To battle-test the hypothesis rather than assert it -- letting the client confirm or reject the link herself avoids "therapising" (turning every session into forced childhood excavation)</button>
+          <button class="opt" data-opt="B">B) Because Jade wasn't confident enough in his own read to say it directly</button>
+          <button class="opt" data-opt="C">C) To buy time while he thinks of what to say next</button>
+          <button class="opt" data-opt="D">D) Because naming the father directly would have broken client confidentiality rules</button>
+        </div>
+        <div class="q-result" data-explain="Declaring the hypothesis outright is 'therapising' -- making every session about childhood excavation the client didn't ask for. Asking an open question and letting the client confirm it herself keeps the thread genuinely hers, not imposed."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">During the debrief, what did the client's avoidance of confronting her father in the visualisation actually tell Jade?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) That she wasn't a good candidate for this kind of coaching</button>
+          <button class="opt" data-opt="B">B) That the father wasn't actually connected to the presenting issue</button>
+          <button class="opt" data-opt="C">C) Nothing significant -- it was just a random outcome of the session</button>
+          <button class="opt" data-opt="D">D) That the avoidance was diagnostic -- avoiding the father in the visualisation mirrored avoiding the lawyer in real life, and the charge likely wasn't strong enough for a full rewrite</button>
+        </div>
+        <div class="q-result" data-explain="Jade named this live: her handing the moment off to the little girl instead of confronting the father is itself the pattern -- avoidance in the visualisation mirrors the avoidance in the real-world problem, and it signalled the session landed at extinction, not full reconsolidation."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">For a client who can't visualise or feel anything in session (high armour, "fantasia" block), what's the recommended structure?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Refer them to a different coach who specialises in resistant clients</button>
+          <button class="opt" data-opt="B">B) Push harder with more direct questions until something surfaces</button>
+          <button class="opt" data-opt="C">C) Run a Beep session, then have them journal by hand for ~10 minutes (half the session), then discuss the journal together -- puts the surfacing work on the client</button>
+          <button class="opt" data-opt="D">D) Switch entirely to intellectual talk therapy since somatic work isn't landing</button>
+        </div>
+        <div class="q-result" data-explain="Beep loosens the armour, and handwritten journaling right after does the surfacing work the client can't do live in front of the coach. Discussing the journal afterward frees the coach from having to extract everything themselves."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">Why is handwriting ranked above typing for the journaling exercise?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The brain needs to process differently by hand; eyes-open, hands-on-keyboard typing keeps the brain partly checked out</button>
+          <button class="opt" data-opt="B">B) Typing is simply slower for most people, so it wastes session time</button>
+          <button class="opt" data-opt="C">C) Handwritten notes are easier for the coach to read afterward</button>
+          <button class="opt" data-opt="D">D) There's no real difference -- it's a personal preference, not a technique</button>
+        </div>
+        <div class="q-result" data-explain="Hierarchy: handwriting (best) > eyes-closed dictation > typing (worst). Eyes-open, hands-on-keyboard typing lets the brain check out slightly, which works against the processing the exercise is for."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 7</span>
+        <p class="q-text">Why is a coach crying with a client treated as a hard rule to avoid, not just bad practice?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) It's unprofessional in a business sense and could hurt the coach's reputation</button>
+          <button class="opt" data-opt="B">B) It pulls the coach out of the therapeutic role -- the bond depends on the client's felt sense that the coach is there to hold space, not be held themselves. A cited client example: her prior therapist crying with her made her feel she had to manage the therapist's emotions, blocking her own vulnerability</button>
+          <button class="opt" data-opt="C">C) It's a legal liability issue for coaching businesses</button>
+          <button class="opt" data-opt="D">D) It signals to the client that the session isn't working</button>
+        </div>
+        <div class="q-result" data-explain="Regulation and appropriateness are named as the first two lessons of doing this work at all. The client evidence (a prior therapist's crying making her feel burdened, not helped) is direct proof from the receiving end."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 8</span>
+        <p class="q-text">What's the self-disclosure test a coach should run before sharing anything personal with a client?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Whether the story is interesting enough to hold the client's attention</button>
+          <button class="opt" data-opt="B">B) Whether the coach has shared this particular story with other clients before</button>
+          <button class="opt" data-opt="C">C) Whether enough time is left in the session to tell the full story</button>
+          <button class="opt" data-opt="D">D) "Am I sharing this for me, or for the client's benefit?" -- only share if it benefits the client, keep it contained, and return immediately to their material</button>
+        </div>
+        <div class="q-result" data-explain="This single question is the filter. If it passes, share briefly and in a contained way, then get straight back to the client's own material -- it should never become a detour about the coach."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      if (chosen === answer) {
+        q.classList.add('answered');
+        q.querySelectorAll('.opt').forEach(function(b) { b.disabled = true; });
+        btn.classList.add('correct');
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        btn.disabled = true;
+        result.textContent = 'Not quite. Try another answer.';
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
