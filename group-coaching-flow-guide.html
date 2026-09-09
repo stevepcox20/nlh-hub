@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Group Coaching &middot; Live Flow Guide &middot; NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ground); color: var(--text); font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px; line-height: 1.6;
+  }
+  .doc-wrap { max-width: 640px; margin: 0 auto; padding: 0 24px 60px; }
+  .doc-topbar { padding: 22px 0 18px; }
+  .doc-topbar a { font-size: 12px; font-weight: 600; color: var(--text-muted); text-decoration: none; }
+  .doc-topbar a:hover { color: var(--forest); }
+
+  .doc-hero { background: var(--forest); border-radius: 12px; padding: 32px 30px; margin-bottom: 24px; }
+  .doc-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--peach-bright); font-weight: 600; margin-bottom: 10px; }
+  .doc-hero h1 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .doc-hero p { font-size: 13.5px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  .rule-banner {
+    background: var(--peach); color: #fff; border-radius: 10px; padding: 16px 20px; margin-bottom: 28px;
+    font-size: 14px; font-weight: 700; line-height: 1.5; text-align: center;
+  }
+  .rule-banner span { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; opacity: 0.85; margin-bottom: 6px; }
+
+  .flow { list-style: none; counter-reset: step; }
+  .flow-step { position: relative; padding: 0 0 32px 44px; border-left: 2px solid var(--border-strong); }
+  .flow-step:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .step-dot {
+    position: absolute; left: -19px; top: 0; width: 36px; height: 36px; border-radius: 50%;
+    background: var(--forest); color: #fff; font-family: var(--mono); font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-dot.guardrail { background: var(--peach); }
+  .step-p-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--forest); font-weight: 700; margin-bottom: 6px; opacity: 0.75;
+  }
+  .step-title { font-size: 17px; font-weight: 800; color: var(--forest); margin-bottom: 10px; }
+  .say-line {
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--forest);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin-bottom: 8px; font-size: 14.5px; font-weight: 600;
+    font-style: italic; color: var(--text);
+  }
+  .step-note { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .guardrail-box {
+    background: var(--peach-faint); border: 1px solid rgba(232,86,63,0.25); border-radius: 8px;
+    padding: 12px 16px; margin-top: 10px; font-size: 13px; line-height: 1.6; color: var(--text);
+  }
+  .guardrail-box strong { color: var(--peach); font-weight: 700; }
+
+  .doc-footer { padding-top: 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .doc-footer p { font-size: 12px; color: var(--text-muted); }
+  .doc-footer a { font-size: 12px; color: var(--peach); text-decoration: none; font-weight: 600; }
+  .doc-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) { .doc-hero { padding: 24px 20px; } }
+</style>
+</head>
+<body>
+
+<div class="doc-wrap">
+
+  <div class="doc-topbar">
+    <a href="group-coaching-cheat-sheet.html">&#8592; Back to Group Coaching Cheat Sheet</a>
+  </div>
+
+  <div class="doc-hero">
+    <div class="doc-eyebrow">Live Session Guide &middot; Not The Cheat Sheet</div>
+    <h1>Group Coaching &mdash; Live Flow</h1>
+    <p>Follow this while you're actually running a session. For the full study reference (why it works, diagnostics, edge cases), use the Cheat Sheet. This is only: where to go next, what to say, and where you're most likely to slip into intellectual coaching.</p>
+  </div>
+
+  <div class="rule-banner">
+    <span>The one rule underneath every step</span>
+    Find the charge. Don't talk about it. If you're asking "tell me more" or "why" &mdash; stop.
+  </div>
+
+  <ol class="flow">
+
+    <li class="flow-step">
+      <div class="step-dot">1</div>
+      <div class="step-p-label">Open</div>
+      <div class="step-title">Get in fast. No catch-up.</div>
+      <div class="say-line">"If I could snap my fingers and make this disappear right now, what's going on for you?"</div>
+      <p class="step-note">Skip "how's it been going." Straight in.</p>
+    </li>
+
+    <li class="flow-step">
+      <div class="step-dot">2</div>
+      <div class="step-p-label">Problem</div>
+      <div class="step-title">Name it. Don't dig for detail.</div>
+      <div class="say-line">"What's the actual problem right now?"</div>
+      <p class="step-note">You need the shape of it, not the full story. Move on as soon as you have it.</p>
+    </li>
+
+    <li class="flow-step">
+      <div class="step-dot">3</div>
+      <div class="step-p-label">Pattern</div>
+      <div class="step-title">Find the repeat. Where else does this show up?</div>
+      <div class="say-line">"When this happens, what do you find yourself doing? Where else does this show up in your life?"</div>
+      <p class="step-note">Reflect their own words back open-ended. Don't name the root for them &mdash; ask if it's familiar and let them confirm it.</p>
+    </li>
+
+    <li class="flow-step">
+      <div class="step-dot guardrail">!</div>
+      <div class="step-p-label">Guardrail &mdash; the charge just showed up</div>
+      <div class="step-title">Stop. This is the moment coaches lose it.</div>
+      <div class="say-line">"Stay here. Feel this. What's coming up?"</div>
+      <div class="guardrail-box"><strong>Do not ask "tell me more about that."</strong> That's the intellectual bypass. Get the feeling's location, temperature, texture. Let eyes close if it helps them go deeper instead of talking their way out.</div>
+    </li>
+
+    <li class="flow-step">
+      <div class="step-dot">4</div>
+      <div class="step-p-label">Possibilities</div>
+      <div class="step-title">Wait for it. Don't hand it over.</div>
+      <div class="say-line">"If this pattern wasn't running the show &mdash; what's possible? What's this here to teach you?"</div>
+      <div class="guardrail-box"><strong>Silence is the work.</strong> Don't fill it. If they surface the answer themselves, that's the real shift. Only give it to them if they truly can't find it &mdash; and know that's the smaller win, not the goal.</div>
+    </li>
+
+    <li class="flow-step">
+      <div class="step-dot">5</div>
+      <div class="step-p-label">Plan</div>
+      <div class="step-title">One thing. Checkable.</div>
+      <div class="say-line">"What's the one thing you'll actually do about this before we talk again?"</div>
+      <p class="step-note">One action, not a list. Specific enough you could ask them next time whether they did it.</p>
+    </li>
+
+    <li class="flow-step">
+      <div class="step-dot">6</div>
+      <div class="step-p-label">Close</div>
+      <div class="step-title">Recap in one line. Move on.</div>
+      <div class="say-line">"So: [problem] &rarr; [pattern] &rarr; what you're taking &rarr; [plan]."</div>
+      <p class="step-note">Keep it tight. Next volunteer.</p>
+    </li>
+
+  </ol>
+
+  <div class="rule-banner" style="background:var(--forest); margin-top:12px;">
+    <span>When to stop using this page</span>
+    When Step 3 &rarr; Guardrail &rarr; Step 4 happens without you thinking about it. That's the whole guide, internalised.
+  </div>
+
+  <div class="doc-footer">
+    <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+    <a href="group-coaching-cheat-sheet.html">&#8592; Back to Cheat Sheet</a>
+  </div>
+
+</div>
+</body>
+</html>
