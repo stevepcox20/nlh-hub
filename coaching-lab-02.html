@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Coaching Lab 02 &middot; Catch It, Don't Chase It &middot; NLH Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2A6B58;
+    --forest-light: #41A687;
+    --forest-faint: #E9F0ED;
+    --forest-tint: #DCE8E3;
+    --peach: #E8563F;
+    --peach-bright: #FF735D;
+    --peach-faint: #FBEFEC;
+    --ground: #EFECE5;
+    --surface: #FBFAF7;
+    --surface-2: #F1EEE7;
+    --ink: #1E2F24;
+    --text: #1E2F24;
+    --text-muted: #5E6E64;
+    --border: rgba(42,107,88,0.14);
+    --border-strong: rgba(42,107,88,0.28);
+    --red-faint: rgba(220,50,50,0.07);
+    --red-border: rgba(220,50,50,0.2);
+    --green-faint: rgba(30,160,90,0.07);
+    --green-border: rgba(30,160,90,0.18);
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .page-wrap { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+
+  .sidebar {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    background: var(--surface); border-right: 1px solid var(--border);
+    padding: 24px 0; display: flex; flex-direction: column;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+  }
+
+  .sidebar-logo { padding: 0 18px 20px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+  .sidebar-logo .belt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--peach); font-weight: 600; display: block; margin-bottom: 4px;
+  }
+  .sidebar-logo .title { font-size: 13px; font-weight: 700; color: var(--forest); line-height: 1.3; }
+  .sidebar-logo .back-link {
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
+    font-size: 11px; color: var(--text-muted); text-decoration: none; font-weight: 500;
+  }
+  .sidebar-logo .back-link:hover { color: var(--forest); }
+
+  .sidebar-nav { list-style: none; padding: 0; }
+  .sidebar-nav li a {
+    display: block; padding: 7px 18px; font-size: 12px; font-weight: 500;
+    color: var(--text-muted); text-decoration: none; border-left: 2px solid transparent;
+    transition: color 0.12s, border-color 0.12s, background 0.12s; line-height: 1.4;
+  }
+  .sidebar-nav li a:hover { color: var(--forest); background: var(--forest-tint); border-left-color: var(--peach); }
+
+  .main { min-width: 0; }
+
+  .hero {
+    background: var(--forest); padding: 60px 52px 52px; position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -80px; right: -80px; width: 360px; height: 360px;
+    border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--peach-bright); font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::after { content: ''; display: block; height: 1px; width: 36px; background: var(--peach-bright); opacity: 0.6; }
+  .hero h1 {
+    font-size: clamp(32px, 4.5vw, 50px); font-weight: 800; line-height: 1.1; color: #ffffff;
+    margin-bottom: 18px; letter-spacing: -0.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--peach-bright); font-weight: 700; }
+  .hero-desc { font-size: 15px; color: rgba(255,255,255,0.75); max-width: 620px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-stats { display: flex; gap: 36px; flex-wrap: wrap; }
+  .hero-stat { display: flex; flex-direction: column; gap: 3px; }
+  .hero-stat .num { font-size: 28px; font-weight: 800; color: var(--peach-bright); line-height: 1; letter-spacing: -0.02em; }
+  .hero-stat .label { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+
+  .section { padding: 48px 52px; border-bottom: 1px solid var(--border); }
+  .section-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 32px; }
+  .section-num {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--peach);
+    letter-spacing: 0.1em; margin-top: 7px; flex-shrink: 0; width: 26px;
+  }
+  .section-title { font-size: 26px; font-weight: 800; color: var(--forest); line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-subtitle { font-size: 13px; color: var(--text-muted); }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; }
+  .card h3 { font-size: 18px; font-weight: 700; color: var(--forest); margin-bottom: 10px; }
+  .card h4 {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--forest); margin-bottom: 8px; margin-top: 20px; opacity: 0.7;
+  }
+  .card h4:first-child { margin-top: 0; }
+  .card p { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 10px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card ul, .card ol { padding-left: 20px; margin-bottom: 10px; }
+  .card li { font-size: 14px; line-height: 1.65; color: var(--text); margin-bottom: 5px; }
+  .card strong { font-weight: 700; color: var(--forest); }
+  .card em { color: var(--peach); font-style: italic; }
+  .card-accent { background: var(--forest-faint); border-color: var(--border-strong); border-left: 3px solid var(--peach); }
+
+  .quote-block {
+    background: var(--forest-faint); border-left: 3px solid var(--forest); padding: 18px 22px;
+    margin-bottom: 14px; border-radius: 0 6px 6px 0;
+  }
+  .quote-block p { font-size: 16px; font-weight: 600; font-style: italic; color: var(--forest); line-height: 1.55; margin: 0; }
+
+  .script-block { background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 6px; padding: 18px 22px; margin-bottom: 14px; }
+  .script-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--peach); font-weight: 700; margin-bottom: 10px; display: block;
+  }
+  .script-block p { font-size: 13.5px; line-height: 1.7; color: var(--text); margin: 0 0 8px; }
+  .script-block p:last-child { margin-bottom: 0; }
+  .script-line { margin-bottom: 6px; }
+  .script-line .who { font-weight: 700; color: var(--forest); }
+  .script-line .who.client { color: var(--peach); }
+
+  .callout { background: var(--peach-faint); border: 1px solid rgba(232,86,63,0.22); border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .callout p { font-size: 14px; color: var(--text); margin: 0; line-height: 1.6; }
+  .callout strong { color: var(--peach); font-weight: 700; }
+  .callout-forest { background: var(--forest-faint); border-color: var(--border-strong); }
+  .callout-forest p { color: var(--forest); font-weight: 500; }
+  .callout-forest strong { color: var(--forest); }
+
+  .diagram-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 28px; margin-bottom: 20px; }
+  .diagram-title {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest);
+    font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; opacity: 0.7;
+  }
+  .diagram-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  details.transcript-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; }
+  details.transcript-toggle summary {
+    cursor: pointer; padding: 16px 20px; font-weight: 700; color: var(--forest); font-size: 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  details.transcript-toggle summary::after { content: '+'; font-size: 18px; color: var(--peach); }
+  details.transcript-toggle[open] summary::after { content: '\2212'; }
+  details.transcript-toggle .transcript-body { padding: 4px 20px 20px; }
+
+  /* QUIZ */
+  .quiz-intro { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+  .quiz-q { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px 26px; margin-bottom: 16px; }
+  .quiz-q .q-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--peach); font-weight: 700; display: block; margin-bottom: 8px; }
+  .quiz-q .q-text { font-size: 15px; font-weight: 700; color: var(--forest); margin-bottom: 14px; line-height: 1.5; }
+  .quiz-q .options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-q .opt {
+    text-align: left; background: var(--ground); border: 1px solid var(--border); border-radius: 6px; padding: 11px 15px;
+    font-family: 'Figtree', sans-serif; font-size: 13.5px; line-height: 1.5; color: var(--text); cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .quiz-q .opt:hover { border-color: var(--forest-light); background: var(--forest-faint); }
+  .quiz-q .opt.correct { background: var(--green-faint); border-color: #2ba84a; color: #1a5030; font-weight: 600; }
+  .quiz-q .opt.incorrect { background: var(--red-faint); border-color: #c03030; color: #7a2020; }
+  .quiz-q .opt:disabled { cursor: default; }
+  .quiz-q .q-result { margin-top: 12px; font-size: 13px; line-height: 1.6; display: none; padding: 12px 16px; border-radius: 6px; }
+  .quiz-q .q-result.show { display: block; }
+  .quiz-q .q-result.right { background: var(--green-faint); border: 1px solid var(--green-border); color: #1a5030; }
+  .quiz-q .q-result.wrong { background: var(--red-faint); border: 1px solid var(--red-border); color: #7a2020; }
+
+  .chip-nav { list-style: none; }
+  .chip-nav li { margin-bottom: 8px; }
+  .chip-nav a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    text-decoration: none; color: var(--ink); font-size: 12.5px; font-weight: 600;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .chip-nav a:hover { border-color: var(--border-strong); background: #fff; }
+  .chip-num {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; color: #fff;
+    background: var(--forest); width: 20px; height: 20px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .chip-num.admin { background: var(--text-muted); }
+
+  .site-footer { background: var(--surface); padding: 24px 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .site-footer p { font-size: 12px; color: var(--text-muted); }
+  .site-footer a { font-size: 12px; color: var(--peach); text-decoration: none; font-weight: 600; }
+  .site-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero, .section, .site-footer { padding-left: 22px; padding-right: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="belt">Coaching Labs &middot; Session 02</span>
+      <span class="title">Catch It, Don't Chase It</span>
+      <a href="index.html" class="back-link">&#8592; Back to hub</a>
+    </div>
+    <ul class="chip-nav">
+      <li><a href="#s1"><span class="chip-num">01</span> What This Is</a></li>
+      <li><a href="#s2"><span class="chip-num">02</span> Demo 1: The Smallest Next Step</a></li>
+      <li><a href="#s3"><span class="chip-num">03</span> Match The Register</a></li>
+      <li><a href="#s4"><span class="chip-num">04</span> Demo 2: Working The Thread</a></li>
+      <li><a href="#s5"><span class="chip-num">05</span> The Miss, Named Live</a></li>
+      <li><a href="#s6"><span class="chip-num">06</span> The Move After The Feeling</a></li>
+      <li><a href="#s7"><span class="chip-num">07</span> Full Transcript</a></li>
+      <li><a href="#quiz-lab2"><span class="chip-num">Q</span> Comprehension Check</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-eyebrow">Live Coaching Lab &middot; Compound Coaching Practice Call</div>
+      <h1>Catch It. <em>Don't Chase It.</em></h1>
+      <p class="hero-desc">Two back-to-back practice demos on the same call: Rania runs a clean 10-minute compound-coaching pass (Problem/Pattern/Possibility/Plan) that lands on the smallest possible next step. Rose, a coach in training, runs a 15-minute demo on Jade (volunteering as client) that surfaces real material fast, then the group debriefs the exact moment it could have gone deeper &mdash; the second it becomes a feeling instead of a thought.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="num">2</span><span class="label">Worked Demos</span></div>
+        <div class="hero-stat"><span class="num">1</span><span class="label">Named Miss</span></div>
+        <div class="hero-stat"><span class="num">6</span><span class="label">Quiz Questions</span></div>
+      </div>
+    </header>
+
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <div>
+          <h2 class="section-title">What This Is</h2>
+          <p class="section-subtitle">A Compound Coaching practice call, watched for craft only.</p>
+        </div>
+      </div>
+      <div class="card">
+        <p>This session runs "Compound Coaching" (also called Group-4P coaching elsewhere in this hub): the facilitator (Rania) opens with the 4 Pillars &mdash; Problem, Pattern, Possibility, Plan &mdash; then hands the floor to coaches-in-training to run their own timed passes on a volunteer, with the group debriefing each one afterward.</p>
+        <p>Two passes are covered here: Rania's own 10-minute demo on Nicola, then Rose's 15-minute demo on Jade. Both demos and the debrief that follows each one are the teaching content. This page is for coaching-craft study only &mdash; not a template for running Steve's own sessions unprompted.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <div>
+          <h2 class="section-title">Demo 1: The Smallest Next Step</h2>
+          <p class="section-subtitle">Rania &amp; Nicola. 6 weeks dead on social media, feast-and-famine pattern, real overwhelm underneath.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the demo</span>
+        <p class="script-line"><span class="who client">Nicola:</span> "Completely dead in the water for 6 weeks&hellip; there's no gas, there's no sail on the boat."</p>
+        <p class="script-line"><span class="who">Rania:</span> "What's burning you down right now? What's the big overwhelm in your life right now?"</p>
+        <p class="script-line"><span class="who client">Nicola:</span> "I don't think we've had a day without a catastrophe this summer."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The move sequence</h3>
+        <ol>
+          <li><strong>Let her run the full 4Ps herself, unprompted.</strong> She'd prepped and needed to just say it out loud.</li>
+          <li><strong>Skip the burnout story, ask what's underneath it.</strong> One question surfaces the real load: health scares, two houses, cars, non-stop crises.</li>
+          <li><strong>Check whether the goal relieves or adds to the load.</strong> "Does your business make you happy, or add to the overwhelm?" &mdash; Nicola separates the two: working with people = happy, social media = a means to an end, never happy.</li>
+          <li><strong>Land on the smallest possible action, not a strategy.</strong> "What's the smallest thing you can do that brings you this happiness without adding overwhelm?" She lands on it herself: a 3-line newsletter.</li>
+          <li><strong>Lock a date.</strong> "Tomorrow" beats "soon" every time.</li>
+        </ol>
+      </div>
+      <div class="quote-block">
+        <p>"Sometimes it's as simple as: what is the smallest thing that we can do?"</p>
+      </div>
+      <div class="card">
+        <p><strong>Jade's debrief (the actual lesson):</strong> coaches often feel they have to deconstruct everything, get the client emotional, blow it all up and rebuild it inside one session. This demo proves the opposite. Naming the overwhelm and landing on the smallest possible next step was, in his words, "the perfect way to address it." Not every session needs root work &mdash; sometimes the correct intervention is scope reduction, not depth.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <div>
+          <h2 class="section-title">Match The Register</h2>
+          <p class="section-subtitle">Not every problem is a root-cause problem.</p>
+        </div>
+      </div>
+      <div class="card card-accent">
+        <h3>The tell</h3>
+        <p>Nicola's own language was about volume and capacity ("dead in the water," "no gas," "burnt out"), not about a story or an identity wound. That's the signal to go logistics-first: name the overwhelm, find the smallest action, lock a date. Save the felt-sense/root-cause pathway (Section 04-06 below, and Coaching Lab 01) for when the client's language is about a story, a pattern with a history, or an identity charge &mdash; not simply too much on the plate.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <div>
+          <h2 class="section-title">Demo 2: Working The Thread</h2>
+          <p class="section-subtitle">Rose &amp; Jade (volunteering as client). Presenting issue: compulsive creating, resistance to "doing."</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">From the demo</span>
+        <p class="script-line"><span class="who client">Jade:</span> "I want to do what I want to do&hellip; I don't want to do the doing part."</p>
+        <p class="script-line"><span class="who">Rose:</span> "Where is the pressure to perform coming from? Does that land in your body, or in your history?"</p>
+        <p class="script-line"><span class="who client">Jade:</span> "I've got this freedom button in me&hellip; don't tie me down."</p>
+        <p class="script-line"><span class="who">Rose:</span> "Why do you feel the need to pressure yourself now? Your brothers aren't here. Your parents aren't here."</p>
+      </div>
+      <div class="card card-accent">
+        <h3>The move sequence</h3>
+        <ol>
+          <li><strong>Ground the abstract complaint in one recent example</strong> ("creating vs. doing" &rarr; the 20 unpublished books).</li>
+          <li><strong>Ask directly where the pressure comes from</strong> &mdash; body or history &mdash; no hedging.</li>
+          <li><strong>Follow the thread to its origin</strong> &mdash; childhood resistance to his brothers and parents, a "freedom" pattern.</li>
+          <li><strong>Ask what happens when he does get tied down.</strong> He makes it miserable for everyone until they stop trying.</li>
+          <li><strong>Ask the sharper question:</strong> why keep punishing himself now, when no one's actually enforcing it? This is where the feeling drops &mdash; sadness, "so much work to do and not enough time," tied to a real kidney health fear and aging.</li>
+          <li><strong>Ask if completion itself is the fear</strong> &mdash; lands hard: "if I'm complete, it's time to go." Jade names the real unresolved thing: intellect hasn't met spirit yet.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <div>
+          <h2 class="section-title">The Miss, Named Live</h2>
+          <p class="section-subtitle">Excellent questions. Wrong move at the exact second the charge showed up.</p>
+        </div>
+      </div>
+      <div class="script-block">
+        <span class="script-label">Jade's own debrief</span>
+        <p class="script-line"><span class="who">Jade:</span> "When I went feeling&hellip; that would have been a place where you'd be like, 'stay right there.' Close your eyes, feel that, tell me what's coming up. We may have gotten something much deeper subconsciously."</p>
+      </div>
+      <div class="card">
+        <p>Rose's questions were sharp enough that Jade "couldn't intellectualize his way around them" &mdash; genuinely good coaching craft. But the moment he actually dropped into a feeling (the sadness / "not enough time" beat), that was the cue to stop asking and switch to an instruction: close the eyes, stay with it, ask what's coming up in the body. Rose kept the conversation verbal instead &mdash; continuing to ask the next question rather than pausing there.</p>
+      </div>
+      <div class="callout callout-forest">
+        <p><strong>This is the same rule as Coaching Lab 01, live in a second demo.</strong> "Client gets emotional &rarr; coach asks a question about it" is the intellectual bypass Lab 01 named. This is what it looks like happening to a genuinely skilled coach mid-session &mdash; not a beginner mistake, an easy one.</p>
+      </div>
+      <div class="card card-accent">
+        <h3>A second entry point (Rania's own feedback)</h3>
+        <p>When Jade named the block directly &mdash; "my intellect hasn't met my spirit" &mdash; that was a second place to go deeper: where does that specific block come from, which part of childhood. Rose moved on instead. Not a failure &mdash; many valid entry points exist in the same conversation, and not taking one is a road not travelled, not a wrong turn.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <div>
+          <h2 class="section-title">The Move After The Feeling</h2>
+          <p class="section-subtitle">The actual gap this session answers: what comes after "stay here, feel this, what's coming up?"</p>
+        </div>
+      </div>
+      <div class="card card-accent">
+        <h3>Four things, in order</h3>
+        <ol>
+          <li><strong>Don't ask another question.</strong> The instinct after a feeling word or a body sensation is to ask "why do you think that is?" That's the bypass. The correct next move is an instruction, not a question.</li>
+          <li><strong>Go where the body already pointed.</strong> If the feeling has a location, connect locations directly &mdash; "what's in the gut that needs to come out through the throat?" &mdash; rather than returning to the verbal thread.</li>
+          <li><strong>Stay longer than feels comfortable.</strong> The biggest miss, in this session and in Coaching Lab 01's debrief both, is leaving the somatic moment too early to get back to the "real" topic.</li>
+          <li><strong>Only bring the presenting problem back once the charge has visibly shifted</strong> (movement, a sigh, a changed voice) &mdash; and check that it actually moved, don't assume it did because time's up.</li>
+        </ol>
+      </div>
+      <div class="callout">
+        <p><strong>Where this lives day to day:</strong> this exact addition has been folded into the guardrail step of the <a href="group-coaching-flow-guide.html" style="color:var(--peach);font-weight:700;">Live Flow Guide</a>, right after the "stay here / feel this / temperature / texture" line &mdash; so the next-move gap doesn't sit only in a study page nobody re-reads mid-session.</p>
+      </div>
+    </section>
+
+    <section class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <div>
+          <h2 class="section-title">Full Transcript</h2>
+          <p class="section-subtitle">As pasted. Only the first two of at least four volunteers are captured.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p><strong>Note:</strong> Speaker labels are auto-transcription and unreliable (e.g. "Ronnie" is almost certainly a mis-hearing of "Rania"). Preserved as-received below.</p>
+      </div>
+
+      <details class="transcript-toggle">
+        <summary>Open full transcript</summary>
+        <div class="transcript-body">
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">Full raw transcript is preserved in the vault: <em>Resources/NLH - Coaching Lab - Live Session (Compound Coaching, Rania + Rose) - Transcript - 2026-09-15.md</em>. Not duplicated in full here to keep this page focused &mdash; the sections above cover every key concept from it. Open the vault file for the verbatim line-by-line record.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="quiz-lab2">
+      <div class="section-header">
+        <div class="section-num">Q</div>
+        <div>
+          <h2 class="section-title">Comprehension Check</h2>
+          <p class="section-subtitle">Answer from memory first. Click an option to check.</p>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 1</span>
+        <p class="q-text">In Demo 1, why did Jade call landing on "write a 3-line newsletter tomorrow" the perfect intervention?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Because newsletters are always better than social media posts</button>
+          <button class="opt" data-opt="B">B) Because it was the fastest possible session, and speed is the goal</button>
+          <button class="opt" data-opt="C">C) Because not every problem needs root-cause work -- naming the overwhelm and finding the smallest possible next action was the correct scope for a logistics/capacity problem</button>
+          <button class="opt" data-opt="D">D) Because Rania didn't have time to go deeper in only 10 minutes</button>
+        </div>
+        <div class="q-result" data-explain="Jade named it directly: coaches often feel they must deconstruct everything and get the client emotional. This demo proves scope reduction, not depth, was the right call here -- the client's own language (overwhelm, capacity) signalled it."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 2</span>
+        <p class="q-text">How do you tell a "smallest next step" problem apart from a root-cause/felt-sense problem?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Root-cause problems always take longer than 10 minutes to name</button>
+          <button class="opt" data-opt="B">B) The client's own language is the signal -- volume/capacity language ("too much," "burnt out," "no gas in the tank") points to logistics; story or identity-charged language points to root-cause work</button>
+          <button class="opt" data-opt="C">C) You can only tell after trying both approaches</button>
+          <button class="opt" data-opt="D">D) It depends on how many people are in the group session</button>
+        </div>
+        <div class="q-result" data-explain="Nicola's language was all volume/capacity (dead in the water, no gas, no sail). That's the tell to go logistics-first rather than reaching for the felt-sense pathway used in Demo 2."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="A">
+        <span class="q-num">Question 3</span>
+        <p class="q-text">In Demo 2, what exact moment did Jade flag as the miss?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) The moment he actually dropped into a feeling (sadness / "not enough time") -- Rose kept asking questions instead of switching to a somatic instruction ("stay right there, close your eyes, feel that")</button>
+          <button class="opt" data-opt="B">B) The very first question Rose asked about creating vs. doing</button>
+          <button class="opt" data-opt="C">C) The moment Rose brought up his kidney health</button>
+          <button class="opt" data-opt="D">D) Rose never made any mistakes in the session</button>
+        </div>
+        <div class="q-result" data-explain="Jade named it precisely: he went feeling, and that was the cue for an instruction (stay there, close your eyes) rather than another question. The questions themselves were praised as excellent -- the miss was the follow-through at that one moment."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="D">
+        <span class="q-num">Question 4</span>
+        <p class="q-text">What's the actual difference between the "wrong" move (asking another question) and the "right" move (an instruction) once a feeling surfaces?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) There's no real difference, both get to the same place eventually</button>
+          <button class="opt" data-opt="B">B) Instructions are always shorter than questions</button>
+          <button class="opt" data-opt="C">C) Questions are for beginners, instructions are for advanced coaches</button>
+          <button class="opt" data-opt="D">D) A question keeps the client's analytical brain engaged and talking; an instruction ("stay with that," "close your eyes," "what's coming up in your body") drops them further into the felt/subconscious state instead of pulling them back into verbal processing</button>
+        </div>
+        <div class="q-result" data-explain="This is the same mechanism as Coaching Lab 01's core rule: finding the charge IS the target. A follow-up question re-engages the intellect and bypasses the charge; an instruction keeps them in the somatic state where the actual work happens."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="C">
+        <span class="q-num">Question 5</span>
+        <p class="q-text">What's the single biggest miss this session identifies once a coach does successfully catch a felt-sense charge?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Not writing down what the client said for later reference</button>
+          <button class="opt" data-opt="B">B) Asking the client to repeat what they just said</button>
+          <button class="opt" data-opt="C">C) Leaving the somatic moment too early to get back to the "real" presenting topic, before the charge has actually shifted</button>
+          <button class="opt" data-opt="D">D) Spending too long explaining the technique to the client before using it</button>
+        </div>
+        <div class="q-result" data-explain="Both this session and Coaching Lab 01's debrief flag the same pattern: coaches return to the presenting problem too fast, before checking whether the felt charge actually moved. Staying longer than feels comfortable is the fix."></div>
+      </div>
+
+      <div class="quiz-q" data-answer="B">
+        <span class="q-num">Question 6</span>
+        <p class="q-text">Rania flagged a second missed entry point in Demo 2. What was it?</p>
+        <div class="options">
+          <button class="opt" data-opt="A">A) Rose should have ended the session 5 minutes earlier</button>
+          <button class="opt" data-opt="B">B) When Jade named "intellect hasn't met spirit" as the block, that was a place to dig into where that specific block came from -- which part of his childhood, what moment -- rather than moving on</button>
+          <button class="opt" data-opt="C">C) Rose should have asked about his business revenue instead</button>
+          <button class="opt" data-opt="D">D) There was no second missed entry point -- Rania had no further feedback</button>
+        </div>
+        <div class="q-result" data-explain="Same lesson as Coaching Lab 01's group debrief: many valid entry points exist in one conversation. Not taking one isn't a failure, it's a road not travelled -- and this session flags a second one on top of the felt-sense miss."></div>
+      </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Better Man Recovery &middot; Private study reference &middot; Not for distribution</p>
+      <a href="index.html">&#8592; Back to hub</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.quiz-q').forEach(function(q) {
+  var answer = q.getAttribute('data-answer');
+  var result = q.querySelector('.q-result');
+  q.querySelectorAll('.opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (q.classList.contains('answered')) return;
+      var chosen = btn.getAttribute('data-opt');
+      var explain = result.getAttribute('data-explain') || '';
+      if (chosen === answer) {
+        q.classList.add('answered');
+        q.querySelectorAll('.opt').forEach(function(b) { b.disabled = true; });
+        btn.classList.add('correct');
+        result.textContent = 'Correct. ' + explain;
+        result.className = 'q-result show right';
+      } else {
+        btn.classList.add('incorrect');
+        btn.disabled = true;
+        result.textContent = 'Not quite. Try another answer.';
+        result.className = 'q-result show wrong';
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>
