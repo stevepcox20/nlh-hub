@@ -71,6 +71,34 @@
   }
   .guardrail-box strong { color: var(--peach); font-weight: 700; }
 
+  .example-box {
+    border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 8px; font-size: 13px; line-height: 1.6;
+  }
+  .example-box.works { background: var(--forest-faint,#E9F0ED); border-left: 3px solid var(--forest); }
+  .example-box.miss { background: var(--peach-faint); border-left: 3px solid var(--peach); }
+  .example-label {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; display: block; margin-bottom: 4px;
+  }
+  .example-box.works .example-label { color: var(--forest); }
+  .example-box.miss .example-label { color: var(--peach); }
+  .example-box a { color: inherit; text-decoration: underline; }
+
+  .life-area-block {
+    background: var(--surface); border: 1px solid var(--border-strong); border-radius: 10px;
+    padding: 20px 22px; margin-bottom: 28px;
+  }
+  .life-area-block h2 { font-size: 15px; font-weight: 800; color: var(--forest); margin-bottom: 4px; }
+  .life-area-block .sub { font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px; }
+  .life-area { padding: 10px 0; border-top: 1px solid var(--border); }
+  .life-area:first-of-type { border-top: none; }
+  .life-area .tag {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #fff; background: var(--forest); padding: 2px 7px; border-radius: 4px; font-weight: 700; margin-right: 8px;
+  }
+  .life-area .ask { font-size: 14px; font-weight: 600; font-style: italic; }
+  .life-area-block .closer { font-size: 12.5px; color: var(--text-muted); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+
   .doc-footer { padding-top: 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
   .doc-footer p { font-size: 12px; color: var(--text-muted); }
   .doc-footer a { font-size: 12px; color: var(--peach); text-decoration: none; font-weight: 600; }
@@ -98,6 +126,30 @@
     Find the charge. Don't talk about it. If you're asking "tell me more" or "why" &mdash; stop.
   </div>
 
+  <div class="life-area-block">
+    <h2>Can't find the Problem? Start here.</h2>
+    <p class="sub">When someone's opener is vague or scattered, run it through the four life areas. Ask which one is loudest right now &mdash; that's your Problem step.</p>
+
+    <div class="life-area">
+      <span class="tag">Identity</span>
+      <span class="ask">"Who do you think you have to be right now &mdash; and where did that come from?"</span>
+    </div>
+    <div class="life-area">
+      <span class="tag">Body</span>
+      <span class="ask">"Is your body running on stress, or is it actually supported right now?"</span>
+    </div>
+    <div class="life-area">
+      <span class="tag">Relationships</span>
+      <span class="ask">"Where are you not being fully honest, or not fully seen, by someone close to you?"</span>
+    </div>
+    <div class="life-area">
+      <span class="tag">Money / Work</span>
+      <span class="ask">"Where are you avoiding, over-functioning, or under-charging?"</span>
+    </div>
+
+    <p class="closer">Don't run all four every time &mdash; this is a quick scan when you're stuck, not a checklist for every session. One clear "yes, that one" beats a client answering all four in the abstract.</p>
+  </div>
+
   <ol class="flow">
 
     <li class="flow-step">
@@ -106,6 +158,7 @@
       <div class="step-title">Get in fast. No catch-up.</div>
       <div class="say-line">"If I could snap my fingers and make this disappear right now, what's going on for you?"</div>
       <p class="step-note">Skip "how's it been going." Straight in.</p>
+      <div class="example-box works"><span class="example-label">Live example &mdash; also fine</span>Neither Coaching Lab demo used this exact line. Nicola came in already carrying it and just let it out unprompted &mdash; if a client walks in ready, let them go, don't force the script. Use the line above when they don't. (<a href="coaching-lab-02.html">Lab 02</a>)</div>
     </li>
 
     <li class="flow-step">
@@ -114,6 +167,7 @@
       <div class="step-title">Name it. Don't dig for detail.</div>
       <div class="say-line">"What's the actual problem right now?"</div>
       <p class="step-note">You need the shape of it, not the full story. Move on as soon as you have it.</p>
+      <div class="example-box works"><span class="example-label">Live example</span>Nicola: "Completely dead in the water for 6 weeks&hellip; there's no gas, there's no sail on the boat." Volume/capacity language &mdash; the tell for a logistics-register problem, not an identity one. (<a href="coaching-lab-02.html">Lab 02</a>)</div>
     </li>
 
     <li class="flow-step">
@@ -122,6 +176,7 @@
       <div class="step-title">Find the repeat. Where else does this show up?</div>
       <div class="say-line">"When this happens, what do you find yourself doing? Where else does this show up in your life?"</div>
       <p class="step-note">Reflect their own words back open-ended. Don't name the root for them &mdash; ask if it's familiar and let them confirm it.</p>
+      <div class="example-box works"><span class="example-label">Live example</span>Rose: "Where is the pressure to perform coming from &mdash; does that land in your body, or in your history?" Direct, unhedged, and open &mdash; not "is this about your father?" Jade confirms the childhood link himself. (<a href="coaching-lab-03.html">Lab 03</a>)</div>
     </li>
 
     <li class="flow-step">
@@ -131,6 +186,8 @@
       <div class="say-line">"Stay here. Feel this. What's coming up?"</div>
       <div class="guardrail-box"><strong>Do not ask "tell me more about that."</strong> That's the intellectual bypass. Get the feeling's location, temperature, texture. Let eyes close if it helps them go deeper instead of talking their way out.</div>
       <p class="step-note" style="margin-top:10px;"><strong style="color:var(--forest);">Then what?</strong> Once you've got location/temperature/texture &mdash; don't ask another question. Give an instruction instead: "stay with that," "let it move." If it has a body location, connect it directly ("what's in the gut that needs to come out through the throat?"). Stay longer than feels comfortable &mdash; the common miss is going back to the topic before the charge has actually shifted.</p>
+      <div class="example-box miss"><span class="example-label">Live example &mdash; missed it</span>Jade dropped into sadness ("so much work to do, not enough time"). Rose kept asking questions instead of switching to an instruction here. Jade's own words after: "that would have been a place where you'd be like, stay right there." (<a href="coaching-lab-03.html">Lab 03</a>)</div>
+      <div class="example-box miss"><span class="example-label">Live example &mdash; skipped it entirely</span>Nicola named a summer of nonstop crises (health scares, houses, cars) &mdash; real weight, Rania's own reaction was "Wow." But Rania went straight to logistics (smallest next step) without ever running this step at all. Worked out fine here, but it's a guess, not a check. (<a href="coaching-lab-02.html">Lab 02</a>)</div>
     </li>
 
     <li class="flow-step">
@@ -139,6 +196,7 @@
       <div class="step-title">Wait for it. Don't hand it over.</div>
       <div class="say-line">"If this pattern wasn't running the show &mdash; what's possible? What's this here to teach you?"</div>
       <div class="guardrail-box"><strong>Silence is the work.</strong> Don't fill it. If they surface the answer themselves, that's the real shift. Only give it to them if they truly can't find it &mdash; and know that's the smaller win, not the goal.</div>
+      <div class="example-box works"><span class="example-label">Live example</span>Rania: "Does your business make you happy, or add to the overwhelm?" &mdash; Nicola separates the two herself: working with people = happy, social media = never happy, just a means to an end. The possibility (what actually matters here) came from her, not Rania. (<a href="coaching-lab-02.html">Lab 02</a>)</div>
     </li>
 
     <li class="flow-step">
@@ -147,6 +205,7 @@
       <div class="step-title">One thing. Checkable.</div>
       <div class="say-line">"What's the one thing you'll actually do about this before we talk again?"</div>
       <p class="step-note">One action, not a list. Specific enough you could ask them next time whether they did it.</p>
+      <div class="example-box works"><span class="example-label">Live example</span>"A 3-line newsletter." "When can you do that?" "Tomorrow." Small, specific, dated &mdash; not a strategy. (<a href="coaching-lab-02.html">Lab 02</a>)</div>
     </li>
 
     <li class="flow-step">
